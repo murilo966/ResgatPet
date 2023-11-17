@@ -1,7 +1,7 @@
 import Cabecalho from '../components/cabecalho';
 import Rodape from '../components/rodape';
 
-function Cadastrar(){
+function RegistroPJ(){
     return(
         <div>
             <Cabecalho/>
@@ -13,4 +13,4 @@ function Cadastrar(){
     )
 }
 
-export default Cadastrar
+export default RegistroPJ
