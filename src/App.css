@@ -7,12 +7,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,15 +18,106 @@
   color: white;
 }
 
+.container{
+  min-height: 100vh;
+}
+
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* LOGIN */
+.container-login{
+  max-width: 200px;  
+  margin: 0 auto;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.titulo-login, .user-login, .user-password, .bt-entrar, .separador-ou, .bt-cadastrar{
+  text-align: center;
+}
+
+.titulo-login label{
+  font-weight: bold;
+  color: #535353;
+  text-transform: uppercase;
+}
+
+.user-login input{
+  width: 80%;
+  height: 30px;
+  margin-top: 8px;
+}
+
+.user-password input{
+  width: 80%;
+  height: 30px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.esqueceu-senha{
+  text-align: center;
+  margin: 3px;
+}
+
+.esqueceu-senha label{
+  margin-right: 30%;
+  font-size: x-small;
+  font-weight: bold;
+  color: #535353;
+}
+
+.grupo-separador{
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.linha {
+  flex-grow: 0.37;
+  border-top: 1px solid #ccc;
+}
+
+.separador-ou {
+  padding: 0 10px;
+}
+
+.separador-ou label {
+  font-weight: bold;
+}
+
+.bt-entrar button:hover{
+  background-color: rgb(88, 151, 77);
+}
+
+.bt-cadastrar button:hover{
+  background-color: #e6aa3b;
+}
+
+.bt-entrar button{
+  width: 85%;
+  height: 40px;
+  background-color: #4B8A40;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.bt-cadastrar button{
+  width: 85%;
+  height: 40px;
+  background-color: #FFBE41;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
 }

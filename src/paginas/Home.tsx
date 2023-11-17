@@ -1,17 +1,15 @@
-import Cabecalho_ini from '../components/cabecalho';
+import Cabecalho from '../components/cabecalho';
 import Rodape from '../components/rodape';
-import Body from '../components/corpo';
-
 
 function Home() {
     return(
         <div>
-            <Cabecalho_ini/>
-
-
-            <Body/>
-
-
+            <Cabecalho/>
+                <div className='bod_container'>
+                    <h1>Encontrou um animal?</h1>
+                    <p>Informe os detalhes no botão abaixo</p>
+                    <button className='form_button'>Nos passe as informações</button>
+                </div>
             <Rodape/>
             
         </div>

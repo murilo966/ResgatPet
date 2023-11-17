@@ -1,4 +1,5 @@
 import '../style/style.css'
+import Login from '../../paginas/Login'
 
 function Cabecalho_ini() {
     return(
@@ -28,7 +29,7 @@ function Cabecalho_ini() {
                 </div>
 
                 <div className='bt4'>
-                    <button>Faça login</button>
+                    <button >Faça login</button>
                 </div>
 
 
