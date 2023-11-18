@@ -9,14 +9,14 @@ function QuemSomos(){
             <div className='container'>
                 <p>QUEM SOMOS</p>
                 <div className='imagem'>
-                <img src="/DogIcon.png" className='imgleft'/>
-                <div className='div-img1'> <h1 >Quem Somos </h1></div>
+                <img src="/imagens/DogIcon.png" className='imgleft'/>
+                <div className='div-img1'> <p className='titulo1'>Quem Somos </p></div>
                                     
       
             
                 </div>
 
-                <div> <p className='text2'><h4>Somos um grupo de alunos do curso de desenvolvimento full stack do Senac Bauru 2023-2024, que, motivados pelo amor aos animais, decidimos desenvolver um site para auxiliar o resgate de animais em situação de rua e abandono.  </h4></p></div>
+                <div> <p className='text2'>Somos um grupo de alunos do curso de desenvolvimento full stack do Senac Bauru 2023-2024, que, motivados pelo amor aos animais, decidimos desenvolver um site para auxiliar o resgate de animais em situação de rua e abandono.  </p></div>
                 <p className='text2'>Acreditamos que todos os animais merecem ter uma vida digna, com amor e cuidados. Por isso, criamos um espaço virtual que conecta ONGs e sociedade para o bem em comum. </p>
                 <p className='text2'>Nosso site é uma ferramenta que facilita o processo de resgate de animais. Ele permite que ONGs registrem os animais em situação de rua ou abandono, e que pessoas interessadas em adotar ou doar podem encontrar os animais que precisam de um lar.</p>
                 <p className='text2'><h1>Nossa missão</h1></p>
