@@ -227,3 +227,35 @@ button {
 
 
 /* Final do registro pj */
+
+
+
+/* quem somos */
+.imgleft{
+  width: 30%;
+  justify-content: flex-end;
+  
+  }
+
+  .imagem{
+    display: flex;
+    flex-direction: row;
+    
+    
+     
+    
+  }
+  .div-img1{
+    flex-direction: column;
+   text-align: center;
+    flex:4
+    }
+  
+  .titulo1{
+    size: 64px
+  }
+
+  .text2{
+    text-align: center;
+  }
+  
