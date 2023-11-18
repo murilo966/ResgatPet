@@ -66,50 +66,6 @@
   margin: 3px;
 }
 
-
-/* Inicio da Recuperar Senha */
-
-.titulo-recuperacao{
-  color: #535353;
-  font-weight: bold;
-
-}
-.esqueceu-senha-cont *{
-  text-align: center;
-  margin: 4px;
-}
-
-.container-recuperar{
-  font-weight: bold;
-  max-width: 200px;  
-  margin: 0 auto;
-  padding: 10px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  background-color: #fff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-}
-
-.enviar-recuperacao button{
-  width: 85%;
-  height: 40px;
-  background-color: #4B8A40;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 10px;
-}
-
-.user-email-rec{
-  width: 80%;
-  height: 36px;
-}
-
-/* Final da Recuperar Senha */
-
-
 .grupo-separador{
   display: flex;
   align-items: center;
@@ -158,6 +114,48 @@
   font-weight: bold;
   border-radius: 10px;
 }
+
+/* Inicio da Recuperar Senha */
+
+.titulo-recuperacao{
+  color: #535353;
+  font-weight: bold;
+
+}
+.esqueceu-senha-cont *{
+  text-align: center;
+  margin: 4px;
+}
+
+.container-recuperar{
+  font-weight: bold;
+  max-width: 200px;  
+  margin: 0 auto;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.enviar-recuperacao button{
+  width: 85%;
+  height: 40px;
+  background-color: #4B8A40;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.user-email-rec{
+  width: 80%;
+  height: 36px;
+}
+
+/* Final da Recuperar Senha */
 
 /* Dashboard */
 
@@ -215,19 +213,11 @@
 }
 
 .menu-button {
-  margin-top: 10px; /* Adicione um espaçamento entre a imagem-usuario e o menu-button */
+  margin-top: 10px;
   display: flex;
-  flex-direction: column; /* Coloque os botões em uma coluna */
-  align-items: flex-start; /* Alinhe os botões à esquerda */
+  flex-direction: column;
+  align-items: flex-start;
 }
-
-/* Estilos adicionais para melhorar a aparência */
-button {
-  padding: 8px 12px;
-  margin: 5px;
-}
-
-
 
 
 /* Inicio do registro pj */
