@@ -7,7 +7,7 @@ function Cabecalho_ini() {
 
 
             <div className='imagem'>
-                <img src="/DogIcon.png" className='Ft_perfil'/>
+                <img src="./imagens/DogIcon.png" className='Ft_perfil'/>
             </div>
             
 
