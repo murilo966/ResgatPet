@@ -6,6 +6,7 @@ import Home from './paginas/Home';
 import Login from './paginas/Login';
 import QuemSomos from './paginas/QuemSomos';
 import RegistroPJ from './paginas/RegistroPJ';
+import EsqueceuSenha from './paginas/EsqueceuSenha';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/registro-pf' element={<RegistroPF/>} ></Route>
         <Route path='/registro-pj' element={<RegistroPJ/>} ></Route>
         <Route path='/como-ajudar' element={<ComoAjudar/>} ></Route>
+        <Route path='/esqueceu-senha' element={<EsqueceuSenha/>} ></Route>
       </Routes>
     </div>
   );

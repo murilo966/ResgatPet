@@ -9,12 +9,12 @@ function EsqueceuSenha(){
             <Cabecalho2/>
             <div className='container'>
                 
-                <div className='container'>
-                    <div className='container-login'>
+                <div className='container-recuperar'>
+                    <div className='esqueceu-senha-cont'>
                         <div className='titulo-recuperacao'>
                             <label>Recuperar Senha</label>
                         </div>
-                        <div className='user-login'>
+                        <div className='user-email-rec'>
                             <input type="text" placeholder='nome@email.com'/>
                         </div>
                         <div className='enviar-recuperacao'>
