@@ -185,7 +185,7 @@ button {
 }
 /* quem somos */
 .imgleft{
-  width: 30%;
+  width: 25%;
   justify-content: flex-end;
   
   }
@@ -193,19 +193,20 @@ button {
   .imagem{
     display: flex;
     flex-direction: row;
-    
+    flex:2
     
      
     
   }
   .div-img1{
-    flex-direction: column;
-   text-align: center;
+    flex-direction: row;
+    justify-content: flex-start;
+   text-align: left;
     flex:4
     }
   
   .titulo1{
-    size: 64px
+    font-size: 80px;
   }
 
   .text2{
