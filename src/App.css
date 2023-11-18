@@ -154,3 +154,28 @@
   font-weight: bold;
   border-radius: 10px;
 }
+
+/* Dashboard */
+
+.container-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.imagem-usuario {
+  order: -1; /* Move a imagem-usuario para cima */
+}
+
+.menu-button {
+  margin-top: 10px; /* Adicione um espaçamento entre a imagem-usuario e o menu-button */
+  display: flex;
+  flex-direction: column; /* Coloque os botões em uma coluna */
+  align-items: flex-start; /* Alinhe os botões à esquerda */
+}
+
+/* Estilos adicionais para melhorar a aparência */
+button {
+  padding: 8px 12px;
+  margin: 5px;
+}
