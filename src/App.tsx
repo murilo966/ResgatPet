@@ -7,10 +7,7 @@ import Login from './paginas/Login';
 import QuemSomos from './paginas/QuemSomos';
 import RegistroPJ from './paginas/RegistroPJ';
 import EsqueceuSenha from './paginas/EsqueceuSenha';
-import Dashboard from './paginas/Dashboard';
-import Historico from './paginas/Historico';
-import Acompanhar from './paginas/Acompanhar';
-import Configuracao from './paginas/Configuracao';
+import Dasboard from './paginas/Dashboard';
 
 function App() {
   return (
@@ -23,10 +20,7 @@ function App() {
         <Route path='/registro-pj' element={<RegistroPJ/>} ></Route>
         <Route path='/como-ajudar' element={<ComoAjudar/>} ></Route>
         <Route path='/esqueceu-senha' element={<EsqueceuSenha/>} ></Route>
-        <Route path='/dashboard' element={<Dashboard/>} ></Route>
-        <Route path='/historico' element={<Historico/>} ></Route>
-        <Route path='/acompanhar' element={<Acompanhar/>} ></Route>
-        <Route path='/configuracao' element={<Configuracao/>} ></Route>        
+        <Route path='/dashboard' element={<Dasboard/>} ></Route>
       </Routes>
     </div>
   );

@@ -100,7 +100,11 @@
   font-size: 18px;
   font-weight: bold;
   border-radius: 10px;
+}
 
+.user-email-rec{
+  width: 80%;
+  height: 36px;
 }
 
 /* Final da Recuperar Senha */
@@ -179,3 +183,4 @@ button {
   padding: 8px 12px;
   margin: 5px;
 }
+/* sei la */
