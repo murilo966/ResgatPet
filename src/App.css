@@ -154,10 +154,15 @@
   width: 80%;
   height: 36px;
 }
-
 /* Final da Recuperar Senha */
 
 /* Dashboard */
+.dashboard{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+}
 
 .container-menu {
   width: 150px;
@@ -219,6 +224,115 @@
   align-items: flex-start;
 }
 
+.container-painel{
+  width: 100%;
+  height: 90vh;
+  margin-top: 10px;
+  margin-inline-start: 8px;
+  margin-inline-end: 8px;
+  border-radius: 15px;
+  border: 1px solid #FFBE41;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFECC7;
+}
+
+.titulo{
+  margin-top: 12px;
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+  color: #535353;
+}
+
+.usuario-logado{
+  display: flex;
+  flex-direction: row;
+  margin-top: 12px;
+  margin-inline-start: 10px;
+}
+
+.bem-vindo{
+  font-size: large; 
+  font-weight: bold;
+}
+
+.nome-usuario-logado{
+  font-size: large;
+  margin-inline-start: 8px;
+}
+
+.painel-dasboard{
+  display: flex;
+  flex-direction: column;
+}
+
+.painel-top{  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.painel-baixo{  
+  display: flex;
+  flex-direction: row;
+}
+
+.painel-esquerdo-top label, .painel-direito-top label, 
+.painel-esquerdo-baixo label, .painel-direito-baixo label{
+  font-size: small; 
+  font-weight: bold;
+}
+
+.painel-esquerdo-top{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 300px;
+  margin-top: 8px;
+  margin-inline-start: 10px;
+  margin-inline-end: 10px;
+  background-color: #FFF8EC;
+}
+
+.painel-direito-top{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  margin-top: 8px;
+  margin-inline-end: 10px;
+  background-color: #FFF8EC;
+}
+
+.painel-esquerdo-baixo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  margin-top: 8px;
+  margin-inline-start: 10px;
+  margin-inline-end: 10px;
+  background-color: #FFF8EC;
+}
+
+.painel-direito-baixo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 300px;
+  margin-top: 8px;
+  margin-inline-end: 10px;
+  background-color: #FFF8EC;
+}
 
 /* Inicio do registro pj */
 .container-pj{
@@ -234,62 +348,57 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
+
 .container-pj label{
   color: #535353;
   text-transform: uppercase;
   font-weight: bold;
 }
+
 .container-pj input{
   padding: 2px;
   border-radius: 10px;
   border: #679aff solid 1px;
   margin: 4px;
 }
+
 .Conta-corporativa1{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
+
 .Conta-corporativa2{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-
-
-
-
 /* Final do registro pj */
-
-
 
 /* quem somos */
 .imgleft{
   width: 25%;
   justify-content: flex-end;
-  
-  }
+}
 
-  .imagem{
-    display: flex;
-    flex-direction: row;
-    flex:2
-    
-     
-    
-  }
-  .div-img1{
-    flex-direction: row;
-    justify-content: flex-start;
-   text-align: left;
-    flex:4
-    }
-  
-  .titulo1{
-    font-size: 80px;
-  }
+.imagem{
+  display: flex;
+  flex-direction: row;
+  flex:2    
+}
 
-  .text2{
-    text-align: center;
-  }
-  
+.div-img1{
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: left;
+  flex:4
+}
+
+.titulo1{
+  font-size: 80px;
+}
+
+.text2{
+  text-align: center;
+}
+

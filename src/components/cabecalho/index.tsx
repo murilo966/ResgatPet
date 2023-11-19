@@ -1,13 +1,11 @@
 import '../style/style.css'
-import Login from '../../paginas/Login'
 
-function Cabecalho_ini() {
+function Cabecalho() {
     return(
         <div className='cont_cabecalho'>
 
-
-            <div className='imagem'>
-                <img src="./imagens/DogIcon.png" className='Ft_perfil'/>
+            <div className='ft-perfil'>
+                <img src="./imagens/DogIcon.png" />
             </div>
             
 
@@ -32,15 +30,9 @@ function Cabecalho_ini() {
                     <button >Faça login</button>
                 </div>
 
-
             </div>
-        
-
-
-
-
         </div>
     )
 }
 
-export default Cabecalho_ini
+export default Cabecalho
