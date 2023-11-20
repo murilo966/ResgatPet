@@ -8,11 +8,12 @@ function MenuLateral() {
             </div>
 
             <div className='nome-usuario'>
-                <label> Andre Comegno </label>
+                <label> Nome Usuario </label>
             </div>
 
             <div className='menu-button'>
-                <button type="button">Dashboard</button>                
+                <button type="button">Dashboard</button>
+                <button type="button">Resgatar Pet</button>                 
                 <button type="button">Acompanhar</button>
                 <button type="button">Histórico</button>
                 <button type="button">Configurações</button>

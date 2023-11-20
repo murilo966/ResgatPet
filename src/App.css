@@ -26,9 +26,10 @@
   color: #61dafb;
 }
 
-/* LOGIN */
-.container-login{
-  max-width: 200px;  
+/* LOGIN - CRIAR CONTA */
+.container-login{  
+  width: 250px; 
+  max-width: 100%;
   margin: 0 auto;
   padding: 10px;
   margin-top: 8px;
@@ -355,13 +356,15 @@
 }
 
 .tabela-acompanhar,
-.tabela-historico{
+.tabela-historico, 
+.tabela-resgatar-pet{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 80%; 
   height: 300px;
+  margin: 0 auto;
   background-color: #FFF8EC;
 }
 
