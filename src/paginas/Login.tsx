@@ -13,12 +13,12 @@ function Login() {
                         <label>Entrar</label>
                     </div>
                     
-                    <div className='user-login'>
-                        <input type="text" name="user-name" placeholder="nome@email.com"/>
+                    <div className='usuario-login'>
+                        <input type="text" name="usuario-nome" placeholder="nome@email.com"/>
                     </div>
 
-                    <div className='user-password'>
-                        <input type="text" name="user-password" placeholder="*********"/>
+                    <div className='usuario-senha'>
+                        <input type="text" name="usuario-senha" placeholder="*********"/>
                     </div>    
                         
                     <div className='bt-entrar'>
@@ -41,7 +41,7 @@ function Login() {
                 
 
                     <div className='bt-cadastrar'>
-                        <button type="button" name='cadastrar'> Cadastrar-Se </button>
+                        <button type="submit" name='cadastrar'> Cadastrar-Se </button>
                     </div>
                 </div>
             </div>

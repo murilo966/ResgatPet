@@ -38,7 +38,11 @@
   border-radius: 10px;
 }
 
-.titulo-login, .user-login, .user-password, .bt-entrar, .separador-ou, .bt-cadastrar{
+.titulo-login, 
+.usuario-login, 
+.usuario-senha, 
+.usuario-senha-confirmar, 
+.bt-entrar, .separador-ou, .bt-cadastrar{
   text-align: center;
 }
 
@@ -48,18 +52,19 @@
   text-transform: uppercase;
 }
 
-.user-login input{
+.usuario-login input{
   width: 80%;
   height: 30px;
   margin-top: 8px;
 }
 
-.user-password input{
+.usuario-senha input, 
+.usuario-senha-confirmar input{
   width: 80%;
   height: 30px;
   margin-top: 8px;
-  margin-bottom: 8px;
 }
+
 .esqueceu-senha{
   font-size: x-small;
   text-align: center;
@@ -86,16 +91,25 @@
 }
 
 .bt-entrar button:hover{
-  background-color: rgb(88, 151, 77);
+  background: #56924c;
+}
+
+.bt-entrar button:active {
+  background: #4B8A40;
 }
 
 .bt-cadastrar button:hover{
-  background-color: #e6aa3b;
+  background: #327ec5;
+}
+
+.bt-cadastrar button:active{
+  background: #2E77BB;
 }
 
 .bt-entrar button{
   width: 85%;
   height: 40px;
+  margin-top: 8px;
   background-color: #4B8A40;
   border: none;
   color: #fff;
@@ -107,7 +121,7 @@
 .bt-cadastrar button{
   width: 85%;
   height: 40px;
-  background-color: #FFBE41;
+  background-color: #2E77BB;
   border: none;
   color: #fff;
   font-size: 18px;
@@ -165,7 +179,7 @@
 }
 
 .container-menu {
-  width: 150px;
+  width: 200px;
   height: 90vh;
   margin-top: 10px;
   border-top-right-radius: 15px;
@@ -193,7 +207,7 @@
 
 .nome-usuario label{
   text-align: center;
-  font-size: x-small;
+  font-size: smaller;
 }
 
 .menu-button {
@@ -201,6 +215,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding-right: 8px;
 }
 
 .menu-button button{
@@ -211,7 +226,7 @@
   text-align: right;
   background-color: #2E77BB;
   border: none;
-  padding: 0px 12px;
+  padding: 0px 25px;
   margin-bottom: 5px;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -230,6 +245,8 @@
   margin-top: 10px;
   margin-inline-start: 8px;
   margin-inline-end: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
   border-radius: 15px;
   border: 1px solid #FFBE41;
   display: flex;
@@ -239,6 +256,7 @@
 
 .titulo{
   margin-top: 12px;
+  margin-bottom: 12px;
   text-align: center;
   font-size: x-large;
   font-weight: bold;
@@ -267,24 +285,26 @@
   flex-direction: column;
 }
 
-.painel-top{  
+.painel-dasboard-top{  
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.painel-baixo{  
+.painel-dasboard-baixo{  
   display: flex;
   flex-direction: row;
 }
 
-.painel-esquerdo-top label, .painel-direito-top label, 
-.painel-esquerdo-baixo label, .painel-direito-baixo label{
+.painel-dasboard-esquerdo-top label, 
+.painel-dasboard-direito-top label, 
+.painel-dasboard-esquerdo-baixo label, 
+.painel-dasboard-direito-baixo label{
   font-size: small; 
   font-weight: bold;
 }
 
-.painel-esquerdo-top{
+.painel-dasboard-esquerdo-top{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -297,7 +317,7 @@
   background-color: #FFF8EC;
 }
 
-.painel-direito-top{
+.painel-dasboard-direito-top{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -309,7 +329,7 @@
   background-color: #FFF8EC;
 }
 
-.painel-esquerdo-baixo{
+.painel-dasboard-esquerdo-baixo{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -322,7 +342,7 @@
   background-color: #FFF8EC;
 }
 
-.painel-direito-baixo{
+.painel-dasboard-direito-baixo{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -332,6 +352,85 @@
   margin-top: 8px;
   margin-inline-end: 10px;
   background-color: #FFF8EC;
+}
+
+.tabela-acompanhar,
+.tabela-historico{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  background-color: #FFF8EC;
+}
+
+.painel-configuracao{
+  min-width: 200px;
+  width: 30%;
+  height: 60vh;
+  margin: 0 auto;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: #FFF8EC;
+  border-radius: 10px;
+}
+
+.bt-editar-cadastro{
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 8px;
+}
+
+.bt-salvar-configuracao, 
+.bt-cancelar-configuracao{
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bt-salvar-configuracao button{
+  width: 60%;
+  height: 30px;
+  background-color: #4B8A40;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.bt-cancelar-configuracao button{
+  width: 60%;
+  height: 30px;
+  background-color: #808080;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px; 
+}
+
+.bt-salvar-configuracao button:hover{
+  background: #56924c;
+}
+
+.bt-salvar-configuracao button:active {
+  background: #4B8A40;
+}
+
+.bt-cancelar-configuracao button:hover{
+  background: #8a8a8a;
+}
+
+.bt-cancelar-configuracao button:active{
+  background: #808080;
 }
 
 /* Inicio do registro pj */

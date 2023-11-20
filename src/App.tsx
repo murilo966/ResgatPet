@@ -8,6 +8,9 @@ import QuemSomos from './paginas/QuemSomos';
 import RegistroPJ from './paginas/RegistroPJ';
 import EsqueceuSenha from './paginas/EsqueceuSenha';
 import Dasboard from './paginas/Dashboard';
+import Acompanhar from './paginas/Acompanhar';
+import Historico from './paginas/Historico';
+import Configuracao from './paginas/Configuracao';
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
         <Route path='/como-ajudar' element={<ComoAjudar/>} ></Route>
         <Route path='/esqueceu-senha' element={<EsqueceuSenha/>} ></Route>
         <Route path='/dashboard' element={<Dasboard/>} ></Route>
+        <Route path='/acompanhar' element={<Acompanhar/>} ></Route>
+        <Route path='/historico' element={<Historico/>} ></Route>
+        <Route path='/configuracoes' element={<Configuracao/>} ></Route>
       </Routes>
     </div>
   );
