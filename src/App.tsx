@@ -12,15 +12,13 @@ import Acompanhar from './paginas/Acompanhar';
 import Historico from './paginas/Historico';
 import Configuracao from './paginas/Configuracao';
 import ResgatarPet from './paginas/ResgatarPet';
-
-
-
+import NotFound from './paginas/NotFound';
 
 function App() {
   return (
     <div>
       <Routes>
-        
+        <Route path='*' element={<NotFound/>} ></Route>
         <Route path='/' element={<Home/>} ></Route>
         <Route path='/quem-somos' element={<QuemSomos/>} ></Route>
         <Route path='/como-ajudar' element={<ComoAjudar/>} ></Route>
