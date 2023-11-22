@@ -6,7 +6,7 @@ function NotFound(){
         <div>
             <Cabecalho/>
             <div>
-                <p>Página not Found, Erro 404</p>
+                <p>Página not Found, Erro 404 </p>
             </div>
             <Rodape/>
         </div>
