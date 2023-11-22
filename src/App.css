@@ -26,9 +26,10 @@
   color: #61dafb;
 }
 
-/* LOGIN */
-.container-login{
-  max-width: 200px;  
+/* LOGIN - CRIAR CONTA */
+.container-login{  
+  width: 250px; 
+  max-width: 100%;
   margin: 0 auto;
   padding: 10px;
   margin-top: 8px;
@@ -38,7 +39,11 @@
   border-radius: 10px;
 }
 
-.titulo-login, .user-login, .user-password, .bt-entrar, .separador-ou, .bt-cadastrar{
+.titulo-login, 
+.usuario-login, 
+.usuario-senha, 
+.usuario-senha-confirmar, 
+.bt-entrar, .separador-ou, .bt-cadastrar{
   text-align: center;
 }
 
@@ -48,24 +53,82 @@
   text-transform: uppercase;
 }
 
-.user-login input{
+.usuario-login input{
   width: 80%;
   height: 30px;
   margin-top: 8px;
 }
 
-.user-password input{
+.usuario-senha input, 
+.usuario-senha-confirmar input{
   width: 80%;
   height: 30px;
   margin-top: 8px;
-  margin-bottom: 8px;
 }
+
 .esqueceu-senha{
   font-size: x-small;
   text-align: center;
   margin: 3px;
 }
 
+.grupo-separador{
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.linha {
+  flex-grow: 0.37;
+  border-top: 1px solid #ccc;
+}
+
+.separador-ou {
+  padding: 0 10px;
+}
+
+.separador-ou label {
+  font-weight: bold;
+}
+
+.bt-entrar button:hover{
+  background: #56924c;
+}
+
+.bt-entrar button:active {
+  background: #4B8A40;
+}
+
+.bt-cadastrar button:hover{
+  background: #327ec5;
+}
+
+.bt-cadastrar button:active{
+  background: #2E77BB;
+}
+
+.bt-entrar button{
+  width: 85%;
+  height: 40px;
+  margin-top: 8px;
+  background-color: #4B8A40;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.bt-cadastrar button{
+  width: 85%;
+  height: 40px;
+  background-color: #2E77BB;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+}
 
 /* Inicio da Recuperar Senha */
 
@@ -106,86 +169,272 @@
   width: 80%;
   height: 36px;
 }
-
 /* Final da Recuperar Senha */
 
-
-.grupo-separador{
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-}
-
-.linha {
-  flex-grow: 0.37;
-  border-top: 1px solid #ccc;
-}
-
-.separador-ou {
-  padding: 0 10px;
-}
-
-.separador-ou label {
-  font-weight: bold;
-}
-
-.bt-entrar button:hover{
-  background-color: rgb(88, 151, 77);
-}
-
-.bt-cadastrar button:hover{
-  background-color: #e6aa3b;
-}
-
-.bt-entrar button{
-  width: 85%;
-  height: 40px;
-  background-color: #4B8A40;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 10px;
-}
-
-.bt-cadastrar button{
-  width: 85%;
-  height: 40px;
-  background-color: #FFBE41;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 10px;
-}
-
 /* Dashboard */
+.dashboard{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+}
 
 .container-menu {
+  width: 200px;
+  height: 90vh;
+  margin-top: 10px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: 1px solid #FFBE41;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #FFECC7;
+}
+
+.imagem-usuario {
+  order: -1;
+}
+
+.imagem-usuario img{
+  width: 100%;
+}
+
+.nome-usuario{
+  width: 100%;
+  text-align: center; 
+  font-weight: bold;
+}
+
+.nome-usuario label{
+  text-align: center;
+  font-size: smaller;
+}
+
+.menu-button {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 8px;
+}
+
+.menu-button button{
+  width: 100%;
+  height: 25px;
+  color: #fff;
+  font-weight: bold;
+  text-align: right;
+  background-color: #2E77BB;
+  border: none;
+  padding: 0px 25px;
+  margin-bottom: 5px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.menu-button {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.imagem-usuario {
-  order: -1; /* Move a imagem-usuario para cima */
-}
-
-.menu-button {
-  margin-top: 10px; /* Adicione um espaçamento entre a imagem-usuario e o menu-button */
+.container-painel{
+  width: 100%;
+  height: 90vh;
+  margin-top: 10px;
+  margin-inline-start: 8px;
+  margin-inline-end: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 15px;
+  border: 1px solid #FFBE41;
   display: flex;
-  flex-direction: column; /* Coloque os botões em uma coluna */
-  align-items: flex-start; /* Alinhe os botões à esquerda */
+  flex-direction: column;
+  background-color: #FFECC7;
 }
 
-/* Estilos adicionais para melhorar a aparência */
-button {
-  padding: 8px 12px;
-  margin: 5px;
+.titulo{
+  margin-top: 12px;
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+  color: #535353;
 }
 
+.usuario-logado{
+  display: flex;
+  flex-direction: row;
+  margin-top: 12px;
+  margin-inline-start: 10px;
+}
 
+.bem-vindo{
+  font-size: large; 
+  font-weight: bold;
+}
 
+.nome-usuario-logado{
+  font-size: large;
+  margin-inline-start: 8px;
+}
+
+.painel-dasboard{
+  display: flex;
+  flex-direction: column;
+}
+
+.painel-dasboard-top{  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.painel-dasboard-baixo{  
+  display: flex;
+  flex-direction: row;
+}
+
+.painel-dasboard-esquerdo-top label, 
+.painel-dasboard-direito-top label, 
+.painel-dasboard-esquerdo-baixo label, 
+.painel-dasboard-direito-baixo label{
+  font-size: small; 
+  font-weight: bold;
+}
+
+.painel-dasboard-esquerdo-top{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 300px;
+  margin-top: 8px;
+  margin-inline-start: 10px;
+  margin-inline-end: 10px;
+  background-color: #FFF8EC;
+}
+
+.painel-dasboard-direito-top{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  margin-top: 8px;
+  margin-inline-end: 10px;
+  background-color: #FFF8EC;
+}
+
+.painel-dasboard-esquerdo-baixo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  margin-top: 8px;
+  margin-inline-start: 10px;
+  margin-inline-end: 10px;
+  background-color: #FFF8EC;
+}
+
+.painel-dasboard-direito-baixo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 300px;
+  margin-top: 8px;
+  margin-inline-end: 10px;
+  background-color: #FFF8EC;
+}
+
+.tabela-acompanhar,
+.tabela-historico, 
+.tabela-resgatar-pet{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%; 
+  height: 300px;
+  margin: 0 auto;
+  background-color: #FFF8EC;
+}
+
+.painel-configuracao{
+  min-width: 200px;
+  width: 30%;
+  height: 60vh;
+  margin: 0 auto;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: #FFF8EC;
+  border-radius: 10px;
+}
+
+.bt-editar-cadastro{
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 8px;
+}
+
+.bt-salvar-configuracao, 
+.bt-cancelar-configuracao{
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bt-salvar-configuracao button{
+  width: 60%;
+  height: 30px;
+  background-color: #4B8A40;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.bt-cancelar-configuracao button{
+  width: 60%;
+  height: 30px;
+  background-color: #808080;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px; 
+}
+
+.bt-salvar-configuracao button:hover{
+  background: #56924c;
+}
+
+.bt-salvar-configuracao button:active {
+  background: #4B8A40;
+}
+
+.bt-cancelar-configuracao button:hover{
+  background: #8a8a8a;
+}
+
+.bt-cancelar-configuracao button:active{
+  background: #808080;
+}
 
 /* Inicio do registro pj */
 .container-pj{
@@ -201,62 +450,57 @@ button {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
+
 .container-pj label{
   color: #535353;
   text-transform: uppercase;
   font-weight: bold;
 }
+
 .container-pj input{
   padding: 2px;
   border-radius: 10px;
   border: #679aff solid 1px;
   margin: 4px;
 }
+
 .Conta-corporativa1{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
+
 .Conta-corporativa2{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-
-
-
-
 /* Final do registro pj */
-
-
 
 /* quem somos */
 .imgleft{
   width: 25%;
   justify-content: flex-end;
-  
-  }
+}
 
-  .imagem{
-    display: flex;
-    flex-direction: row;
-    flex:2
-    
-     
-    
-  }
-  .div-img1{
-    flex-direction: row;
-    justify-content: flex-start;
-   text-align: left;
-    flex:4
-    }
-  
-  .titulo1{
-    font-size: 80px;
-  }
+.imagem{
+  display: flex;
+  flex-direction: row;
+  flex:2    
+}
 
-  .text2{
-    text-align: center;
-  }
-  
+.div-img1{
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: left;
+  flex:4
+}
+
+.titulo1{
+  font-size: 80px;
+}
+
+.text2{
+  text-align: center;
+}
+

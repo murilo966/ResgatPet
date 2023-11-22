@@ -2,7 +2,7 @@ import Cabecalho from '../components/cabecalho';
 import MenuLateral from '../components/dashboard';
 import Rodape from '../components/rodape';
 
-function Acompanhar() {
+function ResgatarPet() {
     return(
         <div>
             <Cabecalho/>
@@ -12,17 +12,17 @@ function Acompanhar() {
 
                         <div className='container-painel'>
                             <div className='titulo'>
-                                <label>Acampanhar</label>
+                                <label>Resgatar Pet</label>
                             </div>              
 
-                            <div className='tabela-acompanhar'>
-                                <label> TABELA DOS PETS ENVIADOS</label>
+                            <div className='tabela-resgatar-pet'>
+                                <label> TABELA DE TODOS <br /> OS PETS PARA RESGATAR</label>
                             </div>
                         </div>
                     </div>
                 </div>            
-            <Rodape/>              
+            <Rodape/>
         </div>
     )
 }
-export default Acompanhar
+export default ResgatarPet

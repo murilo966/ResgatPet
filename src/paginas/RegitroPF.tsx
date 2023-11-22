@@ -13,15 +13,15 @@ function RegistroPF(){
                         <label>CRIE SUA CONTA</label>
                     </div>
                     
-                    <div className='user-login'>
+                    <div className='usuario-login'>
                         <input type="text" name="user-name" placeholder="nome@email.com"/>
                     </div>
 
-                    <div className='user-password'>
+                    <div className='usuario-senha'>
                         <input type="text" name="user-password" placeholder="*********"/>
                     </div>
 
-                    <div className='user-password'>
+                    <div className='usuario-senha-confirmar'>
                         <input type="text" name="user-password" placeholder="*********"/>
                     </div>
                         
