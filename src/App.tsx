@@ -13,6 +13,8 @@ import Historico from './paginas/Historico';
 import Configuracao from './paginas/Configuracao';
 import ResgatarPet from './paginas/ResgatarPet';
 
+
+
 function App() {
   return (
     <div>
