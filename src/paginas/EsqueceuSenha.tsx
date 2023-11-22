@@ -1,12 +1,11 @@
 import Cabecalho from '../components/cabecalho';
 import Rodape from '../components/rodape';
-import Cabecalho2 from '../components/cabecalho2';
 
 
 function EsqueceuSenha(){
     return(
         <div>
-            <Cabecalho2/>
+            <Cabecalho/>
             <div className='container'>
                 
                 <div className='container-recuperar'>
