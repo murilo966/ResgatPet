@@ -6,7 +6,7 @@ import ComoAjudar from './paginas/Home/ComoAjudar';
 import Home from './paginas/Home/Home';
 import Login from './paginas/Registros/Login';
 import QuemSomos from './paginas/Home/QuemSomos';
-import RegistroPJ from './paginas/Registros/RegitroPF';
+import RegistroPJ from './paginas/Registros/RegistroPJ';
 import EsqueceuSenha from './paginas/Registros/EsqueceuSenha';
 import Dasboard from './paginas/Dashboard/Dashboard';
 import Acompanhar from './paginas/Dashboard/Acompanhar';

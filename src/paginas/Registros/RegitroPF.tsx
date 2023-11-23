@@ -1,5 +1,5 @@
-import Cabecalho from '../components/cabecalho';
-import Rodape from '../components/rodape';
+import Cabecalho from '../../components/cabecalho';
+import Rodape from '../../components/rodape';
 import { Link } from 'react-router-dom';
 
 function RegistroPF(){

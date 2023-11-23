@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import Cabecalho from '../components/cabecalho';
-import MenuLateral from '../components/dashboard';
-import Rodape from '../components/rodape';
+import Cabecalho from '../../components/cabecalho';
+import MenuLateral from '../../components/dashboard';
+import Rodape from '../../components/rodape';
 
 
 function Configuracao() {

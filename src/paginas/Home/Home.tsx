@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import Cabecalho from '../components/cabecalho';
-import Rodape from '../components/rodape';
+import Cabecalho from '../../components/cabecalho';
+import Rodape from '../../components/rodape';
 
 
 function Home() {
