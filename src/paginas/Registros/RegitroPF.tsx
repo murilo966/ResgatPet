@@ -1,11 +1,11 @@
-import Cabecalho from '../components/cabecalho';
-import Rodape from '../components/rodape';
-import Cabecalho2 from '../components/cabecalho2';
+import Cabecalho from '../../components/cabecalho';
+import Rodape from '../../components/rodape';
+import { Link } from 'react-router-dom';
 
 function RegistroPF(){
     return(
         <div>
-            <Cabecalho2/>
+            <Cabecalho/>
 
             <div className='container'>
                 <div className='container-login'>
@@ -26,11 +26,9 @@ function RegistroPF(){
                     </div>
                         
                     <div className='bt-entrar'>
-                        <button type="button" name='entrar'> Entrar </button>
-                    </div>
-
-                    <div className='esqueceu-senha'>
-                        <label> Esqueceu a Senha ?</label>
+                        <Link to='/dashboard'>
+                            <button type="button" name='entrar'> Entrar </button>
+                        </Link>
                     </div>
 
                     <div className='grupo-separador'>
@@ -45,7 +43,9 @@ function RegistroPF(){
                 
 
                     <div className='bt-cadastrar'>
-                        <button type="button" name='cadastrar'> Cadastrar-Se </button>
+                        <Link to='/registro-pj'>
+                            <button type="button" name='cadastrar'> Corporativo </button>
+                        </Link>
                     </div>
                 </div>
             </div>

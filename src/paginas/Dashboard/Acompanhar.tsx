@@ -1,6 +1,6 @@
-import Cabecalho from '../components/cabecalho';
-import MenuLateral from '../components/dashboard';
-import Rodape from '../components/rodape';
+import Cabecalho from '../../components/cabecalho';
+import MenuLateral from '../../components/dashboard';
+import Rodape from '../../components/rodape';
 
 function Acompanhar() {
     return(
@@ -12,7 +12,7 @@ function Acompanhar() {
 
                         <div className='container-painel'>
                             <div className='titulo'>
-                                <label>Acampanhar</label>
+                                <label>Acompanhar</label>
                             </div>              
 
                             <div className='tabela-acompanhar'>
