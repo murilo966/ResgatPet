@@ -5,7 +5,7 @@ function MenuLateral() {
     return(
         <div className='container-menu'>
             <div className='imagem-usuario'>
-                <img src="./imagens/DogIcon.png" alt="imagem-usuario" />
+                <img src="../../imagens/DogIcon.png" alt="imagem-usuario" />
             </div>
 
             <div className='nome-usuario'>
@@ -16,16 +16,16 @@ function MenuLateral() {
                 <Link to='/dashboard'>
                     <button type="button">Dashboard</button>
                 </Link>
-                <Link to='/resgatar-pet'>
+                <Link to='/dashboard/resgatar-pet'>
                     <button type="button">Resgatar Pet</button>  
                 </Link>               
-                <Link to='/acompanhar'>
+                <Link to='/dashboard/acompanhar'>
                     <button type="button">Acompanhar</button>
                 </Link>
-                <Link to='/historico'>
+                <Link to='/dashboard/historico'>
                     <button type="button">Histórico</button>
                 </Link>
-                <Link to='/configuracoes'>
+                <Link to='/dashboard/configuracoes'>
                     <button type="button">Configurações</button>
                 </Link>
             </div>

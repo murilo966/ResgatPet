@@ -7,7 +7,7 @@ function Menu() {
 
             <div className='ft-perfil'>
                 <Link to='/'>
-                    <img src="./imagens/DogIcon.png" />
+                    <img src="../../imagens/DogIcon.png" />
                 </Link> 
             </div>
 

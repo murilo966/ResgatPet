@@ -32,11 +32,13 @@ function App() {
         <Route path='/esqueceu-senha' element={<EsqueceuSenha/>} ></Route>
         <Route path='/registro-pf' element={<RegistroPF/>} ></Route>
         <Route path='/registro-pj' element={<RegistroPJ/>} ></Route>
+
+
         <Route path='/dashboard' element={<Dasboard/>} ></Route>
-        <Route path='/resgatar-pet' element={<ResgatarPet/>} ></Route>
-        <Route path='/acompanhar' element={<Acompanhar/>} ></Route>
-        <Route path='/historico' element={<Historico/>} ></Route>
-        <Route path='/configuracoes' element={<Configuracao/>} ></Route>
+        <Route path='/dashboard/resgatar-pet' element={<ResgatarPet/>} ></Route>
+        <Route path='/dashboard/acompanhar' element={<Acompanhar/>} ></Route>
+        <Route path='/dashboard/historico' element={<Historico/>} ></Route>
+        <Route path='/dashboard/configuracoes' element={<Configuracao/>} ></Route>
       </Routes>
     </div>
   );
