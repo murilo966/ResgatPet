@@ -1,6 +1,6 @@
 import Cabecalho from '../components/cabecalho';
 import Rodape from '../components/rodape';
-
+import { Link } from 'react-router-dom';
 
 function EsqueceuSenha(){
     return(
@@ -17,7 +17,7 @@ function EsqueceuSenha(){
                             <input type="text" placeholder='nome@email.com'/>
                         </div>
                         <div className='enviar-recuperacao'>
-                            <button >Enviar</button>
+                            <Link to='/login'><button >Enviar</button></Link>
                         </div>
 
                     </div>

@@ -1,25 +1,31 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import RegistroPF from './paginas/RegitroPF';
-import ComoAjudar from './paginas/ComoAjudar';
-import Home from './paginas/Home';
-import Login from './paginas/Login';
-import QuemSomos from './paginas/QuemSomos';
-import RegistroPJ from './paginas/RegistroPJ';
-import EsqueceuSenha from './paginas/EsqueceuSenha';
-import Dasboard from './paginas/Dashboard';
-import Acompanhar from './paginas/Acompanhar';
-import Historico from './paginas/Historico';
-import Configuracao from './paginas/Configuracao';
-import ResgatarPet from './paginas/ResgatarPet';
-import NotFound from './paginas/NotFound';
+
+import RegistroPF from './paginas/Registros/RegitroPF';
+import ComoAjudar from './paginas/Home/ComoAjudar';
+import Home from './paginas/Home/Home';
+import Login from './paginas/Registros/Login';
+import QuemSomos from './paginas/Home/QuemSomos';
+import RegistroPJ from './paginas/Registros/RegitroPF';
+import EsqueceuSenha from './paginas/Registros/EsqueceuSenha';
+import Dasboard from './paginas/Dashboard/Dashboard';
+import Acompanhar from './paginas/Dashboard/Acompanhar';
+import Historico from './paginas/Dashboard/Historico';
+import Configuracao from './paginas/Dashboard/Configuracao';
+import ResgatarPet from './paginas/Dashboard/ResgatarPet';
+import NotFound from './paginas/Erros/NotFound';
+import Formulario from './paginas/Home/Formulario';
+
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path='*' element={<NotFound/>} ></Route>
+
+
         <Route path='/' element={<Home/>} ></Route>
+        <Route path='/formulario' element={<Formulario/>} ></Route>
         <Route path='/quem-somos' element={<QuemSomos/>} ></Route>
         <Route path='/como-ajudar' element={<ComoAjudar/>} ></Route>
         <Route path='/login' element={<Login/>} ></Route>        

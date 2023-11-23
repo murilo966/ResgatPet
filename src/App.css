@@ -503,4 +503,8 @@
 .text2{
   text-align: center;
 }
-
+/* Formatações */
+.semFormato{
+  text-decoration: none;
+  color: inherit;
+}

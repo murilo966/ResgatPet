@@ -1,4 +1,5 @@
 import '../style/style.css'
+import { Link } from 'react-router-dom'
 
 function MenuLateral() {
     return(
@@ -12,11 +13,21 @@ function MenuLateral() {
             </div>
 
             <div className='menu-button'>
-                <button type="button">Dashboard</button>
-                <button type="button">Resgatar Pet</button>                 
-                <button type="button">Acompanhar</button>
-                <button type="button">Histórico</button>
-                <button type="button">Configurações</button>
+                <Link to='/dashboard'>
+                    <button type="button">Dashboard</button>
+                </Link>
+                <Link to='/resgatar-pet'>
+                    <button type="button">Resgatar Pet</button>  
+                </Link>               
+                <Link to='/acompanhar'>
+                    <button type="button">Acompanhar</button>
+                </Link>
+                <Link to='/historico'>
+                    <button type="button">Histórico</button>
+                </Link>
+                <Link to='/configuracoes'>
+                    <button type="button">Configurações</button>
+                </Link>
             </div>
         </div>
     )

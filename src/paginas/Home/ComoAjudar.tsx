@@ -1,5 +1,5 @@
-import Cabecalho from '../components/cabecalho';
-import Rodape from '../components/rodape';
+import Cabecalho from '../../components/cabecalho';
+import Rodape from '../../components/rodape';
 
 function ComoAjudar(){
     return(

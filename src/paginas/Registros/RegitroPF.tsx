@@ -1,7 +1,8 @@
 import Cabecalho from '../components/cabecalho';
 import Rodape from '../components/rodape';
+import { Link } from 'react-router-dom';
 
-function Login() {
+function RegistroPF(){
     return(
         <div>
             <Cabecalho/>
@@ -9,23 +10,25 @@ function Login() {
             <div className='container'>
                 <div className='container-login'>
                     <div className='titulo-login'>
-                        <label>Entrar</label>
+                        <label>CRIE SUA CONTA</label>
                     </div>
                     
                     <div className='usuario-login'>
-                        <input type="text" name="usuario-nome" placeholder="nome@email.com"/>
+                        <input type="text" name="user-name" placeholder="nome@email.com"/>
                     </div>
 
                     <div className='usuario-senha'>
-                        <input type="text" name="usuario-senha" placeholder="*********"/>
-                    </div>    
-                        
-                    <div className='bt-entrar'>
-                        <button type="button" name='entrar'> Entrar </button>
+                        <input type="text" name="user-password" placeholder="*********"/>
                     </div>
 
-                    <div className='esqueceu-senha'>
-                        <label> Esqueceu a Senha ?</label>
+                    <div className='usuario-senha-confirmar'>
+                        <input type="text" name="user-password" placeholder="*********"/>
+                    </div>
+                        
+                    <div className='bt-entrar'>
+                        <Link to='/dashboard'>
+                            <button type="button" name='entrar'> Entrar </button>
+                        </Link>
                     </div>
 
                     <div className='grupo-separador'>
@@ -40,15 +43,16 @@ function Login() {
                 
 
                     <div className='bt-cadastrar'>
-                        <button type="submit" name='cadastrar'> Cadastrar-Se </button>
+                        <Link to='/registro-pj'>
+                            <button type="button" name='cadastrar'> Corporativo </button>
+                        </Link>
                     </div>
                 </div>
             </div>
 
             <Rodape/>
-            
         </div>
-
     )
 }
-export default Login
+
+export default RegistroPF
