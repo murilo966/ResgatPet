@@ -1,6 +1,6 @@
-import Cabecalho from '../components/cabecalho';
-import MenuLateral from '../components/dashboard';
-import Rodape from '../components/rodape';
+import Cabecalho from '../../components/cabecalho';
+import MenuLateral from '../../components/dashboard';
+import Rodape from '../../components/rodape';
 
 function Dasboard() {
     return(

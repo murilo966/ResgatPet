@@ -1,6 +1,8 @@
-import Cabecalho from '../components/cabecalho';
-import MenuLateral from '../components/dashboard';
-import Rodape from '../components/rodape';
+import { Link } from 'react-router-dom';
+import Cabecalho from '../../components/cabecalho';
+import MenuLateral from '../../components/dashboard';
+import Rodape from '../../components/rodape';
+
 
 function Configuracao() {
     return(
@@ -35,11 +37,15 @@ function Configuracao() {
                             
                                 <div className='bt-editar-cadastro'>
                                     <div className='bt-salvar-configuracao'>
-                                        <button type="button" name='entrar'> Salvar </button>
+                                        <Link to='/configuracoes'>
+                                            <button type="button" name='entrar'> Salvar </button>
+                                        </Link>
                                     </div>
 
                                     <div className='bt-cancelar-configuracao'>
-                                        <button type="button" name='entrar'> Cancelar </button>
+                                        <Link to='/configuracoes'>
+                                            <button type="button" name='entrar'> Cancelar </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

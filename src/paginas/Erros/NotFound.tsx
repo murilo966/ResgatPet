@@ -1,10 +1,10 @@
-import Rodape from '../components/rodape';
-import Cabecalho2 from '../components/cabecalho2';
+import Cabecalho from '../../components/cabecalho';
+import Rodape from '../../components/rodape';
 
 function NotFound(){
     return(
         <div>
-            <Cabecalho2/>
+            <Cabecalho/>
             <div>
                 <p>Página not Found, Erro 404 </p>
             </div>

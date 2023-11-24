@@ -1,12 +1,11 @@
-import Cabecalho from '../components/cabecalho';
-import Rodape from '../components/rodape';
-import Cabecalho2 from '../components/cabecalho2';
-
+import Cabecalho from '../../components/cabecalho';
+import Rodape from '../../components/rodape';
+import { Link } from 'react-router-dom';
 
 function EsqueceuSenha(){
     return(
         <div>
-            <Cabecalho2/>
+            <Cabecalho/>
             <div className='container'>
                 
                 <div className='container-recuperar'>
@@ -18,7 +17,7 @@ function EsqueceuSenha(){
                             <input type="text" placeholder='nome@email.com'/>
                         </div>
                         <div className='enviar-recuperacao'>
-                            <button >Enviar</button>
+                            <Link to='/login'><button >Enviar</button></Link>
                         </div>
 
                     </div>
