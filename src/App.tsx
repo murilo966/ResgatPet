@@ -1,6 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import RegistroPF from './paginas/RegitroPF';
 import ComoAjudar from './paginas/ComoAjudar';
 import Home from './paginas/Home';
@@ -15,6 +16,8 @@ import Configuracao from './paginas/Configuracao';
 import ResgatarPet from './paginas/ResgatarPet';
 import NotFound from './paginas/NotFound';
 
+=======
+>>>>>>> 652b5d613906856970a5f9ed149d086bdcad6a96
 =======
 >>>>>>> 652b5d613906856970a5f9ed149d086bdcad6a96
 
@@ -39,7 +42,13 @@ function App() {
     <div>
       <Routes>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Route path='*'element={<NotFound/>}></Route>
+=======
+        <Route path='*' element={<NotFound/>} ></Route>
+
+
+>>>>>>> 652b5d613906856970a5f9ed149d086bdcad6a96
 =======
         <Route path='*' element={<NotFound/>} ></Route>
 
