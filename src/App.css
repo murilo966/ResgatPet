@@ -475,6 +475,24 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.cadastro-pj{
+  display: flex;
+  flex-direction: column;
+}
+.cadastro-checkbox {
+  display: flex;
+  flex-direction: row;
+}
+.cadastro-botoes{
+  display: flex;
+  flex-direction: row;
+}
+hr{
+  width: 100%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
 /* Final do registro pj */
 
 /* quem somos */
@@ -495,6 +513,9 @@
   font-size: 150%;
 }
 /*  fim quem somos */
+
+
+
 
 
 /* Formatações */
