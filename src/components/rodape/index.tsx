@@ -1,5 +1,3 @@
-import '../style/style.css'
-
 function Rodape() {
     return(
         <div className='rod_container'>

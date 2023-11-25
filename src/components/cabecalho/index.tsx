@@ -1,6 +1,4 @@
-import '../style/style.css'
 import Menu from '../navegador-botoes'
-
 
 function Cabecalho() {
     return(
