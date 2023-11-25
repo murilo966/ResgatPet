@@ -1,25 +1,5 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import RegistroPF from './paginas/RegitroPF';
-import ComoAjudar from './paginas/ComoAjudar';
-import Home from './paginas/Home';
-import Login from './paginas/Login';
-import QuemSomos from './paginas/QuemSomos';
-import RegistroPJ from './paginas/RegistroPJ';
-import EsqueceuSenha from './paginas/EsqueceuSenha';
-import Dasboard from './paginas/Dashboard';
-import Acompanhar from './paginas/Acompanhar';
-import Historico from './paginas/Historico';
-import Configuracao from './paginas/Configuracao';
-import ResgatarPet from './paginas/ResgatarPet';
-import NotFound from './paginas/NotFound';
-
-=======
->>>>>>> 652b5d613906856970a5f9ed149d086bdcad6a96
-=======
->>>>>>> 652b5d613906856970a5f9ed149d086bdcad6a96
 
 import RegistroPF from './paginas/Registros/RegitroPF';
 import ComoAjudar from './paginas/Home/ComoAjudar';
@@ -41,19 +21,8 @@ function App() {
   return (
     <div>
       <Routes>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <Route path='*'element={<NotFound/>}></Route>
-=======
+
         <Route path='*' element={<NotFound/>} ></Route>
-
-
->>>>>>> 652b5d613906856970a5f9ed149d086bdcad6a96
-=======
-        <Route path='*' element={<NotFound/>} ></Route>
-
-
->>>>>>> 652b5d613906856970a5f9ed149d086bdcad6a96
         <Route path='/' element={<Home/>} ></Route>
         <Route path='/formulario' element={<Formulario/>} ></Route>
         <Route path='/quem-somos' element={<QuemSomos/>} ></Route>

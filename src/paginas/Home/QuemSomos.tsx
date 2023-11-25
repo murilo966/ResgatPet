@@ -6,7 +6,6 @@ function QuemSomos(){
         <div>
             <Cabecalho/>
             <div className='container'>
-<<<<<<< HEAD
                 
                 <div className='imagem'>
                 <img src="/imagens/DogIcon.png" className='imgleft'/>
@@ -42,7 +41,6 @@ function QuemSomos(){
                 </div>
 
                 <div className='text2'><p><h1>Juntos, podemos fazer a diferença na vida dos animais!</h1></p></div>
-=======
                 <p>QUEM SOMOS</p>
                 <div className='imagem'>
                 <img src="/imagens/DogIcon.png" className='imgleft'/>
@@ -69,15 +67,10 @@ function QuemSomos(){
                 <p className='text2'>Divulgando nosso site para que mais pessoas possam conhecer o nosso trabalho.</p>
                 <p className='text2'>Obrigado por sua ajuda!</p>
                 <p className='text2'><h2>Juntos, podemos fazer a diferença na vida dos animais.</h2></p>
->>>>>>> 652b5d613906856970a5f9ed149d086bdcad6a96
             </div>
             <Rodape/>
         </div>
     )
 }
 
-<<<<<<< HEAD
 export default QuemSomos;
-=======
-export default QuemSomos
->>>>>>> 652b5d613906856970a5f9ed149d086bdcad6a96
