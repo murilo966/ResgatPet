@@ -475,36 +475,52 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.cadastro-pj{
+  display: flex;
+  flex-direction: column;
+}
+.cadastro-checkbox {
+  display: flex;
+  flex-direction: row;
+}
+.cadastro-botoes{
+  display: flex;
+  flex-direction: row;
+}
+hr{
+  width: 100%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
 /* Final do registro pj */
 
 /* quem somos */
 .imgleft{
-  width: 25%;
+  width: 35%;
+  height: 50%;
   justify-content: flex-end;
 }
 
 .imagem{
   display: flex;
   flex-direction: row;
-  flex:2    
-}
-
-.div-img1{
-  flex-direction: row;
-  justify-content: flex-start;
-  text-align: left;
-  flex:4
-}
-
-.titulo1{
-  font-size: 80px;
+   
 }
 
 .text2{
   text-align: center;
+  font-size: 150%;
 }
+/*  fim quem somos */
+
+
+
+
+
 /* Formatações */
 .semFormato{
   text-decoration: none;
   color: inherit;
 }
+
