@@ -2,7 +2,11 @@ import Cabecalho from '../../components/cabecalho';
 import MenuLateral from '../../components/dashboard';
 import Rodape from '../../components/rodape';
 
-function Historico() {
+type Prop = {
+    PaginaAtual:String
+}
+
+function Historico(atual:Prop) {
     return(
         <div>
             <Cabecalho/>
@@ -20,7 +24,8 @@ function Historico() {
                             </div>
                         </div>
                     </div>
-                </div>            
+                </div>
+                {atual.PaginaAtual}            
             <Rodape/>
         </div>
     )

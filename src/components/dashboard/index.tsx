@@ -1,5 +1,7 @@
 import '../style/style.css'
 import { Link } from 'react-router-dom'
+import Props from '../Props'
+
 
 function MenuLateral() {
     return(
@@ -9,7 +11,8 @@ function MenuLateral() {
             </div>
 
             <div className='nome-usuario'>
-                <label> Nome Usuario </label>
+                
+                <Props NomeUsuario="Robersvaldo"/>
             </div>
 
             <div className='menu-button'>

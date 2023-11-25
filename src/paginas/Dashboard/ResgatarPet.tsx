@@ -2,7 +2,11 @@ import Cabecalho from '../../components/cabecalho';
 import MenuLateral from '../../components/dashboard';
 import Rodape from '../../components/rodape';
 
-function ResgatarPet() {
+type Prop = {
+    PaginaAtual:String
+}
+
+function ResgatarPet(atual:Prop) {
     return(
         <div>
             <Cabecalho/>
@@ -20,7 +24,8 @@ function ResgatarPet() {
                             </div>
                         </div>
                     </div>
-                </div>            
+                </div>
+                {atual.PaginaAtual}            
             <Rodape/>
         </div>
     )
