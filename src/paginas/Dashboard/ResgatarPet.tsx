@@ -1,5 +1,5 @@
 import Cabecalho from '../../components/cabecalho';
-import MenuLateral from '../../components/dashboard';
+import MenuLateral from '../../components/menu-lateral';
 import Rodape from '../../components/rodape';
 
 type Prop = {

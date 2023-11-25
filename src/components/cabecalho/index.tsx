@@ -1,5 +1,5 @@
 import '../style/style.css'
-import Menu from '../botoesCabecalho'
+import Menu from '../navegador-botoes'
 
 
 function Cabecalho() {

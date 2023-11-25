@@ -1,7 +1,7 @@
 import Cabecalho from '../../components/cabecalho';
-import MenuLateral from '../../components/dashboard';
+import MenuLateral from '../../components/menu-lateral';
 import Rodape from '../../components/rodape';
-import Props from '../../components/Props';
+import Props from '../../components/props';
 type Prop = {
     PaginaAtual:String
 }
