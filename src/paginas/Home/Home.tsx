@@ -4,16 +4,38 @@ import Rodape from '../../components/rodape';
 
 
 function Home() {
+
+    const fundo = {
+        background: `url('../../imagens/background/fundo-dog.jpg')`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      };
+
     return(
         <div>
             <Cabecalho/>
-                <div className='bod-container'>
-                    <h1>Encontrou um animal?</h1>
-                    <p>Informe os detalhes no botão abaixo</p>
+                <div className='container' style={fundo}>
+                    <div className='home-container'>
 
-                    <Link to='/formulario'>
-                        <button className='form_button'>Nos passe as informações</button>
-                    </Link>
+                        <div className='titulo-encontrou-um-animal'>
+                            <label>Encontrou um animal?</label>
+                        </div>
+                        
+                        <div className='detalhes'>
+                            <label>Informe os detalhes no botão abaixo</label>
+                        </div>
+
+                        <div className='bt-formulario'>
+                            <Link to='/formulario'>
+                                <button className='bt-quero-ajudar' >Quero Ajudar</button>
+                            </Link>
+                        </div>                            
+
+                        
+                    
+                        
+                    </div>
+
                     
                 </div>
             <Rodape/>

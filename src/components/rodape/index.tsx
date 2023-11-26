@@ -9,35 +9,36 @@ function Rodape() {
                         <label>Resgate Pet</label>
                     </div>
 
-                    <Link to='/quem-somos'>
-                        <div className="sub-titulo">
-                            <label>- Quem Somos</label>
-                        </div>
-                    </Link>
+                    <div className="sub-titulo">
+                        <Link to='/quem-somos'>                        
+                            <label className="bt-resgatpet">- Quem Somos</label>                        
+                        </Link>
+                    </div>
 
-                    <Link to='/quem-somos'>
-                        <div className="sub-titulo">
-                            <label>- Nossa Missão</label>
-                        </div>
-                    </Link>
+                    <div className="sub-titulo">
+                        <Link to='/quem-somos'>
+                            <label className="bt-resgatpet">- Nossa Missão</label>
+                        </Link>
+                    </div>
 
-                    <Link to='/quem-somos'>
-                        <div className="sub-titulo">
-                            <label>- Nossos Valores</label>
-                        </div>
-                    </Link>
+                    <div className="sub-titulo">
+                        <Link to='/quem-somos'>
+                            <label className="bt-resgatpet">- Nossos Valores</label>
+                        </Link>
+                    </div>
+                    
                 </div>
 
                 <div className="comece-por-aqui">
                     <div className="titulo-rodape">
-                        <label>Comece Por Aqui</label>
+                        <label className="bt-resgatpet">Comece Por Aqui</label>
                     </div>
 
-                    <Link to='/como-ajudar'>
-                        <div className="sub-titulo">
-                            <label>- Como Ajudar ?</label>
-                        </div>
-                    </Link>
+                    <div className="sub-titulo">
+                        <Link to='/como-ajudar'>                        
+                            <label className="bt-resgatpet">- Como Ajudar ?</label>                        
+                        </Link>
+                    </div>
                 </div>
             </div>
 
@@ -48,23 +49,24 @@ function Rodape() {
                     </div>
 
                     <div className="rede-social">
-                        <Link to='#'>
-                            <div className="icone">
+
+                        <div className="icone">
+                            <Link to='#'>
                                 <img src="../../imagens/rede-sociais/ic_facebook.png" alt="facebook" />
-                            </div>
-                        </Link>
+                            </Link>
+                        </div>
 
-                        <Link to='#'>
-                            <div className="icone">
+                        <div className="icone">
+                            <Link to='#'>
                                 <img src="../../imagens/rede-sociais/ic_youtube.png" alt="youtube" />
-                            </div>
-                        </Link>
+                            </Link>
+                        </div>
 
-                        <Link to='#'>
-                            <div className="icone">
+                        <div className="icone">
+                            <Link to='#'>
                                 <img src="../../imagens/rede-sociais/ic_instagram.png" alt="instagram" />
-                            </div>
-                        </Link>
+                            </Link>
+                        </div>
                     </div>                
                 </div>
             
@@ -74,21 +76,20 @@ function Rodape() {
                     </div>
 
                     <div className="apoio">
-                        <Link to='#'>
-                            <div className="icone">
-                                <img src="../../imagens/apoio/ic_prefeitura_bauru.png" alt="prefeitura-bauru" />
-                            </div>
-                        </Link>
-
-                        <Link to='#'>
-                            <div className="icone">
+                         <div className="icone">
+                            <Link to='#'>                                
+                                <img src="../../imagens/apoio/ic_prefeitura_bauru.png" alt="prefeitura-bauru" />                                
+                            </Link>
+                        </div>
+                        
+                        <div className="icone">
+                            <Link to='#'>
                                 <img src="../../imagens/apoio/ic_parceiro_01.png" alt="parceiro_01" />
-                            </div>
-                        </Link>
+                            </Link>
+                        </div>                        
                     </div>                    
                 </div>
             </div>
-
         </div>
     )
 }

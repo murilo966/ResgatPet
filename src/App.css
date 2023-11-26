@@ -1,9 +1,10 @@
 *{
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family:  Verdana, Geneva, Tahoma, sans-serif
 }
 
-a {
+a{
   text-decoration: none;
+  color: inherit;
 }
 
 .container{
@@ -11,7 +12,7 @@ a {
 }
 
 /* Começo do cabeçalho inicial */
-.cont_cabecalho{
+.container-cabecalho{
   display: flex;
   flex-direction: row;
   background-color: #E8833B;
@@ -19,20 +20,20 @@ a {
   height: 60px;
 }
 
-.ft-perfil{
+.foto-perfil{
   flex: 1;
 }
 
-.ft-perfil img{
+.foto-perfil img{
   width: 80px;
   height: 60px;
 }
 
-.cab_vazio{
+.cab-vazio{
   flex: 2;
 }
 
-.bot_navegacao{
+.bt-navegacao{
   flex: 3;
   display: flex;
   justify-content: right;
@@ -40,7 +41,7 @@ a {
   font-size: 8px;
 }
 
-.bot_navegacao button{
+.bt-navegacao button{
   margin-right: 6px;
   font-weight: 500;
   color: black;
@@ -54,7 +55,7 @@ a {
 
 
 /* Começo do menu */
-.botoesCabecalho{
+.botoes-cabecalho{
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -62,24 +63,49 @@ a {
 /* Final do menu */
 
 /* Começo do Body */
-.bod-container{
+.home-container{
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  min-height: 95vh;    
+  width: 80%;
+  min-height: 70vh;
 }
 
-.form_button{
-  margin-left: auto;
-  margin-right: auto;
+.titulo-encontrou-um-animal label{
+  font-size: 35px;
+  font-weight: bold;
+  color: #535353;
+}
+
+.detalhes{
+  font-weight: bold;
+  color: #535353;
+}
+
+.bt-formulario{
+  margin: 18px;
+}
+
+.bt-quero-ajudar{
   padding: 20px;
   border-radius: 50px;
   background-color: #4B8A40;
+  font-size: larger;
   color: white;
   font-weight: bold;
   border: none;
+  cursor: pointer;
 }
+
+.bt-quero-ajudar:hover{
+  background: #56924c;
+}
+
+.bt-quero-ajudar:active {
+  background: #4B8A40;  
+}
+
 /* Final do Body */
 
 /* Começo do Rodapé */
@@ -153,6 +179,14 @@ a {
   padding-top: 1%;
 }
 
+.bt-resgatpet{
+  cursor: pointer;
+}
+
+.bt-resgatpet:hover{
+  color: #FFBE41;
+}
+
 /* Final do Rodapé */
 
 
@@ -169,10 +203,8 @@ a {
   border-radius: 10px;
 }
 
-.titulo-login, 
-.usuario-login, 
-.usuario-senha, 
-.usuario-senha-confirmar, 
+.titulo-login, .usuario-login, 
+.usuario-senha, .usuario-senha-confirmar, 
 .bt-entrar, .separador-ou, .bt-cadastrar{
   text-align: center;
 }

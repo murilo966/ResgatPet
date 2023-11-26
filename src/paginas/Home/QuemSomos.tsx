@@ -8,20 +8,22 @@ function QuemSomos(){
             <div className='container'>
                 
                 <div className='logo'>
-                    <img src="../../imagens/logo/DogIcon.png" />
+                    <img src="../../imagens/logo/ic_resgatpet.png" />
                 </div> 
 
                 <div className='quem-somos'>
                     <div className='descricao-quem-somos'>
                         <label>
                             Somos um grupo de alunos do curso de desenvolvimento full stack do Senac Bauru 2023-2024, 
-                            que, motivados pelo amor aos animais, decidimos desenvolver um site para auxiliar o resgate 
-                            de animais em situação de rua e abandono. Acreditamos que todos os animais merecem ter uma vida digna, com amor e cuidados
-                            ,por isso, criamos um espaço virtual que conecta ONGs e sociedade para o bem em comum.
+                            que motivados pelo amor aos animais, decidimos desenvolver um site para auxiliar o resgate 
+                            de animais em situação de rua e abandono. Acreditamos que todos os animais merecem ter uma
+                            vida digna, com amor e cuidados ,por isso, criamos um espaço virtual que conecta ONGs e 
+                            sociedade para o bem em comum.
                             <br/>
                             Nosso site é uma ferramenta que facilita o processo de resgate de animais,
                             ele permite que ONGs registrem os animais em situação de rua ou abandono, 
-                            e que pessoas interessadas em adotar ou doar podem encontrar os animais que precisam de um lar.
+                            e que pessoas interessadas em adotar ou doar podem encontrar os animais 
+                            que precisam de um lar.
                             <br/>
                         </label>
                     </div>

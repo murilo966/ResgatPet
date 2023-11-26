@@ -2,18 +2,18 @@ import { Link } from 'react-router-dom'
 
 function Menu() {
     return(
-        <div className='botoesCabecalho'>
+        <div className='botoes-cabecalho'>
 
-            <div className='ft-perfil'>
+            <div className='foto-perfil'>
                 <Link to='/'>
-                    <img src="../../imagens/logo/DogIcon.png" />
+                    <img src="../../imagens/logo/ic_resgatpet.png" />
                 </Link> 
             </div>
 
-            <div className='cab_vazio'>
+            <div className='cab-vazio'>
             </div>
 
-            <div className='bot_navegacao'>
+            <div className='bt-navegacao'>
 
                 <div className='bt1'>
                     <Link to= '/quem-somos'>

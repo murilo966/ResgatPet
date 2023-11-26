@@ -15,8 +15,6 @@ function Dasboard(atual:Prop) {
                     <div className='dashboard'>
                         <MenuLateral/>
 
-                        
-
                         <div className='container-painel'>
                             <div className='titulo'>
                                 <label>Dashboard</label>
@@ -28,13 +26,10 @@ function Dasboard(atual:Prop) {
                                     <label>Olá, Bem-Vindo:</label>
                                 </div>
                                 
-
                                 <div className='nome-usuario-logado'>
                                     <Props NomeUsuario="Robersvaldo"/>
                                 </div>
                             </div>   
-
-                                         
 
                             <div className='painel-dasboard'>
                                 <div className='painel-dasboard-top'>
