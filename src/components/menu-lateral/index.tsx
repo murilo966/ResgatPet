@@ -6,7 +6,7 @@ function MenuLateral() {
         <div className='container-menu'>
             <div className='imagem-usuario'>
                 <Link to='/dashboard/configuracoes'>
-                    <img src="../../imagens/DogIcon.png" alt="imagem-usuario" />
+                    <img src="../../imagens/logo/DogIcon.png" alt="imagem-usuario" />
                 </Link>
             </div>
 

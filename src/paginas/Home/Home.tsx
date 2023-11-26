@@ -7,7 +7,7 @@ function Home() {
     return(
         <div>
             <Cabecalho/>
-                <div className='bod_container'>
+                <div className='bod-container'>
                     <h1>Encontrou um animal?</h1>
                     <p>Informe os detalhes no botão abaixo</p>
 

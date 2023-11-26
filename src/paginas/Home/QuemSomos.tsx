@@ -8,7 +8,7 @@ function QuemSomos(){
             <div className='container'>
                 
                 <div className='logo'>
-                    <img src="/imagens/DogIcon.png" />
+                    <img src="../../imagens/logo/DogIcon.png" />
                 </div> 
 
                 <div className='quem-somos'>
