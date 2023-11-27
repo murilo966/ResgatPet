@@ -2,12 +2,8 @@ import Cabecalho from '../../components/cabecalho';
 import MenuLateral from '../../components/menu-lateral';
 import Rodape from '../../components/rodape';
 import Props from '../../components/props';
-type Prop = {
-    PaginaAtual:String
-}
 
-
-function Dasboard(atual:Prop) {
+function Dasboard() {
     return(
         <div>
             <Cabecalho/>
@@ -54,11 +50,9 @@ function Dasboard(atual:Prop) {
                             </div>
                         </div>
                     </div>
-                </div>
-                {atual.PaginaAtual}         
+                </div>      
             <Rodape/>            
         </div>
-
     )
 }
 export default Dasboard

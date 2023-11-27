@@ -39,8 +39,7 @@ function RegistroPF(){
                         </div>  
 
                         <div className='linha'/> 
-                    </div>
-                
+                    </div>                
 
                     <div className='bt-cadastrar'>
                         <Link to='/registro-pj'>

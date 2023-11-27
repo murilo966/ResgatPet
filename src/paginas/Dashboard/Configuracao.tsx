@@ -3,11 +3,7 @@ import Cabecalho from '../../components/cabecalho';
 import MenuLateral from '../../components/menu-lateral';
 import Rodape from '../../components/rodape';
 
-type lista = {
-    PaginaAtual:String
-}
-
-function Configuracao(atual:lista) {
+function Configuracao() {
     return(
         <div>
             <Cabecalho/>
@@ -54,8 +50,7 @@ function Configuracao(atual:lista) {
                             </div>
                         </div>
                     </div>
-                </div>
-                {atual.PaginaAtual}            
+                </div>          
             <Rodape/>
         </div>
     )

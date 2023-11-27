@@ -4,7 +4,6 @@ import Rodape from '../../components/rodape';
 
 
 function Home() {
-
     const fundo = {
         background: `url('../../imagens/background/fundo-dog.jpg')`,
         backgroundSize: 'cover',
@@ -29,19 +28,11 @@ function Home() {
                             <Link to='/formulario'>
                                 <button className='bt-quero-ajudar' >Quero Ajudar</button>
                             </Link>
-                        </div>                            
-
-                        
-                    
-                        
+                        </div>  
                     </div>
-
-                    
                 </div>
             <Rodape/>
-            
         </div>
-
     )
 }
 export default Home

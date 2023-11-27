@@ -27,7 +27,6 @@ function RegistroPJ(){
                         
                     </div>
 
-
                     <div className='cadastro-pj'>
                         
                         <input type="text" placeholder='E-mail'></input>

@@ -2,11 +2,7 @@ import Cabecalho from '../../components/cabecalho';
 import MenuLateral from '../../components/menu-lateral';
 import Rodape from '../../components/rodape';
 
-type Prop ={
-    PaginaAtual:String;
-}
-
-function Acompanhar(atual:Prop) {
+function Acompanhar() {
     return(
         <div>
             <Cabecalho/>
@@ -24,8 +20,7 @@ function Acompanhar(atual:Prop) {
                             </div>
                         </div>
                     </div>
-                </div>
-                {atual.PaginaAtual}            
+                </div>         
             <Rodape/>              
         </div>
     )
