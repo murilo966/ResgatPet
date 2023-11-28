@@ -1,7 +1,13 @@
 import Cabecalho from '../../components/cabecalho';
 import Rodape from '../../components/rodape';
+import { Link, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function RegistroPJ(){
+    const navigate = useNavigate()
+    function handleClick(){
+        navigate(-1)
+    }
     return(
         <div>
             <Cabecalho/>
@@ -36,8 +42,9 @@ function RegistroPJ(){
                         <div className='cadastro-checkbox'><input type="checkbox"></input> <p>aceitar os termos</p></div>
 
                         <div className='cadastro-botoes'>
-                            <button>Cadastrar</button>
-                            <button>Cancelar</button>
+                            <Link to ='/dashboard'><button className='botCadastrar'>Cadastrar</button></Link>
+                            <div className='vazio'></div>
+                            <button className='botCancelar' onClick={handleClick}>Cancelar</button>
                         </div>
                     </div>
                 </div>

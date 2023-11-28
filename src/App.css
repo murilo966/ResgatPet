@@ -618,7 +618,7 @@ a{
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 600px;  
+  max-width: 700px;  
   margin: 0 auto;
   padding: 10px;
   margin-top: 8px;
@@ -636,7 +636,9 @@ a{
 
 .container-pj input{
   padding: 2px;
-  border-radius: 10px;
+  height: 30px;
+  font-weight: 600;
+  background-color: #EDEDED;
   border: #679aff solid 1px;
   margin: 4px;
 }
@@ -661,17 +663,44 @@ a{
 .cadastro-checkbox {
   display: flex;
   flex-direction: row;
+  font-size: 11px;
+  font-weight: bold;
 }
 
 .cadastro-botoes{
+  
+  width: 100%;
   display: flex;
   flex-direction: row;
 }
+.cadastro-botoes button {
+  font-weight: 600;
+  width: 90px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+.botCadastrar{
+  background-color: #4B8A40;
+  
+}
+.botCancelar{
+  background-color: #D73333;
+
+}
 
 hr{
+  background-color: #c5c5c5;
+  border: none;
+  border-radius: 2px;
+  height: 2.5px;
   width: 100%;
   margin-left: 10%;
   margin-right: 10%;
+}
+.vazio{
+  flex: 1;
 }
 /* Final do registro pj */
 
