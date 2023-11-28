@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import Cabecalho from '../../components/cabecalho';
 import Rodape from '../../components/rodape';
 
-
 function Home() {
     const fundo = {
         background: `url('../../imagens/background/fundo-dog.jpg')`,

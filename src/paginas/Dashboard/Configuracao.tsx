@@ -4,6 +4,11 @@ import MenuLateral from '../../components/menu-lateral';
 import Rodape from '../../components/rodape';
 
 function Configuracao() {
+
+    function handleClick(){
+        alert("Salvo com Sucesso !")
+    }
+
     return(
         <div>
             <Cabecalho/>
@@ -37,7 +42,7 @@ function Configuracao() {
                                 <div className='bt-editar-cadastro'>
                                     <div className='bt-salvar-configuracao'>
                                         <Link to='#'>
-                                            <button className='bt-salvar' type="button" name='salvar'> Salvar </button>
+                                            <button onClick={handleClick} className='bt-salvar' type="button" name='salvar'> Salvar </button>
                                         </Link>
                                     </div>
 
