@@ -19,10 +19,11 @@ function Login() {
 
                     <div className='usuario-senha'>
                         <input type="text" name="usuario-senha" placeholder="*********"/>
-                    </div>    
                         
+                    </div>                    
+                    
                     <div className='bt-entrar'>
-                        <Link to = '/dashboard'>
+                        <Link to ='/dashboard'>
                             <button type="button" name='entrar'> Entrar </button>
                         </Link>
                     </div>
