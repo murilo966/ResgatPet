@@ -28,7 +28,7 @@ function Login() {
                     </div>
 
                     <div className='esqueceu-senha'>
-                        <Link to='/esqueceu-senha' className='semFormato'>
+                        <Link to='/esqueceu-senha'>
                             <label> Esqueceu a Senha ?</label>
                         </Link>
                     </div>
@@ -41,8 +41,7 @@ function Login() {
                         </div>  
 
                         <div className='linha'/> 
-                    </div>
-                
+                    </div>               
 
                     <div className='bt-cadastrar'>
                         <Link to='/registro-pf'>

@@ -33,11 +33,11 @@ function App() {
         <Route path='/registro-pj' element={<RegistroPJ/>} ></Route>
 
 
-        <Route path='/dashboard' element={<Dasboard PaginaAtual="Este é o DashBoard"/>}></Route>
-        <Route path='/dashboard/resgatar-pet' element={<ResgatarPet PaginaAtual="Esse é o DashBoard/ResgatarPet"/>} ></Route>
-        <Route path='/dashboard/acompanhar' element={<Acompanhar PaginaAtual="Esse é o DashBoard/Acompanhar"/>} ></Route>
-        <Route path='/dashboard/historico' element={<Historico PaginaAtual="Esse é o DashBoard/Histórico"/>} ></Route>
-        <Route path='/dashboard/configuracoes' element={<Configuracao PaginaAtual="Esse e o DashBoard/Configurações"/>} ></Route>
+        <Route path='/dashboard' element={<Dasboard/>}></Route>
+        <Route path='/dashboard/resgatar-pet' element={<ResgatarPet/>} ></Route>
+        <Route path='/dashboard/acompanhar' element={<Acompanhar/>} ></Route>
+        <Route path='/dashboard/historico' element={<Historico/>} ></Route>
+        <Route path='/dashboard/configuracoes' element={<Configuracao/>} ></Route>
       </Routes>
     </div>
   );

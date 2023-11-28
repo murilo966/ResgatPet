@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import Cabecalho from '../../components/cabecalho';
-import MenuLateral from '../../components/dashboard';
+import MenuLateral from '../../components/menu-lateral';
 import Rodape from '../../components/rodape';
 
-type lista = {
-    PaginaAtual:String
-}
+function Configuracao() {
 
-function Configuracao(atual:lista) {
+    function handleClick(){
+        alert("Salvo com Sucesso !")
+    }
+
     return(
         <div>
             <Cabecalho/>
@@ -40,22 +41,21 @@ function Configuracao(atual:lista) {
                             
                                 <div className='bt-editar-cadastro'>
                                     <div className='bt-salvar-configuracao'>
-                                        <Link to='/configuracoes'>
-                                            <button type="button" name='entrar'> Salvar </button>
+                                        <Link to='#'>
+                                            <button onClick={handleClick} className='bt-salvar' type="button" name='salvar'> Salvar </button>
                                         </Link>
                                     </div>
 
                                     <div className='bt-cancelar-configuracao'>
-                                        <Link to='/configuracoes'>
-                                            <button type="button" name='entrar'> Cancelar </button>
+                                        <Link to='#'>
+                                            <button className='bt-cancelar' type="button" name='cancelar'> Cancelar </button>
                                         </Link>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                {atual.PaginaAtual}            
+                </div>          
             <Rodape/>
         </div>
     )

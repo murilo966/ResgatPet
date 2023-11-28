@@ -1,30 +1,198 @@
-.App {
-  text-align: center;
+*{
+  font-family:  Verdana, Geneva, Tahoma, sans-serif
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+a{
+  text-decoration: none;
+  color: inherit;
 }
 
 .container{
   min-height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+/* menu navegacao do cabecalho */
+.container-cabecalho{
+  background: #E8833B;
+  width: 100%;
+  min-height: 75px;
 }
+
+.cabecalho{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-logo{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 8px;
+}
+
+.menu-logo img{
+  width: 60px;
+  height: auto;
+  padding: 8px;  
+}
+
+.container-navegacao{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-size: 8px;
+  margin: 0 20px;
+  gap: 15px;
+}
+
+.bt-navegacao{
+  width: 100%;
+  font-weight: bold;
+  padding: 8px;  
+  color: white;
+  background-color: #4B8A40;
+  border-radius: 40px;
+  border: none;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.411);
+  cursor: pointer;
+}
+
+.bt-navegacao:hover{
+  background: #56924c;
+}
+
+.bt-navegacao:active {
+  background: #4B8A40;  
+}
+
+/* Final do cabeçalho inicial  */
+
+/* Começo do Body */
+.home-container{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: 80%;
+  min-height: 70vh;
+}
+
+.titulo-encontrou-um-animal label{
+  font-size: 35px;
+  font-weight: bold;
+  color: #535353;
+}
+
+.detalhes{
+  font-weight: bold;
+  color: #535353;
+}
+
+.bt-formulario{
+  margin: 18px;
+}
+
+.bt-quero-ajudar{
+  padding: 20px;
+  border-radius: 50px;
+  background-color: #4B8A40;
+  font-size: larger;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.bt-quero-ajudar:hover{
+  background: #56924c;
+}
+
+.bt-quero-ajudar:active {
+  background: #4B8A40;  
+}
+
+/* Final do Body */
+
+/* Começo do Rodapé */
+.rodape-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: #363636;
+}
+
+.mapa-site{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 70%;
+  justify-content: center;
+}
+
+.resgatepet{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 50%;
+}
+
+.rede-sociais{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 50%;
+}
+
+.rodape{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.apoio,
+.rede-social{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.icone{
+  margin: 0 8px;
+  width: 35px;
+}
+
+.icone img{
+  max-width: 100%;
+  max-height: 100%;
+  cursor: pointer;
+}
+
+.titulo-rodape{
+  color: #FFBE41;
+  font-weight: bold;
+  font-size: large;
+}
+
+.sub-titulo{
+  color: white;
+  font-size: small;
+  padding-top: 1%;
+}
+
+.bt-resgatpet{
+  cursor: pointer;
+}
+
+.bt-resgatpet:hover{
+  color: #FFBE41;
+}
+/* Final do Rodapé */
 
 /* LOGIN - CRIAR CONTA */
 .container-login{  
@@ -39,10 +207,8 @@
   border-radius: 10px;
 }
 
-.titulo-login, 
-.usuario-login, 
-.usuario-senha, 
-.usuario-senha-confirmar, 
+.titulo-login, .usuario-login, 
+.usuario-senha, .usuario-senha-confirmar, 
 .bt-entrar, .separador-ou, .bt-cadastrar{
   text-align: center;
 }
@@ -69,7 +235,11 @@
 .esqueceu-senha{
   font-size: x-small;
   text-align: center;
-  margin: 3px;
+  margin: 3px;  
+}
+
+.esqueceu-senha label{
+  cursor: pointer;
 }
 
 .grupo-separador{
@@ -117,6 +287,7 @@
   font-size: 18px;
   font-weight: bold;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .bt-cadastrar button{
@@ -128,6 +299,7 @@
   font-size: 18px;
   font-weight: bold;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 /* Inicio da Recuperar Senha */
@@ -163,6 +335,7 @@
   font-size: 18px;
   font-weight: bold;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .user-email-rec{
@@ -186,18 +359,20 @@
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   border: 1px solid #FFBE41;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   background-color: #FFECC7;
 }
 
 .imagem-usuario {
-  order: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
 }
 
 .imagem-usuario img{
-  width: 100%;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
 }
 
 .nome-usuario{
@@ -211,7 +386,7 @@
   font-size: smaller;
 }
 
-.menu-button {
+.menu-dashboard {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
@@ -219,8 +394,8 @@
   padding-right: 8px;
 }
 
-.menu-button button{
-  width: 100%;
+.bt-menu{
+  width: 160px;
   height: 25px;
   color: #fff;
   font-weight: bold;
@@ -231,13 +406,15 @@
   margin-bottom: 5px;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  cursor: pointer;
 }
 
-.menu-button {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.bt-menu:hover{
+  background: #3a86ce;
+}
+
+.bt-menu:active {
+  background: #2E77BB;
 }
 
 .container-painel{
@@ -398,8 +575,8 @@
   justify-content: center;
 }
 
-.bt-salvar-configuracao button{
-  width: 60%;
+.bt-salvar{
+  width: 100%;
   height: 30px;
   background-color: #4B8A40;
   border: none;
@@ -409,8 +586,8 @@
   border-radius: 10px;
 }
 
-.bt-cancelar-configuracao button{
-  width: 60%;
+.bt-cancelar{
+  width: 100%;
   height: 30px;
   background-color: #808080;
   border: none;
@@ -420,19 +597,19 @@
   border-radius: 10px; 
 }
 
-.bt-salvar-configuracao button:hover{
+.bt-salvar:hover{
   background: #56924c;
 }
 
-.bt-salvar-configuracao button:active {
+.bt-salvar:active {
   background: #4B8A40;
 }
 
-.bt-cancelar-configuracao button:hover{
+.bt-cancelar:hover{
   background: #8a8a8a;
 }
 
-.bt-cancelar-configuracao button:active{
+.bt-cancelar:active{
   background: #808080;
 }
 
@@ -441,7 +618,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 600px;  
+  max-width: 700px;  
   margin: 0 auto;
   padding: 10px;
   margin-top: 8px;
@@ -459,7 +636,9 @@
 
 .container-pj input{
   padding: 2px;
-  border-radius: 10px;
+  height: 30px;
+  font-weight: 600;
+  background-color: #EDEDED;
   border: #679aff solid 1px;
   margin: 4px;
 }
@@ -480,47 +659,84 @@
   display: flex;
   flex-direction: column;
 }
+
 .cadastro-checkbox {
   display: flex;
   flex-direction: row;
+  font-size: 11px;
+  font-weight: bold;
 }
+
 .cadastro-botoes{
+  
+  width: 100%;
   display: flex;
   flex-direction: row;
 }
+.cadastro-botoes button {
+  font-weight: 600;
+  width: 90px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+.botCadastrar{
+  background-color: #4B8A40;
+  
+}
+.botCancelar{
+  background-color: #D73333;
+
+}
+
 hr{
+  background-color: #c5c5c5;
+  border: none;
+  border-radius: 2px;
+  height: 2.5px;
   width: 100%;
   margin-left: 10%;
   margin-right: 10%;
 }
+.vazio{
+  flex: 1;
+}
 /* Final do registro pj */
 
 /* quem somos */
-.imgleft{
-  width: 35%;
-  height: 50%;
-  justify-content: flex-end;
-}
-
-.imagem{
+.logo{
   display: flex;
-  flex-direction: row;
-   
+  justify-content: center;
+  align-items: center;
 }
 
-.text2{
-  text-align: center;
-  font-size: 150%;
+.logo img{
+  width: 10%;
+  height: auto;
+  padding: 8px;
 }
+
+.quem-somos, 
+.nossa-missao,
+.nossos-valores,
+.como-ajudar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.descricao-quem-somos,
+.descricao-nossa-missao{
+  width: 90%;
+  font-size: large;
+}
+
+.ditado{
+  margin: 8px;
+  text-align: left;
+  font-size: small; 
+}
+
 /*  fim quem somos */
-
-
-
-
-
-/* Formatações */
-.semFormato{
-  text-decoration: none;
-  color: inherit;
-}
 

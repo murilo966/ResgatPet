@@ -1,12 +1,9 @@
-import '../style/style.css'
-import Menu from '../botoesCabecalho'
-
+import Menu from '../navegador-botoes'
 
 function Cabecalho() {
     return(
-        <div className='cont_cabecalho'>
+        <div className='container-cabecalho'>
             <Menu/>
-
         </div>
     )
 }

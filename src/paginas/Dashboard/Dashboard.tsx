@@ -1,21 +1,15 @@
 import Cabecalho from '../../components/cabecalho';
-import MenuLateral from '../../components/dashboard';
+import MenuLateral from '../../components/menu-lateral';
 import Rodape from '../../components/rodape';
-import Props from '../../components/Props';
-type Prop = {
-    PaginaAtual:String
-}
+import Props from '../../components/props';
 
-
-function Dasboard(atual:Prop) {
+function Dasboard() {
     return(
         <div>
             <Cabecalho/>
                 <div className='container'>
                     <div className='dashboard'>
                         <MenuLateral/>
-
-                        
 
                         <div className='container-painel'>
                             <div className='titulo'>
@@ -28,13 +22,10 @@ function Dasboard(atual:Prop) {
                                     <label>Olá, Bem-Vindo:</label>
                                 </div>
                                 
-
                                 <div className='nome-usuario-logado'>
                                     <Props NomeUsuario="Robersvaldo"/>
                                 </div>
                             </div>   
-
-                                         
 
                             <div className='painel-dasboard'>
                                 <div className='painel-dasboard-top'>
@@ -59,11 +50,9 @@ function Dasboard(atual:Prop) {
                             </div>
                         </div>
                     </div>
-                </div>
-                {atual.PaginaAtual}         
+                </div>      
             <Rodape/>            
         </div>
-
     )
 }
 export default Dasboard

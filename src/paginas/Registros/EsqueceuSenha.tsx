@@ -6,8 +6,7 @@ function EsqueceuSenha(){
     return(
         <div>
             <Cabecalho/>
-            <div className='container'>
-                
+            <div className='container'>                
                 <div className='container-recuperar'>
                     <div className='esqueceu-senha-cont'>
                         <div className='titulo-recuperacao'>
@@ -17,13 +16,13 @@ function EsqueceuSenha(){
                             <input type="text" placeholder='nome@email.com'/>
                         </div>
                         <div className='enviar-recuperacao'>
-                            <Link to='/login'><button >Enviar</button></Link>
+                            <Link to='/login'>
+                                <button >Enviar</button>
+                            </Link>
                         </div>
 
                     </div>
                 </div>
-
-
             </div>
             <Rodape/>
         </div>

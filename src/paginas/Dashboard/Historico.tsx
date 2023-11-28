@@ -1,12 +1,8 @@
 import Cabecalho from '../../components/cabecalho';
-import MenuLateral from '../../components/dashboard';
+import MenuLateral from '../../components/menu-lateral';
 import Rodape from '../../components/rodape';
 
-type Prop = {
-    PaginaAtual:String
-}
-
-function Historico(atual:Prop) {
+function Historico() {
     return(
         <div>
             <Cabecalho/>
@@ -24,8 +20,7 @@ function Historico(atual:Prop) {
                             </div>
                         </div>
                     </div>
-                </div>
-                {atual.PaginaAtual}            
+                </div>         
             <Rodape/>
         </div>
     )
