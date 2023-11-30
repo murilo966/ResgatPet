@@ -18,7 +18,7 @@ function Login() {
                     </div>
 
                     <div className='usuario-senha'>
-                        <input type="text" name="usuario-senha" placeholder="*********"/>
+                        <input type="password" name="usuario-senha" placeholder="*********"/>
                         
                     </div>                    
                     

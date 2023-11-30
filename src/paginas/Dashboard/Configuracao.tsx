@@ -1,9 +1,9 @@
+import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Cabecalho from '../../components/cabecalho';
 import MenuLateral from '../../components/menu-lateral';
 import Rodape from '../../components/rodape';
-import { useState } from 'react';
-import React from 'react';
 
 function Configuracao() {
 
@@ -12,14 +12,13 @@ function Configuracao() {
 
     function handleClick(){
         alert(
-            name +
-            senha +
-
-            alert("Salvo Com Sucesso !")
+            "Nome: " + name +
+            "\nSenha: " + senha +
+            "\nSalvo com Sucesso!"
         )
     }
 
-    function handleInput (event: React.ChangeEvent< HTMLInputElement >) {
+    function handleInputNome (event: React.ChangeEvent< HTMLInputElement >) {
         SetName(event.target.value);
         
     }
@@ -48,11 +47,11 @@ function Configuracao() {
                                 </div>
 
                                 <div className='usuario-login'>
-                                    <input type="text" value={name} onChange={handleInput} name="email-usuario" placeholder="nome@email.com"/>                        
+                                    <input type="text" value={name} onChange={handleInputNome} name="email-usuario" placeholder="nome@email.com"/>                        
                                 </div>
                                 
                                 <div className='usuario-senha'>
-                                    <input type="password" value={senha} onChange={handleInput} name="usuario-senha" placeholder="*********"/>
+                                    <input type="password" value={senha} onChange={handleInputSenha} name="usuario-senha" placeholder="*********"/>
                                 </div>
 
                                 <div className='usuario-senha-confirmar'>

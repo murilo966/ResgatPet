@@ -18,11 +18,11 @@ function RegistroPF(){
                     </div>
 
                     <div className='usuario-senha'>
-                        <input type="text" name="user-password" placeholder="Crie Sua Senha"/>
+                        <input type="password" name="user-password" placeholder="Crie Sua Senha"/>
                     </div>
 
                     <div className='usuario-senha-confirmar'>
-                        <input type="text" name="user-password" placeholder="Confirme Sua Senha"/>
+                        <input type="password" name="user-password" placeholder="Confirme Sua Senha"/>
                     </div>
 
                     <div className='aceitar-termos'>

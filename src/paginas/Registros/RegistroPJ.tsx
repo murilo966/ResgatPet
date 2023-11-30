@@ -36,8 +36,8 @@ function RegistroPJ(){
                     <div className='cadastro-pj'>
                         
                         <input type="text" placeholder='E-mail'></input>
-                        <input type="text" placeholder='Criar senha'></input>
-                        <input type="text" placeholder='Confirmar senha'></input>
+                        <input type="password" placeholder='Criar senha'></input>
+                        <input type="password" placeholder='Confirmar senha'></input>
 
                         <div className='cadastro-checkbox'><input type="checkbox"></input> <p>aceitar os termos</p></div>
 
