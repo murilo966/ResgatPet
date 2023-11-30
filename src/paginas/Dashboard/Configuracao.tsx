@@ -2,11 +2,31 @@ import { Link } from 'react-router-dom';
 import Cabecalho from '../../components/cabecalho';
 import MenuLateral from '../../components/menu-lateral';
 import Rodape from '../../components/rodape';
+import { useState } from 'react';
+import React from 'react';
 
 function Configuracao() {
 
+    const [name, SetName] = useState('');
+    const [senha, SetSenha] = useState('');
+
     function handleClick(){
-        alert("Salvo com Sucesso !")
+        alert(
+            name +
+            senha +
+
+            alert("Salvo Com Sucesso !")
+        )
+    }
+
+    function handleInput (event: React.ChangeEvent< HTMLInputElement >) {
+        SetName(event.target.value);
+        
+    }
+
+    function handleInputSenha (event: React.ChangeEvent< HTMLInputElement >) {
+        SetSenha(event.target.value);
+        
     }
 
     return(
@@ -19,7 +39,7 @@ function Configuracao() {
                         <div className='container-painel'>
                             <div className='titulo'>
                                 <label>Configurações</label>
-                            </div>              
+                            </div> 
 
                             <div className='painel-configuracao'>
 
@@ -28,15 +48,15 @@ function Configuracao() {
                                 </div>
 
                                 <div className='usuario-login'>
-                                    <input type="text" name="email-usuario" placeholder="nome@email.com"/>
+                                    <input type="text" value={name} onChange={handleInput} name="email-usuario" placeholder="nome@email.com"/>                        
                                 </div>
-
+                                
                                 <div className='usuario-senha'>
-                                    <input type="text" name="usuario-senha" placeholder="*********"/>
+                                    <input type="password" value={senha} onChange={handleInput} name="usuario-senha" placeholder="*********"/>
                                 </div>
 
                                 <div className='usuario-senha-confirmar'>
-                                    <input type="text" name="usuario-senha-confirmar" placeholder="*********"/>
+                                    <input type="password" name="usuario-senha-confirmar" placeholder="*********"/>
                                 </div> 
                             
                                 <div className='bt-editar-cadastro'>
