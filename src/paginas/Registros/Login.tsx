@@ -18,11 +18,12 @@ function Login() {
                     </div>
 
                     <div className='usuario-senha'>
-                        <input type="text" name="usuario-senha" placeholder="*********"/>
-                    </div>    
+                        <input type="password" name="usuario-senha" placeholder="*********"/>
                         
+                    </div>                    
+                    
                     <div className='bt-entrar'>
-                        <Link to = '/dashboard'>
+                        <Link to ='/dashboard'>
                             <button type="button" name='entrar'> Entrar </button>
                         </Link>
                     </div>

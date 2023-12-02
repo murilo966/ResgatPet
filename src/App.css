@@ -194,7 +194,7 @@ a{
 }
 /* Final do Rodapé */
 
-/* LOGIN - CRIAR CONTA */
+/* LOGIN - REGISTRAR PF */
 .container-login{  
   width: 250px; 
   max-width: 100%;
@@ -207,7 +207,7 @@ a{
   border-radius: 10px;
 }
 
-.titulo-login, .usuario-login, 
+.titulo-login, .usuario-login, .aceitar-termos,
 .usuario-senha, .usuario-senha-confirmar, 
 .bt-entrar, .separador-ou, .bt-cadastrar{
   text-align: center;
@@ -668,11 +668,11 @@ a{
 }
 
 .cadastro-botoes{
-  
   width: 100%;
   display: flex;
   flex-direction: row;
 }
+
 .cadastro-botoes button {
   font-weight: 600;
   width: 90px;
@@ -681,10 +681,12 @@ a{
   border-radius: 5px;
   color: white;
 }
+
 .botCadastrar{
   background-color: #4B8A40;
   
 }
+
 .botCancelar{
   background-color: #D73333;
 
@@ -699,9 +701,11 @@ hr{
   margin-left: 10%;
   margin-right: 10%;
 }
+
 .vazio{
   flex: 1;
 }
+
 /* Final do registro pj */
 
 /* quem somos */

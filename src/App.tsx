@@ -31,8 +31,6 @@ function App() {
         <Route path='/esqueceu-senha' element={<EsqueceuSenha/>} ></Route>
         <Route path='/registro-pf' element={<RegistroPF/>} ></Route>
         <Route path='/registro-pj' element={<RegistroPJ/>} ></Route>
-
-
         <Route path='/dashboard' element={<Dasboard/>}></Route>
         <Route path='/dashboard/resgatar-pet' element={<ResgatarPet/>} ></Route>
         <Route path='/dashboard/acompanhar' element={<Acompanhar/>} ></Route>
