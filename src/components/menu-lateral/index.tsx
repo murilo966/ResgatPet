@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import Props from '../cprops'
+import Props from '../props'
 
 function MenuLateral() {
     return(
