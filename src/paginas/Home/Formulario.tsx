@@ -6,7 +6,7 @@ function Formulario(){
         <div>
             <Cabecalho/>
             <div className='container'>
-                <p>Esta é a Página do <b>jijijijij</b></p>
+                <p>Esta é a Página do <b>formulário</b></p>
             </div>
             <Rodape/>
         </div>
