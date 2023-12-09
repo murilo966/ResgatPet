@@ -1,6 +1,6 @@
 import Cabecalho from '../../components/cabecalho';
 import Rodape from '../../components/rodape';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 function RegistroPJ(){

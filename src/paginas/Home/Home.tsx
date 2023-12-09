@@ -24,8 +24,8 @@ function Home() {
                         </div>
 
                         <div className='bt-formulario'>
-                            <Link to='/formulario'>
-                                <button className='bt-quero-ajudar' >Quero Ajudar</button>
+                            <Link to='/login'>
+                                <button className='bt-encontrei-pet' >Encontrei um Pet</button>
                             </Link>
                         </div>  
                     </div>

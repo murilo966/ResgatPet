@@ -15,7 +15,7 @@ function Menu() {
                         <button className='bt-navegacao'>Inicio </button>
                     </Link>
 
-                    <Link to='/formulario'>
+                    <Link to='/registro-pj'>
                         <button className='bt-navegacao'>Quero Ajudar </button>
                     </Link>
 
