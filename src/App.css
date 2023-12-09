@@ -93,7 +93,7 @@ a{
   margin: 18px;
 }
 
-.bt-quero-ajudar{
+.bt-encontrei-pet{
   padding: 20px;
   border-radius: 50px;
   background-color: #4B8A40;
@@ -104,11 +104,11 @@ a{
   cursor: pointer;
 }
 
-.bt-quero-ajudar:hover{
+.bt-encontrei-pet:hover{
   background: #56924c;
 }
 
-.bt-quero-ajudar:active {
+.bt-encontrei-pet:active {
   background: #4B8A40;  
 }
 
@@ -744,3 +744,17 @@ hr{
 
 /*  fim quem somos */
 
+/*  Formulario */
+.container-formulario{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;  
+  margin: 0 auto;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}

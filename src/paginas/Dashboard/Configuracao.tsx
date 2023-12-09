@@ -19,13 +19,11 @@ function Configuracao() {
     }
 
     function handleInputNome (event: React.ChangeEvent< HTMLInputElement >) {
-        SetName(event.target.value);
-        
+        SetName(event.target.value);        
     }
 
     function handleInputSenha (event: React.ChangeEvent< HTMLInputElement >) {
-        SetSenha(event.target.value);
-        
+        SetSenha(event.target.value);        
     }
 
     return(
