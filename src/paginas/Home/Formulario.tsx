@@ -1,12 +1,37 @@
 import { Link } from 'react-router-dom';
 import Cabecalho from '../../components/cabecalho';
 import Rodape from '../../components/rodape';
-
-function handleClick(){
-    alert("Salvo com Sucesso!")
-}
+import { useState } from 'react';
 
 function Formulario(){
+
+    const [petCorAtivado, setPetCorAtivado] = useState(false);
+    const [bemEstarAtivado, setBemEstarAtivado] = useState(false);
+    const [petEndereco, SetPetEndereco] = useState('');
+    const [petSexo, SetSexo] = useState('');    
+
+    function handleInputPetEndereco (event: React.ChangeEvent< HTMLInputElement >) {
+        SetPetEndereco(event.target.value);        
+    }
+
+    function handleInputPetSexo (event: React.ChangeEvent< HTMLInputElement >) {
+        if (event.target.checked){
+            SetSexo(event.target.value);  
+        }                  
+    }
+
+    function handleClickSalvar(){
+        alert(
+            "Endereço: " + petEndereco +
+            "\nSexo: " + petSexo +
+            "\nSalvo com Sucesso!"
+        )
+    }
+
+    const handleCheckboxChange = () => {
+        setBemEstarAtivado(!bemEstarAtivado);
+    };
+
     return(
         <div>
             <Cabecalho/>
@@ -17,125 +42,154 @@ function Formulario(){
                             <label>Dados Pessoais</label>
                         </div>
                         
-                        <div className='nome-usuario'>
-                            <input type="text" name="user-name"/>
+                        <div className='nome-usuario-formulario'>
+                            <label id='label-formulario'>Seu Nome</label>
+                            <input id='input' type="text" name="user-name" disabled/>
                         </div>
 
-                        <div className='telefone-email'>
-                            <div className='telefone-usuario'>
-                                <input type="tel" name="user-tel"/>
+                        <div className='container-telefone-email'>
+                            <div className='coluna-usuario'>
+                                <label id='label-formulario'>Telefone</label>
+                                <input id='input' type="tel" name="user-tel" disabled/>
                             </div>
 
-                            <div className='email-usuario'>
-                                <input type="email" name="user-email"/>
+                            <div className='coluna-usuario'>
+                                <label id='label-formulario'>E-Mail</label>
+                                <input id='input' type="email" name="user-email" disabled/>
                             </div>
                         </div> 
                     </div>
 
                     <div className='dados-pet'>
-                        <div className='titulo-formulario'>
-                            <label>Pet Econtrado</label>
-                        </div>
-                        <div className='pet'>
-                            <div className='foto-pet'>
-                                <label> Foto Do Pet</label>
+                        <div className='container-pet-econtroado'>
+                            <div className='titulo-formulario'>
+                                <label>Pet Econtrado</label>
+                            </div>
+                            <div className='pet'>
+                                <div className='foto-pet'>
+                                    <label> Foto Do Pet</label>                                
+                                </div>
                             </div>
 
-                            <div className='upload-pet'>
-                                <input type="file" name="arquivos" />
+                            <div className='endereco-pet'>
+                                <label id='label-formulario'>Endereço na onde foi encontrado o Pet </label>
+                                <input id='input' type="text" name="pet-endereco" value={petEndereco} onChange={handleInputPetEndereco}/>
                             </div>
                         </div>
 
-                        <div className='endereco-pet'>
-                            <label>Endereço na onde foi encontrado o Pet </label>
-                            <input type="text" name="pet-endereco"/>
+                        <div className='container-pet-sexo'>
+                            <div className='titulo-formulario'>
+                                <label>Sexo</label>
+                            </div>
+
+                            <div className="sexo-pet">
+                                <div className='sexo-macho'>
+                                    <input id='radios' type="radio" name="radio" checked={petSexo === 'Macho'} value="Macho" onChange={handleInputPetSexo}/>
+                                    <label>Macho </label>  
+                                </div>
+    
+                                <div className='sexo-femea'>
+                                    <input id='radios' type="radio" name="radio" checked={petSexo === 'Fêmea'} value="Fêmea" onChange={handleInputPetSexo}/>
+                                    <label>Fêmea </label>
+                                </div>
+                            </div>
                         </div>
 
-                        <div className='titulo-formulario'>
-                            <label>Sexo</label>
+                        <div className='container-pet-cor'>
+                            <div className='titulo-formulario'>
+                                <label>Cor</label>
+                            </div>
+
+                            <div className="pet-cor">
+                                <div className='coluna-1'>
+                                    <input id='radios' type="radio" name="radio" value="Preto" onChange={() => setPetCorAtivado(false)} />
+                                    <label>Preto </label>    
+                                    
+                                    <input id='radios' type="radio" name="radio" value="Branco" onChange={() => setPetCorAtivado(false)} />
+                                    <label>Branco </label>
+                                    
+                                    <input id='radios' type="radio" name="radio" value="Cinza" onChange={() => setPetCorAtivado(false)} />
+                                    <label>Cinza </label>
+
+                                    <input id='radios' type="radio" name="radio" value="Vermelho" onChange={() => setPetCorAtivado(false)} />
+                                    <label>Vermelho </label>
+                                    
+                                    <input id='radios' type="radio" name="radio" value="Creme" onChange={() => setPetCorAtivado(false)} />
+                                    <label>Creme </label>  
+                                </div>
+
+                                <div className='coluna-2'>
+                                    <input id='radios' type="radio" name="radio" value="Marrom" onChange={() => setPetCorAtivado(false)} />
+                                    <label>Marrom </label>
+                                    
+                                    <input id='radios' type="radio" name="radio" value="Caramelo" onChange={() => setPetCorAtivado(false)} />
+                                    <label>Caramelo </label>
+
+                                    <input id='radios' type="radio" name="radio" value="Outros" onChange={() => setPetCorAtivado(true)} />
+                                    <label>Outros </label>
+                                    <input id='input-outros' type="text" name="outra-cor" disabled={!petCorAtivado} />
+                                </div>
+                            </div>
                         </div>
 
-                        <div className="sex-pet">                            
-                            <input type="radio" name="radio"/>
-                            <label>Macho </label>    
-                            
-                            <input type="radio" name="radio"/>
-                            <label>Femêa </label>
+                        <div className='container-pet-acessorios'>
+                            <div className='titulo-formulario'>
+                                <label>Acessórios</label>
+                            </div>
+
+                            <div className='pet-acessorio'>
+                                <div className='coluna-1'>
+                                    <input id='checkbox' type="checkbox" name='checkbox' />
+                                    <label>Coleira </label>
+                                    
+                                    <input id='checkbox' type="checkbox" name='checkbox' />
+                                    <label>Corrente / Guia </label>
+                                    
+                                    <input id='checkbox' type="checkbox" name='checkbox' />
+                                    <label>Focinheira </label>
+                                </div> 
+                            </div>
                         </div>
 
-                        <div className='titulo-formulario'>
-                            <label>Cor</label>
-                        </div>
+                        <div className='container-pet-bem-estar'>
+                            <div className='titulo-formulario'>
+                                <label>Bem Estar do Pet</label>
+                            </div>
 
-                        <div className="cor-pet">                            
-                            <input type="radio" name="radio"/>
-                            <label>Preto </label>    
-                            
-                            <input type="radio" name="radio"/>
-                            <label>Branco </label>
-                            
-                            <input type="radio" name="radio"/>
-                            <label>Cinza </label>
-                           
-                            <input type="radio" name="radio"/>
-                            <label>Marrom </label>
-                            
-                            <input type="radio" name="radio"/>
-                            <label>Caramelo </label>
+                            <div className='pet-bem-estar'>
+                                <div className='coluna-1'>
+                                    <input id='checkbox' type="checkbox" name='checkbox' />
+                                    <label>Assustado </label>
+                                    
+                                    <input id='checkbox' type="checkbox" name='checkbox' />
+                                    <label>Ferido </label>
+                                    
+                                    <input id='checkbox' type="checkbox" name='checkbox' />
+                                    <label>Doente </label>
 
-                            <input type="radio" name="radio"/>
-                            <label>Outros </label>
-                            <input type="text" name="outra-cor"/>
-                        </div>
+                                    <input id='checkbox' type="checkbox" name='checkbox' />
+                                    <label>Alegre </label>
+                                </div>                          
 
-                        <div className='titulo-formulario'>
-                            <label>Acessórios</label>
-                        </div>
+                                <div className='coluna-2'>
+                                    <input id='checkbox' type="checkbox" name='checkbox' />
+                                    <label>Agressivo </label>
 
-                        <div className='pet-acessorio'>                            
-                            <input type="checkbox" name='checkbox' />
-                            <label>Coleira </label>
-                            
-                            <input type="checkbox" name='checkbox' />
-                            <label>Corrente / Guia </label>
-                            
-                            <input type="checkbox" name='checkbox' />
-                            <label>Focinheira </label>
-                        </div>
+                                    <input id='checkbox' type="checkbox" name='checkbox' />
+                                    <label>Calmo </label>
 
-                        <div className='titulo-formulario'>
-                            <label>Bem Estar do Pet</label>
-                        </div>
-
-                        <div className='pet-bem-estar'>                            
-                            <input type="checkbox" name='checkbox' />
-                            <label>Assustado </label>
-                            
-                            <input type="checkbox" name='checkbox' />
-                            <label>Ferido </label>
-                            
-                            <input type="checkbox" name='checkbox' />
-                            <label>Doente </label>
-
-                            <input type="checkbox" name='checkbox' />
-                            <label>Alegre </label>
-
-                            <input type="checkbox" name='checkbox' />
-                            <label>Agressivo </label>
-
-                            <input type="checkbox" name='checkbox' />
-                            <label>Calmo </label>
-
-                            <input type="checkbox" name='checkbox' />
-                            <label>outros </label>
-                            <input type="text" name='text-outros' />
+                                    <input id='checkbox' type="checkbox" name='checkbox' onChange={handleCheckboxChange}/>
+                                    <label>outros </label>
+                                    <input id='input-outros' type="text" name='text-outros' disabled={!bemEstarAtivado}/>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div className='pet-cadastro'>
                         <div className='bt-salvar-pet'>
                             <Link to='#'>
-                                <button onClick={handleClick} id='bt-salvar' type="button" name='salvar'> Salvar </button>
+                                <button onClick={handleClickSalvar} id='bt-salvar' type="button" name='salvar'> Salvar </button>
                             </Link>
                         </div>
 

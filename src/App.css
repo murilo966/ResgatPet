@@ -684,12 +684,10 @@ a{
 
 .botCadastrar{
   background-color: #4B8A40;
-  
 }
 
 .botCancelar{
   background-color: #D73333;
-
 }
 
 hr{
@@ -758,3 +756,230 @@ hr{
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
+
+.titulo-formulario{
+  margin-top: 12px;
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+  color: white;
+  background: #679aff;
+}
+
+.dados-pessoais{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-telefone-email{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.coluna-usuario{
+  display: flex;
+  flex-direction: column;
+}
+
+.nome-usuario-formulario{
+  width: 100%;
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dados-pet{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pet{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.foto-pet{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 20%;
+  height: 100px;
+  background-color: #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;  
+}
+
+.foto-pet input{
+  display: none;  
+}
+
+.endereco-pet{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.endereco-pet input{
+  padding: 3px;
+}
+
+.sexo-pet, .pet-acessorio{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.sexo-macho, .sexo-femea{
+  width: 20%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.pet-cor{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.coluna-1{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 8px;
+}
+
+.coluna-2{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.pet-acessorio{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.pet-bem-estar{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.pet-cadastro{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.bt-salvar-pet{
+  width: 30%;
+  text-align: center;
+}
+
+.bt-cancelar-pet{
+  width: 30%;
+  text-align: center;
+}
+
+#input{
+  height: 20px;
+  padding: 3px;
+}
+
+#label-formulario{
+  width: 100%;
+  margin-top: 12px;
+  text-align: left;
+  font-size: small;
+  font-weight: bold;
+  color: #535353;
+}
+
+#input-outros{
+  width: 40%;
+  height: 10px;
+  padding: 3px;
+  margin-inline-start: 8px;
+}
+
+#radios{
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+}
+
+#checkbox{
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+}
+
+#bt-salvar{
+  width: 50%;
+  height: 30px;
+  background-color: #4B8A40;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#bt-cancelar{
+  width: 50%;
+  height: 30px;
+  background-color: #808080;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px; 
+  cursor: pointer;
+}
+
+#bt-salvar:hover{
+  background: #56924c;
+}
+
+#bt-salvar:active {
+  background: #4B8A40;
+}
+
+#bt-cancelar:hover{
+  background: #8a8a8a;
+}
+
+#bt-cancelar:active{
+  background: #808080;
+}
+
+
