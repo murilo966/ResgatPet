@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
-import Props from '../props'
 
 function MenuLateral() {
+
+    const usuarioNome = localStorage.getItem('usuarioNome') ?? "";
+
     return(
         <div className='container-menu'>
             <div className='imagem-usuario'>
@@ -11,7 +13,7 @@ function MenuLateral() {
             </div>
 
             <div className='nome-usuario'>
-                <Props NomeUsuario="Robersvaldo"/>
+                {usuarioNome}
             </div>
 
             <div className='menu-dashboard'>

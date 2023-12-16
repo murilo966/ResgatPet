@@ -15,15 +15,11 @@ function Menu() {
                         <button className='bt-navegacao'>Inicio </button>
                     </Link>
 
-                    <Link to='/registro-pj'>
-                        <button className='bt-navegacao'>Quero Ajudar </button>
-                    </Link>
-
                     <Link to= '/quem-somos'>
                         <button className='bt-navegacao'>Quem Somos</button>
                     </Link>
 
-                    <Link to='/registro-pf'>
+                    <Link to='/cadastrar'>
                         <button className='bt-navegacao'>Cadastre-se</button>
                     </Link>
 
