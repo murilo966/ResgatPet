@@ -1,9 +1,11 @@
 import Cabecalho from '../../components/cabecalho';
 import MenuLateral from '../../components/menu-lateral';
 import Rodape from '../../components/rodape';
-import Props from '../../components/props';
 
-function Dasboard() {
+function Dasboard (){
+
+    const usuarioNome = localStorage.getItem('usuarioNome') ?? "";
+
     return(
         <div>
             <Cabecalho/>
@@ -23,7 +25,7 @@ function Dasboard() {
                                 </div>
                                 
                                 <div className='nome-usuario-logado'>
-                                    <Props NomeUsuario="Robersvaldo"/>
+                                    {usuarioNome}
                                 </div>
                             </div>   
 

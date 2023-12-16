@@ -194,9 +194,13 @@ a{
 }
 /* Final do Rodapé */
 
-/* LOGIN - REGISTRAR PF */
-.container-login{  
-  width: 250px; 
+/* LOGIN - CADASTRAR-SE */
+.container-autenticacao{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 900px;
+  height: 370px;
   max-width: 100%;
   margin: 0 auto;
   padding: 10px;
@@ -207,26 +211,48 @@ a{
   border-radius: 10px;
 }
 
-.titulo-login, .usuario-login, .aceitar-termos,
-.usuario-senha, .usuario-senha-confirmar, 
-.bt-entrar, .separador-ou, .bt-cadastrar{
+.autenticacao{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  max-width: 100%;
+}
+
+.titulo-autenticacao, .titulo-new-autenticacao, .input-autenticacao, .aceitar-termos,
+.bt-autenticacao, .separador-ou, .bt-corporacao{
   text-align: center;
 }
 
-.titulo-login label{
+.titulo-autenticacao label{
   font-weight: bold;
   color: #535353;
   text-transform: uppercase;
 }
 
-.usuario-login input{
-  width: 80%;
-  height: 30px;
-  margin-top: 8px;
+.titulo-new-autenticacao label{
+  font-weight: bold;
+  color: #535353;
+  text-transform: uppercase;
+  position: relative;
+  top: 27px;
 }
 
-.usuario-senha input, 
-.usuario-senha-confirmar input{
+.imagem-autenticacao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+.imagem-autenticacao img{
+  width: 240px;
+  position: relative;
+  top: 27px;
+  object-fit: cover;
+}
+
+.input-autenticacao input{
   width: 80%;
   height: 30px;
   margin-top: 8px;
@@ -261,23 +287,23 @@ a{
   font-weight: bold;
 }
 
-.bt-entrar button:hover{
+.bt-autenticacao button:hover{
   background: #56924c;
 }
 
-.bt-entrar button:active {
+.bt-autenticacao button:active {
   background: #4B8A40;
 }
 
-.bt-cadastrar button:hover{
+.bt-corporacao button:hover{
   background: #327ec5;
 }
 
-.bt-cadastrar button:active{
+.bt-corporacao button:active{
   background: #2E77BB;
 }
 
-.bt-entrar button{
+.bt-autenticacao button{
   width: 85%;
   height: 40px;
   margin-top: 8px;
@@ -290,7 +316,7 @@ a{
   cursor: pointer;
 }
 
-.bt-cadastrar button{
+.bt-corporacao button{
   width: 85%;
   height: 40px;
   background-color: #2E77BB;
@@ -613,99 +639,6 @@ a{
   background: #808080;
 }
 
-/* Inicio do registro pj */
-.container-pj{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 700px;  
-  margin: 0 auto;
-  padding: 10px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  background-color: #fff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-}
-
-.container-pj label{
-  color: #535353;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.container-pj input{
-  padding: 2px;
-  height: 30px;
-  font-weight: 600;
-  background-color: #EDEDED;
-  border: #679aff solid 1px;
-  margin: 4px;
-}
-
-.Conta-corporativa1{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.Conta-corporativa2{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.cadastro-pj{
-  display: flex;
-  flex-direction: column;
-}
-
-.cadastro-checkbox {
-  display: flex;
-  flex-direction: row;
-  font-size: 11px;
-  font-weight: bold;
-}
-
-.cadastro-botoes{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-
-.cadastro-botoes button {
-  font-weight: 600;
-  width: 90px;
-  height: 25px;
-  border: none;
-  border-radius: 5px;
-  color: white;
-}
-
-.botCadastrar{
-  background-color: #4B8A40;
-}
-
-.botCancelar{
-  background-color: #D73333;
-}
-
-hr{
-  background-color: #c5c5c5;
-  border: none;
-  border-radius: 2px;
-  height: 2.5px;
-  width: 100%;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
-.vazio{
-  flex: 1;
-}
-
-/* Final do registro pj */
-
 /* quem somos */
 .logo{
   display: flex;
@@ -799,28 +732,23 @@ hr{
 }
 
 .pet{
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   margin-bottom: 8px;
 }
 
 .foto-pet{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width: 20%;
-  height: 100px;
-  background-color: #ccc;
+  width: 150px;
+  height: 150px;
   padding: 10px;
   border-radius: 5px;
-  cursor: pointer;  
 }
 
-.foto-pet input{
-  display: none;  
+.foto-pet img{
+  width: 150px;
+  height: 150px;
 }
 
 .endereco-pet{

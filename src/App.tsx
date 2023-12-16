@@ -1,20 +1,19 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
-import RegistroPF from './paginas/Registros/RegitroPF';
-import ComoAjudar from './paginas/Home/ComoAjudar';
-import Home from './paginas/Home/Home';
-import Login from './paginas/Registros/Login';
-import QuemSomos from './paginas/Home/QuemSomos';
-import RegistroPJ from './paginas/Registros/RegistroPJ';
-import EsqueceuSenha from './paginas/Registros/EsqueceuSenha';
-import Dasboard from './paginas/Dashboard/Dashboard';
-import Acompanhar from './paginas/Dashboard/Acompanhar';
-import Historico from './paginas/Dashboard/Historico';
-import Configuracao from './paginas/Dashboard/Configuracao';
-import ResgatarPet from './paginas/Dashboard/ResgatarPet';
-import NotFound from './paginas/Erros/NotFound';
-import Formulario from './paginas/Home/Formulario';
+import Cadastrar from './paginas/autenticacao/Cadastrar';
+import ComoAjudar from './paginas/home/ComoAjudar';
+import Home from './paginas/home/Home';
+import Login from './paginas/autenticacao/Login';
+import QuemSomos from './paginas/home/QuemSomos';
+import EsqueceuSenha from './paginas/autenticacao/EsqueceuSenha';
+import Dasboard from './paginas/dashboard/Dashboard';
+import Acompanhar from './paginas/dashboard/Acompanhar';
+import Historico from './paginas/dashboard/Historico';
+import Configuracao from './paginas/dashboard/Configuracao';
+import ResgatarPet from './paginas/dashboard/ResgatarPet';
+import NotFound from './paginas/erros/NotFound';
+import Formulario from './paginas/home/Formulario';
 
 
 function App() {
@@ -29,8 +28,7 @@ function App() {
         <Route path='/como-ajudar' element={<ComoAjudar/>} ></Route>
         <Route path='/login' element={<Login/>} ></Route>        
         <Route path='/esqueceu-senha' element={<EsqueceuSenha/>} ></Route>
-        <Route path='/registro-pf' element={<RegistroPF/>} ></Route>
-        <Route path='/registro-pj' element={<RegistroPJ/>} ></Route>
+        <Route path='/cadastrar' element={<Cadastrar/>} ></Route>
         <Route path='/dashboard' element={<Dasboard/>}></Route>
         <Route path='/dashboard/resgatar-pet' element={<ResgatarPet/>} ></Route>
         <Route path='/dashboard/acompanhar' element={<Acompanhar/>} ></Route>
