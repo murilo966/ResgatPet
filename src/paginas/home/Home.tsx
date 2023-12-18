@@ -4,7 +4,7 @@ import Rodape from '../../components/rodape';
 
 function Home() {
     const fundo = {
-        background: `url('../../imagens/background/fundo-dog.jpg')`,
+        background: `url('../../imagens/background/im_backgroud-dog.jpg')`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
       };
