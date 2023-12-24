@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Cabecalho from '../../components/cabecalho';
 import Rodape from '../../components/rodape';
 import { Link } from 'react-router-dom';
@@ -52,6 +52,20 @@ function Cadastrar(){
 
     const handleInputAceitarTermosCPF = () => {
         SetAceitarTermosCPF(!aceitarTermosCPF);
+    }
+
+    const handlePJClick = () => {
+        const container = document.getElementById('autenticacao');
+        if (container) {
+          container.classList.add('active');
+        }
+    }
+    
+    const handlePFClick = () => {
+        const container = document.getElementById('autenticacao');
+        if (container) {
+          container.classList.remove('active');
+        }
     }
 
     function handleRegistarPJ (){
@@ -128,156 +142,153 @@ function Cadastrar(){
             <Cabecalho/>
 
             <div className='container'>
-                <div className='container-autenticacao'>
-                    <div className='autenticacao'>
-                        <div className='titulo-autenticacao'>
-                            <label>CRIE SUA CONTA CORPORATIVA</label>
-                        </div>
-                        
-                        <div className='input-autenticacao'>
-                            <input type="text" 
-                                name="user-name" 
-                                placeholder="Nome Empresa" 
-                                required
-                                onChange={handleInputUsuarioNome}
-                            />
-                        </div>
-
-                        <div className='input-autenticacao'>
-                            <input type="text" 
-                                name="user-cnpj" 
-                                placeholder="CNPJ" 
-                                required
-                                onChange={handleInputUsuarioCNPJ}
-                            />
-                        </div>
-
-                        <div className='input-autenticacao'>
-                            <input type="text" 
-                                name="user-telefone" 
-                                placeholder="Telefone" 
-                                required
-                                onChange={handleInputUsuarioTelefone}
-                            />
-                        </div>
-
-                        <div className='input-autenticacao'>
-                            <input type="text" 
-                                name="user-email" 
-                                placeholder="nome@email.com" 
-                                required
-                                onChange={handleInputUsuarioEmail}
-                            />
-                        </div> 
-
-                        <div className='input-autenticacao'>
-                            <input type="password" 
-                                name="user-password" 
-                                placeholder="Crie Sua Senha"
-                                required
-                                onChange={handleInputUsuarioSenha}
-                            />
-                        </div>
-
-                        <div className='input-autenticacao'>
-                            <input type="password" 
-                                name="user-password" 
-                                placeholder="Confirme Sua Senha"
-                                required
-                                onChange={handleInputUsuarioConfirmarSenha}
-                            />
-                        </div>
-
-                        <div className='aceitar-termos'>
-                            <input type="checkbox" 
-                                name="aceitar-termos-pj" 
-                                checked={aceitarTermosPJ}
-                                onChange={handleInputAceitarTermosPJ}
-                            />
-                            <Link to='#'>
-                                <label>aceitar os termos</label>
-                            </Link>
-                        </div>
+                <div className='container-autenticacao' id='autenticacao'>
+                    <div className='form-container criar-conta-pf'>
+                        <form>
+                            <h1>CRIE SUA CONTA</h1>
                             
-                        <div className='bt-autenticacao'>
-                            <button type="button" name='entrar' onClick={handleRegistarPJ}> Cadastrar-Se </button>
-                        </div>
-                    </div>
-
-                    <div className='autenticacao'>
-                        <div className='titulo-autenticacao'>
-                            <label>CRIE SUA CONTA</label>
-                        </div>
-                        
-                        <div className='input-autenticacao'>
                             <input type="text" 
                                 name="user-name" 
                                 placeholder="Nome Completo" 
                                 required
                                 onChange={handleInputUsuarioNome}
                             />
-                        </div>
 
-                        <div className='input-autenticacao'>
                             <input type="text" 
                                 name="user-cpf" 
                                 placeholder="CPF" 
                                 required
                                 onChange={handleInputUsuarioCPF}
                             />
-                        </div>
 
-                        <div className='input-autenticacao'>
                             <input type="text" 
                                 name="user-telefone" 
                                 placeholder="Telefone" 
                                 required
                                 onChange={handleInputUsuarioTelefone}
                             />
-                        </div>
 
-                        <div className='input-autenticacao'>
                             <input type="text" 
                                 name="user-name" 
                                 placeholder="nome@email.com" 
                                 required
                                 onChange={handleInputUsuarioEmail}
                             />
-                        </div>
 
-                        <div className='input-autenticacao'>
                             <input type="password" 
                                 name="user-password" 
                                 placeholder="Crie Sua Senha"
                                 required
                                 onChange={handleInputUsuarioSenha}
                             />
-                        </div>
 
-                        <div className='input-autenticacao'>
                             <input type="password" 
                                 name="user-password" 
                                 placeholder="Confirme Sua Senha"
                                 required
                                 onChange={handleInputUsuarioConfirmarSenha}
                             />
-                        </div>
-
-                        <div className='aceitar-termos'>
-                            <input type="checkbox" 
-                                name="aceitar-termos-pf" 
-                                checked={aceitarTermosCPF}
-                                onChange={handleInputAceitarTermosCPF}
-                            />
-                            <Link to='#'>
-                                <label>aceitar os termos</label>
-                            </Link>
-                        </div>
                             
-                        <div className='bt-autenticacao'>
-                            <button type="button" name='entrar' onClick={handleRegistarCPF}> Cadastrar-Se </button>
+                            <div className="aceitar-termos">
+                                <div className="aceitar">
+                                    <input type="checkbox"
+                                        name="aceitar-termos-pf" 
+                                        checked={aceitarTermosCPF}
+                                        onChange={handleInputAceitarTermosCPF}
+                                    /> 
+                                </div>
+                                <Link to='#'>
+                                    <label>aceitar os termos</label>
+                                </Link>
+                            </div>
+                                
+                            <button type="button" name='entrar' onClick={handleRegistarCPF}> Cadastrar-Se </button> 
+                        </form>
+                    </div>
+
+                    <div className='form-container criar-conta-pj'>
+                        <form>
+                            <h1>CRIE SUA CONTA CORPORATIVA</h1>
+                            
+                            <input type="text" 
+                                name="user-name" 
+                                placeholder="Nome Empresa" 
+                                required
+                                onChange={handleInputUsuarioNome}
+                             />
+
+                            <input type="text" 
+                                name="user-cnpj" 
+                                placeholder="CNPJ" 
+                                required
+                                onChange={handleInputUsuarioCNPJ}
+                            />
+
+                            <input type="text" 
+                                name="user-telefone" 
+                                placeholder="Telefone" 
+                                required
+                                onChange={handleInputUsuarioTelefone}
+                             />
+
+                            <input type="text" 
+                                name="user-email" 
+                                placeholder="nome@email.com" 
+                                required
+                                onChange={handleInputUsuarioEmail}
+                            />
+
+                            <input type="password" 
+                                name="user-password" 
+                                placeholder="Crie Sua Senha"
+                                required
+                                onChange={handleInputUsuarioSenha}
+                            />
+
+                            <input type="password" 
+                                name="user-password" 
+                                placeholder="Confirme Sua Senha"
+                                required
+                                onChange={handleInputUsuarioConfirmarSenha}
+                            />
+
+                            <div className="aceitar-termos">
+                                <div className="aceitar">
+                                    <input type="checkbox"
+                                        name="aceitar-termos-pj" 
+                                        checked={aceitarTermosPJ}
+                                        onChange={handleInputAceitarTermosPJ}
+                                    /> 
+                                </div>
+                                <Link to='#'>
+                                    <label>aceitar os termos</label>
+                                </Link>
+                            </div>
+                                
+                            <button type="button" name='entrar' onClick={handleRegistarPJ}> Cadastrar-Se </button>
+                        </form>
+                    </div>
+
+                    <div className='toggle-container'>
+                        <div className='toggle'>
+                            <div className="toggle-panel toggle-left">
+                                <h1>Criar Sua Conta</h1>
+
+                                <p> Crie sua conta, e venha fazer parte da nossa Familia !</p>
+
+                                <button type="button" className='hidden' id='pf' onClick={handlePFClick} > Criar Sua Conta </button>
+                            </div>
+
+                            <div className="toggle-panel toggle-right">
+                                <h1>Criar Sua Conta Corpotativa</h1>
+
+                                <p> Crie uma conta Corporativa com o seu CNPJ, e venha ajudar a Resgatar os Pets</p>
+
+                                <button type="button" className='hidden' id='pj' onClick={handlePJClick} > Crie Sua Conta Corporativa </button>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 

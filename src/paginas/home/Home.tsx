@@ -3,16 +3,10 @@ import Cabecalho from '../../components/cabecalho';
 import Rodape from '../../components/rodape';
 
 function Home() {
-    const fundo = {
-        background: `url('../../imagens/background/im_backgroud-dog.jpg')`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-      };
-
     return(
         <div>
             <Cabecalho/>
-                <div className='container' style={fundo}>
+                <div className='container-img'>
                     <div className='home-container'>
 
                         <div className='titulo-encontrou-um-animal'>

@@ -2,6 +2,7 @@ import { Link} from 'react-router-dom';
 import Cabecalho from '../../components/cabecalho';
 import Rodape from '../../components/rodape';
 import { useState } from 'react';
+import petImageLogo from '../../assents/imagens/logo/ic_resgatpet.png';
 
 function Formulario() {
 
@@ -20,8 +21,7 @@ function Formulario() {
     const [petCorOutros, SetPetCorOutros] = useState('');
     const [petBemEstarOutros, SetPetBemEstarOutros] = useState('');
     const [petBemEstarCheck, SetPetBemEstarCheck] = useState(false);
-    
-    const petImageLogo = '../../imagens/logo/ic_resgatpet.png';
+
     const [petImage, SetPetImage] = useState<string>('');
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];

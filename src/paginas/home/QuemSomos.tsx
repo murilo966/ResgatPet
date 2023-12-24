@@ -1,5 +1,6 @@
 import Cabecalho from '../../components/cabecalho';
 import Rodape from '../../components/rodape';
+import logo from '../../assents/imagens/logo/ic_resgatpet.png'
 
 function QuemSomos(){
     return(
@@ -8,7 +9,7 @@ function QuemSomos(){
             <div className='container'>
                 
                 <div className='logo'>
-                    <img src="../../imagens/logo/ic_resgatpet.png" />
+                    <img src={logo} />
                 </div> 
 
                 <div className='quem-somos'>

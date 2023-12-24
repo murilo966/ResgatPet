@@ -1,4 +1,9 @@
 import { Link } from "react-router-dom"
+import facebook from '../../assents/imagens/rede-sociais/ic_facebook.png' 
+import youtube from '../../assents/imagens/rede-sociais/ic_youtube.png'
+import instagram from '../../assents/imagens/rede-sociais/ic_instagram.png'
+import bauru from '../../assents/imagens/apoio/ic_prefeitura_bauru.png'
+import parceiro from '../../assents/imagens/apoio/ic_parceiro_01.png'
 
 function Rodape() {
     return(
@@ -52,19 +57,19 @@ function Rodape() {
 
                         <div className="icone">
                             <Link to='#'>
-                                <img src="../../imagens/rede-sociais/ic_facebook.png" alt="facebook" />
+                                <img src={facebook} alt="facebook" />
                             </Link>
                         </div>
 
                         <div className="icone">
                             <Link to='#'>
-                                <img src="../../imagens/rede-sociais/ic_youtube.png" alt="youtube" />
+                                <img src={youtube} alt="youtube" />
                             </Link>
                         </div>
 
                         <div className="icone">
                             <Link to='#'>
-                                <img src="../../imagens/rede-sociais/ic_instagram.png" alt="instagram" />
+                                <img src={instagram} alt="instagram" />
                             </Link>
                         </div>
                     </div>                
@@ -78,13 +83,13 @@ function Rodape() {
                     <div className="apoio">
                          <div className="icone">
                             <Link to='#'>                                
-                                <img src="../../imagens/apoio/ic_prefeitura_bauru.png" alt="prefeitura-bauru" />                                
+                                <img src={bauru} alt="prefeitura-bauru" />                                
                             </Link>
                         </div>
                         
                         <div className="icone">
                             <Link to='#'>
-                                <img src="../../imagens/apoio/ic_parceiro_01.png" alt="parceiro_01" />
+                                <img src={parceiro} alt="parceiro_01" />
                             </Link>
                         </div>                        
                     </div>                    
