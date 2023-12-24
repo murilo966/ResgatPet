@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import logo from '../../assents/imagens/logo/ic_resgatpet.png'
 
 function Menu() {
     return(
@@ -6,7 +7,7 @@ function Menu() {
             <div className='cabecalho'>
                 <div className='menu-logo'>
                     <Link to='/'>
-                        <img src="../../imagens/logo/ic_resgatpet.png" />
+                        <img src={logo} />
                     </Link> 
                 </div>
 

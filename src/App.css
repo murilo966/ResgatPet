@@ -11,6 +11,13 @@ a{
   min-height: 100vh;
 }
 
+.container-img{
+  min-height: 100vh;
+  background: url('./assents/imagens/background/im_background-dog.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /* menu navegacao do cabecalho */
 .container-cabecalho{
   background: #E8833B;
@@ -194,14 +201,16 @@ a{
 }
 /* Final do Rodapé */
 
-/* LOGIN - CADASTRAR-SE */
+/* LOGIN */
+
+
+/* CADASTRAR-SE */
 .container-autenticacao{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 900px;
-  height: 370px;
+  position: relative;
+  overflow: hidden;
+  width: 768px;
   max-width: 100%;
+  min-height: 480px;
   margin: 0 auto;
   margin-top: 8px;
   margin-bottom: 8px;
@@ -210,197 +219,180 @@ a{
   border-radius: 10px;
 }
 
-.container-login{
-  width: 300px;
+.container-autenticacao p{
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  margin: 20px 0;
 }
 
-.autenticacao{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 400px;
-  max-width: 100%;
-}
-
-.container-card-login{
-  width: 100%;
-  height: 100%;
-  background: #FFECC7;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-.container-descricao{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 400px;
-  height: 100%;
-}
-
-.titulo-boas-vindas{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.titulo-boas-vindas label{
-  text-align: center;
-  font-weight: bold;
-  color: white;
-  text-shadow: 0 0 6px black;
-  font-size: x-large;
-}
-
-.bem-vindo-descricao{
-  width: 100%;  
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.bem-vindo-descricao label{
-  width: 90%;
-  padding: 18px;
-  color: white;
-  text-shadow: 0 0 6px black;
-  font-weight: bold;
-  font-size: medium;
-}
-
-.titulo-autenticacao, .titulo-new-autenticacao, 
-.input-autenticacao, .aceitar-termos,
-.bt-autenticacao, .separador-ou, .bt-corporacao{
-  text-align: center;
-}
-
-.titulo-autenticacao label{
-  font-weight: bold;
+.form-container h1{
+  font-size: 14px;
   color: #535353;
-  text-transform: uppercase;
 }
 
-.titulo-new-autenticacao label{
-  font-weight: bold;
-  color: #535353;
-  text-transform: uppercase;
-  position: relative;
-  top: 27px;
-}
-
-.imagem-autenticacao {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 300px;
-}
-
-.imagem-autenticacao img{
-  width: 240px;
-  position: relative;
-  top: 27px;
-  object-fit: cover;
-}
-
-.input-autenticacao input{
-  width: 80%;
-  height: 30px;
-  margin-top: 8px;
-}
-
-.esqueceu-senha{
-  font-size: x-small;
-  text-align: center;
-  margin: 3px;  
-}
-
-.esqueceu-senha label{
-  cursor: pointer;
-}
-
-.grupo-separador{
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-}
-
-.linha {
-  flex-grow: 0.37;
-  border-top: 1px solid #ccc;
-}
-
-.separador-ou {
-  padding: 0 10px;
-}
-
-.separador-ou label {
-  font-weight: bold;
-}
-
-.bt-autenticacao button:hover{
-  background: #56924c;
-}
-
-.bt-autenticacao button:active {
-  background: #4B8A40;
-}
-
-.bt-corporacao button:hover{
-  background: #327ec5;
-}
-
-.bt-corporacao button:active{
-  background: #2E77BB;
-}
-
-.bt-novo-cacastro button:hover{
-  background: #ffc65d;
-}
-
-.bt-novo-cacastro button:active{
-  background: #FFBE41;
-}
-
-.bt-autenticacao button{
-  width: 85%;
-  height: 40px;
-  margin-top: 8px;
+.container-autenticacao button{
   background-color: #4B8A40;
-  border: none;
   color: #fff;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
   border-radius: 10px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
   cursor: pointer;
 }
 
-.bt-corporacao button{
-  width: 85%;
-  height: 40px;
-  background-color: #2E77BB;
+.container-autenticacao button.hidden{
+  background-color: transparent;
+  border-color: #fff;
+}
+
+.container-autenticacao form{
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  height:  100%;
+}
+
+.container-autenticacao input{
+  background-color: #eee;
   border: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 10px;
-  cursor: pointer;
+  margin: 3px 0;
+  padding: 10px 4px;
+  font-size: 13px;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
 }
 
-.bt-novo-cacastro{
-  text-align: center;
+.form-container{
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
 }
 
-.bt-novo-cacastro button{
+.criar-conta-pf{
+  left: 0;
   width: 50%;
-  height: 40px;
-  border: 1px solid #FFECC7;
-  background-color: #FFBE41;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 10px;
-  cursor: pointer;
+  z-index: 2;
+}
+
+.container-autenticacao.active .criar-conta-pf{
+  transform: translateX(100%);
+}
+
+.criar-conta-pj{
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.container-autenticacao.active .criar-conta-pj{
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: move 0.6s;
+}
+
+@keyframes move{
+  0%, 49.99%{
+    opacity: 0;
+    z-index: 1;
+  }
+
+  50%, 100%{
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+.toggle-container{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  border-radius: 150px 0 0 100px;
+  z-index: 1000;
+}
+
+.container-autenticacao.active .toggle-container{
+  transform: translateX(-100%);
+  border-radius: 0 150px 100px 0;
+}
+
+.toggle{
+  background: #2968b1;
+  background: linear-gradient(to right, #53a3ff, #2968b1);
+  background-size: cover;
+  height: 100%;
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: all 0.6ss ease-in-out;
+}
+
+.container-autenticacao.active .toggle{
+  transform: translateX(50%);
+}
+
+.toggle-panel{
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0;
+  text-align: center;
+  top: 0;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.toggle-left{
+  transform: translateX(-200%);
+}
+
+.container-autenticacao.active .toggle-left{
+  transform: translateX(0);
+}
+
+.toggle-right{
+  right: 0;
+  transform: translateX(0);
+}
+
+.container-autenticacao.active .toggle-right{
+  transform: translateX(200%);
+}
+
+.aceitar-termos{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+  width: 100%;
+}
+
+.aceitar-termos label{
+  font-size: 14px;
+  margin-left: 8px;
 }
 
 /* Inicio da Recuperar Senha */

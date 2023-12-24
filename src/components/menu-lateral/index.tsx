@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import logo from '../../assents/imagens/logo/ic_resgatpet.png' 
 
 function MenuLateral() {
 
@@ -8,7 +9,7 @@ function MenuLateral() {
         <div className='container-menu'>
             <div className='imagem-usuario'>
                 <Link to='/dashboard/configuracoes'>
-                    <img src="../../imagens/logo/ic_resgatpet.png" alt="imagem-usuario" />
+                    <img src={logo} alt="imagem-usuario" />
                 </Link>
             </div>
 
