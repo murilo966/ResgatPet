@@ -9,7 +9,6 @@ import QuemSomos from './paginas/home/QuemSomos';
 import EsqueceuSenha from './paginas/autenticacao/EsqueceuSenha';
 import Dasboard from './paginas/dashboard/Dashboard';
 import Acompanhar from './paginas/dashboard/Acompanhar';
-import Historico from './paginas/dashboard/Historico';
 import Configuracao from './paginas/dashboard/Configuracao';
 import ResgatarPet from './paginas/dashboard/ResgatarPet';
 import NotFound from './paginas/erros/NotFound';
@@ -32,7 +31,6 @@ function App() {
         <Route path='/dashboard' element={<Dasboard/>}></Route>
         <Route path='/dashboard/resgatar-pet' element={<ResgatarPet/>} ></Route>
         <Route path='/dashboard/acompanhar' element={<Acompanhar/>} ></Route>
-        <Route path='/dashboard/historico' element={<Historico/>} ></Route>
         <Route path='/dashboard/configuracoes' element={<Configuracao/>} ></Route>
       </Routes>
     </div>

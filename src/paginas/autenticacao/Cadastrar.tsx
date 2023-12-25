@@ -130,7 +130,7 @@ function Cadastrar(){
 
             // salva os dados do usuario em memoria
             localStorage.setItem('usuarioNome', usuarioNome);
-            localStorage.setItem('usuarioNome', usuarioCPF);
+            localStorage.setItem('usuarioCPF', usuarioCPF);
             localStorage.setItem('usuarioTefone', usuarioTelefone);
             localStorage.setItem('usuarioEmail', usuarioEmail);
             localStorage.setItem('usuarioSenha', usuarioSenha);
