@@ -122,9 +122,9 @@ function Login() {
 
             <div className='container'>
                 <div className='container-autenticacao' id='login'>
-                    <div className='form-container login'>
+                    <div className='form-container criar-conta-pf'>
                         <form>
-                            <h1>Entrar</h1>
+                            <h1 className='entrar'>Entrar</h1>
                             <img src={titulo} alt="titulo-login" />
 
                             <input type="text" 
@@ -144,12 +144,12 @@ function Login() {
                             <button type="button" onClick={handleLogin}> Entrar </button>
 
                             <Link to='/esqueceu-senha'>
-                                <label> Esqueceu a Senha ?</label>
+                                <label className='esqueceu-senha'> Esqueceu a Senha ?</label>
                             </Link>
                         </form>
                     </div>
 
-                    <div className='form-container criar-conta'>
+                    <div className='form-container criar-conta-pj'>
                         <form>
                             <h1>CRIE SUA CONTA</h1>
                             
@@ -208,12 +208,12 @@ function Login() {
                                 </Link>
                             </div>
                                 
-                            <button type="button" name='entrar' onClick={handleRegistarCPF}> Cadastrar-Se </button> 
+                            <button type="button" name='cadastrar' onClick={handleRegistarCPF}> Cadastrar-Se </button>
                         </form>
                     </div>
 
                     <div className='toggle-container'>
-                        <div className='toggle2'>
+                        <div className='toggle'>
                             <div className="toggle-panel toggle-left">
                                 <h1>Login</h1>
 
@@ -227,7 +227,13 @@ function Login() {
 
                                 <p> Crie sua conta, e venha fazer parte da nossa Familia !</p>
 
-                                <button type="button" className='hidden' onClick={handleFazerLogin} > Criar Sua Conta </button>
+                                <button type="button" className='hidden' onClick={handleFazerLogin} > Criar Uma Conta </button>
+                                
+                                <span>OU</span>
+
+                                <Link to='/cadastrar'>
+                                    <button type="button" className='hidden'  > Conta Corporativa </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
