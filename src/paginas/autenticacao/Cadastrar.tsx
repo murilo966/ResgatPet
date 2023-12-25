@@ -102,7 +102,7 @@ function Cadastrar(){
         }        
     }
 
-    function handleRegistarCPF (){
+    function handleRegistarPF (){
         if (usuarioNome.trim() === '' ||
             usuarioCPF.trim() === '' || 
             usuarioTelefone.trim() === '' || 
@@ -202,7 +202,7 @@ function Cadastrar(){
                                 </Link>
                             </div>
                                 
-                            <button type="button" name='entrar' onClick={handleRegistarCPF}> Cadastrar-Se </button> 
+                            <button type="button" name='entrar' onClick={handleRegistarPF}> Cadastrar-Se </button> 
                         </form>
                     </div>
 
@@ -276,7 +276,7 @@ function Cadastrar(){
 
                                 <p> Crie sua conta, e venha fazer parte da nossa Familia !</p>
 
-                                <button type="button" className='hidden' id='pf' onClick={handlePFClick} > Criar Sua Conta </button>
+                                <button type="button" className='hidden' onClick={handlePFClick} > Criar Sua Conta </button>
                             </div>
 
                             <div className="toggle-panel toggle-right">
@@ -284,7 +284,7 @@ function Cadastrar(){
 
                                 <p> Crie uma conta Corporativa com o seu CNPJ, e venha ajudar a Resgatar os Pets</p>
 
-                                <button type="button" className='hidden' id='pj' onClick={handlePJClick} > Crie Sua Conta Corporativa </button>
+                                <button type="button" className='hidden' onClick={handlePJClick} > Crie Sua Conta Corporativa </button>
                             </div>
                         </div>
                     </div>
