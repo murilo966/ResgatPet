@@ -7,6 +7,10 @@ a{
   color: inherit;
 }
 
+::placeholder{
+  padding-inline-start: 8px;
+}
+
 .container{
   min-height: 100vh;
 }
@@ -230,13 +234,13 @@ a{
 
 .form-container h1.entrar{
   position: relative;
-  top: 37px;
+  top: 27px;
 }
 
 .form-container img{
-  width: 340px;
+  width: 240px;
   position: relative;
-  top: 30px;
+  top: 15px;
   object-fit: cover;
 }
 
@@ -279,6 +283,7 @@ a{
 
 .container-autenticacao input{
   background-color: #eee;
+  border: solid 1px transparent;
   border: none;
   margin: 3px 0;
   padding: 10px 4px;
@@ -286,6 +291,10 @@ a{
   border-radius: 8px;
   width: 100%;
   outline: none;
+}
+
+.container-autenticacao input:focus{
+  border: solid 1px #679aff;
 }
 
 .form-container{
@@ -419,7 +428,6 @@ a{
 }
 
 /* Inicio da Recuperar Senha */
-
 .titulo-recuperacao{
   color: #535353;
   font-weight: bold;
@@ -460,77 +468,12 @@ a{
 }
 /* Final da Recuperar Senha */
 
-/* Dashboard */
+/* DASHBOARD */
 .dashboard{
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: row;
-}
-
-.container-menu {
-  width: 200px;
-  height: 90vh;
-  margin-top: 10px;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border: 1px solid #FFBE41;
-  background-color: #FFECC7;
-}
-
-.imagem-usuario {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 15px;
-}
-
-.imagem-usuario img{
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
-}
-
-.nome-usuario{
-  width: 100%;
-  text-align: center; 
-  font-weight: bold;
-}
-
-.nome-usuario label{
-  text-align: center;
-  font-size: smaller;
-}
-
-.menu-dashboard {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-right: 8px;
-}
-
-.bt-menu{
-  width: 160px;
-  height: 25px;
-  color: #fff;
-  font-weight: bold;
-  text-align: right;
-  background-color: #2E77BB;
-  border: none;
-  padding: 0px 25px;
-  margin-bottom: 5px;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  cursor: pointer;
-}
-
-.bt-menu:hover{
-  background: #3a86ce;
-}
-
-.bt-menu:active {
-  background: #2E77BB;
 }
 
 .container-painel{
@@ -548,7 +491,7 @@ a{
   background-color: #FFECC7;
 }
 
-.titulo{
+.container-painel h1{ 
   margin-top: 12px;
   margin-bottom: 12px;
   text-align: center;
@@ -557,111 +500,84 @@ a{
   color: #535353;
 }
 
-.usuario-logado{
+.container-bem-vindo{
   display: flex;
   flex-direction: row;
-  margin-top: 12px;
-  margin-inline-start: 10px;
+  align-items: baseline;
+  justify-content: flex-start;
+  padding: 8px 0;
 }
 
-.bem-vindo{
+.container-bem-vindo label{
   font-size: large; 
   font-weight: bold;
+  padding: 0 8px;
+  text-transform: capitalize;
 }
 
-.nome-usuario-logado{
-  font-size: large;
-  margin-inline-start: 8px;
-}
-
-.painel-dasboard{
+.painel{
   display: flex;
   flex-direction: column;
 }
 
-.painel-dasboard-top{  
+/* DASHBOARD - MENU LATERAL */
+.container-menu {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 200px;
+  height: 90vh;
+  margin-top: 10px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: 1px solid #FFBE41;
+  background-color: #FFECC7;
 }
 
-.painel-dasboard-baixo{  
-  display: flex;
-  flex-direction: row;
+.container-menu img{
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
-.painel-dasboard-esquerdo-top label, 
-.painel-dasboard-direito-top label, 
-.painel-dasboard-esquerdo-baixo label, 
-.painel-dasboard-direito-baixo label{
-  font-size: small; 
+.container-menu label{
+  text-align: center; 
   font-weight: bold;
+  font-size: small;
+  text-transform: capitalize;
 }
 
-.painel-dasboard-esquerdo-top{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  height: 100%;
-  margin-top: 8px;
-  margin-inline-start: 10px;
-  margin-inline-end: 10px;
-  background-color: #FFF8EC;
+.container-menu button{
+  width: 170px;
+  height: 25px;
+  color: #fff;
+  font-weight: bold;
+  text-align: right;
+  background-color: #2E77BB;
+  border: none;
+  padding: 0 25px;
+  margin: 1px 2px 3px 0;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  cursor: pointer;
 }
 
-.painel-dasboard-direito-top{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  margin-top: 8px;
-  margin-inline-end: 10px;
-  background-color: #FFF8EC;
+.container-menu button:hover{
+  background: #3a86ce;
 }
 
-.painel-dasboard-esquerdo-baixo{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  margin-top: 8px;
-  margin-inline-start: 10px;
-  margin-inline-end: 10px;
-  background-color: #FFF8EC;
+.container-menu button:active {
+  background: #2E77BB;
 }
 
-.painel-dasboard-direito-baixo{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  height: 100%;
-  margin-top: 8px;
-  margin-inline-end: 10px;
-  background-color: #FFF8EC;
-}
-
-.tabela-acompanhar,
-.tabela-historico, 
-.tabela-resgatar-pet{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 80%; 
-  height: 300px;
-  margin: 0 auto;
-  background-color: #FFF8EC;
-}
-
+/* DASHBOARD - CONFIGURAÇõES */
 .painel-configuracao{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-width: 200px;
   width: 30%;
   height: 60vh;
@@ -669,63 +585,73 @@ a{
   padding: 10px;
   margin-top: 8px;
   margin-bottom: 8px;
-  background-color: #FFF8EC; 
+  background-color: white; 
   border-radius: 10px;
 }
 
-.bt-editar-cadastro{
+.painel-configuracao h1{
+  font-size: x-large;
+  text-align: center;
+  min-width: 200px;
+}
+
+.painel-configuracao input{
   width: 100%;
-  margin-top: 10px;
+  background-color: #eee;
+  border: solid 1px transparent;
+  margin: 3px 0;
+  padding: 13px 0;
+  font-size: 13px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.painel-configuracao input:focus{
+  border: solid 1px #679aff;
+}
+
+.container-botoes{
   display: flex;
   flex-direction: row;
-  margin-top: 8px;
+  align-items: center; 
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.bt-salvar-configuracao, 
-.bt-cancelar-configuracao{
-  width: 100%;
-  height: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.bt-salvar{
-  width: 100%;
-  height: 30px;
-  background-color: #4B8A40;
-  border: none;
+.container-botoes button{
   color: #fff;
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
   border-radius: 10px;
-}
-
-.bt-cancelar{
-  width: 100%;
-  height: 30px;
-  background-color: #808080;
-  border: none;
-  color: #fff;
-  font-size: 15px;
   font-weight: bold;
-  border-radius: 10px; 
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 10px 8px;
+  cursor: pointer;
 }
 
-.bt-salvar:hover{
+.container-botoes button.bt-salvar{
+  background-color: #4B8A40;
+}
+
+.container-botoes button.bt-cancelar{
+  background-color: #808080;
+}
+
+.container-botoes button.bt-salvar:hover{
   background: #56924c;
 }
 
-.bt-salvar:active {
+.container-botoes button.bt-salvar:active {
   background: #4B8A40;
 }
 
-.bt-cancelar:hover{
+.container-botoes button.bt-cancelar:hover{
   background: #8a8a8a;
 }
 
-.bt-cancelar:active{
+.container-botoes button.bt-cancelar:active{
   background: #808080;
 }
 
@@ -928,7 +854,19 @@ a{
 
 #input{
   height: 20px;
-  padding: 3px;
+  background-color: #eee;
+  border: solid 1px white;
+  margin: 3px 0;
+  padding: 10px 4px;
+  font-size: 13px;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+}
+
+#input:focus{
+  border: solid 1px #679aff;
+  background-color: #fafafa;
 }
 
 #label-formulario{
@@ -943,8 +881,17 @@ a{
 #input-outros{
   width: 40%;
   height: 10px;
-  padding: 3px;
   margin-inline-start: 8px;
+  background-color: #eee;
+  border: solid 1px #eee;
+  padding: 5px 4px;
+  font-size: 13px;
+  outline: none;
+}
+
+#input-outros:enabled{
+  border: solid 1px #679aff;
+  background-color: white;
 }
 
 #radios{

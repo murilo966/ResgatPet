@@ -1,5 +1,6 @@
 import Cabecalho from '../../components/cabecalho';
 import MenuLateral from '../../components/menu-lateral';
+import EnviarPet from '../../components/painel/enviar-pet';
 import Rodape from '../../components/rodape';
 
 function Dasboard (){
@@ -14,40 +15,26 @@ function Dasboard (){
                         <MenuLateral/>
 
                         <div className='container-painel'>
-                            <div className='titulo'>
-                                <label>Dashboard</label>
-                            </div>
+                            <h1>Dashboard</h1>
 
-                            <div className='usuario-logado'>
+                            <div className='container-bem-vindo'>
                                 
-                                <div className='bem-vindo'>                       
-                                    <label>Olá, Bem-Vindo:</label>
-                                </div>
+                                <h3>Olá, Bem-Vindo:</h3>
                                 
-                                <div className='nome-usuario-logado'>
-                                    {usuarioNome}
-                                </div>
+                                <label>{usuarioNome}</label> 
                             </div>   
 
-                            <div className='painel-dasboard'>
-                                <div className='painel-dasboard-top'>
-                                    <div className='painel-dasboard-esquerdo-top'>
-                                        <label> ENVIAR NOVO <br /> RESGATE PET</label>
-                                    </div>
+                            <div className='painel'>
+                                <div className='painel-top'>
+                                    <EnviarPet/>
 
-                                    <div className='painel-dasboard-direito-top'>
-                                        <label> LISTA DE PETS <br /> RESGATADO COM SUCESSO</label>
-                                    </div>
+                                    <label> LISTA DE PETS <br /> RESGATADO COM SUCESSO</label>
                                 </div>
 
-                                <div className='painel-dasboard-baixo'>
-                                    <div className='painel-dasboard-esquerdo-baixo'>
-                                        <label> LISTA DE TODOS OS PETS <br /> CADASTRADOS NAS ULTIMAS HORAS</label>
-                                    </div>
+                                <div className='painel-baixo'>
+                                    <label> LISTA DE TODOS OS PETS <br /> CADASTRADOS NAS ULTIMAS HORAS</label>
 
-                                    <div className='painel-dasboard-direito-baixo'>
-                                        <label> LISTA DE ONG`S</label>
-                                    </div>
+                                    <label> LISTA DE ONG`S</label>
                                 </div>
                             </div>
                         </div>

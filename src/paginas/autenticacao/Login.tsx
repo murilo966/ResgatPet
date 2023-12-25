@@ -76,7 +76,10 @@ function Login() {
             navigate('/dashboard');
 
             // salva os dados do usuario em memoria
+            localStorage.setItem('usuarioNome', usuarioNome);
+            localStorage.setItem('usuarioCPF', usuarioCPF);
             localStorage.setItem('usuarioEmail', usuarioEmail);
+            localStorage.setItem('usuarioTefone', usuarioTelefone);
             localStorage.setItem('usuarioSenha', usuarioSenha);
         }        
     }
@@ -99,17 +102,20 @@ function Login() {
         else{
             alert(
                 "\nUsuario: " + usuarioNome +
-                "\nUsuario: " + usuarioCPF +
-                "\nTelefone: " + usuarioEmail +
-                "\nE-Mail: " + usuarioTelefone +
+                "\nCPF: " + usuarioCPF +
+                "\nTelefone: " + usuarioTelefone +
+                "\nE-Mail: " + usuarioEmail +
                 "\nSenha: " + usuarioSenha
-                )            
+                )
 
-            navigate('/login');
+            const container = document.getElementById('login');
+            if (container) {
+              container.classList.remove('active');
+            }
 
             // salva os dados do usuario em memoria
             localStorage.setItem('usuarioNome', usuarioNome);
-            localStorage.setItem('usuarioNome', usuarioCPF);
+            localStorage.setItem('usuarioCPF', usuarioCPF);
             localStorage.setItem('usuarioTefone', usuarioTelefone);
             localStorage.setItem('usuarioEmail', usuarioEmail);
             localStorage.setItem('usuarioSenha', usuarioSenha);

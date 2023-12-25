@@ -3,8 +3,11 @@ import Cabecalho from '../../components/cabecalho';
 import Rodape from '../../components/rodape';
 import { useState } from 'react';
 import petImageLogo from '../../assents/imagens/logo/ic_resgatpet.png';
+import { useNavigate } from 'react-router-dom';
 
 function Formulario() {
+
+    const navigate = useNavigate();
 
     // dados usuario
     const usuarioNome = localStorage.getItem('usuarioNome') ?? "";
@@ -103,6 +106,11 @@ function Formulario() {
             "\nBem Estar: " + petBemEstar + "," + petBemEstarOutros +
             "\nSalvo com Sucesso!"
         )
+    }
+
+
+    function handleClickCancelar(){
+        navigate(-1);
     }
 
     return(
@@ -277,15 +285,11 @@ function Formulario() {
 
                     <div className='pet-cadastro'>
                         <div className='bt-salvar-pet'>
-                            <Link to='#'>
-                                <button id='bt-salvar' type="button" name='salvar' onClick={handleClickSalvar} > Salvar </button>
-                            </Link>
+                            <button id='bt-salvar' type="button" name='salvar' onClick={handleClickSalvar} > Salvar </button>
                         </div>
 
                         <div className='bt-cancelar-pet'>
-                            <Link to='#'>
-                                <button id='bt-cancelar' type="button" name='cancelar'> Cancelar </button>
-                            </Link>
+                            <button id='bt-cancelar' type="button" name='cancelar' onClick={handleClickCancelar}> Cancelar </button>
                         </div>
                     </div>
 
