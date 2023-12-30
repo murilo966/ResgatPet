@@ -1,6 +1,5 @@
 import Cabecalho from '../../components/cabecalho';
 import MenuLateral from '../../components/menu-lateral';
-import EnviarPet from '../../components/painel/enviar-pet';
 import Rodape from '../../components/rodape';
 
 function Dasboard (){
@@ -26,8 +25,6 @@ function Dasboard (){
 
                             <div className='painel'>
                                 <div className='painel-top'>
-                                    <EnviarPet/>
-
                                     <label> LISTA DE PETS <br /> RESGATADO COM SUCESSO</label>
                                 </div>
 

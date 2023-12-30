@@ -11,9 +11,7 @@ function Acompanhar() {
                         <MenuLateral/>
 
                         <div className='container-painel'>
-                            <div className='titulo'>
-                                <label>Acompanhar</label>
-                            </div>              
+                            <h1>Acompanhar</h1>
 
                             <div className='tabela-acompanhar'>
                                 <label> TABELA DOS PETS ENVIADOS</label>
