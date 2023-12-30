@@ -1,4 +1,3 @@
-import { Link} from 'react-router-dom';
 import Cabecalho from '../../components/cabecalho';
 import Rodape from '../../components/rodape';
 import { useState } from 'react';
@@ -191,7 +190,10 @@ function Formulario() {
                                 </div>
                             </div>
                         </div>
-
+                        <div className='titulo-formulario'>
+                                <label>Raça</label>
+                        </div>
+                        
                         <div className='container-pet-cor'>
                             <div className='titulo-formulario'>
                                 <label>Cor</label>
@@ -250,7 +252,7 @@ function Formulario() {
 
                         <div className='container-pet-bem-estar'>
                             <div className='titulo-formulario'>
-                                <label>Bem Estar do Pet</label>
+                                <label>Saúde do Pet</label>
                             </div>
 
                             <div className='pet-bem-estar'>
