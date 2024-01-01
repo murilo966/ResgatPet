@@ -16,10 +16,12 @@ function Formulario() {
     // dados pet
     const [petEndereco, SetPetEndereco] = useState('');
     const [petSexo, SetPetSexo] = useState('');
+    const [petRaca, SetPetRaca] = useState('');
     const [petCor, SetPetCor] = useState('');
     const [petAcessorios, SetPetAcessorios] = useState<string[]>([]);
     const [petBemEstar, SetPetBemEstar] = useState<string[]>([]);
 
+    const [petRacaOutros, SetPetRacaOutros] = useState('');
     const [petCorOutros, SetPetCorOutros] = useState('');
     const [petBemEstarOutros, SetPetBemEstarOutros] = useState('');
     const [petBemEstarCheck, SetPetBemEstarCheck] = useState(false);
@@ -27,62 +29,75 @@ function Formulario() {
     const [petImage, SetPetImage] = useState<string>('');
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
-    
+
         if (file && file.type.startsWith('image/')) {
-          SetPetImage(URL.createObjectURL(file));
-        } else {          
-          alert('Por favor, selecione uma imagem válida.');
+            SetPetImage(URL.createObjectURL(file));
+        } else {
+            alert('Por favor, selecione uma imagem válida.');
         }
     }
 
-    function handleInputPetEndereco (event: React.ChangeEvent< HTMLInputElement >) {
-        SetPetEndereco(event.target.value);        
+    function handleInputPetEndereco(event: React.ChangeEvent<HTMLInputElement>) {
+        SetPetEndereco(event.target.value);
     }
 
-    function handleInputPetSexo (event: React.ChangeEvent< HTMLInputElement >) {
-        if (event.target.checked){
-            SetPetSexo(event.target.value);  
+    function handleInputPetSexo(event: React.ChangeEvent<HTMLInputElement>) {
+        if (event.target.checked) {
+            SetPetSexo(event.target.value);
         }
     }
 
-    function handleInputPetCor (event: React.ChangeEvent< HTMLInputElement >) {
-        if (event.target.checked){
-            SetPetCor(event.target.value);  
+    function handleInputPetRaca(event: React.ChangeEvent<HTMLInputElement>) {
+        if (event.target.checked) {
+            SetPetRaca(event.target.value);
+        }
+
+        // Limpa o campo texto ao selecionar outros radio
+        SetPetRacaOutros('')
+    }
+
+    function handleInputPetRacaOutros(event: React.ChangeEvent<HTMLInputElement>) {
+        SetPetRacaOutros(event.target.value);
+    }
+
+    function handleInputPetCor(event: React.ChangeEvent<HTMLInputElement>) {
+        if (event.target.checked) {
+            SetPetCor(event.target.value);
         }
 
         // Limpa o campo texto ao selecionar outros radio
         SetPetCorOutros('')
     }
 
-    function handleInputPetCorOutros (event: React.ChangeEvent< HTMLInputElement >) {        
+    function handleInputPetCorOutros(event: React.ChangeEvent<HTMLInputElement>) {
         SetPetCorOutros(event.target.value);
-    } 
+    }
 
     const handleInputPetAcessorios = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, checked } = event.target;
-    
+
         if (checked) {
-          // Se marcado, adiciona à lista
-          SetPetAcessorios((prevAcessorios) => [...prevAcessorios, name]);
+            // Se marcado, adiciona à lista
+            SetPetAcessorios((prevAcessorios) => [...prevAcessorios, name]);
         } else {
-          // Se desmarcado, remove da lista
-          SetPetAcessorios((prevAcessorios) => prevAcessorios.filter((item) => item !== name));
+            // Se desmarcado, remove da lista
+            SetPetAcessorios((prevAcessorios) => prevAcessorios.filter((item) => item !== name));
         }
     }
-  
+
     const handleInputPetBemEstar = (event: React.ChangeEvent<HTMLInputElement>) => {
-          const { name, checked } = event.target;
-    
-          if (checked) {
+        const { name, checked } = event.target;
+
+        if (checked) {
             SetPetBemEstar((prevBemEstar) => [...prevBemEstar, name]);
-          } else {
+        } else {
             SetPetBemEstar((prevBemEstar) => prevBemEstar.filter((item) => item !== name));
-          }
+        }
     }
 
-    function handleInputPetBemEstarOutros (event: React.ChangeEvent< HTMLInputElement >) {
+    function handleInputPetBemEstarOutros(event: React.ChangeEvent<HTMLInputElement>) {
         SetPetBemEstarOutros(event.target.value)
-    } 
+    }
 
     const handlePetBemEstarOutros = () => {
         SetPetBemEstarCheck(!petBemEstarCheck);
@@ -92,7 +107,7 @@ function Formulario() {
         }
     }
 
-    function handleClickSalvar(){
+    function handleClickSalvar() {
         alert(
             "\nNome Usuario: " + usuarioNome +
             "\nTelefone: " + usuarioTelefone +
@@ -100,6 +115,7 @@ function Formulario() {
             "\nPet Foto: " + petImage +
             "\nEndereço: " + petEndereco +
             "\nSexo: " + petSexo +
+            "\nRaca: " + petRaca + ": " + petRacaOutros +
             "\nCor: " + petCor + ": " + petCorOutros +
             "\nAcessorios: " + petAcessorios +
             "\nBem Estar: " + petBemEstar + "," + petBemEstarOutros +
@@ -108,196 +124,232 @@ function Formulario() {
     }
 
 
-    function handleClickCancelar(){
+    function handleClickCancelar() {
         navigate(-1);
     }
 
-    return(
+    return (
         <div>
-            <Cabecalho/>
+            <Cabecalho />
             <div className='container'>
                 <div className='container-formulario'>
                     <div className='dados-pessoais'>
-                        <div className='titulo-formulario'>
-                            <label>Dados Pessoais</label>
-                        </div>
-                        
-                        <div className='nome-usuario-formulario'>
-                            <label id='label-formulario'>Seu Nome</label>
-                            <input id='input' type="text" 
-                                name="user-name" 
-                                value={usuarioNome} 
-                                disabled
-                            />
-                        </div>
+                        <h1>Dados Pessoais</h1>
 
-                        <div className='container-telefone-email'>
-                            <div className='coluna-usuario'>
-                                <label id='label-formulario'>Telefone</label>
-                                <input id='input' type="tel" 
-                                    name="user-tel" 
-                                    value={usuarioTelefone} 
+                        <label>Seu Nome</label>
+                        <input type="text"
+                            name="user-name"
+                            value={usuarioNome}
+                            disabled
+                        />
+
+                        <div className="rows">
+                            <div>
+                                <label>Telefone</label>
+                                <input type="tel"
+                                    name="user-tel"
+                                    value={usuarioTelefone}
                                     disabled
                                 />
                             </div>
-
-                            <div className='coluna-usuario'>
-                                <label id='label-formulario'>E-Mail</label>
-                                <input id='input' type="email" 
-                                    name="user-email" 
-                                    value={usuarioEmail} 
+                            <div>
+                                <label>E-Mail</label>
+                                <input type="email"
+                                    name="user-email"
+                                    value={usuarioEmail}
                                     disabled
                                 />
                             </div>
-                        </div> 
+                        </div>
                     </div>
 
                     <div className='dados-pet'>
-                        <div className='container-pet-econtroado'>
-                            <div className='titulo-formulario'>
-                                <label>Pet Econtrado</label>
-                            </div>
-                            <div className='pet'>
-                                <div className='foto-pet' >
-                                    <img src={petImage || petImageLogo} /> 
-                                </div>    
+                        <h1>Pet Econtrado</h1>
+                        <div className="img-pet">
+                            <img className='petimg' src={petImage || petImageLogo} />
+                        </div>
+
+                        <input type="file" onChange={handleImageChange} accept="image/*" />
+                        <label >Endereço na onde foi encontrado o Pet </label>
+                        <input type="text" name="pet-endereco" value={petEndereco} onChange={handleInputPetEndereco} />
+
+                        <h1>Sexo</h1>
+                        <div className="row">
+                            <div>
+                                <input className='radios' type="radio" name="sexo-macho" checked={petSexo === 'Macho'} value="Macho" onChange={handleInputPetSexo} />
+                                <label>Macho </label>
                             </div>
 
-                            <div className='update-imagem'>
-                                <input type="file" onChange={handleImageChange} accept="image/*"/>
-                            </div>                                                      
-
-                            <div className='endereco-pet'>
-                                <label id='label-formulario'>Endereço na onde foi encontrado o Pet </label>
-                                <input id='input' type="text" name="pet-endereco" value={petEndereco} onChange={handleInputPetEndereco}/>
+                            <div>
+                                <input className='radios' type="radio" name="sexo-femea" checked={petSexo === 'Fêmea'} value="Fêmea" onChange={handleInputPetSexo} />
+                                <label>Fêmea </label>
                             </div>
                         </div>
 
-                        <div className='container-pet-sexo'>
-                            <div className='titulo-formulario'>
-                                <label>Sexo</label>
-                            </div>
-
-                            <div className="sexo-pet">
-                                <div className='sexo-macho'>
-                                    <input id='radios' type="radio" name="sexo-macho" checked={petSexo === 'Macho'} value="Macho" onChange={handleInputPetSexo}/>
-                                    <label>Macho </label>  
+                        <h1>Raça</h1>
+                        <div className="column">
+                            <div className="row">
+                                <div>
+                                    <input className='radios' type="radio" name="raca-poodle" checked={petRaca === 'Poodle'} value="Poodle" onChange={handleInputPetRaca} />
+                                    <label>Poodle </label>
                                 </div>
-    
-                                <div className='sexo-femea'>
-                                    <input id='radios' type="radio" name="sexo-femea" checked={petSexo === 'Fêmea'} value="Fêmea" onChange={handleInputPetSexo}/>
-                                    <label>Fêmea </label>
+
+                                <div>
+                                    <input className='radios' type="radio" name="raca-pitbull" checked={petRaca === 'Pitbull'} value="Pitbull" onChange={handleInputPetRaca} />
+                                    <label>Pitbull </label>
+                                </div>
+
+                                <div>
+                                    <input className='radios' type="radio" name="raca-chow" checked={petRaca === 'Chow Chow'} value="Chow Chow" onChange={handleInputPetRaca} />
+                                    <label>Chow Chow </label>
+                                </div>
+
+                                <div>
+                                    <input className='radios' type="radio" name="raca-bulldog" checked={petRaca === 'Bulldog'} value="Bulldog" onChange={handleInputPetRaca} />
+                                    <label>Bulldog </label>
+                                </div>
+                            </div>
+
+                            <div className="row">
+                                <div>
+                                    <input className='radios' type="radio" name="raca-srd" checked={petRaca === 'SRD'} value="SRD" onChange={handleInputPetRaca} />
+                                    <label>SRD </label>
+                                </div>
+
+                                <div>
+                                    <input className='radios' type="radio" name="cor-outros" checked={petRaca === 'Outros'} value="Outros" onChange={handleInputPetRaca} />
+                                    <label>Outros </label>
+                                    <input className='outros' type="text" name="outra-cor" value={petRacaOutros} disabled={petRaca != "Outros"} onChange={handleInputPetRacaOutros} />
                                 </div>
                             </div>
                         </div>
-                        <div className='titulo-formulario'>
-                                <label>Raça</label>
-                        </div>
-                        
-                        <div className='container-pet-cor'>
-                            <div className='titulo-formulario'>
-                                <label>Cor</label>
-                            </div>
 
-                            <div className="pet-cor">
-                                <div className='coluna-1'>
-                                    <input id='radios' type="radio" name="cor-preto" checked={petCor === 'Preto'} value="Preto" onChange={handleInputPetCor} />
-                                    <label>Preto </label>    
-                                    
-                                    <input id='radios' type="radio" name="cor-branco" checked={petCor === 'Branco'} value="Branco" onChange={handleInputPetCor} />
+                        <h1>Cor</h1>
+                        <div className="column">
+                            <div className="row">
+                                <div>
+                                    <input className='radios' type="radio" name="cor-preto" checked={petCor === 'Preto'} value="Preto" onChange={handleInputPetCor} />
+                                    <label>Preto </label>
+                                </div>
+
+                                <div>
+                                    <input className='radios' type="radio" name="cor-branco" checked={petCor === 'Branco'} value="Branco" onChange={handleInputPetCor} />
                                     <label>Branco </label>
-                                    
-                                    <input id='radios' type="radio" name="cor-cinza" checked={petCor === 'Cinza'} value="Cinza" onChange={handleInputPetCor} />
+                                </div>
+
+                                <div>
+                                    <input className='radios' type="radio" name="cor-cinza" checked={petCor === 'Cinza'} value="Cinza" onChange={handleInputPetCor} />
                                     <label>Cinza </label>
+                                </div>
 
-                                    <input id='radios' type="radio" name="cor-vermelho" checked={petCor === 'Vermelho'} value="Vermelho" onChange={handleInputPetCor} />
+                                <div>
+                                    <input className='radios' type="radio" name="cor-vermelho" checked={petCor === 'Vermelho'} value="Vermelho" onChange={handleInputPetCor} />
                                     <label>Vermelho </label>
-                                    
-                                    <input id='radios' type="radio" name="cor-creme" checked={petCor === 'Creme'} value="Creme" onChange={handleInputPetCor} />
-                                    <label>Creme </label>  
                                 </div>
 
-                                <div className='coluna-2'>
-                                    <input id='radios' type="radio" name="cor-marrom" checked={petCor === 'Marrom'} value="Marrom" onChange={handleInputPetCor} />
+                                <div>
+                                    <input className='radios' type="radio" name="cor-creme" checked={petCor === 'Creme'} value="Creme" onChange={handleInputPetCor} />
+                                    <label>Creme </label>
+                                </div>
+                            </div>
+
+                            <div className="row">
+                                <div>
+                                    <input className='radios' type="radio" name="cor-marrom" checked={petCor === 'Marrom'} value="Marrom" onChange={handleInputPetCor} />
                                     <label>Marrom </label>
-                                    
-                                    <input id='radios' type="radio" name="cor-caramelo" checked={petCor === 'Caramelo'} value="Caramelo" onChange={handleInputPetCor} />
+                                </div>
+
+                                <div>
+                                    <input className='radios' type="radio" name="cor-caramelo" checked={petCor === 'Caramelo'} value="Caramelo" onChange={handleInputPetCor} />
                                     <label>Caramelo </label>
+                                </div>
 
-                                    <input id='radios' type="radio" name="cor-outros" checked={petCor === 'Outros'} value="Outros" onChange={handleInputPetCor} />
+                                <div>
+                                    <input className='radios' type="radio" name="cor-outros" checked={petCor === 'Outros'} value="Outros" onChange={handleInputPetCor} />
                                     <label>Outros </label>
-                                    <input id='input-outros' type="text" name="outra-cor" value={petCorOutros} disabled={petCor != "Outros"} onChange={handleInputPetCorOutros} />
+                                    <input className='outros' type="text" name="outra-cor" value={petCorOutros} disabled={petCor != "Outros"} onChange={handleInputPetCorOutros} />
                                 </div>
                             </div>
                         </div>
 
-                        <div className='container-pet-acessorios'>
-                            <div className='titulo-formulario'>
-                                <label>Acessórios</label>
-                            </div>
-
-                            <div className='pet-acessorio'>
-                                <div className='coluna-1'>
-                                    <input id='checkbox' type="checkbox" name='coleira' onChange={handleInputPetAcessorios} />
+                        <h1>Acessórios</h1>
+                        <div className="column">
+                            <div className="row">
+                                <div>
+                                    <input className='checkbox' type="checkbox" name='coleira' onChange={handleInputPetAcessorios} />
                                     <label>Coleira </label>
-                                    
-                                    <input id='checkbox' type="checkbox" name='corrente-guia' onChange={handleInputPetAcessorios} />
+                                </div>
+
+                                <div>
+                                    <input className='checkbox' type="checkbox" name='corrente-guia' onChange={handleInputPetAcessorios} />
                                     <label>Corrente / Guia </label>
-                                    
-                                    <input id='checkbox' type="checkbox" name='focinheira' onChange={handleInputPetAcessorios} />
+                                </div>
+
+                                <div>
+                                    <input className='checkbox' type="checkbox" name='focinheira' onChange={handleInputPetAcessorios} />
                                     <label>Focinheira </label>
-                                </div> 
+                                </div>
                             </div>
                         </div>
 
-                        <div className='container-pet-bem-estar'>
-                            <div className='titulo-formulario'>
-                                <label>Saúde do Pet</label>
+                        <h1>Saúde</h1>
+                        <div className="column">
+                            <div className='row'>
+                                <div>
+                                    <input className='checkbox' type="checkbox" name='assustado' onChange={handleInputPetBemEstar} />
+                                    <label>Assustado </label>
+                                </div>
+
+                                <div>
+                                    <input className='checkbox' type="checkbox" name='ferido' onChange={handleInputPetBemEstar} />
+                                    <label>Ferido </label>
+                                </div>
+
+                                <div>
+                                    <input className='checkbox' type="checkbox" name='doente' onChange={handleInputPetBemEstar} />
+                                    <label>Doente </label>
+                                </div>
+
+                                <div>
+                                    <input className='checkbox' type="checkbox" name='alegre' onChange={handleInputPetBemEstar} />
+                                    <label>Alegre </label>
+                                </div>
                             </div>
 
-                            <div className='pet-bem-estar'>
-                                <div className='coluna-1'>
-                                    <input id='checkbox' type="checkbox" name='assustado' onChange={handleInputPetBemEstar}/>
-                                    <label>Assustado </label>
-                                    
-                                    <input id='checkbox' type="checkbox" name='ferido' onChange={handleInputPetBemEstar}/>
-                                    <label>Ferido </label>
-                                    
-                                    <input id='checkbox' type="checkbox" name='doente' onChange={handleInputPetBemEstar}/>
-                                    <label>Doente </label>
-
-                                    <input id='checkbox' type="checkbox" name='alegre' onChange={handleInputPetBemEstar}/>
-                                    <label>Alegre </label>
-                                </div>                          
-
-                                <div className='coluna-2'>
-                                    <input id='checkbox' type="checkbox" name='agressivo' onChange={handleInputPetBemEstar}/>
+                            <div className='row'>
+                                <div>
+                                    <input className='checkbox' type="checkbox" name='agressivo' onChange={handleInputPetBemEstar} />
                                     <label>Agressivo </label>
+                                </div>
 
-                                    <input id='checkbox' type="checkbox" name='calmo' onChange={handleInputPetBemEstar}/>
+                                <div>
+                                    <input className='checkbox' type="checkbox" name='calmo' onChange={handleInputPetBemEstar} />
                                     <label>Calmo </label>
+                                </div>
 
-                                    <input id='checkbox' type="checkbox" name='outros' checked={petBemEstarCheck} onChange={handlePetBemEstarOutros}/>
+                                <div>
+                                    <input className='checkbox' type="checkbox" name='outros' checked={petBemEstarCheck} onChange={handlePetBemEstarOutros} />
                                     <label>Outros </label>
-                                    <input id='input-outros' type="text" name='text-outros' value={petBemEstarOutros} disabled={!petBemEstarCheck} onChange={handleInputPetBemEstarOutros}/>
+                                    <input className='outros' type="text" name='text-outros' value={petBemEstarOutros} disabled={!petBemEstarCheck} onChange={handleInputPetBemEstarOutros} />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="column">
+                            <div className='row'>
+                                <div>
+                                    <button className='bt-salvar' type="button" name='salvar' onClick={handleClickSalvar} > Salvar </button>
+                                </div>
+
+                                <div>
+                                    <button className='bt-cancelar' type="button" name='cancelar' onClick={handleClickCancelar}> Cancelar </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div className='pet-cadastro'>
-                        <div className='bt-salvar-pet'>
-                            <button id='bt-salvar' type="button" name='salvar' onClick={handleClickSalvar} > Salvar </button>
-                        </div>
-
-                        <div className='bt-cancelar-pet'>
-                            <button id='bt-cancelar' type="button" name='cancelar' onClick={handleClickCancelar}> Cancelar </button>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-            <Rodape/>
+            <Rodape />
         </div>
     )
 }
