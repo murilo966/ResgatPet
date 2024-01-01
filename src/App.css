@@ -706,7 +706,25 @@ a{
   border-radius: 10px;
 }
 
-.titulo-formulario{
+.container-formulario input{
+  width: 100%;
+  height: 40px;
+  background-color: #eee;
+  border: solid 1px white;
+  margin: 3px 0;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  font-size: 13px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.container-formulario input:focus{
+  border: solid 1px #679aff;
+  background-color: #fafafa;
+}
+
+.container-formulario h1{
   margin-top: 12px;
   margin-bottom: 12px;
   text-align: center;
@@ -716,27 +734,43 @@ a{
   background: #679aff;
 }
 
-.dados-pessoais{
-  width: 90%;
-  display: flex;
-  flex-direction: column;
+.container-formulario label{
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px;
+  text-align: left;
+  font-size: small;
+  font-weight: bold;
+  color: #535353;
 }
 
-.container-telefone-email{
-  width: 100%;
+.rows{
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.coluna-usuario{
+.row{
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: baseline;
+  gap: 10px;
 }
 
-.nome-usuario-formulario{
-  width: 100%;
-  padding-bottom: 8px;
+.column{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: stretch;
+}
+
+.dados-pessoais{
+  width: 90%;
   display: flex;
   flex-direction: column;
 }
@@ -747,140 +781,22 @@ a{
   flex-direction: column;
 }
 
-.pet{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 8px;
-}
-
-.foto-pet{
+.dados-pet img{
   width: 150px;
   height: 150px;
   padding: 10px;
   border-radius: 5px;
 }
 
-.foto-pet img{
-  width: 150px;
-  height: 150px;
-}
-
-.endereco-pet{
-  width: 100%;
+.img-pet{
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.endereco-pet input{
-  padding: 3px;
-}
-
-.sexo-pet, .pet-acessorio{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.sexo-macho, .sexo-femea{
-  width: 20%;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: nowrap;
-  flex-direction: row;
-}
-
-.pet-cor{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.coluna-1{
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-bottom: 8px;
-}
-
-.coluna-2{
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.pet-acessorio{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.pet-bem-estar{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.pet-cadastro{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.bt-salvar-pet{
-  width: 30%;
-  text-align: center;
-}
-
-.bt-cancelar-pet{
-  width: 30%;
-  text-align: center;
-}
-
-#input{
+.container input.outros{
+  width: 60%;
   height: 20px;
-  background-color: #eee;
-  border: solid 1px white;
-  margin: 3px 0;
-  padding: 10px 4px;
-  font-size: 13px;
-  border-radius: 8px;
-  width: 100%;
-  outline: none;
-}
-
-#input:focus{
-  border: solid 1px #679aff;
-  background-color: #fafafa;
-}
-
-#label-formulario{
-  width: 100%;
-  margin-top: 12px;
-  text-align: left;
-  font-size: small;
-  font-weight: bold;
-  color: #535353;
-}
-
-#input-outros{
-  width: 40%;
-  height: 10px;
   margin-inline-start: 8px;
   background-color: #eee;
   border: solid 1px #eee;
@@ -889,62 +805,57 @@ a{
   outline: none;
 }
 
-#input-outros:enabled{
+.container input.outros:enabled{
   border: solid 1px #679aff;
   background-color: white;
 }
 
-#radios{
+.container input.radios{
   width: 1.15em;
   height: 1.15em;
   border: 0.15em solid currentColor;
   border-radius: 50%;
 }
 
-#checkbox{
+.container input.checkbox{
   width: 1.15em;
   height: 1.15em;
   border: 0.15em solid currentColor;
 }
 
-#bt-salvar{
-  width: 50%;
-  height: 30px;
+.column button.bt-salvar{
   background-color: #4B8A40;
-  border: none;
-  color: #fff;
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 10px;
-  cursor: pointer;
 }
 
-#bt-cancelar{
-  width: 50%;
-  height: 30px;
+.column button.bt-cancelar{
   background-color: #808080;
-  border: none;
+}
+
+.column button{
   color: #fff;
-  font-size: 15px;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  border-radius: 10px;
   font-weight: bold;
-  border-radius: 10px; 
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 50px 8px;
   cursor: pointer;
 }
 
-#bt-salvar:hover{
+.column button.bt-salvar:hover{
   background: #56924c;
 }
 
-#bt-salvar:active {
+.column button.bt-salvar:active {
   background: #4B8A40;
 }
 
-#bt-cancelar:hover{
+.column button.bt-cancelar:hover{
   background: #8a8a8a;
 }
 
-#bt-cancelar:active{
+.column button.bt-cancelar:active{
   background: #808080;
 }
-
-
