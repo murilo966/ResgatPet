@@ -6,18 +6,23 @@ import React from 'react';
 
 interface Dados {
     id: number;
-    nome: string;
-    idade: number;
+    sexo: string;
+    cor: string;
+    raca: string;
+    acessorio: string;
+    saude: string;
+    endereco: string;
+    foto: string;
 }
 
 function ResgatarPet() {
 
     const dados: Dados[] = React.useMemo(
         () => [
-            { id: 1, nome: 'André', idade: 25 },
-            { id: 2, nome: 'Murilo', idade: 30 },
-            { id: 3, nome: 'João', idade: 22 },
-            { id: 4, nome: 'Helder', idade: 22 },
+            { id: 1, status: 'Espera', sexo: 'Macho', cor: 'Branco', raca: 'poodle', acessorio: 'coleira', saude: 'assustado', endereco: 'rua caetes 7-34', foto: 'foto' },
+            { id: 2, status: 'Espera', sexo: 'Macho', cor: 'Branco', raca: 'poodle', acessorio: 'coleira', saude: 'assustado', endereco: 'rua caetes 7-34', foto: 'foto' },
+            { id: 3, status: 'Espera', sexo: 'Macho', cor: 'Branco', raca: 'poodle', acessorio: 'coleira', saude: 'assustado', endereco: 'rua caetes 7-34', foto: 'foto' },
+            { id: 4, status: 'Espera', sexo: 'Macho', cor: 'Branco', raca: 'poodle', acessorio: 'coleira', saude: 'assustado', endereco: 'rua caetes 7-34', foto: 'foto' },
         ],
         []
     )
@@ -25,8 +30,12 @@ function ResgatarPet() {
     const colunas: Column<Dados>[] = React.useMemo(
         () => [
             { Header: 'ID', accessor: 'id' },
-            { Header: 'Nome', accessor: 'nome' },
-            { Header: 'Idade', accessor: 'idade' },
+            { Header: 'Sexo', accessor: 'sexo' },
+            { Header: 'Cor', accessor: 'cor' },
+            { Header: 'Raca', accessor: 'raca' },
+            { Header: 'Acessorio', accessor: 'acessorio' },
+            { Header: 'Saude', accessor: 'saude' },
+            { Header: 'Foto', accessor: 'foto' },
         ],
         []
     )
@@ -43,33 +52,35 @@ function ResgatarPet() {
                     <div className='container-painel'>
                         <h1>Resgatar Pet</h1>
 
-                        <table {...getTableProps()}>
-                            {/* CABEÇALHO */}
-                            <thead>
-                                {headerGroups.map(headerGroup => (
-                                    <tr {...headerGroup.getHeaderGroupProps()}>
-                                        {headerGroup.headers.map(column => (
-                                            <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-                                        ))}
-                                    </tr>
-                                ))}
-                            </thead>
-
-                             {/* CORPO */}
-                            <tbody {...getTableBodyProps()}>
-                                {rows.map(row => {
-                                    prepareRow(row);
-                                    return (
-                                        <tr {...row.getRowProps()}>
-                                            {row.cells.map(cell => (
-                                                <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                        <div className="tabelas">
+                            <table {...getTableProps()}>
+                                {/* CABEÇALHO */}
+                                <thead>
+                                    {headerGroups.map(headerGroup => (
+                                        <tr {...headerGroup.getHeaderGroupProps()}>
+                                            {headerGroup.headers.map(column => (
+                                                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
                                             ))}
                                         </tr>
-                                    );
-                                })}
-                            </tbody>
+                                    ))}
+                                </thead>
 
-                        </table>
+                                {/* CORPO */}
+                                <tbody {...getTableBodyProps()}>
+                                    {rows.map(row => {
+                                        prepareRow(row);
+                                        return (
+                                            <tr {...row.getRowProps()}>
+                                                {row.cells.map(cell => (
+                                                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                                ))}
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

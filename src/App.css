@@ -573,6 +573,31 @@ a{
   background: #2E77BB;
 }
 
+/* DAHSBOARD - REGATARPET */
+.tabelas{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+table{
+  display: table;
+  width: 50%;
+}
+
+thead{
+  background: #885912;
+}
+
+tr{
+  color: white;
+}
+
+tbody{
+  background: #e4af8a;
+}
+
+
 /* DASHBOARD - CONFIGURAÇõES */
 .painel-configuracao{
   display: flex;
@@ -859,3 +884,4 @@ a{
 .column button.bt-cancelar:active{
   background: #808080;
 }
+
