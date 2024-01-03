@@ -170,8 +170,11 @@ function Formulario() {
                         </div>
 
                         <input type="file" onChange={handleImageChange} accept="image/*" />
-                        <label >Endereço na onde foi encontrado o Pet </label>
-                        <input type="text" name="pet-endereco" value={petEndereco} onChange={handleInputPetEndereco} />
+                        <label > Cidade e Endereço na onde foi encontrado o Pet </label>
+                        <div className="row">
+                            <input type="text" className='input-cidade' name="pet-cidade" placeholder='Cidade' />
+                            <input type="text" className='input-endereco' name="pet-endereco" placeholder='Endereço' value={petEndereco} onChange={handleInputPetEndereco} />                            
+                        </div>
 
                         <h1>Sexo</h1>
                         <div className="row">

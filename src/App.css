@@ -747,6 +747,11 @@ tbody{
 .container-formulario input:focus{
   border: solid 1px #679aff;
   background-color: #fafafa;
+  
+}
+
+.container-formulario input.input-cidade{
+  width: 40%;
 }
 
 .container-formulario h1{
@@ -778,9 +783,8 @@ tbody{
 
 .row{
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: row;
-  align-content: center;
   justify-content: center;
   align-items: baseline;
   gap: 10px;

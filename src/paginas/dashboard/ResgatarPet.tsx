@@ -19,10 +19,10 @@ function ResgatarPet() {
 
     const dados: Dados[] = React.useMemo(
         () => [
-            { id: 1, status: 'Espera', sexo: 'Macho', cor: 'Branco', raca: 'poodle', acessorio: 'coleira', saude: 'assustado', endereco: 'rua caetes 7-34', foto: 'foto' },
-            { id: 2, status: 'Espera', sexo: 'Macho', cor: 'Branco', raca: 'poodle', acessorio: 'coleira', saude: 'assustado', endereco: 'rua caetes 7-34', foto: 'foto' },
-            { id: 3, status: 'Espera', sexo: 'Macho', cor: 'Branco', raca: 'poodle', acessorio: 'coleira', saude: 'assustado', endereco: 'rua caetes 7-34', foto: 'foto' },
-            { id: 4, status: 'Espera', sexo: 'Macho', cor: 'Branco', raca: 'poodle', acessorio: 'coleira', saude: 'assustado', endereco: 'rua caetes 7-34', foto: 'foto' },
+            { id: 1, status: 'Espera', sexo: 'Macho', cor: 'Branco', raca: 'poodle', acessorio: 'coleira', saude: 'assustado', endereco: 'rua tapajos 8-3', foto: 'foto' },
+            { id: 2, status: 'Espera', sexo: 'Femea', cor: 'Preto', raca: 'pitbull', acessorio: 'focinheira', saude: 'ferido', endereco: 'rua caetes 9-4', foto: 'foto' },
+            { id: 3, status: 'Espera', sexo: 'Femea', cor: 'Branco', raca: 'chow chow', acessorio: 'corrente-guia', saude: 'agressivo', endereco: 'rua tupi 1-3', foto: 'foto' },
+            { id: 4, status: 'Espera', sexo: 'Macho', cor: 'Branco', raca: 'bulldog', acessorio: 'coleira', saude: 'alegre', endereco: 'rua bagnol 17-04', foto: 'foto' },
         ],
         []
     )
