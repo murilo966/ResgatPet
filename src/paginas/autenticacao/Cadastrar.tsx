@@ -84,7 +84,6 @@ function Cadastrar(){
             alert('Aceitar os Termos.');
         } else{
             alert(
-                "\nUsuario: " + usuarioNome +
                 "\nUsuario: " + usuarioCNPJ +
                 "\nTelefone: " + usuarioTelefone +
                 "\nE-Mail: " + usuarioEmail +
@@ -120,7 +119,7 @@ function Cadastrar(){
         else{
             alert(
                 "\nUsuario: " + usuarioNome +
-                "\nUsuario: " + usuarioCPF +
+                "\nCPF: " + usuarioCPF +
                 "\nTelefone: " + usuarioEmail +
                 "\nE-Mail: " + usuarioTelefone +
                 "\nSenha: " + usuarioSenha
