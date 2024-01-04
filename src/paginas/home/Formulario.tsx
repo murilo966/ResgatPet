@@ -15,6 +15,7 @@ function Formulario() {
 
     // dados pet
     const [petEndereco, SetPetEndereco] = useState('');
+    const [petCidade, SetPetCidade] = useState('');
     const [petSexo, SetPetSexo] = useState('');
     const [petRaca, SetPetRaca] = useState('');
     const [petCor, SetPetCor] = useState('');
@@ -35,6 +36,10 @@ function Formulario() {
         } else {
             alert('Por favor, selecione uma imagem válida.');
         }
+    }
+
+    function handleInputPetCidade(event: React.ChangeEvent<HTMLInputElement>) {
+        SetPetCidade(event.target.value);
     }
 
     function handleInputPetEndereco(event: React.ChangeEvent<HTMLInputElement>) {
@@ -113,6 +118,7 @@ function Formulario() {
             "\nTelefone: " + usuarioTelefone +
             "\nE-Mail: " + usuarioEmail +
             "\nPet Foto: " + petImage +
+            "\nCidade: " + petCidade +
             "\nEndereço: " + petEndereco +
             "\nSexo: " + petSexo +
             "\nRaca: " + petRaca + ": " + petRacaOutros +
@@ -172,7 +178,7 @@ function Formulario() {
                         <input type="file" onChange={handleImageChange} accept="image/*" />
                         <label > Cidade e Endereço na onde foi encontrado o Pet </label>
                         <div className="row">
-                            <input type="text" className='input-cidade' name="pet-cidade" placeholder='Cidade' />
+                            <input type="text" className='input-cidade' name="pet-cidade" placeholder='Cidade' value={petCidade} onChange={handleInputPetCidade}/>
                             <input type="text" className='input-endereco' name="pet-endereco" placeholder='Endereço' value={petEndereco} onChange={handleInputPetEndereco} />                            
                         </div>
 

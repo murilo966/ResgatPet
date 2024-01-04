@@ -69,8 +69,11 @@ function Login() {
             alert('Forneça um e-mail válido.');
         } else{
             alert(
-                "\nEmail: " + usuarioEmail +
-                "\nTelefone: " + usuarioSenha
+                "\nUsuario: " + usuarioNome +
+                "\nCPF: " + usuarioCPF +
+                "\nTelefone: " + usuarioEmail +
+                "\nE-Mail: " + usuarioTelefone +
+                "\nSenha: " + usuarioSenha
                 )            
 
             navigate('/dashboard');
