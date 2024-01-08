@@ -1,6 +1,4 @@
-import Cabecalho from '../../components/cabecalho';
 import MenuLateral from '../../components/menu-lateral';
-import Rodape from '../../components/rodape';
 import { useTable, Column } from 'react-table';
 import React from 'react';
 
@@ -16,7 +14,6 @@ interface Dados {
 }
 
 function ResgatarPet() {
-
     const dados: Dados[] = React.useMemo(
         () => [
             { id: 1, status: 'Espera', sexo: 'Macho', cor: 'Branco', raca: 'poodle', acessorio: 'coleira', saude: 'assustado', endereco: 'rua tapajos 8-3', foto: 'foto' },
@@ -44,7 +41,6 @@ function ResgatarPet() {
 
     return (
         <div>
-            <Cabecalho />
             <div className='container'>
                 <div className='dashboard'>
                     <MenuLateral />
@@ -84,7 +80,6 @@ function ResgatarPet() {
                     </div>
                 </div>
             </div>
-            <Rodape />
         </div>
     )
 }

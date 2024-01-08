@@ -1,13 +1,12 @@
-import { useState } from 'react';
-import Cabecalho from '../../components/cabecalho';
-import Rodape from '../../components/rodape';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import titulo from '../../assents/imagens/background/im_background-titulo-login.png'
+import { AuthContext } from '../../contexts/auth/AuthContext';
 
 function Login() {
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;    
+    const auth = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [usuarioNome, SetUsuarioNome] = useState('');
@@ -60,30 +59,25 @@ function Login() {
         }
     }
 
-    function handleLogin() {
-
+    // LOGIN
+    const handleLogin = async() => {
         if (usuarioEmail.trim() === '' ||
             usuarioSenha.trim() === '') {
             alert('Por favor, preencha todos os campos.');
         } else if (!emailRegex.test(usuarioEmail)) {
             alert('Forneça um e-mail válido.');
         } else {
-            alert(
-                "\nUsuario: " + usuarioNome +
-                "\nCPF: " + usuarioCPF +
-                "\nTelefone: " + usuarioEmail +
-                "\nE-Mail: " + usuarioTelefone +
-                "\nSenha: " + usuarioSenha
-            )
 
-            navigate('/dashboard');
-
-            // salva os dados do usuario em memoria
-            localStorage.setItem('usuarioNome', usuarioNome);
-            localStorage.setItem('usuarioCPF', usuarioCPF);
-            localStorage.setItem('usuarioEmail', usuarioEmail);
-            localStorage.setItem('usuarioTefone', usuarioTelefone);
-            localStorage.setItem('usuarioSenha', usuarioSenha);
+            // VERIFICA O EMAIL A SENHA
+            if(usuarioEmail && usuarioSenha){
+                const isLogged = await auth.signin(usuarioEmail, usuarioSenha)
+                if(isLogged){
+                    navigate('/dashboard');
+                }
+                else{
+                    alert("ERRO INTERNO")
+                }
+            }           
         }
     }
 
@@ -103,32 +97,16 @@ function Login() {
             alert('Aceitar os Termos.');
         }
         else {
-            alert(
-                "\nUsuario: " + usuarioNome +
-                "\nCPF: " + usuarioCPF +
-                "\nTelefone: " + usuarioTelefone +
-                "\nE-Mail: " + usuarioEmail +
-                "\nSenha: " + usuarioSenha
-            )
 
             const container = document.getElementById('login');
             if (container) {
                 container.classList.remove('active');
             }
-
-            // salva os dados do usuario em memoria
-            localStorage.setItem('usuarioNome', usuarioNome);
-            localStorage.setItem('usuarioCPF', usuarioCPF);
-            localStorage.setItem('usuarioTefone', usuarioTelefone);
-            localStorage.setItem('usuarioEmail', usuarioEmail);
-            localStorage.setItem('usuarioSenha', usuarioSenha);
         }
     }
 
     return (
         <div>
-            <Cabecalho />
-
             <div className='container'>
                 <div className='container-autenticacao' id='login'>
                     <div className='form-container criar-conta-pf'>
@@ -249,7 +227,6 @@ function Login() {
 
                 </div>
             </div>
-            <Rodape />
         </div>
     )
 }

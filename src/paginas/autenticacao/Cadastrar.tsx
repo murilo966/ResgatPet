@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
-import Cabecalho from '../../components/cabecalho';
-import Rodape from '../../components/rodape';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
@@ -82,22 +80,8 @@ function Cadastrar(){
             alert('Forneça um e-mail válido.');
         } else if(!aceitarTermosPJ ){
             alert('Aceitar os Termos.');
-        } else{
-            alert(
-                "\nUsuario: " + usuarioCNPJ +
-                "\nTelefone: " + usuarioTelefone +
-                "\nE-Mail: " + usuarioEmail +
-                "\nSenha: " + usuarioSenha
-                )            
-
+        } else{      
             navigate('/login');
-
-            // salva os dados do usuario em memoria
-            localStorage.setItem('usuarioNome', usuarioNome);
-            localStorage.setItem('usuarioCNPJ', usuarioCNPJ);
-            localStorage.setItem('usuarioTelefone', usuarioTelefone);
-            localStorage.setItem('usuarioEmail', usuarioEmail);
-            localStorage.setItem('usuarioSenha', usuarioSenha);
         }        
     }
 
@@ -117,29 +101,12 @@ function Cadastrar(){
             alert('Aceitar os Termos.');
         }
         else{
-            alert(
-                "\nUsuario: " + usuarioNome +
-                "\nCPF: " + usuarioCPF +
-                "\nTelefone: " + usuarioEmail +
-                "\nE-Mail: " + usuarioTelefone +
-                "\nSenha: " + usuarioSenha
-                )            
-
             navigate('/login');
-
-            // salva os dados do usuario em memoria
-            localStorage.setItem('usuarioNome', usuarioNome);
-            localStorage.setItem('usuarioCPF', usuarioCPF);
-            localStorage.setItem('usuarioTefone', usuarioTelefone);
-            localStorage.setItem('usuarioEmail', usuarioEmail);
-            localStorage.setItem('usuarioSenha', usuarioSenha);
         }        
     }
 
     return(
         <div>
-            <Cabecalho/>
-
             <div className='container'>
                 <div className='container-autenticacao' id='autenticacao'>
                     <div className='form-container criar-conta-pf'>
@@ -289,9 +256,7 @@ function Cadastrar(){
                     </div>
 
                 </div>
-            </div>
-
-            <Rodape/>
+            </div>            
         </div>
     )
 }

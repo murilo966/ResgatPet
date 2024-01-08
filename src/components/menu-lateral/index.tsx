@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/auth/AuthContext';
 import logo from '../../assents/imagens/logo/ic_resgatpet.png' 
 
 function MenuLateral() {
 
-    const usuarioNome = localStorage.getItem('usuarioNome') ?? "";
+    const auth = useContext(AuthContext)
 
     return(
         <div className='container-menu'>
@@ -11,7 +13,7 @@ function MenuLateral() {
                 <img src={logo} alt="imagem-usuario" />
             </Link>
 
-            <label>{usuarioNome}</label>
+            <label>{auth.user?.name}</label>
 
             <Link to='/dashboard'>
                 <button type="button">Dashboard</button>
