@@ -1,5 +1,3 @@
-import Cabecalho from '../../components/cabecalho';
-import Rodape from '../../components/rodape';
 import { useState } from 'react';
 import petImageLogo from '../../assents/imagens/logo/ic_resgatpet.png';
 import { useNavigate } from 'react-router-dom';
@@ -136,7 +134,6 @@ function Formulario() {
 
     return (
         <div>
-            <Cabecalho />
             <div className='container'>
                 <div className='container-formulario'>
                     <div className='dados-pessoais'>
@@ -178,8 +175,8 @@ function Formulario() {
                         <input type="file" onChange={handleImageChange} accept="image/*" />
                         <label > Cidade e Endereço na onde foi encontrado o Pet </label>
                         <div className="row">
-                            <input type="text" className='input-cidade' name="pet-cidade" placeholder='Cidade' value={petCidade} onChange={handleInputPetCidade}/>
-                            <input type="text" className='input-endereco' name="pet-endereco" placeholder='Endereço' value={petEndereco} onChange={handleInputPetEndereco} />                            
+                            <input type="text" className='input-cidade' name="pet-cidade" placeholder='Cidade' value={petCidade} onChange={handleInputPetCidade} />
+                            <input type="text" className='input-endereco' name="pet-endereco" placeholder='Endereço' value={petEndereco} onChange={handleInputPetEndereco} />
                         </div>
 
                         <h1>Sexo</h1>
@@ -228,7 +225,7 @@ function Formulario() {
                                 <div>
                                     <input className='radios' type="radio" name="cor-outros" checked={petRaca === 'Outros'} value="Outros" onChange={handleInputPetRaca} />
                                     <label>Outros </label>
-                                    <input className='outros' type="text" name="outra-cor" value={petRacaOutros} disabled={petRaca != "Outros"} onChange={handleInputPetRacaOutros} />
+                                    <input className='outros' type="text" name="outra-cor" value={petRacaOutros} disabled={petRaca !== "Outros"} onChange={handleInputPetRacaOutros} />
                                 </div>
                             </div>
                         </div>
@@ -276,7 +273,7 @@ function Formulario() {
                                 <div>
                                     <input className='radios' type="radio" name="cor-outros" checked={petCor === 'Outros'} value="Outros" onChange={handleInputPetCor} />
                                     <label>Outros </label>
-                                    <input className='outros' type="text" name="outra-cor" value={petCorOutros} disabled={petCor != "Outros"} onChange={handleInputPetCorOutros} />
+                                    <input className='outros' type="text" name="outra-cor" value={petCorOutros} disabled={petCor !== "Outros"} onChange={handleInputPetCorOutros} />
                                 </div>
                             </div>
                         </div>
@@ -358,7 +355,6 @@ function Formulario() {
                     </div>
                 </div>
             </div>
-            <Rodape />
         </div>
     )
 }

@@ -1,44 +1,41 @@
-import Cabecalho from '../../components/cabecalho';
-import Rodape from '../../components/rodape';
 import logo from '../../assents/imagens/logo/ic_resgatpet.png'
 
-function QuemSomos(){
-    return(
+function QuemSomos() {
+    return (
         <div>
-            <Cabecalho/>
             <div className='container'>
-                
+
                 <div className='logo'>
                     <img src={logo} />
-                </div> 
+                </div>
 
                 <div className='quem-somos'>
                     <div className='descricao-quem-somos'>
                         <label>
-                            Somos um grupo de alunos do curso de desenvolvimento full stack do Senac Bauru 2023-2024, 
-                            que motivados pelo amor aos animais, decidimos desenvolver um site para auxiliar o resgate 
+                            Somos um grupo de alunos do curso de desenvolvimento full stack do Senac Bauru 2023-2024,
+                            que motivados pelo amor aos animais, decidimos desenvolver um site para auxiliar o resgate
                             de animais em situação de rua e abandono. Acreditamos que todos os animais merecem ter uma
-                            vida digna, com amor e cuidados ,por isso, criamos um espaço virtual que conecta ONGs e 
+                            vida digna, com amor e cuidados ,por isso, criamos um espaço virtual que conecta ONGs e
                             sociedade para o bem em comum.
-                            <br/>
+                            <br />
                             Nosso site é uma ferramenta que facilita o processo de resgate de animais,
-                            ele permite que ONGs registrem os animais em situação de rua ou abandono, 
-                            e que pessoas interessadas em adotar ou doar podem encontrar os animais 
+                            ele permite que ONGs registrem os animais em situação de rua ou abandono,
+                            e que pessoas interessadas em adotar ou doar podem encontrar os animais
                             que precisam de um lar.
-                            <br/>
+                            <br />
                         </label>
                     </div>
                 </div>
-                
+
                 <div className='nossa-missao'>
                     <div className='titulo'>
                         <h2> Nossa missão </h2>
                     </div>
-                    
+
                     <div className='descricao-nossa-missao'>
                         <label>
-                            Nossa missão é contribuir para a redução do número de animais em situação 
-                            de rua e abandono, acreditamos que, com a união de esforços, podemos 
+                            Nossa missão é contribuir para a redução do número de animais em situação
+                            de rua e abandono, acreditamos que, com a união de esforços, podemos
                             construir um mundo mais justo e amoroso para os animais.
                         </label>
                     </div>
@@ -61,7 +58,7 @@ function QuemSomos(){
                         </label>
                     </div>
                 </div>
-                
+
                 <div className='como-ajudar'>
                     <div className='titulo'>
                         <h2>Como nos ajudar</h2>
@@ -85,7 +82,6 @@ function QuemSomos(){
                     <p>Juntos, podemos fazer a diferença na vida dos animais!</p>
                 </div>
             </div>
-            <Rodape/>
         </div>
     )
 }
