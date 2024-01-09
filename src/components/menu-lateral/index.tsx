@@ -20,11 +20,11 @@ function MenuLateral() {
             </Link>
 
             <Link to='/dashboard/resgatar-pet'>
-                <button type="button">Resgatar Pet</button>  
+                {auth.user?.level === 2 && <button type="button">Resgatar Pet</button>}
             </Link> 
 
             <Link to='/dashboard/acompanhar'>
-                <button type="button">Acompanhar</button>
+                {auth.user?.level === 1 && <button type="button">Acompanhar</button>}
             </Link>
             
             <Link to='/dashboard/configuracoes'>
