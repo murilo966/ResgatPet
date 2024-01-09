@@ -10,6 +10,7 @@ export const userAPI = () => ({
             user: {
                 id: 3,
                 name: 'Andre',
+                telefone: 123123,
                 email: 'andre@gmail.com'        
             }
         };
@@ -21,6 +22,7 @@ export const userAPI = () => ({
             user: {
                 id: 3,
                 name: 'Andre',
+                telefone: 123123,
                 email: 'andre@gmail.com'        
             },
             token: '123456789'

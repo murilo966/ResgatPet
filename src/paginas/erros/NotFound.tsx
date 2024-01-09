@@ -1,8 +1,8 @@
 function NotFound(){
     return(
-        <div>
-            <div>
-                <p>Página not Found, Erro 404 </p>
+        <div className='container'>
+            <div className="container-404">
+                <p>Página Não Encontrada </p>
             </div>
         </div>
     )

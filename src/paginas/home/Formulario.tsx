@@ -1,15 +1,12 @@
-import { useState } from 'react';
-import petImageLogo from '../../assents/imagens/logo/ic_resgatpet.png';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/auth/AuthContext';
+import petImageLogo from '../../assents/imagens/logo/ic_resgatpet.png';
 
 function Formulario() {
 
     const navigate = useNavigate();
-
-    // dados usuario
-    const usuarioNome = localStorage.getItem('usuarioNome') ?? "";
-    const usuarioTelefone = localStorage.getItem('usuarioTelefone') ?? "";
-    const usuarioEmail = localStorage.getItem('usuarioEmail') ?? "";
+    const auth = useContext(AuthContext)
 
     // dados pet
     const [petEndereco, SetPetEndereco] = useState('');
@@ -112,9 +109,9 @@ function Formulario() {
 
     function handleClickSalvar() {
         alert(
-            "\nNome Usuario: " + usuarioNome +
-            "\nTelefone: " + usuarioTelefone +
-            "\nE-Mail: " + usuarioEmail +
+            "\nNome Usuario: " + auth.user?.name +
+            "\nTelefone: " + auth.user?.telefone +
+            "\nE-Mail: " + auth.user?.email +
             "\nPet Foto: " + petImage +
             "\nCidade: " + petCidade +
             "\nEndereço: " + petEndereco +
@@ -142,24 +139,24 @@ function Formulario() {
                         <label>Seu Nome</label>
                         <input type="text"
                             name="user-name"
-                            value={usuarioNome}
+                            value={auth.user?.name}
                             disabled
                         />
 
                         <div className="rows">
                             <div>
-                                <label>Telefone</label>
-                                <input type="tel"
-                                    name="user-tel"
-                                    value={usuarioTelefone}
+                                <label>E-Mail</label>
+                                <input type="email"
+                                    name="user-email"
+                                    value={auth.user?.email}
                                     disabled
                                 />
                             </div>
                             <div>
-                                <label>E-Mail</label>
-                                <input type="email"
-                                    name="user-email"
-                                    value={usuarioEmail}
+                                <label>Telefone</label>
+                                <input type="tel"
+                                    name="user-tel"
+                                    value={auth.user?.telefone}
                                     disabled
                                 />
                             </div>
@@ -173,10 +170,17 @@ function Formulario() {
                         </div>
 
                         <input type="file" onChange={handleImageChange} accept="image/*" />
-                        <label > Cidade e Endereço na onde foi encontrado o Pet </label>
-                        <div className="row">
-                            <input type="text" className='input-cidade' name="pet-cidade" placeholder='Cidade' value={petCidade} onChange={handleInputPetCidade} />
-                            <input type="text" className='input-endereco' name="pet-endereco" placeholder='Endereço' value={petEndereco} onChange={handleInputPetEndereco} />
+                        <label > * Por Favor coloque o Endereço e a Cidade na onde foi encontrado o Pet </label>
+                        <div className="rows">
+                            <div>
+                                <label>Endereço</label>
+                                <input type="text" className='left' name="pet-endereco" placeholder='Endereço' value={petEndereco} onChange={handleInputPetEndereco} />
+                            </div>
+
+                            <div>
+                                <label>Cidade</label>
+                                <input type="text" name="pet-cidade" placeholder='Cidade' value={petCidade} onChange={handleInputPetCidade} />
+                            </div>
                         </div>
 
                         <h1>Sexo</h1>

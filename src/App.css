@@ -7,10 +7,6 @@ a{
   color: inherit;
 }
 
-::placeholder{
-  padding-inline-start: 8px;
-}
-
 .container{
   min-height: 100vh;
 }
@@ -57,8 +53,7 @@ a{
   gap: 15px;
 }
 
-.bt-navegacao{
-  width: 100%;
+.container-navegacao button{
   font-weight: bold;
   padding: 8px;  
   color: white;
@@ -69,11 +64,11 @@ a{
   cursor: pointer;
 }
 
-.bt-navegacao:hover{
+.container-navegacao button:hover{
   background: #56924c;
 }
 
-.bt-navegacao:active {
+.container-navegacao button:active {
   background: #4B8A40;  
 }
 
@@ -612,6 +607,7 @@ tbody{
   margin-bottom: 8px;
   background-color: white; 
   border-radius: 10px;
+  box-sizing: border-box;
 }
 
 .painel-configuracao h1{
@@ -621,14 +617,15 @@ tbody{
 }
 
 .painel-configuracao input{
-  width: 100%;
+  width: calc(100% - 20px);
   background-color: #eee;
   border: solid 1px transparent;
   margin: 3px 0;
-  padding: 13px 0;
+  padding: 10px;
   font-size: 13px;
   border-radius: 8px;
   outline: none;
+  box-sizing: content-box;
 }
 
 .painel-configuracao input:focus{
@@ -750,10 +747,6 @@ tbody{
   
 }
 
-.container-formulario input.input-cidade{
-  width: 40%;
-}
-
 .container-formulario h1{
   margin-top: 12px;
   margin-bottom: 12px;
@@ -779,6 +772,10 @@ tbody{
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.rows input.left{
+  margin-right: 50px;
 }
 
 .row{
@@ -887,5 +884,23 @@ tbody{
 
 .column button.bt-cancelar:active{
   background: #808080;
+}
+
+/* EROOR 404 */
+.container-404{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+
+.container-404 p{
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 50px 8px;
 }
 

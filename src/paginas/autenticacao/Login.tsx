@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import titulo from '../../assents/imagens/background/im_background-titulo-login.png'
 import { AuthContext } from '../../contexts/auth/AuthContext';
 
@@ -8,6 +7,7 @@ function Login() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;    
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [usuarioNome, SetUsuarioNome] = useState('');
     const [usuarioCPF, SetUsuarioCPF] = useState('');
@@ -67,12 +67,17 @@ function Login() {
         } else if (!emailRegex.test(usuarioEmail)) {
             alert('Forneça um e-mail válido.');
         } else {
-
             // VERIFICA O EMAIL A SENHA
             if(usuarioEmail && usuarioSenha){
                 const isLogged = await auth.signin(usuarioEmail, usuarioSenha)
                 if(isLogged){
-                    navigate('/dashboard');
+                    // VERIFICA SE JÁ ESTA NA PAGINA FORMULARIO ANTES DE LOGAR
+                    if(location.pathname.toLowerCase() === '/formulario'){
+                        navigate('/formulario')
+                    }
+                    else{
+                        navigate('/dashboard')
+                    }
                 }
                 else{
                     alert("ERRO INTERNO")
@@ -97,6 +102,8 @@ function Login() {
             alert('Aceitar os Termos.');
         }
         else {
+
+            // salvar no banco de dados 
 
             const container = document.getElementById('login');
             if (container) {
@@ -195,7 +202,7 @@ function Login() {
                                 </Link>
                             </div>
 
-                            <button type="button" name='cadastrar' onClick={handleRegistarCPF}> Cadastrar-Se </button>
+                            <button type="button" onClick={handleRegistarCPF}> Cadastrar-Se </button>
                         </form>
                     </div>
 
