@@ -27,16 +27,16 @@ function App() {
       <Routes>
         <Route path='*' element={<NotFound/>} ></Route>
         <Route path='/' element={<Home/>} ></Route>
-        <Route path='/formulario' element={<RequireAuth><Formulario/></RequireAuth>} ></Route>
+        <Route path='/formulario' element={<RequireAuth level={0}><Formulario/></RequireAuth>} ></Route>
         <Route path='/quem-somos' element={<QuemSomos/>} ></Route>
         <Route path='/como-ajudar' element={<ComoAjudar/>} ></Route>
         <Route path='/login' element={<Login/>} ></Route>        
         <Route path='/esqueceu-senha' element={<EsqueceuSenha/>} ></Route>
         <Route path='/cadastrar' element={<Cadastrar/>} ></Route>
-        <Route path='/dashboard' element={<RequireAuth><Dasboard/></RequireAuth>}></Route>
-        <Route path='/dashboard/resgatar-pet' element={<RequireAuth><ResgatarPet/></RequireAuth>} ></Route>
-        <Route path='/dashboard/acompanhar' element={<RequireAuth><Acompanhar/></RequireAuth>} ></Route>
-        <Route path='/dashboard/configuracoes' element={<RequireAuth><Configuracao/></RequireAuth>} ></Route>
+        <Route path='/dashboard' element={<RequireAuth level={0}><Dasboard/></RequireAuth>}></Route>
+        <Route path='/dashboard/resgatar-pet' element={<RequireAuth level={2}><ResgatarPet/></RequireAuth>} ></Route>
+        <Route path='/dashboard/acompanhar' element={<RequireAuth level={1}><Acompanhar/></RequireAuth>} ></Route>
+        <Route path='/dashboard/configuracoes' element={<RequireAuth level={0}><Configuracao/></RequireAuth>} ></Route>
       </Routes>
 
       <footer>

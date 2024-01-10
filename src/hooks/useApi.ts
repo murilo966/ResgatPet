@@ -11,7 +11,8 @@ export const userAPI = () => ({
                 id: 3,
                 name: 'Andre',
                 telefone: 123123,
-                email: 'andre@gmail.com'        
+                email: 'andre@gmail.com',
+                level: 2                                                   
             }
         };
         const response = await api.post('/validate', {token})
@@ -23,7 +24,8 @@ export const userAPI = () => ({
                 id: 3,
                 name: 'Andre',
                 telefone: 123123,
-                email: 'andre@gmail.com'        
+                email: 'andre@gmail.com',
+                level: 2
             },
             token: '123456789'
         };
