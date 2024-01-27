@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import MenuLateral from '../../components/menu-lateral';
 import { Pets } from '../../types/pets';
-import { Molde } from '../../types/molde';
 
 function ResgatarPet() {
 
-    const [pets, setPets] = useState<Molde[]>([])
+    const [pets, setPets] = useState<Pets[]>([])
     const carregarPets = () => {
-        fetch("http://fakestoreapi.com/products/")
+        fetch("http://localhost:3005/formulario")
             .then((response) => {
                 return response.json();
             })
@@ -15,6 +14,10 @@ function ResgatarPet() {
             .then((json) => {
                 setPets(json)
             })
+
+            .catch((error) => {
+                console.error('Erro ao carregar pets:', error);
+            });
     }
 
     useEffect(() => {
@@ -31,50 +34,35 @@ function ResgatarPet() {
                         <h1>Resgatar Pet</h1>
 
                         <div className="tabelas">
-                            {/* <table>
-                            <tr>
-                                <th>imagem</th>
-                                <th>titulo</th>
-                                <th>preço</th>
-                                <th>categoria</th>
-                            </tr>
-                                {pets.map((item, index) => (
-                                    <div className="produtos">
-                                        <tr key={index}>
-                                                <tr>
-                                                    <td><img src={item.image} width="70px" height="70px" /></td>
-                                                    <td>{item.title}</td>
-                                                    <td>{item.price}</td>
-                                                    <td>{item.category}</td>
-                                                </tr>
-                                        </tr>  
-                                    </div>
-                                ))}
+                            <table>                                                                
+                                <thead>
+                                    <tr>
+                                        <th>ENDEREÇO</th>
+                                        <th>CIDADE</th>
+                                        <th>RAÇA</th>
+                                        <th>SEXO</th>
+                                        <th>COR</th>
+                                        <th>SAUDE</th>
+                                        <th>ACESSÓRIO</th>                                        
+                                        <th>USUARIO</th>
+                                    </tr>
+                                </thead>
 
-                            </table> */}
-
-
-                            <table>
-                                <td>
-                                    <th>Imagem</th>
-
-
-                                    <tr><img src="https://acesse.dev/go9E4" width={70} /></tr>
-
-                                </td>
-                                <td>
-                                    <th>Preço</th>
-
-
-                                    <tr>20R$</tr>
-                                </td>
-                                <td>
-                                    <th>Categoria</th>
-
-
-                                    <tr>Masculino</tr>
-                                </td>
-
+                                <tbody>
+                                    {pets.map((row, index) => {
+                                        return (
+                                            <tr key={index}>
+                                                <td>{row.endereco}</td>
+                                                <td>{row.raca}</td>
+                                                <td>{row.cor}</td>
+                                                <td>{row.sexo}</td>
+                                                <td>{row.acessorio}</td>
+                                                <td>{row.saude}</td>
+                                                <td>{row.usuario}</td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
                             </table>
                         </div>
                     </div>
