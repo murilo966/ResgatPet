@@ -124,7 +124,6 @@ function Formulario() {
         )
     }
 
-
     function handleClickCancelar() {
         navigate(-1);
     }

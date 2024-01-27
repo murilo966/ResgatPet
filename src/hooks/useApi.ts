@@ -12,7 +12,7 @@ export const userAPI = () => ({
                 name: 'Andre',
                 telefone: 123123,
                 email: 'andre@gmail.com',
-                level: 2                                                   
+                level: 2
             }
         };
         const response = await api.post('/validate', {token})
