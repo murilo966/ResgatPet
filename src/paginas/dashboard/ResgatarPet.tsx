@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import MenuLateral from '../../components/menu-lateral';
 import { Pets } from '../../types/pets';
+import { Molde } from '../../types/molde';
 
 function ResgatarPet() {
 
-    const [pets, setPets] = useState<Pets[]>([])
+    const [pets, setPets] = useState<Molde[]>([])
     const carregarPets = () => {
         fetch("http://fakestoreapi.com/products/")
             .then((response) => {
@@ -30,16 +31,49 @@ function ResgatarPet() {
                         <h1>Resgatar Pet</h1>
 
                         <div className="tabelas">
-                            <table>
+                            {/* <table>
+                            <tr>
+                                <th>imagem</th>
+                                <th>titulo</th>
+                                <th>preço</th>
+                                <th>categoria</th>
+                            </tr>
                                 {pets.map((item, index) => (
                                     <div className="produtos">
                                         <tr key={index}>
-                                            <td> <img src={item.endereco} alt="" width={45}/> </td>     
-                                            <td>{item.sexo}</td> 
-                                            <td>{item.raca} </td>
+                                                <tr>
+                                                    <td><img src={item.image} width="70px" height="70px" /></td>
+                                                    <td>{item.title}</td>
+                                                    <td>{item.price}</td>
+                                                    <td>{item.category}</td>
+                                                </tr>
                                         </tr>  
                                     </div>
                                 ))}
+
+                            </table> */}
+
+
+                            <table>
+                                <td>
+                                    <th>Imagem</th>
+
+
+                                    <tr><img src="https://acesse.dev/go9E4" width={70} /></tr>
+
+                                </td>
+                                <td>
+                                    <th>Preço</th>
+
+
+                                    <tr>20R$</tr>
+                                </td>
+                                <td>
+                                    <th>Categoria</th>
+
+
+                                    <tr>Masculino</tr>
+                                </td>
 
                             </table>
                         </div>
