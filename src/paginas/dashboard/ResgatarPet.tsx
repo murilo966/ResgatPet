@@ -37,6 +37,9 @@ function ResgatarPet() {
                             <table>                                                                
                                 <thead>
                                     <tr>
+                                        <th colSpan={8}> Tabela De Pets</th>
+                                    </tr> 
+                                    <tr>
                                         <th>ENDEREÇO</th>
                                         <th>CIDADE</th>
                                         <th>RAÇA</th>
@@ -53,11 +56,12 @@ function ResgatarPet() {
                                         return (
                                             <tr key={index}>
                                                 <td>{row.endereco}</td>
+                                                <td>{row.cidade}</td>
                                                 <td>{row.raca}</td>
-                                                <td>{row.cor}</td>
                                                 <td>{row.sexo}</td>
-                                                <td>{row.acessorio}</td>
+                                                <td>{row.cor}</td>
                                                 <td>{row.saude}</td>
+                                                <td>{row.acessorio}</td>                                                
                                                 <td>{row.usuario}</td>
                                             </tr>
                                         );

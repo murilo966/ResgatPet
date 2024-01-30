@@ -578,14 +578,20 @@ a{
 table{
   display: table;
   width: 50%;
+  border-collapse: collapse;
 }
 
 thead{
-  background: #2E77BB;
+  background: #2E77BB;  
 }
 
 tr{
   color: white;
+  padding: 12px;
+}
+
+th{
+  padding: 8px;
 }
 
 tbody{
