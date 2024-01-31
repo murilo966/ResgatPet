@@ -9,6 +9,7 @@ function Formulario() {
     const auth = useContext(AuthContext)
 
     // dados pet
+    const [petImage, SetPetImage] = useState<string>('');
     const [petEndereco, SetPetEndereco] = useState('');
     const [petCidade, SetPetCidade] = useState('');
     const [petSexo, SetPetSexo] = useState('');
@@ -22,7 +23,37 @@ function Formulario() {
     const [petBemEstarOutros, SetPetBemEstarOutros] = useState('');
     const [petBemEstarCheck, SetPetBemEstarCheck] = useState(false);
 
-    const [petImage, SetPetImage] = useState<string>('');
+    async function salvarPets() {
+        try {
+            const response = await fetch('https://resgat-pet-api.vercel.app/formulario', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    fotoPet: petImage,
+                    endereco: petEndereco,
+                    cidade: petCidade,
+                    raca: petRaca,
+                    sexo: petSexo,
+                    cor: petCor,
+                    saude: petBemEstar,
+                    acessorio: petAcessorios,
+                    usuario: auth.user?.name,
+                }),
+            });
+    
+            if (!response.ok) {
+                throw new Error('Erro ao salvar pets');
+            }
+    
+            const responseData = await response.json();
+            console.log('Dados salvos com sucesso:', responseData);
+        } catch (e) {
+            console.error('Erro ao salvar pets:', e);
+        }
+    }    
+
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
 
@@ -108,6 +139,9 @@ function Formulario() {
     }
 
     function handleClickSalvar() {
+
+        salvarPets()
+
         alert(
             "\nNome Usuario: " + auth.user?.name +
             "\nTelefone: " + auth.user?.telefone +
@@ -347,7 +381,7 @@ function Formulario() {
                         <div className="column">
                             <div className='row'>
                                 <div>
-                                    <button className='bt-salvar' type="button" name='salvar' onClick={handleClickSalvar} > Salvar </button>
+                                    <button className='bt-salvar' type="button" name='salvar' onClick={salvarPets} > Salvar </button>
                                 </div>
 
                                 <div>

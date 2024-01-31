@@ -6,7 +6,7 @@ function ResgatarPet() {
 
     const [pets, setPets] = useState<Pets[]>([])
     const carregarPets = () => {
-        fetch("http://localhost:3005/formulario")
+        fetch("https://resgat-pet-api.vercel.app/formulario")
             .then((response) => {
                 return response.json();
             })
