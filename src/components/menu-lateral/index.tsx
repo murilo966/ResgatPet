@@ -1,36 +1,35 @@
 import { Link } from 'react-router-dom'
-import Props from '../props'
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/auth/AuthContext';
+import logo from '../../assents/imagens/logo/ic_resgatpet.png' 
 
 function MenuLateral() {
+
+    const auth = useContext(AuthContext)
+
     return(
         <div className='container-menu'>
-            <div className='imagem-usuario'>
-                <Link to='/dashboard/configuracoes'>
-                    <img src="../../imagens/logo/ic_resgatpet.png" alt="imagem-usuario" />
-                </Link>
-            </div>
+            <Link to='/dashboard/configuracoes'>
+                <img src={logo} alt="imagem-usuario" />
+            </Link>
 
-            <div className='nome-usuario'>
-                <Props NomeUsuario="Robersvaldo"/>
-            </div>
+            <label>{auth.user?.name}</label>
 
-            <div className='menu-dashboard'>
-                <Link to='/dashboard'>
-                    <button className='bt-menu' type="button">Dashboard</button>
-                </Link>
-                <Link to='/dashboard/resgatar-pet'>
-                    <button className='bt-menu' type="button">Resgatar Pet</button>  
-                </Link>               
-                <Link to='/dashboard/acompanhar'>
-                    <button className='bt-menu'type="button">Acompanhar</button>
-                </Link>
-                <Link to='/dashboard/historico'>
-                    <button className='bt-menu' type="button">Histórico</button>
-                </Link>
-                <Link to='/dashboard/configuracoes'>
-                    <button className='bt-menu' type="button">Configurações</button>
-                </Link>
-            </div>
+            <Link to='/dashboard'>
+                <button type="button">Dashboard</button>
+            </Link>
+
+            <Link to='/dashboard/resgatar-pet'>
+                {auth.user?.level === 2 && <button type="button">Resgatar Pet</button>}
+            </Link> 
+
+            <Link to='/dashboard/acompanhar'>
+                {auth.user?.level === 1 && <button type="button">Acompanhar</button>}
+            </Link>
+            
+            <Link to='/dashboard/configuracoes'>
+                <button type="button">Configurações</button>
+            </Link>
         </div>
     )
 }

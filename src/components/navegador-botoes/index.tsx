@@ -1,35 +1,58 @@
-import { Link } from 'react-router-dom'
+import logo from '../../assents/imagens/logo/ic_resgatpet.png'
+import { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../contexts/auth/AuthContext'
 
 function Menu() {
+    const auth = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    const handleHome = () => {
+        navigate('/')
+    }
+
+    const handleQuemSomos = () =>{
+        navigate('/quem-somos')
+    }
+
+    const handleCadastrar = () =>{
+        navigate('/cadastrar')
+    }
+
+    const hadleDashboard = () =>{
+        navigate('/dashboard')
+    }
+    
+    const handleLogout = async () => {
+        await auth.signout();
+        navigate('/')
+    }
+
+    const handleLogin = () =>{
+        navigate('/login')
+    }
+
     return(
         <div className='container-cabecalho'>
             <div className='cabecalho'>
                 <div className='menu-logo'>
                     <Link to='/'>
-                        <img src="../../imagens/logo/ic_resgatpet.png" />
+                        <img src={logo} onClick={handleHome} />
                     </Link> 
                 </div>
 
                 <div className='container-navegacao'>
-                    <Link to='/'>
-                        <button className='bt-navegacao'>Inicio </button>
-                    </Link>
+                    <button onClick={handleHome}>Inicio </button>
 
-                    <Link to='/registro-pj'>
-                        <button className='bt-navegacao'>Quero Ajudar </button>
-                    </Link>
+                    <button onClick={handleQuemSomos}>Quem Somos</button>
 
-                    <Link to= '/quem-somos'>
-                        <button className='bt-navegacao'>Quem Somos</button>
-                    </Link>
+                    {!auth.user && <button onClick={handleCadastrar}>Cadastre-se</button>}
 
-                    <Link to='/registro-pf'>
-                        <button className='bt-navegacao'>Cadastre-se</button>
-                    </Link>
+                    {auth.user && <button onClick={hadleDashboard}>Dashboard</button>}
 
-                    <Link to='/login'>
-                        <button className='bt-navegacao'>Faça login</button>
-                    </Link>
+                    {auth.user && <button onClick={handleLogout}>Sair</button>}
+
+                    {!auth.user &&<button onClick={handleLogin}>Faça login</button>}
                 </div>
             </div>
         </div>
