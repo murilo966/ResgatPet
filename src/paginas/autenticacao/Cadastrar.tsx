@@ -246,7 +246,7 @@ function Cadastrar(){
                             </div>
 
                             <div className="toggle-panel toggle-right">
-                                <h1>Criar Sua Conta Corpotativa</h1>
+                                <h1>Criar Sua Conta Corporativa</h1>
 
                                 <p> Crie uma conta Corporativa com o seu CNPJ, e venha ajudar a Resgatar os Pets</p>
 
