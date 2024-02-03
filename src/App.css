@@ -569,35 +569,83 @@ a{
 }
 
 /* DAHSBOARD - REGATARPET */
+tbody{
+  background: #fff;
+}
+
 .tabelas{
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 15px;
+  padding-top: 50px;
 }
 
 table{
   display: table;
-  width: 50%;
   border-collapse: collapse;
+  border: 2px solid #007bff;
 }
 
-thead{
-  background: #2E77BB;  
-}
-
-tr{
+.tb-titulo{
+  background-color: #0153aa;
   color: white;
-  padding: 12px;
+  font-size: 20px;
 }
 
-th{
+.tb-titulo th{
   padding: 8px;
 }
 
-tbody{
-  background: #e4af8a;
+.tb-cabecalho th, .tb-row td{
+  border: 1px solid #007bff;  
 }
 
+.tb-cabecalho th{
+  background-color: #007bff;
+  color: white;
+  padding: 8px;
+}
+
+.tb-row:hover{
+  background-color: #c4e0ff;
+}
+
+.tb-row td{
+  width: 50%;
+  color: #363636;
+  padding-left: 8px;
+}
+
+.tb-row .endereco {
+  width: 20%;
+}
+
+.tb-row .cidade, .tb-row .raca, .tb-row .acessorio, 
+.tb-row .sexo, .tb-row .cor, .tb-row .saude{
+  width: 8%;
+  text-align: center;
+}
+
+.tb-row .usuario {
+  width: 70%;
+}
+
+.bt-acolher button{
+  font-weight: bold;
+  padding: 8px;  
+  color: white;
+  background-color: #E8833B;
+  border: none;
+  cursor: pointer;
+}
+
+.tb-filtro{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: #0153aa;
+}
 
 /* DASHBOARD - CONFIGURAÇõES */
 .painel-configuracao{

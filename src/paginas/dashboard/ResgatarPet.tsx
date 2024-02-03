@@ -6,7 +6,8 @@ function ResgatarPet() {
 
     const [pets, setPets] = useState<Pets[]>([])
     const carregarPets = () => {
-        fetch("https://resgat-pet-api.vercel.app/formulario")
+        // fetch("https://resgat-pet-api.vercel.app/formulario")
+        fetch("http://localhost:3005/formulario")
             .then((response) => {
                 return response.json();
             })
@@ -31,15 +32,31 @@ function ResgatarPet() {
                     <MenuLateral />
 
                     <div className='container-painel'>
-                        <h1>Resgatar Pet</h1>
-
                         <div className="tabelas">
                             <table>                                                                
                                 <thead>
-                                    <tr>
-                                        <th colSpan={8}> Tabela De Pets</th>
+                                    <tr className='tb-titulo'>
+                                        <th colSpan={9}> Tabela De Pets</th>
                                     </tr> 
-                                    <tr>
+                                    <div className='tb-filtro'>
+                                        <div>
+                                            <select name="" id="">
+                                                <option value="">Raça</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <select name="" id="">
+                                                <option value="">Sexo</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <input type="text" placeholder='O que você Procura ?'/>
+                                        </div>
+                                        <div>
+                                            <button>Procurar</button>
+                                        </div>
+                                    </div>
+                                    <tr className='tb-cabecalho'>
                                         <th>ENDEREÇO</th>
                                         <th>CIDADE</th>
                                         <th>RAÇA</th>
@@ -48,21 +65,23 @@ function ResgatarPet() {
                                         <th>SAUDE</th>
                                         <th>ACESSÓRIO</th>                                        
                                         <th>USUARIO</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     {pets.map((row, index) => {
                                         return (
-                                            <tr key={index}>
-                                                <td>{row.endereco}</td>
-                                                <td>{row.cidade}</td>
-                                                <td>{row.raca}</td>
-                                                <td>{row.sexo}</td>
-                                                <td>{row.cor}</td>
-                                                <td>{row.saude}</td>
-                                                <td>{row.acessorio}</td>                                                
-                                                <td>{row.usuario}</td>
+                                            <tr key={index} className='tb-row'>
+                                                <td className='endereco'>{row.endereco}</td>
+                                                <td className='cidade'>{row.cidade}</td>
+                                                <td className='raca'>{row.raca}</td>
+                                                <td className='sexo'>{row.sexo}</td>
+                                                <td className='cor'>{row.cor}</td>
+                                                <td className='saude'>{row.saude}</td>
+                                                <td className='acessorio'>{row.acessorio}</td>                                                
+                                                <td className='usuario'>{row.usuario}</td>
+                                                <td className='bt-acolher'><button>Acolher</button></td>
                                             </tr>
                                         );
                                     })}
