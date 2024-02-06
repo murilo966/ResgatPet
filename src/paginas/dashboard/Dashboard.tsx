@@ -23,13 +23,27 @@ function Dasboard() {
 
                         <div className='painel'>
                             <div className='painel-top'>
-                                <label> LISTA DE PETS <br /> RESGATADO COM SUCESSO</label>
+                                <div className='pl-left'>
+                                    CONFIGURAÇÃO
+                                </div>
+                                <div className='pl-center'>
+                                    LISTA DE PETS
+                                </div>
+                                <div className='pl-right'>
+                                    RESGATADO COM SUCESSO
+                                </div> 
                             </div>
 
                             <div className='painel-baixo'>
-                                <label> LISTA DE TODOS OS PETS <br /> CADASTRADOS NAS ULTIMAS HORAS</label>
-
-                                <label> LISTA DE ONG`S</label>
+                                <div className='pl-left'>
+                                    LISTA DE TODOS OS PETS 
+                                </div>
+                                <div className='pl-center'>
+                                    CADASTRADOS NAS ULTIMAS HORAS
+                                </div>
+                                <div className='pl-right'>
+                                    LISTA DE ONG`S
+                                </div>
                             </div>
                         </div>
                     </div>

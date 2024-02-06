@@ -38,24 +38,35 @@ function ResgatarPet() {
                                     <tr className='tb-titulo'>
                                         <th colSpan={9}> Tabela De Pets</th>
                                     </tr> 
-                                    <div className='tb-filtro'>
-                                        <div>
-                                            <select name="" id="">
-                                                <option value="">Raça</option>
-                                            </select>
+                                    <tr className='tb-titulo'>
+                                        <th colSpan={9}>
+                                            <div className='tb-filtro'>
+                                            <div>
+                                                <select name="raca" >
+                                                    <option value="">Raça</option>
+                                                    <option value="">Poodle</option>
+                                                    <option value="">Pitbull</option>
+                                                    <option value="">Chow Chow</option>
+                                                    <option value="">Bulldog</option>
+                                                    <option value="">SRD</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <select name="sexo" >
+                                                    <option value="">Sexo</option>
+                                                    <option value="">Macho</option>
+                                                    <option value="">Fêmea</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <input type="text" placeholder='O que você Procura ?'/>
+                                            </div>
+                                            <div>
+                                                <button >Procurar</button>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <select name="" id="">
-                                                <option value="">Sexo</option>
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <input type="text" placeholder='O que você Procura ?'/>
-                                        </div>
-                                        <div>
-                                            <button>Procurar</button>
-                                        </div>
-                                    </div>
+                                        </th>
+                                    </tr> 
                                     <tr className='tb-cabecalho'>
                                         <th>ENDEREÇO</th>
                                         <th>CIDADE</th>
