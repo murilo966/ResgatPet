@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/auth/AuthContext';
 import MenuLateral from '../../components/menu-lateral';
+import cardPet from '../../assents/imagens/cards/im_card-pet.png';
 
 function Dasboard() {
     const auth = useContext(AuthContext)
@@ -24,25 +25,39 @@ function Dasboard() {
                         <div className='painel'>
                             <div className='painel-top'>
                                 <div className='pl-left'>
-                                    CONFIGURAÇÃO
+                                    <label>Configuração</label>
+                                    <img src={cardPet} alt="" />                                    
                                 </div>
                                 <div className='pl-center'>
-                                    LISTA DE PETS
+                                    <label>LISTA DE PETS</label> 
+                                    <img src={cardPet} alt="" />                                    
+                                </div>
+                                <div className='pl-center'>
+                                    <label>LISTA DE PETS</label> 
+                                    <img src={cardPet} alt="" />                                    
                                 </div>
                                 <div className='pl-right'>
-                                    RESGATADO COM SUCESSO
+                                    <label>RESGATADO COM SUCESSO</label>
+                                    <img src={cardPet} alt="" />                                    
                                 </div> 
                             </div>
 
                             <div className='painel-baixo'>
                                 <div className='pl-left'>
-                                    LISTA DE TODOS OS PETS 
+                                    <label>LISTA DE TODOS OS PETS</label>
+                                    <img src={cardPet} alt="" />                                      
                                 </div>
                                 <div className='pl-center'>
-                                    CADASTRADOS NAS ULTIMAS HORAS
+                                    <label>CADASTRADOS NAS ULTIMAS HORAS</label>
+                                    <img src={cardPet} alt="" />                                     
+                                </div>
+                                <div className='pl-center'>
+                                    <label>CADASTRADOS NAS ULTIMAS HORAS</label>
+                                    <img src={cardPet} alt="" />                                     
                                 </div>
                                 <div className='pl-right'>
-                                    LISTA DE ONG`S
+                                    <label>LISTA DE ONG`S</label>
+                                    <img src={cardPet} alt="" />                                     
                                 </div>
                             </div>
                         </div>
