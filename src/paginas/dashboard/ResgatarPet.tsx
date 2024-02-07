@@ -33,7 +33,7 @@ function ResgatarPet() {
 
                     <div className='container-painel'>
                         <div className="tabelas">
-                            <table>                                                                
+                            <table>
                                 <thead>
                                     <tr className='tb-titulo'>
                                         <th colSpan={9}> Tabela De Pets</th>
