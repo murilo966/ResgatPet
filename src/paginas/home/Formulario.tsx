@@ -8,7 +8,7 @@ function Formulario() {
     const navigate = useNavigate();
     const auth = useContext(AuthContext)
 
-    // dados pet
+    // DADOS DO PET
     const [petImage, SetPetImage] = useState<string>('');
     const [petEndereco, SetPetEndereco] = useState('');
     const [petCidade, SetPetCidade] = useState('');
@@ -16,20 +16,19 @@ function Formulario() {
     const [petRaca, SetPetRaca] = useState('');
     const [petCor, SetPetCor] = useState('');
     const [petAcessorios, SetPetAcessorios] = useState<string[]>([]);
-    const [petBemEstar, SetPetBemEstar] = useState<string[]>([]);
+    const [petSaude, SetPetSaude] = useState<string[]>([]);
 
     const [petRacaOutros, SetPetRacaOutros] = useState('');
     const [petCorOutros, SetPetCorOutros] = useState('');
-    const [petBemEstarOutros, SetPetBemEstarOutros] = useState('');
-    const [petBemEstarCheck, SetPetBemEstarCheck] = useState(false);
+    const [petSaudeOutros, SetPetSaudeOutros] = useState('');
+    const [petSaudeCheck, SetPetSaudeCheck] = useState(false);
+
+    // const [formulario, setFormulario] = useState<Pets[]>([])
 
     async function salvarPets() {
         try {
             const response = await fetch('https://resgat-pet-api.vercel.app/formulario', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: JSON.stringify({
                     fotoPet: petImage,
                     endereco: petEndereco,
@@ -37,22 +36,31 @@ function Formulario() {
                     raca: petRaca,
                     sexo: petSexo,
                     cor: petCor,
-                    saude: petBemEstar,
-                    acessorio: petAcessorios,
+                    saude: petSaude.toString(),
+                    acessorio: petAcessorios.toString(),
                     usuario: auth.user?.name,
                 }),
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
             });
-    
-            if (!response.ok) {
-                throw new Error('Erro ao salvar pets');
+
+            let json = await response.json()
+            console.log(json)
+
+            if (json.id) {
+                alert('Dados salvos com sucesso:');
+                // MOSTRAR A LISTA 
+                // setFormulario((usuario) => [...usuario, json]);                 
             }
-    
-            const responseData = await response.json();
-            console.log('Dados salvos com sucesso:', responseData);
+            else {
+                alert('Ocorreu alguma falha');
+            }
+
         } catch (e) {
-            console.error('Erro ao salvar pets:', e);
+            alert('Erro ao salvar pets:' + e);
         }
-    }    
+    }
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -120,28 +128,25 @@ function Formulario() {
         const { name, checked } = event.target;
 
         if (checked) {
-            SetPetBemEstar((prevBemEstar) => [...prevBemEstar, name]);
+            SetPetSaude((prevBemEstar) => [...prevBemEstar, name]);
         } else {
-            SetPetBemEstar((prevBemEstar) => prevBemEstar.filter((item) => item !== name));
+            SetPetSaude((prevBemEstar) => prevBemEstar.filter((item) => item !== name));
         }
     }
 
     function handleInputPetBemEstarOutros(event: React.ChangeEvent<HTMLInputElement>) {
-        SetPetBemEstarOutros(event.target.value)
+        SetPetSaudeOutros(event.target.value)
     }
 
     const handlePetBemEstarOutros = () => {
-        SetPetBemEstarCheck(!petBemEstarCheck);
+        SetPetSaudeCheck(!petSaudeCheck);
 
-        if (petBemEstarCheck) {
-            SetPetBemEstarOutros('')
+        if (petSaudeCheck) {
+            SetPetSaudeOutros('')
         }
     }
 
     function handleClickSalvar() {
-
-        salvarPets()
-
         alert(
             "\nNome Usuario: " + auth.user?.name +
             "\nTelefone: " + auth.user?.telefone +
@@ -153,7 +158,7 @@ function Formulario() {
             "\nRaca: " + petRaca + ": " + petRacaOutros +
             "\nCor: " + petCor + ": " + petCorOutros +
             "\nAcessorios: " + petAcessorios +
-            "\nBem Estar: " + petBemEstar + "," + petBemEstarOutros +
+            "\nBem Estar: " + petSaude + "," + petSaudeOutros +
             "\nSalvo com Sucesso!"
         )
     }
@@ -371,9 +376,9 @@ function Formulario() {
                                 </div>
 
                                 <div>
-                                    <input className='checkbox' type="checkbox" name='outros' checked={petBemEstarCheck} onChange={handlePetBemEstarOutros} />
+                                    <input className='checkbox' type="checkbox" name='outros' checked={petSaudeCheck} onChange={handlePetBemEstarOutros} />
                                     <label>Outros </label>
-                                    <input className='outros' type="text" name='text-outros' value={petBemEstarOutros} disabled={!petBemEstarCheck} onChange={handleInputPetBemEstarOutros} />
+                                    <input className='outros' type="text" name='text-outros' value={petSaudeOutros} disabled={!petSaudeCheck} onChange={handleInputPetBemEstarOutros} />
                                 </div>
                             </div>
                         </div>

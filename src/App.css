@@ -279,7 +279,6 @@ a{
 .container-autenticacao input{
   background-color: #eee;
   border: solid 1px transparent;
-  border: none;
   margin: 3px 0;
   padding: 10px 4px;
   font-size: 13px;
@@ -930,8 +929,7 @@ table{
 
 .container-formulario input:focus{
   border: solid 1px #679aff;
-  background-color: #fafafa;
-  
+  background-color: #fafafa;  
 }
 
 .container-formulario h1{
