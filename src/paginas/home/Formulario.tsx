@@ -8,7 +8,7 @@ function Formulario() {
     const navigate = useNavigate();
     const auth = useContext(AuthContext)
 
-    // dados pet
+    // DADOS DO PET
     const [petImage, SetPetImage] = useState<string>('');
     const [petEndereco, SetPetEndereco] = useState('');
     const [petCidade, SetPetCidade] = useState('');
@@ -23,13 +23,13 @@ function Formulario() {
     const [petBemEstarOutros, SetPetBemEstarOutros] = useState('');
     const [petBemEstarCheck, SetPetBemEstarCheck] = useState(false);
 
+    // const [formulario, setFormulario] = useState<Pets[]>([])
+
     async function salvarPets() {
         try {
-            const response = await fetch('https://resgat-pet-api.vercel.app/formulario', {
+            // const response = await fetch('https://resgat-pet-api.vercel.app/formulario', {
+            const response = await fetch('http://localhost:3005/formulario', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: JSON.stringify({
                     fotoPet: petImage,
                     endereco: petEndereco,
@@ -41,16 +41,25 @@ function Formulario() {
                     acessorio: petAcessorios,
                     usuario: auth.user?.name,
                 }),
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                }            
             });
-    
-            if (!response.ok) {
-                throw new Error('Erro ao salvar pets');
+
+            let json = await response.json()
+            console.log(json)
+           
+            if(json.id){
+                alert('Dados salvos com sucesso:');
+                // MOSTRAR A LISTA 
+                // setFormulario((usuario) => [...usuario, json]);                 
             }
-    
-            const responseData = await response.json();
-            console.log('Dados salvos com sucesso:', responseData);
+            else{
+                alert('Ocorreu alguma falha');
+            }
+
         } catch (e) {
-            console.error('Erro ao salvar pets:', e);
+            alert('Erro ao salvar pets:' + e);
         }
     }    
 
@@ -139,9 +148,6 @@ function Formulario() {
     }
 
     function handleClickSalvar() {
-
-        salvarPets()
-
         alert(
             "\nNome Usuario: " + auth.user?.name +
             "\nTelefone: " + auth.user?.telefone +
