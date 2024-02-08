@@ -6,8 +6,7 @@ function ResgatarPet() {
 
     const [pets, setPets] = useState<Pets[]>([])
     const carregarPets = () => {
-        // fetch("https://resgat-pet-api.vercel.app/formulario")
-        fetch("http://localhost:3005/formulario")
+        fetch("https://resgat-pet-api.vercel.app/formulario")
             .then((response) => {
                 return response.json();
             })
@@ -37,36 +36,36 @@ function ResgatarPet() {
                                 <thead>
                                     <tr className='tb-titulo'>
                                         <th colSpan={9}> Tabela De Pets</th>
-                                    </tr> 
+                                    </tr>
                                     <tr className='tb-titulo'>
                                         <th colSpan={9}>
                                             <div className='tb-filtro'>
-                                            <div>
-                                                <select name="raca" >
-                                                    <option value="">Raça</option>
-                                                    <option value="">Poodle</option>
-                                                    <option value="">Pitbull</option>
-                                                    <option value="">Chow Chow</option>
-                                                    <option value="">Bulldog</option>
-                                                    <option value="">SRD</option>
-                                                </select>
+                                                <div>
+                                                    <select name="raca" >
+                                                        <option value="">Raça</option>
+                                                        <option value="">Poodle</option>
+                                                        <option value="">Pitbull</option>
+                                                        <option value="">Chow Chow</option>
+                                                        <option value="">Bulldog</option>
+                                                        <option value="">SRD</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <select name="sexo" >
+                                                        <option value="">Sexo</option>
+                                                        <option value="">Macho</option>
+                                                        <option value="">Fêmea</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <input type="text" placeholder='O que você Procura ?' />
+                                                </div>
+                                                <div>
+                                                    <button >Procurar</button>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <select name="sexo" >
-                                                    <option value="">Sexo</option>
-                                                    <option value="">Macho</option>
-                                                    <option value="">Fêmea</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <input type="text" placeholder='O que você Procura ?'/>
-                                            </div>
-                                            <div>
-                                                <button >Procurar</button>
-                                            </div>
-                                        </div>
                                         </th>
-                                    </tr> 
+                                    </tr>
                                     <tr className='tb-cabecalho'>
                                         <th>ENDEREÇO</th>
                                         <th>CIDADE</th>
@@ -74,7 +73,7 @@ function ResgatarPet() {
                                         <th>SEXO</th>
                                         <th>COR</th>
                                         <th>SAUDE</th>
-                                        <th>ACESSÓRIO</th>                                        
+                                        <th>ACESSÓRIO</th>
                                         <th>USUARIO</th>
                                         <th></th>
                                     </tr>
@@ -90,7 +89,7 @@ function ResgatarPet() {
                                                 <td className='sexo'>{row.sexo}</td>
                                                 <td className='cor'>{row.cor}</td>
                                                 <td className='saude'>{row.saude}</td>
-                                                <td className='acessorio'>{row.acessorio}</td>                                                
+                                                <td className='acessorio'>{row.acessorio}</td>
                                                 <td className='usuario'>{row.usuario}</td>
                                                 <td className='bt-acolher'><button>Acolher</button></td>
                                             </tr>
