@@ -101,8 +101,40 @@ function Cadastrar(){
             alert('Aceitar os Termos.');
         }
         else{
-            navigate('/login');
+            cadastrar()
         }        
+    }
+
+    async function cadastrar() {
+        try {
+            const response = await fetch('https://resgat-pet-api.vercel.app/usuarios', {
+                method: 'POST',
+                body: JSON.stringify({
+                    nome: usuarioNome,
+                    cpf_cnpj: usuarioCPF,
+                    telefone: usuarioTelefone,
+                    email: usuarioEmail,
+                    senha: usuarioSenha
+                }),
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
+            });
+
+            let json = await response.json()
+            console.log(json)
+
+            if (json.id) {
+                alert('Dados salvos com sucesso:');  
+                navigate('/login');            
+            }
+            else {
+                alert('Ocorreu alguma falha');
+            }
+
+        } catch (e) {
+            alert('Erro ao salvar pets:' + e);
+        }
     }
 
     return(
@@ -168,7 +200,7 @@ function Cadastrar(){
                                 </Link>
                             </div>
                                 
-                            <button type="button" name='entrar' onClick={handleRegistarPF}> Cadastrar-Se </button> 
+                            <button type="button" name='entrar' onClick={cadastrar}> Cadastrar-Se </button> 
                         </form>
                     </div>
 
