@@ -146,23 +146,6 @@ function Formulario() {
         }
     }
 
-    function handleClickSalvar() {
-        alert(
-            "\nNome Usuario: " + auth.user?.name +
-            "\nTelefone: " + auth.user?.telefone +
-            "\nE-Mail: " + auth.user?.email +
-            "\nPet Foto: " + petImage +
-            "\nCidade: " + petCidade +
-            "\nEndereço: " + petEndereco +
-            "\nSexo: " + petSexo +
-            "\nRaca: " + petRaca + ": " + petRacaOutros +
-            "\nCor: " + petCor + ": " + petCorOutros +
-            "\nAcessorios: " + petAcessorios +
-            "\nBem Estar: " + petSaude + "," + petSaudeOutros +
-            "\nSalvo com Sucesso!"
-        )
-    }
-
     function handleClickCancelar() {
         navigate(-1);
     }
