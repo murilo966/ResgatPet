@@ -1,23 +1,14 @@
-import { useEffect, useState } from 'react';
 import MenuLateral from '../../components/menu-lateral';
+import { useEffect, useState } from 'react';
 import { Pets } from '../../types/pets';
+import { api } from '../../api';
 
 function ResgatarPet() {
 
     const [pets, setPets] = useState<Pets[]>([])
-    const carregarPets = () => {
-        fetch("https://resgat-pet-api.vercel.app/formulario")
-            .then((response) => {
-                return response.json();
-            })
-
-            .then((json) => {
-                setPets(json)
-            })
-
-            .catch((error) => {
-                console.error('Erro ao carregar pets:', error);
-            });
+    const carregarPets = async () => {
+        let json = await api.CarregarTodosFormularios()
+        setPets(json)
     }
 
     useEffect(() => {
