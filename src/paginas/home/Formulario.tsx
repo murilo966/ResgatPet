@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth/AuthContext';
 import petImageLogo from '../../assents/imagens/logo/ic_resgatpet.png';
+import { api } from '../../api';
 
 function Formulario() {
 
@@ -9,7 +10,7 @@ function Formulario() {
     const auth = useContext(AuthContext)
 
     // DADOS DO PET
-    const [petImage, SetPetImage] = useState<string>('');
+    const [petFoto, SetPetImage] = useState<string>('');
     const [petEndereco, SetPetEndereco] = useState('');
     const [petCidade, SetPetCidade] = useState('');
     const [petSexo, SetPetSexo] = useState('');
@@ -27,27 +28,18 @@ function Formulario() {
 
     async function salvarPets() {
         try {
-            const response = await fetch('https://resgat-pet-api.vercel.app/formulario', {
-                method: 'POST',
-                body: JSON.stringify({
-                    fotoPet: petImage,
-                    endereco: petEndereco,
-                    cidade: petCidade,
-                    raca: petRaca,
-                    sexo: petSexo,
-                    cor: petCor,
-                    saude: petSaude.toString(),
-                    acessorio: petAcessorios.toString(),
-                    usuario: auth.user?.name,
-                }),
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            });
-
-            let json = await response.json()
+            let json = await api.AdicionarFormulario(
+                petFoto,
+                petEndereco,
+                petCidade,
+                petRaca,
+                petSexo,
+                petCor,
+                petSaude.toString(),
+                petAcessorios.toString(),
+                auth.user?.name
+            )
             console.log(json)
-
             if (json.id) {
                 alert('Dados salvos com sucesso:');
                 // MOSTRAR A LISTA 
@@ -187,7 +179,7 @@ function Formulario() {
                     <div className='dados-pet'>
                         <h1>Pet Econtrado</h1>
                         <div className="img-pet">
-                            <img className='petimg' src={petImage || petImageLogo} />
+                            <img className='petimg' src={petFoto || petImageLogo} />
                         </div>
 
                         <input type="file" onChange={handleImageChange} accept="image/*" />
