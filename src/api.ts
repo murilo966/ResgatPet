@@ -6,8 +6,8 @@ export const api = {
         let json = await response.json()
         return json
     },
-    AdicionarFormulario: async (petFoto: string, petEndereco: string, petCidade: string, petRaca: string, 
-        petSexo: string, petCor: string, petSaude: string, petAcessorios: string, usuario?: string ) => {
+    AdicionarFormulario: async (petFoto: string, petEndereco: string, petCidade: string, petRaca: string,
+        petSexo: string, petCor: string, petSaude: string, petAcessorios: string, usuario?: string) => {
         // const response = await fetch('https://resgat-pet-api.vercel.app/formulario', {
         const response = await fetch('http://localhost:3005/formulario', {
             method: 'POST',

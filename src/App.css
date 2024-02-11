@@ -20,9 +20,14 @@ a{
 
 /* menu navegacao do cabecalho */
 .container-cabecalho{
-  background: #E8833B;
   width: 100%;
   min-height: 75px;
+  background: rgb(255,190,7);
+  background: rgb(255,190,7);
+  background: -moz-linear-gradient(-90deg, rgba(255,190,7,0.7175245098039216) 10%, rgba(255,154,0,1) 36%, rgba(232,131,59,1) 72%);
+  background: -webkit-linear-gradient(-90deg, rgba(255,190,7,0.7175245098039216) 10%, rgba(255,154,0,1) 36%, rgba(232,131,59,1) 72%);
+  background: linear-gradient(-90deg, rgba(255,190,7,0.7175245098039216) 10%, rgba(255,154,0,1) 36%, rgba(232,131,59,1) 72%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffbe07",endColorstr="#e8833b",GradientType=1);
 }
 
 .cabecalho{
@@ -474,25 +479,11 @@ a{
   width: 100%;
   height: 100%;
   min-height: 90vh;
-  margin: 10px 0 10px;
-  margin-inline-start: 8px;
   margin-inline-end: 8px;
   padding-left: 8px;
   padding-right: 8px;
-  border-radius: 15px;
-  border: 1px solid #d3d3d3;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-}
-
-.container-painel h1{ 
-  margin-top: 12px;
-  margin-bottom: 12px;
-  text-align: center;
-  font-size: x-large;
-  font-weight: bold;
-  color: #535353;
 }
 
 .container-bem-vindo{
@@ -515,61 +506,83 @@ a{
   flex-direction: column;
 }
 
-.painel-top, .painel-baixo{
+.card{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   margin: 9px 0;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
-.painel-top .pl-left{
+.card-titulo{
+  position: relative;
+  top: 28px;
+  height: 0;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cards{
   display: flex;
   justify-content: center;
-  width: 20%;
-  height: 300px;  
+  width: 200px;
+  height: 266px;
+  margin: 9px 0;
+  cursor: pointer;
+  border: 2px solid #dadada;
 }
 
-.painel-top .pl-left label, 
-.painel-top .pl-center label,
-.painel-top .pl-right label,
-.painel-baixo .pl-left label,
-.painel-baixo .pl-center label,
-.painel-baixo .pl-right label{
-  position: absolute;
-  font-size: 20px;
-  color: #535353;
-  font-weight: bold;
+.cards:hover{
+  box-shadow: 0 0 11px rgba(3, 121, 255, 0.411);  
 }
 
-.painel-top .pl-center{
-  display: flex;
-  width: 20%;
-  height: 300px;
+.card .card-01{
+  background: url('./assents/imagens/cards/im_card-pet-1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.painel-top .pl-right{
-  display: flex;
-  width: 20%;
-  height: 300px;
+.card .card-02{
+  background: url('./assents/imagens/cards/im_card-pet-2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.painel-baixo .pl-left{
-  display: flex;
-  width: 20%;
-  height: 300px; 
+.card .card-03{
+  background: url('./assents/imagens/cards/im_card-pet-3.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.painel-baixo .pl-center{
-  display: flex;
-  width: 20%;
-  height: 300px;
+.card .card-04{
+  background: url('./assents/imagens/cards/im_card-pet-4.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.painel-baixo .pl-right{
-  display: flex;
-  width: 20%;
-  height: 300px;
+.card .card-05{
+  background: url('./assents/imagens/cards/im_card-pet-5.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.card .card-06{
+  background: url('./assents/imagens/cards/im_card-pet-6.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.card .card-07{
+  background: url('./assents/imagens/cards/im_card-pet-7.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.card .card-08{
+  background: url('./assents/imagens/cards/im_card-pet-8.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 /* DASHBOARD - MENU LATERAL */
@@ -581,10 +594,12 @@ a{
   overflow: hidden;
   width: 200px;
   height: 90vh;
-  margin-top: 10px;
-  border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #ffc57a;
+  background: rgb(255,190,7);
+  background: -moz-linear-gradient(0deg, rgba(255,190,7,0.7175245098039216) 25%, rgba(255,154,0,1) 72%, rgba(232,131,59,1) 95%);
+  background: -webkit-linear-gradient(0deg, rgba(255,190,7,0.7175245098039216) 25%, rgba(255,154,0,1) 72%, rgba(232,131,59,1) 95%);
+  background: linear-gradient(0deg, rgba(255,190,7,0.7175245098039216) 25%, rgba(255,154,0,1) 72%, rgba(232,131,59,1) 95%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffbe07",endColorstr="#e8833b",GradientType=1);
 }
 
 .container-menu img{
@@ -594,35 +609,60 @@ a{
   cursor: pointer;
 }
 
-.container-menu label{
-  text-align: center; 
+.container-menu label{ 
   font-weight: bold;
   font-size: small;
-  text-transform: capitalize;
-  color: black;
+  color: white;
+  margin-bottom: 15px;
 }
 
-.container-menu button{
+.botoes-menus button{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   width: 170px;
   height: 25px;
-  color: #fff;
+  color: #4d3001;
   font-weight: bold;
   text-align: right;
-  background-color: #4B8A40;
+  background-color: #fdca77;
   border: none;
-  padding: 0 25px;
-  margin: 1px 2px 3px 0;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  margin: 1px 22px 3px 0;
   cursor: pointer;
 }
 
-.container-menu button:hover{
-  background: #427e37;
+.botoes-menus span.icon{
+  float: inline-start;
+  width: 20px;
+  height: 20px;
+  margin: 0 10px;
+  padding: 0 10px;
 }
 
-.container-menu button:active {
-  background: #4B8A40;
+.botoes-menus span.ic-dashboard{
+  background: url('./assents/imagens/menu/ic_dashboard.png') no-repeat;
+}
+
+.botoes-menus span.ic-resgatar{
+  background: url('./assents/imagens/botoes/bt_recolher.png') no-repeat;
+}
+
+.botoes-menus span.ic-acompanhar{
+  background: url('./assents/imagens/botoes/bt_recolher.png') no-repeat;
+}
+
+.botoes-menus span.ic-configuracao{
+  background: url('./assents/imagens/botoes/bt_recolher.png') no-repeat;
+}
+
+.botoes-menus button:hover{
+  background: #8a5501;
+  color: white;
+}
+
+.botoes-menus button:active {
+  background: #4d3001;
+  color: white;
 }
 
 @keyframes collapse {
@@ -1088,4 +1128,3 @@ table{
   text-transform: uppercase;
   margin: 50px 8px;
 }
-
