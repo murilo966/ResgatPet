@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/auth/AuthContext';
 import MenuLateral from '../../components/menu-lateral';
-import cardPet from '../../assents/imagens/cards/im_card-pet.png';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Dasboard() {
     const auth = useContext(AuthContext)
@@ -13,8 +13,6 @@ function Dasboard() {
                     <MenuLateral />
 
                     <div className='container-painel'>
-                        <h1>Dashboard</h1>
-
                         <div className='container-bem-vindo'>
 
                             <h3>Olá, Bem-Vindo:</h3>
@@ -23,42 +21,45 @@ function Dasboard() {
                         </div>
 
                         <div className='painel'>
-                            <div className='painel-top'>
-                                <div className='pl-left'>
-                                    <label>Configuração</label>
-                                    <img src={cardPet} alt="" />                                    
-                                </div>
-                                <div className='pl-center'>
-                                    <label>LISTA DE PETS</label> 
-                                    <img src={cardPet} alt="" />                                    
-                                </div>
-                                <div className='pl-center'>
-                                    <label>LISTA DE PETS</label> 
-                                    <img src={cardPet} alt="" />                                    
-                                </div>
-                                <div className='pl-right'>
-                                    <label>RESGATADO COM SUCESSO</label>
-                                    <img src={cardPet} alt="" />                                    
+                            <div className='card'>
+                                <Link to='configuracoes'>
+                                    <div className='card-01 cards'>
+                                        <label className='card-titulo'>Apadrinhar</label>
+                                    </div>
+                                </Link>
+
+                                <Link to='resgatar-pet'>
+                                    <div className='card-02 cards'>
+                                        <label className='card-titulo'>Resgatar</label>
+                                    </div>
+                                </Link>
+
+                                <Link to='../formulario'>
+                                    <div className='card-03 cards'>
+                                        <label className='card-titulo'>Encontrei Pet</label>
+                                    </div>
+                                </Link>
+
+                                <div className='card-04 cards'>
+                                    <label className='card-titulo'>Lista de Pets</label>                                 
                                 </div> 
                             </div>
 
-                            <div className='painel-baixo'>
-                                <div className='pl-left'>
-                                    <label>LISTA DE TODOS OS PETS</label>
-                                    <img src={cardPet} alt="" />                                      
+                            <div className='card'>
+                                <div className='card-05 cards'>
+                                    <label className='card-titulo'>ONG`S</label>                                    
                                 </div>
-                                <div className='pl-center'>
-                                    <label>CADASTRADOS NAS ULTIMAS HORAS</label>
-                                    <img src={cardPet} alt="" />                                     
+                                <div className='card-06 cards'>
+                                    <label className='card-titulo'>Doações</label>                                 
                                 </div>
-                                <div className='pl-center'>
-                                    <label>CADASTRADOS NAS ULTIMAS HORAS</label>
-                                    <img src={cardPet} alt="" />                                     
+                                <div className='card-07 cards'>
+                                    <label className='card-titulo'>Parceiros</label>                                   
                                 </div>
-                                <div className='pl-right'>
-                                    <label>LISTA DE ONG`S</label>
-                                    <img src={cardPet} alt="" />                                     
-                                </div>
+                                <Link to='configuracoes'>
+                                    <div className='card-08 cards'>
+                                        <label className='card-titulo'>Configurações</label>
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
