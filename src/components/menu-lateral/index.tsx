@@ -28,7 +28,8 @@ function MenuLateral() {
 
                 <Link to='/dashboard/resgatar-pet'>
                     {
-                        auth.user?.level === 2 &&
+                        // SOMENTE O NUMERO ZERO E O DOIS TEM ACESSO AO BOTAO 
+                        (auth.user?.level === 0 || auth.user?.level === 2) &&
                         <button
                             type="button"
                         >
@@ -40,7 +41,8 @@ function MenuLateral() {
 
                 <Link to='/dashboard/acompanhar'>
                     {
-                        auth.user?.level === 1 &&
+                        // SOMENTE O NUMERO ZERO E O UM TEM ACESSO AO BOTAO 
+                        (auth.user?.level === 0 || auth.user?.level === 1) &&
                         <button
                             type="button"
                         >

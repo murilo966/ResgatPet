@@ -491,6 +491,7 @@ a{
   flex-direction: row;
   align-items: baseline;
   justify-content: flex-start;
+  margin: 0 130px;
   padding: 8px 0;
 }
 
@@ -531,10 +532,17 @@ a{
   margin: 9px 0;
   cursor: pointer;
   border: 2px solid #dadada;
+  max-width: 100%;
+	-moz-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
 }
 
 .cards:hover{
-  box-shadow: 0 0 11px rgba(3, 121, 255, 0.411);  
+  box-shadow: 0 0 11px rgba(3, 121, 255, 0.411);
+  -moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1); 
 }
 
 .card .card-01{
@@ -612,8 +620,10 @@ a{
 .container-menu label{ 
   font-weight: bold;
   font-size: small;
+  text-align: center;
+  text-transform: capitalize;
   color: white;
-  margin-bottom: 15px;
+  padding: 8px;
 }
 
 .botoes-menus button{
@@ -644,15 +654,15 @@ a{
 }
 
 .botoes-menus span.ic-resgatar{
-  background: url('./assents/imagens/botoes/bt_recolher.png') no-repeat;
+  background: url('./assents/imagens/menu/ic_pata.png') no-repeat;
 }
 
 .botoes-menus span.ic-acompanhar{
-  background: url('./assents/imagens/botoes/bt_recolher.png') no-repeat;
+  background: url('./assents/imagens/menu/ic_configuracao.png') no-repeat;
 }
 
 .botoes-menus span.ic-configuracao{
-  background: url('./assents/imagens/botoes/bt_recolher.png') no-repeat;
+  background: url('./assents/imagens/menu/ic_configuracao.png') no-repeat;
 }
 
 .botoes-menus button:hover{
@@ -726,16 +736,19 @@ table{
 
 .tb-row .endereco {
   width: 20%;
+  text-transform: capitalize;
 }
 
 .tb-row .cidade, .tb-row .raca, .tb-row .acessorio, 
 .tb-row .sexo, .tb-row .cor, .tb-row .saude{
   width: 8%;
   text-align: center;
+  text-transform: capitalize;
 }
 
 .tb-row .usuario {
   width: 70%;
+  text-transform: capitalize;
 }
 
 .bt-acolher button{

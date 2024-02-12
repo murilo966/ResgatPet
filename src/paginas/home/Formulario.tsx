@@ -28,6 +28,7 @@ function Formulario() {
 
     async function salvarPets() {
         try {
+
             let json = await api.AdicionarFormulario(
                 petFoto,
                 petEndereco,
@@ -42,12 +43,20 @@ function Formulario() {
             console.log(json)
             if (json.id) {
                 alert('Dados salvos com sucesso:');
+                navigate('acompanhar')
                 // MOSTRAR A LISTA 
-                // setFormulario((usuario) => [...usuario, json]);                 
+                // setFormulario((usuario) => [...usuario, json]);
             }
             else {
-                alert('Ocorreu alguma falha');
+                //alert('Ocorreu alguma falha');
+                if (petEndereco.trim() === '' || petCidade.trim() === '' ||
+                    petRaca.trim() === '' || petRaca.trim() === '' ||
+                    petSexo.trim() === '' || petCor.trim() === '' ||
+                    petSaude.length === 0 || petAcessorios.length === 0) {
+                    alert('Por favor, preencha todos os campos.');
+                }
             }
+
 
         } catch (e) {
             alert('Erro ao salvar pets:' + e);

@@ -9,10 +9,10 @@ export const userAPI = () => ({
         return{
             user: {
                 id: 3,
-                name: 'Andre',
+                name: 'andré gustavo freitas comegno',
                 telefone: 123123,
                 email: 'andre@gmail.com',
-                level: 2
+                level: 1
             }
         };
         const response = await api.post('/validate', {token})
@@ -22,12 +22,13 @@ export const userAPI = () => ({
         return{
             user: {
                 id: 3,
-                name: 'Andre',
+                name: 'André Gustavo Freitas Comegno',
                 telefone: 123123,
                 email: 'andre@gmail.com',
-                level: 2
+                level: 1
             },
             token: '123456789'
+            
         };
         const response = await api.post('singin', {email, senha})
         return response.data
