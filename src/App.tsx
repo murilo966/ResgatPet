@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom';
 import Cabecalho from './components/cabecalho';
 import Rodape from './components/rodape';
 import Cadastrar from './paginas/autenticacao/Cadastrar';
-import ComoAjudar from './paginas/home/ComoAjudar';
 import Home from './paginas/home/Home';
 import Login from './paginas/autenticacao/Login';
 import QuemSomos from './paginas/home/QuemSomos';
@@ -29,7 +28,6 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/formulario' element={<Formulario />} />
         <Route path='/quem-somos' element={<QuemSomos />} />
-        <Route path='/como-ajudar' element={<ComoAjudar />} />
         <Route path='/login' element={<Login />} />
         <Route path='/esqueceu-senha' element={<EsqueceuSenha />} />
         <Route path='/cadastrar' element={<Cadastrar />} />
