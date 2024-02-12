@@ -8,12 +8,10 @@ export const RequireAuth = ({ children, level } : {children : JSX.Element, level
     if(!auth.user){
         return <Login/>
     }
+    
+    console.log("Nível do Usuário:", auth.user.level);
 
-    if (auth.user.level === 0 && level === 0) {
-        return children;
-    } else if (auth.user.level <= 1 && level <= 1) {
-        return children;
-    } else if (auth.user.level === 2 && level === 2) {
+    if (auth.user.level >= level) {
         return children;
     }
 

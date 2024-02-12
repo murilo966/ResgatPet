@@ -15,32 +15,32 @@ import Configuracao from './paginas/dashboard/Configuracao';
 import ResgatarPet from './paginas/dashboard/ResgatarPet';
 import NotFound from './paginas/erros/NotFound';
 import Formulario from './paginas/home/Formulario';
-import {RequireAuth} from './contexts/auth/RequireAuth';
+import { RequireAuth } from './contexts/auth/RequireAuth';
 
 function App() {
   return (
     <div>
       <header>
-        <Cabecalho/>
+        <Cabecalho />
       </header>
-      
+
       <Routes>
-        <Route path='*' element={<NotFound/>} ></Route>
-        <Route path='/' element={<Home/>} ></Route>
-        <Route path='/formulario' element={<RequireAuth level={0}><Formulario/></RequireAuth>} ></Route>
-        <Route path='/quem-somos' element={<QuemSomos/>} ></Route>
-        <Route path='/como-ajudar' element={<ComoAjudar/>} ></Route>
-        <Route path='/login' element={<Login/>} ></Route>        
-        <Route path='/esqueceu-senha' element={<EsqueceuSenha/>} ></Route>
-        <Route path='/cadastrar' element={<Cadastrar/>} ></Route>
-        <Route path='/dashboard' element={<RequireAuth level={0}><Dasboard/></RequireAuth>}></Route>
-        <Route path='/dashboard/resgatar-pet' element={<RequireAuth level={2}><ResgatarPet/></RequireAuth>} ></Route>
-        <Route path='/dashboard/acompanhar' element={<RequireAuth level={1}><Acompanhar/></RequireAuth>} ></Route>
-        <Route path='/dashboard/configuracoes' element={<RequireAuth level={0}><Configuracao/></RequireAuth>} ></Route>
+        <Route path='*' element={<NotFound />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/formulario' element={<Formulario />} />
+        <Route path='/quem-somos' element={<QuemSomos />} />
+        <Route path='/como-ajudar' element={<ComoAjudar />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/esqueceu-senha' element={<EsqueceuSenha />} />
+        <Route path='/cadastrar' element={<Cadastrar />} />
+        <Route path='/dashboard' element={<Dasboard />} />
+        <Route path='/dashboard/resgatar-pet' element={<RequireAuth level={0}><ResgatarPet /></RequireAuth>} />
+        <Route path='/dashboard/acompanhar' element={<RequireAuth level={0}><Acompanhar /></RequireAuth>} />
+        <Route path='/dashboard/configuracoes' element={<Configuracao />} />
       </Routes>
 
       <footer>
-        <Rodape/>
+        <Rodape />
       </footer>
     </div>
   );
