@@ -53,6 +53,7 @@ a{
   display: flex;
   justify-content: right;
   align-items: center;
+  flex-wrap: wrap;
   font-size: 8px;
   margin: 0 20px;
   gap: 15px;
@@ -128,80 +129,60 @@ a{
 /* Começo do Rodapé */
 .rodape-container{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  bottom: 0;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 100%;
-  height: 100px;
+  height: 100%;
+  padding: 10px 0 10px;
+  min-height: 10vh;
   background: #363636;
-}
-
-.mapa-site{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 70%;
-  justify-content: center;
-}
-
-.resgatepet{
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  width: 50%;
-}
-
-.rede-sociais{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 50%;
 }
 
 .rodape{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.apoio,
-.rede-social{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   flex-wrap: wrap;
+  justify-content: center;
+  padding: 8px;
 }
 
-.icone{
-  margin: 0 8px;
-  width: 35px;
+.rodape h3{
+  text-align: center;
+  color: #FFBE41;
+  font-weight: bold;
+  font-size: large;
+  margin: 0 0 10px;
 }
 
-.icone img{
+.rodape ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rodape label{
+  color: white;
+  font-size: small;
+  padding-top: 1%;
+  cursor: pointer;
+}
+
+.rodape img{
+  width: 30px;
+  height: 30px;
   max-width: 100%;
   max-height: 100%;
   cursor: pointer;
 }
 
-.titulo-rodape{
+.rodape label:hover{
   color: #FFBE41;
-  font-weight: bold;
-  font-size: large;
 }
 
-.sub-titulo{
-  color: white;
-  font-size: small;
-  padding-top: 1%;
-}
-
-.bt-resgatpet{
-  cursor: pointer;
-}
-
-.bt-resgatpet:hover{
-  color: #FFBE41;
+.rodape label:active{
+  color: #ffd588;
 }
 /* Final do Rodapé */
 
@@ -484,6 +465,7 @@ a{
   padding-right: 8px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .container-bem-vindo{
@@ -532,6 +514,7 @@ a{
   margin: 9px 0;
   cursor: pointer;
   border: 2px solid #dadada;
+  background-color: #dadada;
   max-width: 100%;
 	-moz-transition: all 0.3s;
 	-webkit-transition: all 0.3s;
@@ -658,7 +641,7 @@ a{
 }
 
 .botoes-menus span.ic-acompanhar{
-  background: url('./assents/imagens/menu/ic_configuracao.png') no-repeat;
+  background: url('./assents/imagens/menu/ic_acompanhar.png') no-repeat;
 }
 
 .botoes-menus span.ic-configuracao{
@@ -978,6 +961,12 @@ table{
   font-size: 13px;
   border-radius: 8px;
   outline: none;
+  text-transform: capitalize;
+}
+
+/* E-mail letra minusculo */
+#capitalize{
+  text-transform: none;
 }
 
 .container-formulario input:focus{
@@ -1140,4 +1129,94 @@ table{
   letter-spacing: 0.5px;
   text-transform: uppercase;
   margin: 50px 8px;
+}
+
+/* CELULAR */
+@media only screen and (max-width: 600px) {
+
+  /* HOME */
+  .home-container {
+    width: 100%;
+  }
+
+  /* LOGIN */
+  .form-container img {
+    width: 200px;
+  }
+  .container-autenticacao {
+    margin-top: 0;
+    border-radius: 0;
+  }
+  .container-autenticacao p {
+    font-size: 10px;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+  .container-autenticacao button.hidden {
+    width: 180px;
+  }
+
+  .container-autenticacao button {
+    padding: 8px 8px
+  }
+
+  /* DASHBOARD */
+  .container-navegacao {
+    flex-wrap: nowrap;
+  }
+
+  .container-bem-vindo{
+    display: none;
+  }
+
+  /* QUEM SOMOS */
+  .quem-somos {
+    margin: 18px 0;
+  }
+
+  .nossos-valores, .como-ajudar{
+    padding: 0 16px;
+  }
+
+  .logo img {
+    display: none;
+  }
+
+  /* FORMULARIO */
+  .container-formulario {
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+  }
+
+  .row {
+    display: contents;
+  }
+
+  .mobile-botao{
+    display: flex;
+    flex-direction: row; 
+  }
+
+  /* RODAPE */
+  .rodape {
+    display: block;
+  }
+
+  .rodape img{
+    padding: 8px ;
+  }
+
+  .rodape-container {
+    justify-content: space-around;
+  }
+
+  /* DASHBOARD ACOMPANHAR */
+  .cards {
+    width: 280px;
+    height: 66px;
+  }
+
 }

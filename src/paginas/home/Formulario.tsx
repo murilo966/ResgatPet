@@ -169,6 +169,7 @@ function Formulario() {
                             <div>
                                 <label>E-Mail</label>
                                 <input type="email"
+                                    id='capitalize'
                                     name="user-email"
                                     value={auth.user?.email}
                                     disabled
@@ -206,15 +207,17 @@ function Formulario() {
                         </div>
 
                         <h1>Sexo</h1>
-                        <div className="row">
-                            <div>
-                                <input className='radios' type="radio" name="sexo-macho" checked={petSexo === 'Macho'} value="Macho" onChange={handleInputPetSexo} />
-                                <label>Macho </label>
-                            </div>
+                        <div className="column">
+                            <div className="row">
+                                <div>
+                                    <input className='radios' type="radio" name="sexo-macho" checked={petSexo === 'Macho'} value="Macho" onChange={handleInputPetSexo} />
+                                    <label>Macho </label>
+                                </div>
 
-                            <div>
-                                <input className='radios' type="radio" name="sexo-femea" checked={petSexo === 'Fêmea'} value="Fêmea" onChange={handleInputPetSexo} />
-                                <label>Fêmea </label>
+                                <div>
+                                    <input className='radios' type="radio" name="sexo-femea" checked={petSexo === 'Fêmea'} value="Fêmea" onChange={handleInputPetSexo} />
+                                    <label>Fêmea </label>
+                                </div>
                             </div>
                         </div>
 
@@ -367,7 +370,7 @@ function Formulario() {
                             </div>
                         </div>
 
-                        <div className="column">
+                        <div className="column mobile-botao">
                             <div className='row'>
                                 <div>
                                     <button className='bt-salvar' type="button" name='salvar' onClick={salvarPets} > Salvar </button>
