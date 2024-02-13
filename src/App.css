@@ -13,9 +13,8 @@ a{
 
 .container-img{
   min-height: 100vh;
-  background: url('./assents/imagens/background/im_background-dog.jpg');
+  background: url('./assents/imagens/background/im_background-dog.jpg') no-repeat;
   background-size: cover;
-  background-repeat: no-repeat;
 }
 
 /* menu navegacao do cabecalho */
@@ -492,7 +491,7 @@ a{
 .card{
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   margin: 9px 0;
   flex-wrap: wrap;
 }
@@ -511,7 +510,7 @@ a{
   justify-content: center;
   width: 200px;
   height: 266px;
-  margin: 9px 0;
+  margin: 9px 40px;
   cursor: pointer;
   border: 2px solid #dadada;
   background-color: #dadada;
@@ -529,51 +528,43 @@ a{
 }
 
 .card .card-01{
-  background: url('./assents/imagens/cards/im_card-pet-1.png');
+  background: url('./assents/imagens/cards/im_card-pet-1.png') no-repeat;
   background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .card .card-02{
-  background: url('./assents/imagens/cards/im_card-pet-2.png');
+  background: url('./assents/imagens/cards/im_card-pet-2.png') no-repeat;
   background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .card .card-03{
-  background: url('./assents/imagens/cards/im_card-pet-3.png');
+  background: url('./assents/imagens/cards/im_card-pet-3.png') no-repeat;
   background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .card .card-04{
-  background: url('./assents/imagens/cards/im_card-pet-4.png');
+  background: url('./assents/imagens/cards/im_card-pet-4.png') no-repeat;
   background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .card .card-05{
-  background: url('./assents/imagens/cards/im_card-pet-5.png');
+  background: url('./assents/imagens/cards/im_card-pet-5.png') no-repeat;
   background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .card .card-06{
-  background: url('./assents/imagens/cards/im_card-pet-6.png');
+  background: url('./assents/imagens/cards/im_card-pet-6.png') no-repeat;
   background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .card .card-07{
-  background: url('./assents/imagens/cards/im_card-pet-7.png');
+  background: url('./assents/imagens/cards/im_card-pet-7.png') no-repeat;
   background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .card .card-08{
-  background: url('./assents/imagens/cards/im_card-pet-8.png');
+  background: url('./assents/imagens/cards/im_card-pet-8.png') no-repeat;
   background-size: contain;
-  background-repeat: no-repeat;
 }
 
 /* DASHBOARD - MENU LATERAL */
@@ -632,16 +623,31 @@ a{
   padding: 0 10px;
 }
 
+button.sub-menu{
+  display: flex;
+  justify-content: center;
+  width: 160px;
+  background-color: #ffe9c5;
+}
+
 .botoes-menus span.ic-dashboard{
   background: url('./assents/imagens/menu/ic_dashboard.png') no-repeat;
 }
 
-.botoes-menus span.ic-resgatar{
-  background: url('./assents/imagens/menu/ic_pata.png') no-repeat;
+.botoes-menus span.ic-pets{
+  background: url('./assents/imagens/menu/ic_pets.png') no-repeat;
 }
 
-.botoes-menus span.ic-acompanhar{
-  background: url('./assents/imagens/menu/ic_acompanhar.png') no-repeat;
+.botoes-menus span.ic-instituicao{
+  background: url('./assents/imagens/menu/ic_instituicao.png') no-repeat;
+}
+
+.botoes-menus span.ic-docoes{
+  background: url('./assents/imagens/menu/ic_doacao.png') no-repeat;
+}
+
+.botoes-menus span.ic-resgatar{
+  background: url('./assents/imagens/menu/ic_resgatar.png') no-repeat;
 }
 
 .botoes-menus span.ic-configuracao{
@@ -656,15 +662,6 @@ a{
 .botoes-menus button:active {
   background: #4d3001;
   color: white;
-}
-
-@keyframes collapse {
-  from {
-    left: 0;
-  }
-  to {
-    left: -250px;
-  }
 }
 
 /* DASHBOARD - REGATARPET */
@@ -1217,6 +1214,53 @@ table{
   .cards {
     width: 280px;
     height: 66px;
+  }
+
+  .card-titulo {
+    position: relative;
+    top: 18px;
+    left: 42px;
+    font-size: 20px;
+}
+
+  .card .card-01{
+    background: url('./assents/imagens/cards/im_card-pet-mobile-1.png') no-repeat;
+    background-size: cover;
+  }
+
+  .card .card-02{
+    background: url('./assents/imagens/cards/im_card-pet-mobile-2.png') no-repeat;
+    background-size: cover;
+  }
+
+  .card .card-03{
+    background: url('./assents/imagens/cards/im_card-pet-mobile-3.png') no-repeat;
+    background-size: cover;
+  }
+
+  .card .card-04{
+    background: url('./assents/imagens/cards/im_card-pet-mobile-4.png') no-repeat;
+    background-size: cover;
+  }
+
+  .card .card-05{
+    background: url('./assents/imagens/cards/im_card-pet-mobile-5.png') no-repeat;
+    background-size: cover;
+  }
+
+  .card .card-06{
+    background: url('./assents/imagens/cards/im_card-pet-mobile-6.png') no-repeat;
+    background-size: cover;
+  }
+
+  .card .card-07{
+    background: url('./assents/imagens/cards/im_card-pet-mobile-7.png') no-repeat;
+    background-size: cover;
+  }
+
+  .card .card-08{
+    background: url('./assents/imagens/cards/im_card-pet-mobile-8.png') no-repeat;
+    background-size: cover;
   }
 
 }
