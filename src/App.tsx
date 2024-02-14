@@ -1,5 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import { RequireAuth } from './contexts/auth/RequireAuth';
 
 import Cabecalho from './components/cabecalho';
 import Rodape from './components/rodape';
@@ -13,8 +14,7 @@ import Acompanhar from './paginas/dashboard/Acompanhar';
 import Configuracao from './paginas/dashboard/Configuracao';
 import ResgatarPet from './paginas/dashboard/ResgatarPet';
 import NotFound from './paginas/erros/NotFound';
-import Formulario from './paginas/home/Formulario';
-import { RequireAuth } from './contexts/auth/RequireAuth';
+import Formulario from './paginas/dashboard/Formulario';
 import Apadrinhar from './paginas/dashboard/Apadrinhar';
 import Doacao from './paginas/dashboard/Doacao';
 import Ongs from './paginas/dashboard/Ongs';
@@ -29,14 +29,14 @@ function App() {
 
       <Routes>
         <Route path='*' element={<NotFound />} />
-        <Route path='/' element={<Home />} />
-        <Route path='/formulario' element={<Formulario />} />
+        <Route path='/' element={<Home />} />        
         <Route path='/quem-somos' element={<QuemSomos />} />
         <Route path='/login' element={<Login />} />
         <Route path='/esqueceu-senha' element={<EsqueceuSenha />} />
         <Route path='/cadastrar' element={<Cadastrar />} />
         <Route path='/dashboard' element={<Dasboard />} />
         <Route path='/dashboard/resgatar-pet' element={<RequireAuth level={0}><ResgatarPet /></RequireAuth>} />
+        <Route path='/dashboard/formulario' element={<RequireAuth level={0}><Formulario /></RequireAuth>} />
         <Route path='/dashboard/apadrinhar' element={<RequireAuth level={0}><Apadrinhar /></RequireAuth>} />
         <Route path='/dashboard/doacao' element={<RequireAuth level={0}><Doacao /></RequireAuth>} />
         <Route path='/dashboard/ongs' element={<RequireAuth level={0}><Ongs /></RequireAuth>} />

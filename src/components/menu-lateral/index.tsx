@@ -73,7 +73,7 @@ function MenuLateral() {
                                 </button>
                             </Link>
 
-                            <Link to='../formulario'>
+                            <Link to='/dashboard/formulario'>
                                 <button
                                     type="button"
                                     className='sub-menu'

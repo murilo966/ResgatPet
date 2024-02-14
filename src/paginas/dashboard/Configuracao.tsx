@@ -40,9 +40,8 @@ function Configuracao() {
             <div className='container'>
                 <div className='dashboard'>
                     <MenuLateral />
-
-                    <div className='container-painel'>
-                        <div className='painel-configuracao'>
+                    <div className='container-painel '>
+                        <div className='configuracao'>
                             <h1>Configurações</h1>
                             <input type="text"
                                 name="name-usuario"
@@ -51,6 +50,7 @@ function Configuracao() {
                             />
 
                             <input type="text"
+                                id='capitalize'
                                 value={email}
                                 name="email-usuario"
                                 placeholder="nome@email.com"

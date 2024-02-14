@@ -15,7 +15,7 @@ function Home() {
                     </div>
 
                     <div className='bt-formulario'>
-                        <Link to='/formulario'>
+                        <Link to='/dashboard/formulario'>
                             <button className='bt-encontrei-pet' >Encontrei um Pet</button>
                         </Link>
                     </div>
