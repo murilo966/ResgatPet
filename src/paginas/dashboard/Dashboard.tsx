@@ -46,7 +46,7 @@ function Dasboard() {
                                     }
                                 </Link>
 
-                                <Link to='../formulario'>
+                                <Link to='formulario'>
                                     {(auth.user?.level === 0 || auth.user?.level === 1) &&
                                         <div className='card-03 cards cards-mobile'>
                                             <label className='card-titulo'>Encontrei Pet</label>
