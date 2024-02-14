@@ -111,15 +111,6 @@ function MenuLateral() {
                                 </button>
                             </Link>
 
-                            <Link to='/dashboard/doacao'>
-                                <button
-                                    type="button"
-                                    className='sub-menu'
-                                >
-                                    <span>Doações</span>
-                                </button>
-                            </Link>
-
                             <Link to='/dashboard/parceiros'>
                                 <button
                                     type="button"
@@ -130,6 +121,18 @@ function MenuLateral() {
                             </Link>
                         </>
                     )
+                }
+
+                {
+                    levelUsuario &&
+                    <Link to='/dashboard/doacao'>
+                        <button
+                            type="button"
+                        >
+                            <span className='icon ic-doacoes' />
+                            Doações
+                        </button>
+                    </Link>
                 }
 
                 {
@@ -144,15 +147,6 @@ function MenuLateral() {
                                     Resgatar Pet
                                 </button>
                             </Link>
-
-                            <Link to='/dashboard/doacao'>
-                                <button
-                                    type="button"
-                                >
-                                    <span className='icon ic-docoes'/>
-                                    Doações
-                                </button>
-                            </Link>
                         </>
                     )
                 }
@@ -161,7 +155,7 @@ function MenuLateral() {
                     <button
                         type="button"
                     >
-                        <span className='icon ic-configuracao'></span>
+                        <span className='icon ic-configuracao' />
                         Configurações
                     </button>
                 </Link>

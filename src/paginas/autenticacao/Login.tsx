@@ -72,8 +72,8 @@ function Login() {
                 const isLogged = await auth.signin(usuarioEmail, usuarioSenha)
                 if(isLogged){
                     // VERIFICA SE JÁ ESTA NA PAGINA FORMULARIO ANTES DE LOGAR
-                    if(location.pathname.toLowerCase() === '/formulario'){
-                        navigate('/formulario')
+                    if(location.pathname.toLowerCase() === '/dashboard/formulario'){
+                        navigate('/dashboard/formulario')
                     }
                     else{
                         navigate('/dashboard')
