@@ -36,7 +36,7 @@ function Dasboard() {
                                             <label className='card-titulo'>Resgatar</label>
                                         </div>
                                     }
-                                </Link>
+                                </Link>  
 
                                 <Link to='acompanhar'>
                                     {(auth.user?.level === 0 || auth.user?.level === 1) &&
@@ -57,6 +57,14 @@ function Dasboard() {
                                 <div className='card-04 cards cards-mobile'>
                                     <label className='card-titulo'>Lista de Pets</label>
                                 </div>
+
+                                <Link to='configuracoes'>
+                                    {(auth.user?.level === 0 || auth.user?.level === 2) &&
+                                        <div className='card-08 cards cards-mobile'>
+                                            <label className='card-titulo'>Configurações</label>
+                                        </div>
+                                    }
+                                </Link>
                             </div>
 
                             <div className='card'>
@@ -69,23 +77,27 @@ function Dasboard() {
                                 </Link>
 
                                 <Link to='doacao'>
-                                    <div className='card-06 cards cards-mobile'>
-                                        <label className='card-titulo'>Doações</label>
-                                    </div>
+                                    {(auth.user?.level === 0 || auth.user?.level === 1) &&
+                                        <div className='card-06 cards cards-mobile'>
+                                            <label className='card-titulo'>Doações</label>
+                                        </div>
+                                    }
                                 </Link>
 
                                 <Link to='parceiros'>
-                                {(auth.user?.level === 0 || auth.user?.level === 1) &&
-                                    <div className='card-07 cards cards-mobile'>
-                                        <label className='card-titulo'>Parceiros</label>
-                                    </div>
-                                }
+                                    {(auth.user?.level === 0 || auth.user?.level === 1) &&
+                                        <div className='card-07 cards cards-mobile'>
+                                            <label className='card-titulo'>Parceiros</label>
+                                        </div>
+                                    }
                                 </Link>
 
                                 <Link to='configuracoes'>
-                                    <div className='card-08 cards cards-mobile'>
-                                        <label className='card-titulo'>Configurações</label>
-                                    </div>
+                                    {(auth.user?.level === 0 || auth.user?.level === 1) &&
+                                        <div className='card-08 cards cards-mobile'>
+                                            <label className='card-titulo'>Configurações</label>
+                                        </div>
+                                    }
                                 </Link>
                             </div>
                         </div>
