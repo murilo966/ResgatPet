@@ -1168,6 +1168,7 @@ input.disabled{
   font-weight: bold;
   width: 100px;
   height: 40px;
+  cursor: pointer;
 }
 .botaoTd button:hover{
   background-color: #0450a0;
