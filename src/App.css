@@ -1130,6 +1130,75 @@ input.disabled{
   margin: 50px 8px;
 }
 
+/* Início da Página "Ongs" */
+
+.tabelaOngs {
+  border: none;
+  width: 50%;
+  align-self: center;
+  margin: 8px;
+}
+
+.tabelaOngs tr{
+  background-color: white;
+  border: rgb(185, 185, 185) solid 2px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.tabelaOngs td{
+  margin: 10px;
+}
+
+.tabelaOngs button{
+  align-self: center;
+}
+
+.botaoTd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.botaoTd button{
+  background-color: #2e93ff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  width: 100px;
+  height: 40px;
+}
+.botaoTd button:hover{
+  background-color: #0450a0;
+}
+.botaoTd button:active{
+  background-color: #2e93ff;
+}
+
+.imgTd{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgTd img{
+  border: 2px black solid;
+  border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* CELULAR */
 @media only screen and (max-width: 600px) {
 
@@ -1283,5 +1352,4 @@ input.disabled{
     .rodape-container {
       justify-content: space-around;
     }
-
-}
+  }
