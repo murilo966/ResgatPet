@@ -11,7 +11,7 @@ function Parceiros() {
                         <p>
                             Explore oportunidades incríveis através de parcerias! Junte-se a nós para colaborações 
                             mutuamente benéficas, onde crescemos juntos. Estamos abertos a criar laços sólidos e alcançar
-                             novos patamares. Vamos construir algo extraordinário juntos!"
+                            novos patamares. Vamos construir algo extraordinário juntos!
                         </p>
                         <div>
                            <h1>Prefeitura de Bauru</h1> 
