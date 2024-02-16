@@ -999,6 +999,13 @@ input.disabled{
   background: #808080;
 }
 
+/* DASHBOARD - PARCEIROS */
+
+
+
+
+
+
 /* DASHBOARD - CONFIGURAÇõES */
 .configuracao {
   display: flex;
@@ -1130,8 +1137,7 @@ input.disabled{
   margin: 50px 8px;
 }
 
-/* Início da Página "Ongs" */
-
+/* DASHBOARD - ONG'S */
 .tabelaOngs {
   border: none;
   width: 50%;
