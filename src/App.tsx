@@ -19,6 +19,7 @@ import Apadrinhar from './paginas/dashboard/Apadrinhar';
 import Doacao from './paginas/dashboard/Doacao';
 import Ongs from './paginas/dashboard/Ongs';
 import Parceiros from './paginas/dashboard/Parceiros';
+import ListadePets from './paginas/dashboard/ListadePets';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Route path='/dashboard/Parceiros' element={<RequireAuth level={0}><Parceiros /></RequireAuth>} />
         <Route path='/dashboard/acompanhar' element={<RequireAuth level={0}><Acompanhar /></RequireAuth>} />
         <Route path='/dashboard/configuracoes' element={<Configuracao />} />
+        <Route path='/dashboard/acolhidos' element={<ListadePets />} /> 
       </Routes>
 
       <footer>

@@ -56,9 +56,11 @@ function Dasboard() {
                                     }
                                 </Link>
 
-                                <div className='card-04 cards cards-mobile'>
-                                    <label className='card-titulo'>Lista de Pets</label>
-                                </div>
+                                <Link to="acolhidos">
+                                    <div className='card-04 cards cards-mobile'>
+                                        <label className='card-titulo'>Acolhidos</label>
+                                    </div>
+                                </Link>
 
                                 <Link to='configuracoes'>
                                     {(levelOng) &&
