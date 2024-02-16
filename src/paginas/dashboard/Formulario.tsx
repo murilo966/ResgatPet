@@ -44,7 +44,10 @@ function Formulario() {
             console.log(json)
             if (json.id) {
                 alert('Dados salvos com sucesso:');
-                navigate('acompanhar')
+
+                // IR ATE A PAGINA ACOMPANHAR 
+                navigate('/dashboard/acompanhar')
+                
                 // MOSTRAR A LISTA 
                 // setFormulario((usuario) => [...usuario, json]);
             }

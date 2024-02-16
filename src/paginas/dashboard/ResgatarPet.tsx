@@ -1,9 +1,14 @@
 import MenuLateral from '../../components/menu-lateral';
-import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/auth/AuthContext';
+import { useContext, useEffect, useState } from 'react';
 import { Pets } from '../../types/pets';
 import { api } from '../../api';
 
 function ResgatarPet() {
+    const auth = useContext(AuthContext);
+    const navigate = useNavigate();
+    const levelUsuario = auth.user && auth.user.level === 1;
 
     const [pets, setPets] = useState<Pets[]>([])
     const carregarPets = async () => {
@@ -11,9 +16,16 @@ function ResgatarPet() {
         setPets(json)
     }
 
+    // USER EFFECT PARA INICIO IMEDIATO 
     useEffect(() => {
+        // VERIFICAÇÃO DE LEVEL DE ACESSO
+        if (levelUsuario) {
+            // REDIRECIONAR PARA DASHBOARD
+            navigate('/dashboard')
+        }
+
         carregarPets()
-    }, []);
+    }, [])
 
     return (
         <div>
