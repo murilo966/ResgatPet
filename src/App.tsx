@@ -19,6 +19,7 @@ import Apadrinhar from './paginas/dashboard/Apadrinhar';
 import Doacao from './paginas/dashboard/Doacao';
 import Ongs from './paginas/dashboard/Ongs';
 import Parceiros from './paginas/dashboard/Parceiros';
+import ListadePets from './paginas/dashboard/ListadePets';
 import { UsuarioLogadoProvider } from './context/authContext';
 
 function App() {
