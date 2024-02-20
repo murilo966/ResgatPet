@@ -1,14 +1,14 @@
 import MenuLateral from '../../components/menu-lateral';
 import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../contexts/auth/AuthContext';
+// import { AuthContext } from '../../contexts/auth/authContext';
 import { useNavigate } from 'react-router-dom';
 import { Pets } from '../../types/pets';
 import { api } from '../../api';
 
 function Acompanhar() {
-    const auth = useContext(AuthContext);
+    // const auth = useContext(AuthContext);
     const navigate = useNavigate();
-    const levelOng = auth.user && auth.user.level === 2;
+    // const levelOng = auth.user && auth.user.level === 2;
 
     const [pets, setPets] = useState<Pets[]>([])
     const carregarPets = async () => {
@@ -18,11 +18,11 @@ function Acompanhar() {
 
     // USER EFFECT PARA INICIO IMEDIATO 
     useEffect(() => {
-        // VERIFICAÇÃO DE LEVEL DE ACESSO
-        if (levelOng) {
-            // REDIRECIONAR PARA DASHBOARD
-            navigate('/dashboard')
-        }
+        // // VERIFICAÇÃO DE LEVEL DE ACESSO
+        // if (levelOng) {
+        //     // REDIRECIONAR PARA DASHBOARD
+        //     navigate('/dashboard')
+        // }
 
         carregarPets()
     }, [])

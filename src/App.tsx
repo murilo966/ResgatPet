@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { RequireAuth } from './contexts/auth/RequireAuth';
+// import { RequireAuth } from './contexts/auth/RequireAuth';
 
 import Cabecalho from './components/cabecalho';
 import Rodape from './components/rodape';
@@ -20,6 +20,7 @@ import Doacao from './paginas/dashboard/Doacao';
 import Ongs from './paginas/dashboard/Ongs';
 import Parceiros from './paginas/dashboard/Parceiros';
 import ListadePets from './paginas/dashboard/ListadePets';
+import { UsuarioLogadoProvider } from './context/authContext';
 
 function App() {
   return (
@@ -28,24 +29,34 @@ function App() {
         <Cabecalho />
       </header>
 
-      <Routes>
-        <Route path='*' element={<NotFound />} />
-        <Route path='/' element={<Home />} />        
-        <Route path='/quem-somos' element={<QuemSomos />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/esqueceu-senha' element={<EsqueceuSenha />} />
-        <Route path='/cadastrar' element={<Cadastrar />} />
-        <Route path='/dashboard' element={<Dasboard />} />
-        <Route path='/dashboard/resgatar-pet' element={<RequireAuth level={0}><ResgatarPet /></RequireAuth>} />
-        <Route path='/dashboard/formulario' element={<RequireAuth level={0}><Formulario /></RequireAuth>} />
-        <Route path='/dashboard/apadrinhar' element={<RequireAuth level={0}><Apadrinhar /></RequireAuth>} />
-        <Route path='/dashboard/doacao' element={<RequireAuth level={0}><Doacao /></RequireAuth>} />
-        <Route path='/dashboard/ongs' element={<RequireAuth level={0}><Ongs /></RequireAuth>} />
-        <Route path='/dashboard/Parceiros' element={<RequireAuth level={0}><Parceiros /></RequireAuth>} />
-        <Route path='/dashboard/acompanhar' element={<RequireAuth level={0}><Acompanhar /></RequireAuth>} />
-        <Route path='/dashboard/configuracoes' element={<Configuracao />} />
-        <Route path='/dashboard/acolhidos' element={<ListadePets />} /> 
-      </Routes>
+      <UsuarioLogadoProvider>
+        <Routes>
+          <Route path='*' element={<NotFound />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/quem-somos' element={<QuemSomos />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/esqueceu-senha' element={<EsqueceuSenha />} />
+          <Route path='/cadastrar' element={<Cadastrar />} />
+          <Route path='/dashboard' element={<Dasboard />} />
+          <Route path='/dashboard/resgatar-pet' element={<ResgatarPet />} />
+          <Route path='/dashboard/formulario' element={<Formulario />} />
+          <Route path='/dashboard/apadrinhar' element={<Apadrinhar />} />
+          <Route path='/dashboard/doacao' element={<Doacao />} />
+          <Route path='/dashboard/ongs' element={<Ongs />} />
+          <Route path='/dashboard/parceiros' element={<Parceiros />} />
+          <Route path='/dashboard/acompanhar' element={<Acompanhar />} />
+
+          {/* <Route path='/dashboard/resgatar-pet' element={<RequireAuth level={0}><ResgatarPet /></RequireAuth>} />
+          <Route path='/dashboard/formulario' element={<RequireAuth level={0}><Formulario /></RequireAuth>} />
+          <Route path='/dashboard/apadrinhar' element={<RequireAuth level={0}><Apadrinhar /></RequireAuth>} />
+          <Route path='/dashboard/doacao' element={<RequireAuth level={0}><Doacao /></RequireAuth>} />
+          <Route path='/dashboard/ongs' element={<RequireAuth level={0}><Ongs /></RequireAuth>} />
+          <Route path='/dashboard/parceiros' element={<RequireAuth level={0}><Parceiros /></RequireAuth>} />
+          <Route path='/dashboard/acompanhar' element={<RequireAuth level={0}><Acompanhar /></RequireAuth>} /> */}
+
+          <Route path='/dashboard/configuracoes' element={<Configuracao />} />
+        </Routes>
+      </UsuarioLogadoProvider>
 
       <footer>
         <Rodape />

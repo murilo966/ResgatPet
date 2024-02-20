@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import { AuthContext } from '../../contexts/auth/AuthContext';
+// import { AuthContext } from '../../contexts/auth/authContext';
 import MenuLateral from '../../components/menu-lateral';
 import { Link } from 'react-router-dom';
 
 function Dasboard() {
-    const auth = useContext(AuthContext)
-    const levelUsuario = auth.user && auth.user.level === 1;
-    const levelOng = auth.user && auth.user.level === 2;
+    // const auth = useContext(AuthContext)
+    // const levelUsuario = auth.user && auth.user.level === 1;
+    // const levelOng = auth.user && auth.user.level === 2;
 
     return (
         <div>
@@ -17,14 +17,14 @@ function Dasboard() {
                     <div className='container-painel'>
                         <div className='container-bem-vindo'>
                             <h3>Olá, Bem-Vindo:</h3>
-                            <label>{auth.user?.name}</label>
+                            {/* <label>{auth.user?.name}</label> */}
                         </div>
 
                         <div className='painel'>
                             <div className='card'>
                                 <Link to='apadrinhar'>
                                     {/* LEVEL 1 USUARIO */}
-                                    {(levelUsuario) &&
+                                    {/* {(levelUsuario) && */
                                         <div className='card-01 cards cards-mobile'>
                                             <label className='card-titulo'>Apadrinhar</label>
                                         </div>
@@ -33,7 +33,7 @@ function Dasboard() {
 
                                 <Link to='resgatar-pet'>
                                     {/* LEVEL 2 ONG */}
-                                    {(levelOng) &&
+                                    {/* {(levelOng) && */
                                         <div className='card-02 cards cards-mobile'>
                                             <label className='card-titulo'>Resgatar</label>
                                         </div>
@@ -41,7 +41,7 @@ function Dasboard() {
                                 </Link>  
 
                                 <Link to='acompanhar'>
-                                    {(levelUsuario) &&
+                                    {/* {(levelUsuario) && */
                                         <div className='card-02 cards cards-mobile'>
                                             <label className='card-titulo'>Acompanhar</label>
                                         </div>
@@ -49,7 +49,7 @@ function Dasboard() {
                                 </Link>
 
                                 <Link to='formulario'>
-                                    {(levelUsuario) &&
+                                    {/* {(levelUsuario) && */
                                         <div className='card-03 cards cards-mobile'>
                                             <label className='card-titulo'>Encontrei Pet</label>
                                         </div>
@@ -63,7 +63,7 @@ function Dasboard() {
                                 </Link>
 
                                 <Link to='configuracoes'>
-                                    {(levelOng) &&
+                                    {/* {(levelOng) && */
                                         <div className='card-08 cards cards-mobile'>
                                             <label className='card-titulo'>Configurações</label>
                                         </div>
@@ -73,7 +73,7 @@ function Dasboard() {
 
                             <div className='card'>
                                 <Link to='ongs'>
-                                    {(levelUsuario) &&
+                                    {/* {(levelUsuario) && */
                                         <div className='card-05 cards cards-mobile'>
                                             <label className='card-titulo'>ONG`S</label>
                                         </div>
@@ -81,7 +81,7 @@ function Dasboard() {
                                 </Link>
 
                                 <Link to='doacao'>
-                                    {(levelUsuario) &&
+                                    {/* {(levelUsuario) && */
                                         <div className='card-06 cards cards-mobile'>
                                             <label className='card-titulo'>Doações</label>
                                         </div>
@@ -89,7 +89,7 @@ function Dasboard() {
                                 </Link>
 
                                 <Link to='parceiros'>
-                                    {(levelUsuario) &&
+                                    {/* {(levelUsuario) && */
                                         <div className='card-07 cards cards-mobile'>
                                             <label className='card-titulo'>Parceiros</label>
                                         </div>
@@ -97,7 +97,7 @@ function Dasboard() {
                                 </Link>
 
                                 <Link to='configuracoes'>
-                                    {(levelUsuario) &&
+                                    {/* {(levelUsuario) && */
                                         <div className='card-08 cards cards-mobile'>
                                             <label className='card-titulo'>Configurações</label>
                                         </div>

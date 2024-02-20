@@ -1,10 +1,10 @@
 import logo from '../../assents/imagens/logo/ic_resgatpet.png'
 import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../contexts/auth/AuthContext'
+// import { AuthContext } from '../../contexts/auth/authContext'
 
 function Menu() {
-    const auth = useContext(AuthContext)
+    // const auth = useContext(AuthContext)
     const navigate = useNavigate()
 
     const handleHome = () => {
@@ -24,7 +24,7 @@ function Menu() {
     }
     
     const handleLogout = async () => {
-        await auth.signout();
+        // await auth.signout();
         navigate('/')
     }
 
@@ -46,13 +46,21 @@ function Menu() {
 
                     <button onClick={handleQuemSomos}>Quem Somos</button>
 
-                    {!auth.user && <button onClick={handleCadastrar}>Cadastre-se</button>}
+                    {/* {!auth.user && <button onClick={handleCadastrar}>Cadastre-se</button>}
 
                     {auth.user && <button onClick={hadleDashboard}>Dashboard</button>}
 
                     {auth.user && <button onClick={handleLogout}>Sair</button>}
 
-                    {!auth.user &&<button onClick={handleLogin}>Faça login</button>}
+                    {!auth.user &&<button onClick={handleLogin}>Faça login</button>} */}
+
+                    <button onClick={handleCadastrar}>Cadastre-se</button>
+
+                    <button onClick={hadleDashboard}>Dashboard</button>
+
+                    <button onClick={handleLogout}>Sair</button>
+
+                    <button onClick={handleLogin}>Faça login</button>
                 </div>
             </div>
         </div>
