@@ -3,7 +3,6 @@ import LogoSuipa from "../../assents/imagens/ongs/ic_SUIPA.jpg";
 import LogoArcadaFe from "../../assents/imagens/ongs/ic_ArcadaFe.jpg";
 import LogoAbrigodaBorika from "../../assents/imagens/ongs/ic_AbrigodaBorika.jpg";
 
-
 function Ongs() {
     return (
         <div className='container'>

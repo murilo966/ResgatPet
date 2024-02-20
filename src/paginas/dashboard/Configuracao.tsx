@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../contexts/auth/AuthContext';
+// import { AuthContext } from '../../contexts/auth/authContext';
 import MenuLateral from '../../components/menu-lateral';
 
 function Configuracao() {
 
-    const auth = useContext(AuthContext);
+    // const auth = useContext(AuthContext);
     const [email, SetEmail] = useState('');
     const [senha, SetSenha] = useState('');
     const [senhaConfirmar, SetSenhaConfirmar] = useState('');
@@ -45,7 +45,7 @@ function Configuracao() {
                             <h1>Configurações</h1>
                             <input type="text"
                                 name="name-usuario"
-                                value={auth.user?.name}
+                                // value={auth.user?.name}
                                 disabled
                             />
 

@@ -1,11 +1,12 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { api } from '../../api';
 import titulo from '../../assents/imagens/background/im_background-titulo-login.png'
-import { AuthContext } from '../../contexts/auth/AuthContext';
+// import { authContext } from '../../contexts/auth/authContext';
 
 function Login() {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;    
-    const auth = useContext(AuthContext);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // const auth = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -60,54 +61,54 @@ function Login() {
     }
 
     // LOGIN
-    const handleLogin = async() => {
-        if (usuarioEmail.trim() === '' ||
-            usuarioSenha.trim() === '') {
-            alert('Por favor, preencha todos os campos.');
-        } else if (!emailRegex.test(usuarioEmail)) {
-            alert('Forneça um e-mail válido.');
-        } else {
-            // VERIFICA O EMAIL A SENHA
-            if(usuarioEmail && usuarioSenha){
-                const isLogged = await auth.signin(usuarioEmail, usuarioSenha)
-                if(isLogged){
-                    // VERIFICA SE JÁ ESTA NA PAGINA FORMULARIO ANTES DE LOGAR
-                    if(location.pathname.toLowerCase() === '/dashboard/formulario'){
-                        navigate('/dashboard/formulario')
-                    }
-                    else{
-                        navigate('/dashboard')
-                    }
+    const handleLogin = async () => {
+        // VERIFICA O EMAIL A SENHA
+        if (usuarioEmail && usuarioSenha) {
+            const isLogged = await api.Logar
+            (
+                usuarioEmail, 
+                usuarioSenha
+            )
+            if (isLogged)
+            {
+                // VERIFICA SE JÁ ESTA NA PAGINA FORMULARIO ANTES DE LOGAR
+                if (location.pathname.toLowerCase() === '/dashboard/formulario')
+                {
+                    navigate('/dashboard/formulario')
                 }
-                else{
-                    alert("ERRO INTERNO")
+                else
+                {
+                    navigate('/dashboard')
                 }
-            }           
+            }
+            else
+            {
+                alert("ERRO INTERNO")
+            }
         }
     }
 
-    function handleRegistarCPF() {
-        if (usuarioNome.trim() === '' ||
-            usuarioCPF.trim() === '' ||
-            usuarioTelefone.trim() === '' ||
-            usuarioEmail.trim() === '' ||
-            usuarioSenha.trim() === '' ||
-            usuarioConfirmarSenha.trim() === '') {
-            alert('Por favor, preencha todos os campos.');
-        } else if (usuarioSenha !== usuarioConfirmarSenha) {
-            alert('As senha não são iguais.');
-        } else if (!emailRegex.test(usuarioEmail)) {
-            alert('Forneça um e-mail válido.');
-        } else if (!aceitarTermosCPF) {
-            alert('Aceitar os Termos.');
-        }
-        else {
+    const handleRegistarCPF = async () => {
+        // VERIFICA O EMAIL A SENHA
+        if (usuarioEmail && usuarioSenha) {
+            const isLogged = await api.CriarConta
+            (
+                usuarioNome, 
+                usuarioCPF, 
+                usuarioTelefone,
+                usuarioEmail,
+                usuarioSenha,
+            )
+            if (isLogged) {
+                const container = document.getElementById('login');
+                if (container) {
+                    container.classList.remove('active');
+                }
 
-            // salvar no banco de dados 
-
-            const container = document.getElementById('login');
-            if (container) {
-                container.classList.remove('active');
+                console.log(isLogged)
+            }
+            else {
+                alert("ERRO INTERNO")
             }
         }
     }

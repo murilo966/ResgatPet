@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/auth/AuthContext';
+// import { authContext } from '../../contexts/auth/authContext';
 import petImageLogo from '../../assents/imagens/logo/ic_resgatpet.png';
 import { api } from '../../api';
 import MenuLateral from '../../components/menu-lateral';
@@ -8,7 +8,7 @@ import MenuLateral from '../../components/menu-lateral';
 function Formulario() {
 
     const navigate = useNavigate();
-    const auth = useContext(AuthContext)
+    // const auth = useContext(authContext)
 
     // DADOS DO PET
     const [petFoto, SetPetImage] = useState<string>('');
@@ -25,8 +25,6 @@ function Formulario() {
     const [petSaudeOutros, SetPetSaudeOutros] = useState('');
     const [petSaudeCheck, SetPetSaudeCheck] = useState(false);
 
-    // const [formulario, setFormulario] = useState<Pets[]>([])
-
     async function salvarPets() {
         try {
 
@@ -39,29 +37,19 @@ function Formulario() {
                 petCor,
                 petSaude.toString(),
                 petAcessorios.toString(),
-                auth.user?.name
+                                
             )
             console.log(json)
             if (json.id) {
-                alert('Dados salvos com sucesso:');
+
+                // MENSAGEM SALVO COM SUCESSO !
 
                 // IR ATE A PAGINA ACOMPANHAR 
                 navigate('/dashboard/acompanhar')
-                
-                // MOSTRAR A LISTA 
-                // setFormulario((usuario) => [...usuario, json]);
             }
             else {
-                //alert('Ocorreu alguma falha');
-                if (petEndereco.trim() === '' || petCidade.trim() === '' ||
-                    petRaca.trim() === '' || petRaca.trim() === '' ||
-                    petSexo.trim() === '' || petCor.trim() === '' ||
-                    petSaude.length === 0 || petAcessorios.length === 0) {
-                    alert('Por favor, preencha todos os campos.');
-                }
+                // json.message MENSAGEM DE ERRO
             }
-
-
         } catch (e) {
             alert('Erro ao salvar pets:' + e);
         }
@@ -172,7 +160,7 @@ function Formulario() {
                                     <input type="text"
                                         className='disabled'
                                         name="user-name"
-                                        value={auth.user?.name}
+                                        // value={auth.user?.name}
                                         disabled
                                     />
                                 </div>
@@ -183,7 +171,7 @@ function Formulario() {
                                         <input type="email"
                                             className='disabled capitalize'
                                             name="user-email"
-                                            value={auth.user?.email}
+                                            // value={auth.user?.email}
                                             disabled
                                         />
                                     </div>
@@ -192,7 +180,7 @@ function Formulario() {
                                         <input type="tel"
                                             className='disabled'
                                             name="user-tel"
-                                            value={auth.user?.telefone}
+                                            // value={auth.user?.telefone}
                                             disabled
                                         />
                                     </div>
