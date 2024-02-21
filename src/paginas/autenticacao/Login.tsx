@@ -10,13 +10,16 @@ function Login() {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const [messageErro, SetMessageErro] = useState('');
+    const [messageOk, SetMessageOk] = useState('');
+
     const [usuarioNome, SetUsuarioNome] = useState('');
     const [usuarioCPF, SetUsuarioCPF] = useState('');
     const [usuarioTelefone, SetUsuarioTelefone] = useState('');
     const [usuarioEmail, SetUsuarioEmail] = useState('');
     const [usuarioSenha, SetUsuarioSenha] = useState('');
-    const [usuarioConfirmarSenha, SetUsuarioConfirmarSenha] = useState('');
-    const [aceitarTermosCPF, SetAceitarTermosCPF] = useState(false);
+    const [usuarioSenhaConfirmar, SetUsuarioSenhaConfirmar] = useState('');
+    const [aceitarTermos, SetAceitarTermos] = useState(false);
 
     function handleInputUsuarioNome(event: React.ChangeEvent<HTMLInputElement>) {
         SetUsuarioNome(event.target.value);
@@ -39,11 +42,11 @@ function Login() {
     }
 
     function handleInputUsuarioConfirmarSenha(event: React.ChangeEvent<HTMLInputElement>) {
-        SetUsuarioConfirmarSenha(event.target.value);
+        SetUsuarioSenhaConfirmar(event.target.value);
     }
 
     const handleInputAceitarTermosCPF = () => {
-        SetAceitarTermosCPF(!aceitarTermosCPF);
+        SetAceitarTermos(!aceitarTermos);
     }
 
     const handleFazerLogin = () => {
@@ -51,6 +54,9 @@ function Login() {
         if (container) {
             container.classList.add('active');
         }
+
+        // LIMPA O ERRO AO TROCAR DE TELA
+        SetMessageErro('')
     }
 
     const handleCriarConta = () => {
@@ -58,58 +64,54 @@ function Login() {
         if (container) {
             container.classList.remove('active');
         }
+
+        // LIMPA O ERRO AO TROCAR DE TELA
+        SetMessageErro('')
     }
 
     // LOGIN
     const handleLogin = async () => {
+        const response = await api.Logar(usuarioEmail, usuarioSenha)
         // VERIFICA O EMAIL A SENHA
         if (usuarioEmail && usuarioSenha) {
-            const isLogged = await api.Logar
-            (
-                usuarioEmail, 
-                usuarioSenha
-            )
-            if (isLogged)
-            {
-                // VERIFICA SE JÁ ESTA NA PAGINA FORMULARIO ANTES DE LOGAR
-                if (location.pathname.toLowerCase() === '/dashboard/formulario')
-                {
-                    navigate('/dashboard/formulario')
+            try {
+                if (response.status) {
+                    // VERIFICA SE JÁ ESTA NA PAGINA FORMULARIO ANTES DE LOGAR
+                    if (location.pathname.toLowerCase() === '/dashboard/formulario') {
+                        navigate('/dashboard/formulario')
+                    }
+                    else {
+                        navigate('/dashboard')
+                    }
                 }
-                else
-                {
-                    navigate('/dashboard')
+                else {
+                    // MENSAGEM DE ERRO DE VERIFICAÇÂO COM O BANCO DE DADOS
+                    SetMessageErro(response.message)
                 }
+            } catch (error) {
+                SetMessageErro("Erro Interno !" + error)
             }
-            else
-            {
-                alert("ERRO INTERNO")
-            }
+        }
+        else {
+            // MENSAGEM DE VERIFICAÇÃO DE CAMPOS EM BRANCO
+            SetMessageErro(response.message)
         }
     }
 
     const handleRegistarCPF = async () => {
-        // VERIFICA O EMAIL A SENHA
-        if (usuarioEmail && usuarioSenha) {
-            const isLogged = await api.CriarConta
-            (
-                usuarioNome, 
-                usuarioCPF, 
-                usuarioTelefone,
-                usuarioEmail,
-                usuarioSenha,
-            )
-            if (isLogged) {
-                const container = document.getElementById('login');
-                if (container) {
-                    container.classList.remove('active');
-                }
+        const response = await api.CriarConta(usuarioNome, usuarioCPF, usuarioTelefone, usuarioEmail, usuarioSenha)
 
-                console.log(isLogged)
+        if (usuarioNome && usuarioCPF && usuarioTelefone && usuarioEmail && usuarioSenha) {
+            try {
+                handleCriarConta()
+                SetMessageOk(response.message)                
+            } catch (error) {
+                SetMessageErro("Erro Interno !" + error)
             }
-            else {
-                alert("ERRO INTERNO")
-            }
+        }
+        else {
+            // MENSAGEM DE VERIFICAÇÃO DE CAMPOS EM BRANCO
+            SetMessageErro(response.message)
         }
     }
 
@@ -141,6 +143,9 @@ function Login() {
                             <Link to='/esqueceu-senha'>
                                 <label className='esqueceu-senha'> Esqueceu a Senha ?</label>
                             </Link>
+
+                            <span className='message-erro'>{messageErro}</span>
+                            <span className='message-ok'>{messageOk}</span>
                         </form>
                     </div>
 
@@ -194,7 +199,7 @@ function Login() {
                                 <div className="aceitar">
                                     <input type="checkbox"
                                         name="aceitar-termos-pf"
-                                        checked={aceitarTermosCPF}
+                                        checked={aceitarTermos}
                                         onChange={handleInputAceitarTermosCPF}
                                     />
                                 </div>
@@ -204,6 +209,9 @@ function Login() {
                             </div>
 
                             <button type="button" onClick={handleRegistarCPF}> Cadastrar-Se </button>
+
+                            <span className='message-erro'>{messageErro}</span>
+                            <span className='message-ok'>{messageOk}</span>
                         </form>
                     </div>
 
