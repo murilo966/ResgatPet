@@ -7,6 +7,19 @@ a {
   color: inherit;
 }
 
+.message-erro{
+  margin-top: 2px;
+  font-size: x-small;
+  color: red;
+}
+
+.message-ok{
+  margin-top: 2px;
+  font-size: x-small;
+  font-weight: bold;
+  color: #4B8A40;
+}
+
 .container {
   min-height: 100vh;
 }
