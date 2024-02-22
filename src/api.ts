@@ -1,12 +1,15 @@
 export const api = {
 
     // LOGIN
-    Logar: async (email: string, senha: string) => {
+    Logar: async (nome: string, email: string, telefone:string, senha: string, level:string) => {
         const response = await fetch('http://localhost:3005/usuarios/login', {
             method: 'POST',
             body: JSON.stringify({
+                nome: nome,
                 email: email,
+                telefone: telefone,
                 senha: senha,
+                level: level
             }),
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
@@ -17,7 +20,7 @@ export const api = {
         return (json)
     },
     // CRIAR NOVA CONTA 
-    CriarConta: async (nome: string, documento: string, telefone: string, email: string, senha: string) => {
+    CriarConta: async (nome: string, documento: string, telefone: string, email: string, senha: string, level:string) => {
         const response = await fetch('http://localhost:3005/usuarios', {
             method: 'POST',
             body: JSON.stringify({
@@ -26,6 +29,7 @@ export const api = {
                 telefone: telefone,
                 email: email,
                 senha: senha,
+                level: level
             }),
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
@@ -43,7 +47,7 @@ export const api = {
         return json
     },
     // NOVO FORMULARIO
-    AdicionarFormulario: async (petFoto: string, petEndereco: string, petCidade: string, petRaca: string,
+    CriarFormulario: async (petFoto: string, petEndereco: string, petCidade: string, petRaca: string,
         petSexo: string, petCor: string, petSaude: string, petAcessorios: string, usuario?: string) => {
         // const response = await fetch('https://resgat-pet-api.vercel.app/formulario', {
         const response = await fetch('http://localhost:3005/formulario', {

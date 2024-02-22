@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import petImageLogo from '../../assents/imagens/logo/ic_resgatpet.png';
 import { api } from '../../api';
 import MenuLateral from '../../components/menu-lateral';
+import { UsuarioLogadoContext } from '../../context/authContext';
 
 function Formulario() {
 
@@ -28,7 +29,7 @@ function Formulario() {
     async function salvarPets() {
         try {
 
-            let json = await api.AdicionarFormulario(
+            let json = await api.CriarFormulario(
                 petFoto,
                 petEndereco,
                 petCidade,
