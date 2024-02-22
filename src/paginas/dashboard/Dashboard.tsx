@@ -1,12 +1,14 @@
 import { useContext } from 'react';
-// import { AuthContext } from '../../contexts/auth/authContext';
 import MenuLateral from '../../components/menu-lateral';
 import { Link } from 'react-router-dom';
+import { UsuarioLogadoContext } from '../../context/authContext';
 
 function Dasboard() {
     // const auth = useContext(AuthContext)
     // const levelUsuario = auth.user && auth.user.level === 1;
     // const levelOng = auth.user && auth.user.level === 2;
+
+    const usuarioContext = useContext(UsuarioLogadoContext)
 
     return (
         <div>
@@ -17,7 +19,7 @@ function Dasboard() {
                     <div className='container-painel'>
                         <div className='container-bem-vindo'>
                             <h3>Olá, Bem-Vindo:</h3>
-                            {/* <label>{auth.user?.name}</label> */}
+                            <label>{usuarioContext?.nome}</label>                         
                         </div>
 
                         <div className='painel'>

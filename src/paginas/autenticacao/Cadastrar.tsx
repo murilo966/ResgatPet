@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { api } from '../../api';
 
 function Cadastrar(){
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -107,19 +108,7 @@ function Cadastrar(){
 
     async function cadastrar() {
         try {
-            const response = await fetch('https://resgat-pet-api.vercel.app/usuarios', {
-                method: 'POST',
-                body: JSON.stringify({
-                    nome: usuarioNome,
-                    cpf_cnpj: usuarioCPF,
-                    telefone: usuarioTelefone,
-                    email: usuarioEmail,
-                    senha: usuarioSenha
-                }),
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            });
+            const response = await api.CriarConta(usuarioNome, usuarioCPF, usuarioTelefone, usuarioEmail, usuarioSenha)
 
             let json = await response.json()
             console.log(json)

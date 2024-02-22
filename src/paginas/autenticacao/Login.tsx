@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { api } from '../../api';
 import titulo from '../../assents/imagens/background/im_background-titulo-login.png'
+import { UsuarioLogadoContext } from '../../context/authContext';
 // import { authContext } from '../../contexts/auth/authContext';
 
 function Login() {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     // const auth = useContext(AuthContext);
+    const usuarioContext = useContext(UsuarioLogadoContext)
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -19,6 +20,7 @@ function Login() {
     const [usuarioEmail, SetUsuarioEmail] = useState('');
     const [usuarioSenha, SetUsuarioSenha] = useState('');
     const [usuarioSenhaConfirmar, SetUsuarioSenhaConfirmar] = useState('');
+    const [usuarioLevel, SetUsuarioLevel] = useState('')
     const [aceitarTermos, SetAceitarTermos] = useState(false);
 
     function handleInputUsuarioNome(event: React.ChangeEvent<HTMLInputElement>) {
@@ -49,6 +51,7 @@ function Login() {
         SetAceitarTermos(!aceitarTermos);
     }
 
+    // ANIMAÇÃO DO LOGIN
     const handleFazerLogin = () => {
         const container = document.getElementById('login');
         if (container) {
@@ -59,6 +62,7 @@ function Login() {
         SetMessageErro('')
     }
 
+    // ANIMAÇÃO DO CRIAR CONTA
     const handleCriarConta = () => {
         const container = document.getElementById('login');
         if (container) {
@@ -71,7 +75,8 @@ function Login() {
 
     // LOGIN
     const handleLogin = async () => {
-        const response = await api.Logar(usuarioEmail, usuarioSenha)
+        const response = await api.Logar(usuarioNome, usuarioEmail, usuarioTelefone, usuarioSenha, usuarioLevel)         
+
         // VERIFICA O EMAIL A SENHA
         if (usuarioEmail && usuarioSenha) {
             try {
@@ -83,10 +88,13 @@ function Login() {
                     else {
                         navigate('/dashboard')
                     }
+
+                    usuarioContext?.setNome(response.nome)
+                    console.log(response)
                 }
                 else {
                     // MENSAGEM DE ERRO DE VERIFICAÇÂO COM O BANCO DE DADOS
-                    SetMessageErro(response.message)
+                    SetMessageErro(response.message)                    
                 }
             } catch (error) {
                 SetMessageErro("Erro Interno !" + error)
@@ -99,12 +107,12 @@ function Login() {
     }
 
     const handleRegistarCPF = async () => {
-        const response = await api.CriarConta(usuarioNome, usuarioCPF, usuarioTelefone, usuarioEmail, usuarioSenha)
+        const response = await api.CriarConta(usuarioNome, usuarioCPF, usuarioTelefone, usuarioEmail, usuarioSenha, usuarioLevel)
 
         if (usuarioNome && usuarioCPF && usuarioTelefone && usuarioEmail && usuarioSenha) {
             try {
                 handleCriarConta()
-                SetMessageOk(response.message)                
+                SetMessageOk(response.message)
             } catch (error) {
                 SetMessageErro("Erro Interno !" + error)
             }
