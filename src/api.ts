@@ -20,12 +20,12 @@ export const api = {
         return (json)
     },
     // CRIAR NOVA CONTA 
-    CriarConta: async (nome: string, documento: string, telefone: string, email: string, senha: string, level:string) => {
+    CriarConta: async (nome: string, cpf_cnpj: string, telefone: string, email: string, senha: string, level:string) => {
         const response = await fetch('http://localhost:3005/usuarios', {
             method: 'POST',
             body: JSON.stringify({
                 nome: nome,
-                cpf_cnpj: documento,
+                cpf_cnpj: cpf_cnpj,
                 telefone: telefone,
                 email: email,
                 senha: senha,

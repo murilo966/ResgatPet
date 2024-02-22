@@ -20,7 +20,7 @@ function Login() {
     const [usuarioEmail, SetUsuarioEmail] = useState('');
     const [usuarioSenha, SetUsuarioSenha] = useState('');
     const [usuarioSenhaConfirmar, SetUsuarioSenhaConfirmar] = useState('');
-    const [usuarioLevel, SetUsuarioLevel] = useState('')
+    const [usuarioLevel, SetUsuarioLevel] = useState('1')
     const [aceitarTermos, SetAceitarTermos] = useState(false);
 
     function handleInputUsuarioNome(event: React.ChangeEvent<HTMLInputElement>) {

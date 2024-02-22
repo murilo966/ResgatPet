@@ -7,6 +7,7 @@ function Cadastrar(){
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const navigate = useNavigate();
     
+    const [usuarioLevel, SetUsuarioLevel] = useState('')
     const [usuarioNome, SetUsuarioNome] = useState('');
     const [usuarioCNPJ, SetUsuarioCNPJ] = useState('');
     const [usuarioCPF, SetUsuarioCPF] = useState('');
@@ -108,7 +109,7 @@ function Cadastrar(){
 
     async function cadastrar() {
         try {
-            const response = await api.CriarConta(usuarioNome, usuarioCPF, usuarioTelefone, usuarioEmail, usuarioSenha)
+            const response = await api.CriarConta(usuarioNome, usuarioCPF, usuarioTelefone, usuarioEmail, usuarioSenha, usuarioLevel)
 
             let json = await response.json()
             console.log(json)
