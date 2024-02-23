@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { authContext } from '../../contexts/auth/authContext';
 import petImageLogo from '../../assents/imagens/logo/ic_resgatpet.png';
 import { api } from '../../api';
 import MenuLateral from '../../components/menu-lateral';
@@ -9,7 +8,7 @@ import { UsuarioLogadoContext } from '../../context/authContext';
 function Formulario() {
 
     const navigate = useNavigate();
-    // const auth = useContext(authContext)
+    const auth = useContext(UsuarioLogadoContext)
 
     // DADOS DO PET
     const [petFoto, SetPetImage] = useState<string>('');
@@ -161,7 +160,7 @@ function Formulario() {
                                     <input type="text"
                                         className='disabled'
                                         name="user-name"
-                                        // value={auth.user?.name}
+                                        value={auth?.nome}
                                         disabled
                                     />
                                 </div>
@@ -172,7 +171,7 @@ function Formulario() {
                                         <input type="email"
                                             className='disabled capitalize'
                                             name="user-email"
-                                            // value={auth.user?.email}
+                                            value={auth?.email}
                                             disabled
                                         />
                                     </div>
@@ -181,7 +180,7 @@ function Formulario() {
                                         <input type="tel"
                                             className='disabled'
                                             name="user-tel"
-                                            // value={auth.user?.telefone}
+                                            value={auth?.telefone}
                                             disabled
                                         />
                                     </div>

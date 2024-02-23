@@ -4,9 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { api } from '../../api';
 
 function Cadastrar(){
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const navigate = useNavigate();
     
+    const usuarioLevel = '1';
+    const OngLevel = '2';
+
+    const [messageErro, SetMessageErro] = useState('');
+    const [messageOk, SetMessageOk] = useState('');
+
     const [usuarioNome, SetUsuarioNome] = useState('');
     const [usuarioCNPJ, SetUsuarioCNPJ] = useState('');
     const [usuarioCPF, SetUsuarioCPF] = useState('');
@@ -53,77 +58,54 @@ function Cadastrar(){
         SetAceitarTermosCPF(!aceitarTermosCPF);
     }
 
-    const handlePJClick = () => {
+    // ANIMAÇÃO DO LOGIN
+    const handleBotaoAnimacaoLogin = () => {
         const container = document.getElementById('autenticacao');
         if (container) {
           container.classList.add('active');
         }
     }
     
-    const handlePFClick = () => {
+    // ANIMAÇÃO DO CRIAR CONTA
+    const handleBotaoAnimacaoCadastrar = () => {
         const container = document.getElementById('autenticacao');
         if (container) {
           container.classList.remove('active');
         }
     }
 
-    function handleRegistarPJ (){
-        if (usuarioNome.trim() === '' || 
-            usuarioCNPJ.trim() === '' || 
-            usuarioTelefone.trim() === '' || 
-            usuarioEmail.trim() === ''|| 
-            usuarioSenha.trim() === '' || 
-            usuarioConfirmarSenha.trim() === ''){
-            alert('Preencha todos os campos.');
-        } else if(usuarioSenha !== usuarioConfirmarSenha){
-            alert('As senha não são iguais.'); 
-        } else if(!emailRegex.test(usuarioEmail)){
-            alert('Forneça um e-mail válido.');
-        } else if(!aceitarTermosPJ ){
-            alert('Aceitar os Termos.');
-        } else{      
-            navigate('/login');
-        }        
+    async function handleCriarContaPJ (){
+        const response = await api.CriarConta(usuarioNome, usuarioCNPJ, usuarioTelefone, usuarioEmail, usuarioSenha, OngLevel)
+
+        if (usuarioNome && usuarioCNPJ && usuarioTelefone && usuarioEmail && usuarioSenha) {
+            try {
+                handleBotaoAnimacaoCadastrar()
+                SetMessageOk(response.message)
+            } catch (error) {
+                SetMessageErro("Erro Interno !" + error)
+            }
+        }
+        else {
+            // MENSAGEM DE VERIFICAÇÃO DE CAMPOS EM BRANCO
+            SetMessageErro(response.message)
+        } 
     }
 
-    function handleRegistarPF (){
-        if (usuarioNome.trim() === '' ||
-            usuarioCPF.trim() === '' || 
-            usuarioTelefone.trim() === '' || 
-            usuarioEmail.trim() === ''|| 
-            usuarioSenha.trim() === '' || 
-            usuarioConfirmarSenha.trim() === ''){
-            alert('Por favor, preencha todos os campos.');
-        } else if(usuarioSenha !== usuarioConfirmarSenha){
-            alert('As senha não são iguais.'); 
-        } else if(!emailRegex.test(usuarioEmail)){
-            alert('Forneça um e-mail válido.');
-        } else if(!aceitarTermosCPF ){
-            alert('Aceitar os Termos.');
-        }
-        else{
-            cadastrar()
-        }        
-    }
+    async function handleCriarContaPF (){
+        const response = await api.CriarConta(usuarioNome, usuarioCPF, usuarioTelefone, usuarioEmail, usuarioSenha, usuarioLevel)
 
-    async function cadastrar() {
-        try {
-            const response = await api.CriarConta(usuarioNome, usuarioCPF, usuarioTelefone, usuarioEmail, usuarioSenha)
-
-            let json = await response.json()
-            console.log(json)
-
-            if (json.id) {
-                alert('Dados salvos com sucesso:');  
-                navigate('/login');            
+        if (usuarioNome && usuarioCPF && usuarioTelefone && usuarioEmail && usuarioSenha) {
+            try {
+                handleBotaoAnimacaoCadastrar()
+                SetMessageOk(response.message)
+            } catch (error) {
+                SetMessageErro("Erro Interno !" + error)
             }
-            else {
-                alert('Ocorreu alguma falha');
-            }
-
-        } catch (e) {
-            alert('Erro ao salvar pets:' + e);
         }
+        else {
+            // MENSAGEM DE VERIFICAÇÃO DE CAMPOS EM BRANCO
+            SetMessageErro(response.message)
+        }    
     }
 
     return(
@@ -189,7 +171,7 @@ function Cadastrar(){
                                 </Link>
                             </div>
                                 
-                            <button type="button" name='entrar' onClick={cadastrar}> Cadastrar-Se </button> 
+                            <button type="button" name='entrar' onClick={handleCriarContaPF}> Cadastrar-Se </button> 
                         </form>
                     </div>
 
@@ -252,7 +234,7 @@ function Cadastrar(){
                                 </Link>
                             </div>
                                 
-                            <button type="button" name='entrar' onClick={handleRegistarPJ}> Cadastrar-Se </button>
+                            <button type="button" name='entrar' onClick={handleCriarContaPJ}> Cadastrar-Se </button>
                         </form>
                     </div>
 
@@ -263,7 +245,7 @@ function Cadastrar(){
 
                                 <p> Crie sua conta, e venha fazer parte da nossa Familia !</p>
 
-                                <button type="button" className='hidden' onClick={handlePFClick} > Criar Sua Conta </button>
+                                <button type="button" className='hidden' onClick={handleBotaoAnimacaoCadastrar} > Criar Sua Conta </button>
                             </div>
 
                             <div className="toggle-panel toggle-right">
@@ -271,7 +253,7 @@ function Cadastrar(){
 
                                 <p> Crie uma conta Corporativa com o seu CNPJ, e venha ajudar a Resgatar os Pets</p>
 
-                                <button type="button" className='hidden' onClick={handlePJClick} > Crie Sua Conta Corporativa </button>
+                                <button type="button" className='hidden' onClick={handleBotaoAnimacaoLogin} > Crie Sua Conta Corporativa </button>
                             </div>
                         </div>
                     </div>

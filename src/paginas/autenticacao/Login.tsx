@@ -3,24 +3,22 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { api } from '../../api';
 import titulo from '../../assents/imagens/background/im_background-titulo-login.png'
 import { UsuarioLogadoContext } from '../../context/authContext';
-// import { authContext } from '../../contexts/auth/authContext';
 
 function Login() {
-    // const auth = useContext(AuthContext);
-    const usuarioContext = useContext(UsuarioLogadoContext)
+    const auth = useContext(UsuarioLogadoContext)
     const navigate = useNavigate();
     const location = useLocation();
 
     const [messageErro, SetMessageErro] = useState('');
     const [messageOk, SetMessageOk] = useState('');
 
+    const usuarioLevel = '1'; 
     const [usuarioNome, SetUsuarioNome] = useState('');
     const [usuarioCPF, SetUsuarioCPF] = useState('');
     const [usuarioTelefone, SetUsuarioTelefone] = useState('');
     const [usuarioEmail, SetUsuarioEmail] = useState('');
     const [usuarioSenha, SetUsuarioSenha] = useState('');
     const [usuarioSenhaConfirmar, SetUsuarioSenhaConfirmar] = useState('');
-    const [usuarioLevel, SetUsuarioLevel] = useState('')
     const [aceitarTermos, SetAceitarTermos] = useState(false);
 
     function handleInputUsuarioNome(event: React.ChangeEvent<HTMLInputElement>) {
@@ -47,12 +45,12 @@ function Login() {
         SetUsuarioSenhaConfirmar(event.target.value);
     }
 
-    const handleInputAceitarTermosCPF = () => {
+    const handleInputAceitarTermos = () => {
         SetAceitarTermos(!aceitarTermos);
     }
 
     // ANIMAÇÃO DO LOGIN
-    const handleFazerLogin = () => {
+    const handleBotaoAnimacaoLogin = () => {
         const container = document.getElementById('login');
         if (container) {
             container.classList.add('active');
@@ -63,7 +61,7 @@ function Login() {
     }
 
     // ANIMAÇÃO DO CRIAR CONTA
-    const handleCriarConta = () => {
+    const handleBotaoAnimacaoCadastrar = () => {
         const container = document.getElementById('login');
         if (container) {
             container.classList.remove('active');
@@ -75,7 +73,7 @@ function Login() {
 
     // LOGIN
     const handleLogin = async () => {
-        const response = await api.Logar(usuarioNome, usuarioEmail, usuarioTelefone, usuarioSenha, usuarioLevel)         
+        const response = await api.Logar(usuarioEmail, usuarioSenha)
 
         // VERIFICA O EMAIL A SENHA
         if (usuarioEmail && usuarioSenha) {
@@ -88,9 +86,13 @@ function Login() {
                     else {
                         navigate('/dashboard')
                     }
-
-                    usuarioContext?.setNome(response.nome)
-                    console.log(response)
+                    
+                    // PEGA TODOS OS DADOS DO USUARIO
+                    auth?.setNome(response.usuario.nome)
+                    auth?.setEmail(response.usuario.email)
+                    auth?.setTelefone(response.usuario.telefone)
+                    auth?.setLevel(response.usuario.level)
+                    //console.log(response)
                 }
                 else {
                     // MENSAGEM DE ERRO DE VERIFICAÇÂO COM O BANCO DE DADOS
@@ -106,12 +108,12 @@ function Login() {
         }
     }
 
-    const handleRegistarCPF = async () => {
+    const handleCriarConta = async () => {
         const response = await api.CriarConta(usuarioNome, usuarioCPF, usuarioTelefone, usuarioEmail, usuarioSenha, usuarioLevel)
 
         if (usuarioNome && usuarioCPF && usuarioTelefone && usuarioEmail && usuarioSenha) {
             try {
-                handleCriarConta()
+                handleBotaoAnimacaoCadastrar()
                 SetMessageOk(response.message)
             } catch (error) {
                 SetMessageErro("Erro Interno !" + error)
@@ -208,7 +210,7 @@ function Login() {
                                     <input type="checkbox"
                                         name="aceitar-termos-pf"
                                         checked={aceitarTermos}
-                                        onChange={handleInputAceitarTermosCPF}
+                                        onChange={handleInputAceitarTermos}
                                     />
                                 </div>
                                 <Link to='#'>
@@ -216,7 +218,7 @@ function Login() {
                                 </Link>
                             </div>
 
-                            <button type="button" onClick={handleRegistarCPF}> Cadastrar-Se </button>
+                            <button type="button" onClick={handleCriarConta}> Cadastrar-Se </button>
 
                             <span className='message-erro'>{messageErro}</span>
                             <span className='message-ok'>{messageOk}</span>
@@ -230,7 +232,7 @@ function Login() {
 
                                 <p> Se mantenha conectado fazendo login com suas informações</p>
 
-                                <button type="button" className='hidden' onClick={handleCriarConta} > Login </button>
+                                <button type="button" className='hidden' onClick={handleBotaoAnimacaoCadastrar} > Login </button>
                             </div>
 
                             <div className="toggle-panel toggle-right">
@@ -238,7 +240,7 @@ function Login() {
 
                                 <p> Crie sua conta, e venha fazer parte da nossa Familia !</p>
 
-                                <button type="button" className='hidden' onClick={handleFazerLogin} > Criar Uma Conta </button>
+                                <button type="button" className='hidden' onClick={handleBotaoAnimacaoLogin} > Criar Uma Conta </button>
 
                                 <span>OU</span>
 

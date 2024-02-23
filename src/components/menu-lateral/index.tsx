@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react';
-// import { AuthContext } from '../../contexts/auth/authContext';
 import logo from '../../assents/imagens/logo/ic_resgatpet.png'
+import { UsuarioLogadoContext } from '../../context/authContext';
 
 function MenuLateral() {
 
-    // const auth = useContext(AuthContext)
+    const auth = useContext(UsuarioLogadoContext)
     const [menuPet, setMenuPet] = useState(false)
     const [menuInst, setMenuInst] = useState(false)
-    // const levelUsuario = auth.user?.level === 0 || auth.user?.level === 1;
-    // const levelOng = auth.user?.level === 0 || auth.user?.level === 2;
+
+    //NIVEL DE ACESSO
+    const levelUsuario = auth?.level === '0' || auth?.level === '1';
+    const levelOng = auth?.level === '0' || auth?.level === '2';
 
     const handleMenuPet = () => {
         setMenuPet(!menuPet)
@@ -24,7 +26,7 @@ function MenuLateral() {
             <Link to='/dashboard/configuracoes'>
                 <img src={logo} alt="imagem-usuario" />
             </Link>
-            {/* <label>{auth.user?.name}</label> */}
+            <label>{auth?.nome}</label>
 
 
             <div className="botoes-menus">
@@ -40,7 +42,7 @@ function MenuLateral() {
 
                 {
                     // SOMENTE O USUARIO TEM ACESSO AO BOTAO 
-                    // levelUsuario &&
+                    levelUsuario &&
                     <button
                         type="button"
                         onClick={handleMenuPet}
@@ -124,7 +126,7 @@ function MenuLateral() {
                 }
 
                 {
-                    // levelUsuario &&
+                    levelUsuario &&
                     <Link to='/dashboard/doacao'>
                         <button
                             type="button"
@@ -137,7 +139,7 @@ function MenuLateral() {
 
                 {
                     // SOMENTE A ONG TEM ACESSO AO BOTAO 
-                    // levelOng && (
+                    levelOng && (
                         <>
                             <Link to='/dashboard/resgatar-pet'>
                                 <button
@@ -148,7 +150,7 @@ function MenuLateral() {
                                 </button>
                             </Link>
                         </>
-                    // )
+                    )
                 }
 
                 <Link to='/dashboard/configuracoes'>

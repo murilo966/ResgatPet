@@ -1,24 +1,25 @@
 import { createContext, ReactNode, useState } from "react"
 
 type ContextType ={
-    nome: string
+    nome: string    
     email: string
+    telefone: string
+    level: string
     setNome: (n:string) => void
     setEmail: (n:string) => void
-
-    /* 
-        criar o level de acesso ONG e Usuario
-        criar nome endereço e telefone do retorno do login
-    */
+    setTelefone: (n:string) => void
+    setLevel: (n:string) => void
 }
 
 export const UsuarioLogadoContext = createContext<ContextType | null>(null)
 export const UsuarioLogadoProvider = ({children}: {children: ReactNode}) => {
     const[nome, setNome] = useState('')
     const[email, setEmail] = useState('')
+    const[telefone, setTelefone] = useState('')
+    const[level, setLevel] = useState('')
 
     return (
-        <UsuarioLogadoContext.Provider value={{nome, email, setNome, setEmail}}>
+        <UsuarioLogadoContext.Provider value={{nome, email, telefone, level, setNome, setEmail, setTelefone, setLevel}}>
             {children}
         </UsuarioLogadoContext.Provider>
     )
