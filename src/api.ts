@@ -1,15 +1,12 @@
 export const api = {
 
     // LOGIN
-    Logar: async (nome: string, email: string, telefone:string, senha: string, level:string) => {
+    Logar: async (email: string, senha: string) => {
         const response = await fetch('http://localhost:3005/usuarios/login', {
             method: 'POST',
-            body: JSON.stringify({
-                nome: nome,
+            body: JSON.stringify({                
                 email: email,
-                telefone: telefone,
-                senha: senha,
-                level: level
+                senha: senha
             }),
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
