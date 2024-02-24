@@ -4,7 +4,7 @@ export const api = {
     Logar: async (email: string, senha: string) => {
         const response = await fetch('http://localhost:3005/usuarios/login', {
             method: 'POST',
-            body: JSON.stringify({                
+            body: JSON.stringify({
                 email: email,
                 senha: senha
             }),
@@ -17,7 +17,7 @@ export const api = {
         return (json)
     },
     // CRIAR NOVA CONTA 
-    CriarConta: async (nome: string, cpf_cnpj: string, telefone: string, email: string, senha: string, level:string) => {
+    CriarConta: async (nome: string, cpf_cnpj: string, telefone: string, email: string, senha: string, level: string) => {
         const response = await fetch('http://localhost:3005/usuarios', {
             method: 'POST',
             body: JSON.stringify({
@@ -67,5 +67,14 @@ export const api = {
 
         let json = await response.json()
         return (json)
-    }
+    },
+    UpdateImage: async (formData: FormData) => {
+        let response = await fetch('http://localhost:3005/arquivos', {
+            method: 'POST',
+            body: formData
+        });
+        let json = await response.json()
+        console.log(json)
+        return json
+    },
 }
