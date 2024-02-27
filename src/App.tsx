@@ -19,8 +19,9 @@ import Apadrinhar from './paginas/dashboard/Apadrinhar';
 import Doacao from './paginas/dashboard/Doacao';
 import Ongs from './paginas/dashboard/Ongs';
 import Parceiros from './paginas/dashboard/Parceiros';
-import ListadePets from './paginas/dashboard/ListadePets';
+import ListadePets from './paginas/dashboard/Acolhidos';
 import { UsuarioLogadoProvider } from './context/authContext';
+import Acolhidos from './paginas/dashboard/Acolhidos';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path='/dashboard/ongs' element={<Ongs />} />
           <Route path='/dashboard/parceiros' element={<Parceiros />} />
           <Route path='/dashboard/acompanhar' element={<Acompanhar />} />
+          <Route path='/dashboard/acolhidos' element={<Acolhidos />} />
 
           {/* <Route path='/dashboard/resgatar-pet' element={<RequireAuth level={0}><ResgatarPet /></RequireAuth>} />
           <Route path='/dashboard/formulario' element={<RequireAuth level={0}><Formulario /></RequireAuth>} />
