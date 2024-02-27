@@ -1,6 +1,6 @@
 import MenuLateral from "../../components/menu-lateral"
 
-function ListadePets() {
+function Acolhidos() {
     return (
         <div className='container'>
             <div className='dashboard'>
@@ -22,4 +22,4 @@ function ListadePets() {
     )
 }
 
-export default ListadePets
+export default Acolhidos
