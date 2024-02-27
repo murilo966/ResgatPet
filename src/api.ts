@@ -2,6 +2,7 @@ export const api = {
 
     // LOGIN
     Logar: async (email: string, senha: string) => {
+        // const response = await fetch("https://resgat-pet-api.vercel.app/usuarios/login" ,{
         const response = await fetch('http://localhost:3005/usuarios/login', {
             method: 'POST',
             body: JSON.stringify({
@@ -18,6 +19,7 @@ export const api = {
     },
     // CRIAR NOVA CONTA 
     CriarConta: async (nome: string, cpf_cnpj: string, telefone: string, email: string, senha: string, level: string) => {
+        // const response = await fetch('https://resgat-pet-api.vercel.app/usuarios', {
         const response = await fetch('http://localhost:3005/usuarios', {
             method: 'POST',
             body: JSON.stringify({
