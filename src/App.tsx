@@ -45,15 +45,6 @@ function App() {
           <Route path='/dashboard/ongs' element={<Ongs />} />
           <Route path='/dashboard/parceiros' element={<Parceiros />} />
           <Route path='/dashboard/acompanhar' element={<Acompanhar />} />
-
-          {/* <Route path='/dashboard/resgatar-pet' element={<RequireAuth level={0}><ResgatarPet /></RequireAuth>} />
-          <Route path='/dashboard/formulario' element={<RequireAuth level={0}><Formulario /></RequireAuth>} />
-          <Route path='/dashboard/apadrinhar' element={<RequireAuth level={0}><Apadrinhar /></RequireAuth>} />
-          <Route path='/dashboard/doacao' element={<RequireAuth level={0}><Doacao /></RequireAuth>} />
-          <Route path='/dashboard/ongs' element={<RequireAuth level={0}><Ongs /></RequireAuth>} />
-          <Route path='/dashboard/parceiros' element={<RequireAuth level={0}><Parceiros /></RequireAuth>} />
-          <Route path='/dashboard/acompanhar' element={<RequireAuth level={0}><Acompanhar /></RequireAuth>} /> */}
-
           <Route path='/dashboard/configuracoes' element={<Configuracao />} />
         </Routes>
       </UsuarioLogadoProvider>

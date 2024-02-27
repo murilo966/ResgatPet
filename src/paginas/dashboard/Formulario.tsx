@@ -31,68 +31,68 @@ function Formulario() {
     async function salvarPets() {
         try {
 
-            if(fileInput.current?.files && fileInput.current.files.length > 0){
-                const fileItem = fileInput.current.files[0]
-                console.log(fileItem)
+            // if(fileInput.current?.files && fileInput.current.files.length > 0){
+            //     const fileItem = fileInput.current.files[0]
+            //     console.log(fileItem)
 
-                const tiposPermitidos = ['image/png', 'image/jpg', 'image/gif', 'image/jpeg']
+            //     const tiposPermitidos = ['image/png', 'image/jpg', 'image/gif', 'image/jpeg']
 
-                if(tiposPermitidos.includes(fileItem.type)){
-                    const data = new FormData()
-                    data.append('arquivo', fileItem)
+            //     if(tiposPermitidos.includes(fileItem.type)){
+            //         const data = new FormData()
+            //         data.append('arquivo', fileItem)
 
-                    let json = await api.UpdateImage(data)
-                    if(json.id){
-                        alert('Imagem adicionada com sucesso !')
+            //         let json = await api.UpdateImage(data)
+            //         if(json.id){
+            //             alert('Imagem adicionada com sucesso !')
                         
-                    }
-                    else{
-                        alert('Falha ao adiconar usuario !')
-                    }
-                }
-                else{
-                    alert('Por favor, selecione uma imagem válida.');
-                }
-            }
-            else{
-                alert('BLA BLA')
-            }
+            //         }
+            //         else{
+            //             alert('Falha ao adiconar usuario !')
+            //         }
+            //     }
+            //     else{
+            //         alert('Por favor, selecione uma imagem válida.');
+            //     }
+            // }
+            // else{
+            //     alert('BLA BLA')
+            // }
 
-            // let json = await api.CriarFormulario(
-            //     petFoto,
-            //     petEndereco,
-            //     petCidade,
-            //     petRaca,
-            //     petSexo,
-            //     petCor,
-            //     petSaude.toString(),
-            //     petAcessorios.toString(),
+            let json = await api.CriarFormulario(
+                petFoto,
+                petEndereco,
+                petCidade,
+                petRaca,
+                petSexo,
+                petCor,
+                petSaude.toString(),
+                petAcessorios.toString(),
                                 
-            // )
-            // console.log(json)
-            // if (json.id) {
+            )
+            console.log(json)
+            if (json.id) {
 
-            //     // MENSAGEM SALVO COM SUCESSO !
+                // MENSAGEM SALVO COM SUCESSO !
 
-            //     // IR ATE A PAGINA ACOMPANHAR 
-            //     navigate('/dashboard/acompanhar')
-            // }
-            // else {
-            //     // json.message MENSAGEM DE ERRO
-            // }
+                // IR ATE A PAGINA ACOMPANHAR 
+                navigate('/dashboard/acompanhar')
+            }
+            else {
+                // json.message MENSAGEM DE ERRO
+            }
         } catch (e) {
             alert('Erro ao salvar pets:' + e);
         }
     }
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        // const file = event.target.files?.[0];
+        const file = event.target.files?.[0];
 
-        // if (file && file.type.startsWith('image/')) {
-        //     SetPetImage(URL.createObjectURL(file));
-        // } else {
-        //     alert('Por favor, selecione uma imagem válida.');
-        // }
+        if (file && file.type.startsWith('image/')) {
+            SetPetImage(URL.createObjectURL(file));
+        } else {
+            alert('Por favor, selecione uma imagem válida.');
+        }
     }
 
     function handleInputPetCidade(event: React.ChangeEvent<HTMLInputElement>) {
