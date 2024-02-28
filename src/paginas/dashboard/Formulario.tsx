@@ -7,7 +7,10 @@ import { UsuarioLogadoContext } from '../../context/authContext';
 
 function Formulario() {
 
+    // NAVEGAÇÃO DAS PAGINAS 
     const navigate = useNavigate();
+
+    // CONTEXTO USUARIO
     const auth = useContext(UsuarioLogadoContext)
 
     // UPDATE IMAGEM 
@@ -28,57 +31,41 @@ function Formulario() {
     const [petSaudeOutros, SetPetSaudeOutros] = useState('');
     const [petSaudeCheck, SetPetSaudeCheck] = useState(false);
 
+    const [messageErro, SetMessageErro] = useState('');
+
     async function salvarPets() {
         try {
+            const files = fileInput.current?.files;
 
-            // if(fileInput.current?.files && fileInput.current.files.length > 0){
-            //     const fileItem = fileInput.current.files[0]
-            //     console.log(fileItem)
-
-            //     const tiposPermitidos = ['image/png', 'image/jpg', 'image/gif', 'image/jpeg']
-
-            //     if(tiposPermitidos.includes(fileItem.type)){
-            //         const data = new FormData()
-            //         data.append('arquivo', fileItem)
-
-            //         let json = await api.UpdateImage(data)
-            //         if(json.id){
-            //             alert('Imagem adicionada com sucesso !')
-                        
-            //         }
-            //         else{
-            //             alert('Falha ao adiconar usuario !')
-            //         }
-            //     }
-            //     else{
-            //         alert('Por favor, selecione uma imagem válida.');
-            //     }
-            // }
-            // else{
-            //     alert('BLA BLA')
-            // }
-
-            let json = await api.CriarFormulario(
-                petFoto,
-                petEndereco,
-                petCidade,
-                petRaca,
-                petSexo,
-                petCor,
-                petSaude.toString(),
-                petAcessorios.toString(),
-                                
-            )
-            console.log(json)
-            if (json.id) {
-
-                // MENSAGEM SALVO COM SUCESSO !
-
-                // IR ATE A PAGINA ACOMPANHAR 
-                navigate('/dashboard/acompanhar')
-            }
-            else {
-                // json.message MENSAGEM DE ERRO
+            // VERIFICA SE O TAMANHO DA FOTO E MAIOR QUE ZERO
+            if(files && files.length > 0){
+                const fileItem = files[0]
+                const data = new FormData()
+                // ARQUIVO E A PALAVRA CHAVE DO BACK
+                data.append('arquivo', fileItem)
+                // CHAMA O JSON UPDATE IMAGEM
+                let image = await api.UpdateImage(data)
+                // CHAMA O JSON CRIAR FORMULARIO
+                let json = await api.CriarFormulario(
+                    // SETA A IMAGEM NO FORMULARIO
+                    image.nomeArquivo,
+                    petEndereco,
+                    petCidade,
+                    petRaca,
+                    petSexo,
+                    petCor,
+                    petAcessorios.toString(),
+                    petSaude.toString(),
+                    auth?.nome                 
+                )
+                SetMessageErro(json.message)              
+                if (json.id) {                    
+                    // IR ATE A PAGINA ACOMPANHAR 
+                    navigate('/dashboard/acompanhar')
+                }
+                else {
+                    console.log("ERRO: ", json)                    
+                }                
             }
         } catch (e) {
             alert('Erro ao salvar pets:' + e);
@@ -224,7 +211,6 @@ function Formulario() {
 
                                 <input type="file" onChange={handleImageChange} accept="image/*" ref={fileInput} />
                                 
-
                                 <label > * Por Favor coloque o Endereço e a Cidade na onde foi encontrado o Pet </label>
                                 <div className="rows">
                                     <div>
@@ -284,7 +270,7 @@ function Formulario() {
                                         </div>
 
                                         <div>
-                                            <input className='radios' type="radio" name="cor-outros" checked={petRaca === 'Outros'} value="Outros" onChange={handleInputPetRaca} />
+                                            <input className='radios' type="radio" name="raca-outros" checked={petRaca === 'Outros'} value="Outros" onChange={handleInputPetRaca} />
                                             <label>Outros </label>
                                             <input className='outros' type="text" name="outra-cor" value={petRacaOutros} disabled={petRaca !== "Outros"} onChange={handleInputPetRacaOutros} />
                                         </div>
@@ -401,6 +387,8 @@ function Formulario() {
                                         </div>
                                     </div>
                                 </div>
+
+                                <span className='message-erro'>{messageErro}</span>
 
                                 <div className="column mobile-botao">
                                     <div className='row'>

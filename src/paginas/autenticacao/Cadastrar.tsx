@@ -79,7 +79,7 @@ function Cadastrar(){
 
         if (usuarioNome && usuarioCNPJ && usuarioTelefone && usuarioEmail && usuarioSenha) {
             try {
-                handleBotaoAnimacaoCadastrar()
+                navigate('login')
                 SetMessageOk(response.message)
             } catch (error) {
                 SetMessageErro("Erro Interno !" + error)
@@ -96,7 +96,7 @@ function Cadastrar(){
 
         if (usuarioNome && usuarioCPF && usuarioTelefone && usuarioEmail && usuarioSenha) {
             try {
-                handleBotaoAnimacaoCadastrar()
+                navigate('login')
                 SetMessageOk(response.message)
             } catch (error) {
                 SetMessageErro("Erro Interno !" + error)

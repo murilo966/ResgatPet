@@ -1,6 +1,8 @@
 import { createContext, ReactNode, useState } from "react"
+import { User } from "../types/user";
 
 type ContextType ={
+    
     nome: string    
     email: string
     telefone: string

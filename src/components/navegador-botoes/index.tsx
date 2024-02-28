@@ -1,10 +1,10 @@
 import logo from '../../assents/imagens/logo/ic_resgatpet.png'
 import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-// import { AuthContext } from '../../contexts/auth/authContext'
+import { UsuarioLogadoContext } from '../../context/authContext'
 
 function Menu() {
-    // const auth = useContext(AuthContext)
+    const auth = useContext(UsuarioLogadoContext)
     const navigate = useNavigate()
 
     const handleHome = () => {
@@ -46,7 +46,7 @@ function Menu() {
 
                     <button onClick={handleQuemSomos}>Quem Somos</button>
 
-                    {/* {!auth.user && <button onClick={handleCadastrar}>Cadastre-se</button>}
+                    {/* {!auth. && <button onClick={handleCadastrar}>Cadastre-se</button>}
 
                     {auth.user && <button onClick={hadleDashboard}>Dashboard</button>}
 
