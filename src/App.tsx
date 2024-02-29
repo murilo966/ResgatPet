@@ -37,7 +37,6 @@ function App() {
           <Route path='/quem-somos' element={<QuemSomos />} />
           <Route path='/login' element={<Login />} />
           <Route path='/esqueceu-senha' element={<EsqueceuSenha />} />
-          <Route path='/cadastrar' element={<Cadastrar />} />
           <Route path='/dashboard' element={<Dasboard />} />
           <Route path='/dashboard/resgatar-pet' element={<ResgatarPet />} />
           <Route path='/dashboard/formulario' element={<Formulario />} />
