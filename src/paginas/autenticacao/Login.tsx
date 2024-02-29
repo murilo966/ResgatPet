@@ -25,7 +25,7 @@ function Login() {
         SetUsuarioNome(event.target.value);
     }
 
-    function handleInputUsuarioCPF(event: React.ChangeEvent<HTMLInputElement>) {
+    function handleInputUsuarioDocumento(event: React.ChangeEvent<HTMLInputElement>) {
         SetUsuarioCPF(event.target.value);
     }
 
@@ -111,10 +111,17 @@ function Login() {
     const handleCriarConta = async () => {
         const response = await api.CriarConta(usuarioNome, usuarioCPF, usuarioTelefone, usuarioEmail, usuarioSenha, usuarioLevel)
 
-        if (usuarioNome && usuarioCPF && usuarioTelefone && usuarioEmail && usuarioSenha) {
+        if (response && aceitarTermos) {
             try {
-                handleBotaoAnimacaoCadastrar()
-                SetMessageOk(response.message)
+                // RESPONSE SUCESSO !
+                if(response === '200'){
+                    handleBotaoAnimacaoCadastrar()
+                    SetMessageOk(response.message)
+                }
+                else{
+                    SetMessageErro(response.message)
+                }
+
             } catch (error) {
                 SetMessageErro("Erro Interno !" + error)
             }
@@ -172,9 +179,9 @@ function Login() {
 
                             <input type="text"
                                 name="user-cpf"
-                                placeholder="CPF"
+                                placeholder="CPF / CNPJ"
                                 required
-                                onChange={handleInputUsuarioCPF}
+                                onChange={handleInputUsuarioDocumento}
                             />
 
                             <input type="text"
@@ -241,12 +248,6 @@ function Login() {
                                 <p> Crie sua conta, e venha fazer parte da nossa Familia !</p>
 
                                 <button type="button" className='hidden' onClick={handleBotaoAnimacaoLogin} > Criar Uma Conta </button>
-
-                                <span>OU</span>
-
-                                <Link to='/cadastrar'>
-                                    <button type="button" className='hidden'  > Conta Corporativa </button>
-                                </Link>
                             </div>
                         </div>
                     </div>

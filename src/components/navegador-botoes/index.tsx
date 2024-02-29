@@ -15,10 +15,6 @@ function Menu() {
         navigate('/quem-somos')
     }
 
-    const handleCadastrar = () =>{
-        navigate('/cadastrar')
-    }
-
     const hadleDashboard = () =>{
         navigate('/dashboard')
     }
@@ -46,15 +42,12 @@ function Menu() {
 
                     <button onClick={handleQuemSomos}>Quem Somos</button>
 
-                    {/* {!auth. && <button onClick={handleCadastrar}>Cadastre-se</button>}
-
-                    {auth.user && <button onClick={hadleDashboard}>Dashboard</button>}
+                    {/* {auth.user && <button onClick={hadleDashboard}>Dashboard</button>}
 
                     {auth.user && <button onClick={handleLogout}>Sair</button>}
 
                     {!auth.user &&<button onClick={handleLogin}>Faça login</button>} */}
 
-                    <button onClick={handleCadastrar}>Cadastre-se</button>
 
                     <button onClick={hadleDashboard}>Dashboard</button>
 
