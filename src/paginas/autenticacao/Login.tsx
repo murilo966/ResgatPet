@@ -2,12 +2,16 @@ import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { api } from '../../api';
 import titulo from '../../assents/imagens/background/im_background-titulo-login.png'
+import olhos_aberto from '../../assents/imagens/login/ic_olhos_abertos.png'
+import olhos_fechado from '../../assents/imagens/login/ic_olhos_fechado.png'
 import { UsuarioLogadoContext } from '../../context/authContext';
 
 function Login() {
     const auth = useContext(UsuarioLogadoContext)
     const navigate = useNavigate();
     const location = useLocation();
+
+    const [olhos, SetOlhos] = useState(false);
 
     const [messageErro, SetMessageErro] = useState('');
     const [messageOk, SetMessageOk] = useState('');
@@ -43,6 +47,10 @@ function Login() {
 
     function handleInputUsuarioConfirmarSenha(event: React.ChangeEvent<HTMLInputElement>) {
         SetUsuarioSenhaConfirmar(event.target.value);
+    }
+
+    const handleIconOlhos = () => {
+        SetOlhos(!olhos)
     }
 
     const handleInputAceitarTermos = () => {
