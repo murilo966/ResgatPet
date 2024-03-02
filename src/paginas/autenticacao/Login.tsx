@@ -11,12 +11,12 @@ function Login() {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const [olhos, SetOlhos] = useState(false);
+    const [mostrarSenha, setMostrarSenha] = useState(false);
 
     const [messageErro, SetMessageErro] = useState('');
     const [messageOk, SetMessageOk] = useState('');
 
-    const usuarioLevel = '1'; 
+    const usuarioLevel = '1';
     const [usuarioNome, SetUsuarioNome] = useState('');
     const [usuarioCPF, SetUsuarioCPF] = useState('');
     const [usuarioTelefone, SetUsuarioTelefone] = useState('');
@@ -49,8 +49,9 @@ function Login() {
         SetUsuarioSenhaConfirmar(event.target.value);
     }
 
+    // ICON OLHOS SENHA
     const handleIconOlhos = () => {
-        SetOlhos(!olhos)
+        setMostrarSenha(!mostrarSenha);
     }
 
     const handleInputAceitarTermos = () => {
@@ -94,7 +95,7 @@ function Login() {
                     else {
                         navigate('/dashboard')
                     }
-                    
+
                     // PEGA TODOS OS DADOS DO USUARIO
                     auth?.setNome(response.usuario.nome)
                     auth?.setEmail(response.usuario.email)
@@ -104,7 +105,7 @@ function Login() {
                 }
                 else {
                     // MENSAGEM DE ERRO DE VERIFICAÇÂO COM O BANCO DE DADOS
-                    SetMessageErro(response.message)                    
+                    SetMessageErro(response.message)
                 }
             } catch (error) {
                 SetMessageErro("Erro Interno !" + error)
@@ -116,17 +117,18 @@ function Login() {
         }
     }
 
+    // CRIAR CONTA
     const handleCriarConta = async () => {
         const response = await api.CriarConta(usuarioNome, usuarioCPF, usuarioTelefone, usuarioEmail, usuarioSenha, usuarioLevel)
 
         if (response && aceitarTermos) {
             try {
                 // RESPONSE SUCESSO !
-                if(response === '200'){
+                if (response === '200') {
                     handleBotaoAnimacaoCadastrar()
                     SetMessageOk(response.message)
                 }
-                else{
+                else {
                     SetMessageErro(response.message)
                 }
 
@@ -144,24 +146,34 @@ function Login() {
         <div>
             <div className='container'>
                 <div className='container-autenticacao' id='login'>
-                    <div className='form-container criar-conta-pf'>
+                    <div className='form-container logar-conta'>
                         <form>
                             <h1 className='entrar'>Entrar</h1>
                             <img src={titulo} alt="titulo-login" />
 
-                            <input type="text"
-                                name="usuario-nome"
-                                placeholder="nome@email.com"
-                                required
-                                onChange={handleInputUsuarioEmail}
-                            />
+                            <div className="container-input">
+                                <input
+                                    type="text"
+                                    name="usuario-nome"
+                                    placeholder="nome@email.com"
+                                    required
+                                    onChange={handleInputUsuarioEmail}
+                                />
 
-                            <input type="password"
-                                name="usuario-senha"
-                                placeholder="*********"
-                                required
-                                onChange={handleInputUsuarioSenha}
-                            />
+                                <img
+                                    src={mostrarSenha ? olhos_aberto : olhos_fechado}
+                                    alt="olhos"
+                                    onClick={handleIconOlhos}
+                                />
+
+                                <input
+                                    type={mostrarSenha ? 'text' : 'password'}
+                                    name="usuario-senha"
+                                    placeholder="*********"
+                                    required
+                                    onChange={handleInputUsuarioSenha}
+                                />
+                            </div>
 
                             <button type="button" onClick={handleLogin}> Entrar </button>
 
@@ -174,7 +186,7 @@ function Login() {
                         </form>
                     </div>
 
-                    <div className='form-container criar-conta-pj'>
+                    <div className='form-container criar-conta'>
                         <form>
                             <h1>CRIE SUA CONTA</h1>
 

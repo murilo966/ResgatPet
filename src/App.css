@@ -290,6 +290,18 @@ a {
   border: solid 1px #679aff;
 }
 
+.container-input{
+  position: relative;
+}
+
+.container-input img{
+  width: 20px;
+  top: 65%;
+  left: 90%;
+  position: absolute;
+  cursor: pointer;
+}
+
 .form-container {
   position: absolute;
   top: 0;
@@ -297,24 +309,24 @@ a {
   transition: all 0.6s ease-in-out;
 }
 
-.criar-conta-pf {
+.logar-conta {
   left: 0;
   width: 50%;
   z-index: 2;
 }
 
-.container-autenticacao.active .criar-conta-pf {
+.container-autenticacao.active .logar-conta {
   transform: translateX(100%);
 }
 
-.criar-conta-pj {
+.criar-conta {
   left: 0;
   width: 50%;
   opacity: 0;
   z-index: 1;
 }
 
-.container-autenticacao.active .criar-conta-pj {
+.container-autenticacao.active .criar-conta {
   transform: translateX(100%);
   opacity: 1;
   z-index: 5;
@@ -1231,6 +1243,10 @@ input.disabled{
   /* LOGIN */
   .form-container img {
     width: 200px;
+  }
+
+  .container-input img{
+    width: 20px;
   }
 
   .container-autenticacao {
