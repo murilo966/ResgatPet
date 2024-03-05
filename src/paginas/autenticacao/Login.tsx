@@ -6,7 +6,8 @@ import olhos_aberto from '../../assents/imagens/login/ic_olhos_abertos.png'
 import olhos_fechado from '../../assents/imagens/login/ic_olhos_fechado.png'
 import { UsuarioLogadoContext } from '../../context/authContext';
 
-function Login() {
+function Login() {   
+
     const auth = useContext(UsuarioLogadoContext)
     const navigate = useNavigate();
     const location = useLocation();
@@ -16,9 +17,9 @@ function Login() {
     const [messageErro, SetMessageErro] = useState('');
     const [messageOk, SetMessageOk] = useState('');
 
-    const usuarioLevel = '1';
+    const [Level, SetLevel] = useState('1');
     const [usuarioNome, SetUsuarioNome] = useState('');
-    const [usuarioCPF, SetUsuarioCPF] = useState('');
+    const [usuarioCPF_CNPJ, SetUsuarioCPF_CNPJ] = useState('');
     const [usuarioTelefone, SetUsuarioTelefone] = useState('');
     const [usuarioEmail, SetUsuarioEmail] = useState('');
     const [usuarioSenha, SetUsuarioSenha] = useState('');
@@ -30,7 +31,7 @@ function Login() {
     }
 
     function handleInputUsuarioDocumento(event: React.ChangeEvent<HTMLInputElement>) {
-        SetUsuarioCPF(event.target.value);
+        SetUsuarioCPF_CNPJ(event.target.value);
     }
 
     function handleInputUsuarioTelefone(event: React.ChangeEvent<HTMLInputElement>) {
@@ -54,8 +55,14 @@ function Login() {
         setMostrarSenha(!mostrarSenha);
     }
 
+    // TERMOS DO CONTRATO
     const handleInputAceitarTermos = () => {
         SetAceitarTermos(!aceitarTermos);
+    }
+
+    // MENSAGEM DE VERIFICAÇÃO DE CAMPOS EM BRANCO
+    const handleErro = (mensagem: string) => {
+        SetMessageErro(mensagem);
     }
 
     // ANIMAÇÃO DO LOGIN
@@ -67,6 +74,7 @@ function Login() {
 
         // LIMPA O ERRO AO TROCAR DE TELA
         SetMessageErro('')
+        SetMessageOk('')
     }
 
     // ANIMAÇÃO DO CRIAR CONTA
@@ -78,6 +86,7 @@ function Login() {
 
         // LIMPA O ERRO AO TROCAR DE TELA
         SetMessageErro('')
+        SetMessageOk('')
     }
 
     // LOGIN
@@ -118,27 +127,48 @@ function Login() {
     }
 
     // CRIAR CONTA
-    const handleCriarConta = async () => {
-        const response = await api.CriarConta(usuarioNome, usuarioCPF, usuarioTelefone, usuarioEmail, usuarioSenha, usuarioLevel)
+    const handleCriarConta = async () => {        
 
-        if (response && aceitarTermos) {
-            try {
-                // RESPONSE SUCESSO !
-                if (response === '200') {
-                    handleBotaoAnimacaoCadastrar()
-                    SetMessageOk(response.message)
-                }
-                else {
-                    SetMessageErro(response.message)
-                }
-
-            } catch (error) {
-                SetMessageErro("Erro Interno !" + error)
+        // VALIDAR TODOS OS CAMPOS
+        if (!usuarioNome || !usuarioCPF_CNPJ || !usuarioTelefone || !usuarioEmail) {
+            handleErro('Por favor, preencha todos os campos.');
+            return;
+        }
+        else{
+            if(!aceitarTermos){
+                handleErro('Aceite os termos');
+                return;              
             }
         }
+
+        // COMPRAR AS SENHAS
+        if (usuarioSenha !== usuarioSenhaConfirmar) {
+            handleErro('As senhas não coincidem.');
+            return;
+        }
+
+        if (usuarioCPF_CNPJ.length > 11) {
+            SetLevel('2')
+        }
         else {
-            // MENSAGEM DE VERIFICAÇÃO DE CAMPOS EM BRANCO
-            SetMessageErro(response.message)
+            SetLevel('1')
+        }
+
+        try {
+            const response = await api.CriarConta(usuarioNome, usuarioCPF_CNPJ, usuarioTelefone, usuarioEmail, usuarioSenha, Level)
+
+            console.log('Resposta da API: ', response);
+
+            // RESPONSE SUCESSO !
+            if (response.status === 200) {
+                handleBotaoAnimacaoCadastrar()
+                SetMessageOk(response.message)                
+            }
+            else{
+                SetMessageErro('EROO ' + response.message);
+            }            
+        } catch (error) {
+            SetMessageErro('Erro ao criar conta. ' + error);
         }
     }
 
