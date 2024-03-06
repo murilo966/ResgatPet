@@ -147,6 +147,7 @@ function Login() {
             return;
         }
 
+        // VERIFICA SE E CPF OU CNPJ E ATRIBUI O LEVEL
         if (usuarioCPF_CNPJ.length > 11) {
             SetLevel('2')
         }
