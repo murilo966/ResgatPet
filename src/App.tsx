@@ -1,10 +1,9 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-// import { RequireAuth } from './contexts/auth/RequireAuth';
+import { UsuarioLogadoProvider } from './context/authContext';
 
 import Cabecalho from './components/cabecalho';
 import Rodape from './components/rodape';
-import Cadastrar from './paginas/autenticacao/Cadastrar';
 import Home from './paginas/home/Home';
 import Login from './paginas/autenticacao/Login';
 import QuemSomos from './paginas/home/QuemSomos';
@@ -19,8 +18,6 @@ import Apadrinhar from './paginas/dashboard/Apadrinhar';
 import Doacao from './paginas/dashboard/Doacao';
 import Ongs from './paginas/dashboard/Ongs';
 import Parceiros from './paginas/dashboard/Parceiros';
-import ListadePets from './paginas/dashboard/Acolhidos';
-import { UsuarioLogadoProvider } from './context/authContext';
 import Acolhidos from './paginas/dashboard/Acolhidos';
 
 function App() {
