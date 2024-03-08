@@ -9,7 +9,7 @@ function Parceiros() {
                 <div className='container-painel'>
                     <div className="parceiros">
                         <p>
-                            Explore oportunidades incríveis através de parcerias! Junte-se a nós para colaborações 
+                            🤝Explore oportunidades incríveis através de <b>parcerias</b>! Junte-se a nós para colaborações 
                             mutuamente benéficas, onde crescemos juntos. Estamos abertos a criar laços sólidos e alcançar
                             novos patamares. Vamos construir algo extraordinário juntos!
                         </p>
