@@ -48,12 +48,11 @@ function Menu() {
 
                     {!auth.user &&<button onClick={handleLogin}>Faça login</button>} */}
 
-
-                    <button onClick={hadleDashboard}>Dashboard</button>
-
-                    <button onClick={handleLogout}>Sair</button>
+                    <button onClick={hadleDashboard}>Dashboard</button>                    
 
                     <button onClick={handleLogin}>Faça login</button>
+
+                    <button onClick={handleLogout}>Sair</button>
                 </div>
             </div>
         </div>

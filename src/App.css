@@ -98,7 +98,6 @@ a {
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  width: 80%;
   min-height: 70vh;
 }
 
@@ -1026,6 +1025,54 @@ input.disabled{
 }
 
 /* DASHBOARD - PARCEIROS */
+.parceiros{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8px;
+}
+
+.parceiros p{
+  width: 70%;
+  color: black;
+  font-size: medium; 
+}
+
+.parceiros div{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  border: rgb(185, 185, 185) solid 2px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.parceiros h1{
+  color: black;
+  font-size: x-large; 
+  font-weight: bold;
+}
+
+.parceiros button{
+  color: #fff;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 10px 8px;
+  cursor: pointer;
+  background: #2e93ff;
+}
+
+.parceiros button:hover {
+  background: #0450a0;
+}
+
+.parceiros button:active {
+  background: #2e93ff;
+}
 
 
 
