@@ -6,7 +6,7 @@ import olhos_aberto from '../../assents/imagens/login/ic_olhos_abertos.png'
 import olhos_fechado from '../../assents/imagens/login/ic_olhos_fechado.png'
 import { UsuarioLogadoContext } from '../../context/authContext';
 
-function Login() {   
+function Login() {
 
     const auth = useContext(UsuarioLogadoContext)
     const navigate = useNavigate();
@@ -91,57 +91,66 @@ function Login() {
 
     // LOGIN
     const handleLogin = async () => {
-        const response = await api.Logar(usuarioEmail, usuarioSenha)
 
-        // VERIFICA O EMAIL A SENHA
-        if (usuarioEmail && usuarioSenha) {
-            try {
-                if (response.status) {
-                    // VERIFICA SE JÁ ESTA NA PAGINA FORMULARIO ANTES DE LOGAR
-                    if (location.pathname.toLowerCase() === '/dashboard/formulario') {
-                        navigate('/dashboard/formulario')
-                    }
-                    else {
-                        navigate('/dashboard')
-                    }
-
-                    // PEGA TODOS OS DADOS DO USUARIO
-                    auth?.setNome(response.usuario.nome)
-                    auth?.setEmail(response.usuario.email)
-                    auth?.setTelefone(response.usuario.telefone)
-                    auth?.setLevel(response.usuario.level)
-                    //console.log(response)
-                }
-                else {
-                    // MENSAGEM DE ERRO DE VERIFICAÇÂO COM O BANCO DE DADOS
-                    SetMessageErro(response.message)
-                }
-            } catch (error) {
-                SetMessageErro("Erro Interno !" + error)
-            }
+        if(!usuarioEmail && !usuarioSenha){
+            handleErro('Por favor, preencha todos os campos.');
+            return;           
         }
-        else {
-            // MENSAGEM DE VERIFICAÇÃO DE CAMPOS EM BRANCO
-            SetMessageErro(response.message)
+
+        // VERIFICA SE O E-MAIL NÃO ESTÁ EM BRANCO
+        if (!usuarioEmail) {
+            handleErro("Por favor, preencha o campo de e-mail.");
+            return;
+        }
+
+        // VERIFICA SE A SENHA NÃO ESTÁ EM BRANCO
+        if (!usuarioSenha) {
+            handleErro("Por favor, preencha o campo de senha.");
+            return;
+        }
+
+        try {
+            const response = await api.Logar(usuarioEmail, usuarioSenha);
+    
+            // MENSAGEM DE ERRO DA API
+            if (!response.status) {
+                handleErro(response.message);
+                return;
+            }
+    
+            // VERIFICA SE JÁ ESTÁ NA PÁGINA FORMULÁRIO ANTES DE LOGAR
+            if (location.pathname.toLowerCase() === '/dashboard/formulario') {
+                navigate('/dashboard/formulario');
+            } else {
+                navigate('/dashboard');
+            }
+    
+            // PEGA TODOS OS DADOS DO USUÁRIO
+            auth?.setNome(response.usuario.nome);
+            auth?.setEmail(response.usuario.email);
+            auth?.setTelefone(response.usuario.telefone);
+            auth?.setLevel(response.usuario.level);
+            // console.log(response);
+        } catch (error) {
+            handleErro("Erro Interno !" + error);
         }
     }
 
     // CRIAR CONTA
-    const handleCriarConta = async () => {        
+    const handleCriarConta = async () => {
 
         // VALIDAR TODOS OS CAMPOS
-        if (!usuarioNome || !usuarioCPF_CNPJ || !usuarioTelefone || !usuarioEmail) {
+        if (!usuarioNome || !usuarioCPF_CNPJ || !usuarioTelefone || !usuarioEmail || !usuarioSenha || !usuarioSenhaConfirmar) {
             handleErro('Por favor, preencha todos os campos.');
             return;
         }
-        else{
-            if(!aceitarTermos){
-                handleErro('Aceite os termos');
-                return;              
-            }
+
+        if (!aceitarTermos) {
+            handleErro('Aceite os termos');
+            return;
         }
 
-        // COMPRAR AS SENHAS
+        // COMPARAR AS SENHAS
         if (usuarioSenha !== usuarioSenhaConfirmar) {
             handleErro('As senhas não coincidem.');
             return;
@@ -163,13 +172,13 @@ function Login() {
             // RESPONSE SUCESSO !
             if (response.status === 200) {
                 handleBotaoAnimacaoCadastrar()
-                SetMessageOk(response.message)                
+                SetMessageOk(response.message)
             }
-            else{
-                SetMessageErro('EROO ' + response.message);
-            }            
+            else {
+                handleErro('ERRO ' + response.message);
+            }
         } catch (error) {
-            SetMessageErro('Erro ao criar conta. ' + error);
+            handleErro('Erro ao criar conta. ' + error);
         }
     }
 
