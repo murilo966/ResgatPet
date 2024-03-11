@@ -98,7 +98,6 @@ a {
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  width: 80%;
   min-height: 70vh;
 }
 
@@ -290,6 +289,18 @@ a {
   border: solid 1px #679aff;
 }
 
+.container-input{
+  position: relative;
+}
+
+.container-input img{
+  width: 20px;
+  top: 65%;
+  left: 90%;
+  position: absolute;
+  cursor: pointer;
+}
+
 .form-container {
   position: absolute;
   top: 0;
@@ -297,24 +308,24 @@ a {
   transition: all 0.6s ease-in-out;
 }
 
-.criar-conta-pf {
+.logar-conta {
   left: 0;
   width: 50%;
   z-index: 2;
 }
 
-.container-autenticacao.active .criar-conta-pf {
+.container-autenticacao.active .logar-conta {
   transform: translateX(100%);
 }
 
-.criar-conta-pj {
+.criar-conta {
   left: 0;
   width: 50%;
   opacity: 0;
   z-index: 1;
 }
 
-.container-autenticacao.active .criar-conta-pj {
+.container-autenticacao.active .criar-conta {
   transform: translateX(100%);
   opacity: 1;
   z-index: 5;
@@ -1014,6 +1025,54 @@ input.disabled{
 }
 
 /* DASHBOARD - PARCEIROS */
+.parceiros{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8px;
+}
+
+.parceiros p{
+  width: 70%;
+  color: black;
+  font-size: medium; 
+}
+
+.parceiros div{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  border: rgb(185, 185, 185) solid 2px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.parceiros h1{
+  color: black;
+  font-size: x-large; 
+  font-weight: bold;
+}
+
+.parceiros button{
+  color: #fff;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 10px 8px;
+  cursor: pointer;
+  background: #2e93ff;
+}
+
+.parceiros button:hover {
+  background: #0450a0;
+}
+
+.parceiros button:active {
+  background: #2e93ff;
+}
 
 
 
@@ -1264,6 +1323,10 @@ input.disabled{
   /* LOGIN */
   .form-container img {
     width: 200px;
+  }
+
+  .container-input img{
+    width: 20px;
   }
 
   .container-autenticacao {

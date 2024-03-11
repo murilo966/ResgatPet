@@ -1,10 +1,9 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-// import { RequireAuth } from './contexts/auth/RequireAuth';
+import { UsuarioLogadoProvider } from './context/authContext';
 
 import Cabecalho from './components/cabecalho';
 import Rodape from './components/rodape';
-import Cadastrar from './paginas/autenticacao/Cadastrar';
 import Home from './paginas/home/Home';
 import Login from './paginas/autenticacao/Login';
 import QuemSomos from './paginas/home/QuemSomos';
@@ -19,8 +18,6 @@ import Apadrinhar from './paginas/dashboard/Apadrinhar';
 import Doacao from './paginas/dashboard/Doacao';
 import Ongs from './paginas/dashboard/Ongs';
 import Parceiros from './paginas/dashboard/Parceiros';
-import ListadePets from './paginas/dashboard/Acolhidos';
-import { UsuarioLogadoProvider } from './context/authContext';
 import Acolhidos from './paginas/dashboard/Acolhidos';
 
 function App() {
@@ -37,7 +34,6 @@ function App() {
           <Route path='/quem-somos' element={<QuemSomos />} />
           <Route path='/login' element={<Login />} />
           <Route path='/esqueceu-senha' element={<EsqueceuSenha />} />
-          <Route path='/cadastrar' element={<Cadastrar />} />
           <Route path='/dashboard' element={<Dasboard />} />
           <Route path='/dashboard/resgatar-pet' element={<ResgatarPet />} />
           <Route path='/dashboard/formulario' element={<Formulario />} />

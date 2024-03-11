@@ -2,19 +2,24 @@ import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { api } from '../../api';
 import titulo from '../../assents/imagens/background/im_background-titulo-login.png'
+import olhos_aberto from '../../assents/imagens/login/ic_olhos_abertos.png'
+import olhos_fechado from '../../assents/imagens/login/ic_olhos_fechado.png'
 import { UsuarioLogadoContext } from '../../context/authContext';
 
 function Login() {
+
     const auth = useContext(UsuarioLogadoContext)
     const navigate = useNavigate();
     const location = useLocation();
 
+    const [mostrarSenha, setMostrarSenha] = useState(false);
+
     const [messageErro, SetMessageErro] = useState('');
     const [messageOk, SetMessageOk] = useState('');
 
-    const usuarioLevel = '1'; 
+    const [Level, SetLevel] = useState('1');
     const [usuarioNome, SetUsuarioNome] = useState('');
-    const [usuarioCPF, SetUsuarioCPF] = useState('');
+    const [usuarioCPF_CNPJ, SetUsuarioCPF_CNPJ] = useState('');
     const [usuarioTelefone, SetUsuarioTelefone] = useState('');
     const [usuarioEmail, SetUsuarioEmail] = useState('');
     const [usuarioSenha, SetUsuarioSenha] = useState('');
@@ -25,8 +30,8 @@ function Login() {
         SetUsuarioNome(event.target.value);
     }
 
-    function handleInputUsuarioCPF(event: React.ChangeEvent<HTMLInputElement>) {
-        SetUsuarioCPF(event.target.value);
+    function handleInputUsuarioDocumento(event: React.ChangeEvent<HTMLInputElement>) {
+        SetUsuarioCPF_CNPJ(event.target.value);
     }
 
     function handleInputUsuarioTelefone(event: React.ChangeEvent<HTMLInputElement>) {
@@ -45,8 +50,19 @@ function Login() {
         SetUsuarioSenhaConfirmar(event.target.value);
     }
 
+    // ICON OLHOS SENHA
+    const handleIconOlhos = () => {
+        setMostrarSenha(!mostrarSenha);
+    }
+
+    // TERMOS DO CONTRATO
     const handleInputAceitarTermos = () => {
         SetAceitarTermos(!aceitarTermos);
+    }
+
+    // MENSAGEM DE VERIFICAÇÃO DE CAMPOS EM BRANCO
+    const handleErro = (mensagem: string) => {
+        SetMessageErro(mensagem);
     }
 
     // ANIMAÇÃO DO LOGIN
@@ -58,6 +74,7 @@ function Login() {
 
         // LIMPA O ERRO AO TROCAR DE TELA
         SetMessageErro('')
+        SetMessageOk('')
     }
 
     // ANIMAÇÃO DO CRIAR CONTA
@@ -69,59 +86,99 @@ function Login() {
 
         // LIMPA O ERRO AO TROCAR DE TELA
         SetMessageErro('')
+        SetMessageOk('')
     }
 
     // LOGIN
     const handleLogin = async () => {
-        const response = await api.Logar(usuarioEmail, usuarioSenha)
 
-        // VERIFICA O EMAIL A SENHA
-        if (usuarioEmail && usuarioSenha) {
-            try {
-                if (response.status) {
-                    // VERIFICA SE JÁ ESTA NA PAGINA FORMULARIO ANTES DE LOGAR
-                    if (location.pathname.toLowerCase() === '/dashboard/formulario') {
-                        navigate('/dashboard/formulario')
-                    }
-                    else {
-                        navigate('/dashboard')
-                    }
-                    
-                    // PEGA TODOS OS DADOS DO USUARIO
-                    auth?.setNome(response.usuario.nome)
-                    auth?.setEmail(response.usuario.email)
-                    auth?.setTelefone(response.usuario.telefone)
-                    auth?.setLevel(response.usuario.level)
-                    //console.log(response)
-                }
-                else {
-                    // MENSAGEM DE ERRO DE VERIFICAÇÂO COM O BANCO DE DADOS
-                    SetMessageErro(response.message)                    
-                }
-            } catch (error) {
-                SetMessageErro("Erro Interno !" + error)
-            }
+        if(!usuarioEmail && !usuarioSenha){
+            handleErro('Por favor, preencha todos os campos.');
+            return;           
         }
-        else {
-            // MENSAGEM DE VERIFICAÇÃO DE CAMPOS EM BRANCO
-            SetMessageErro(response.message)
+
+        // VERIFICA SE O E-MAIL NÃO ESTÁ EM BRANCO
+        if (!usuarioEmail) {
+            handleErro("Por favor, preencha o campo de e-mail.");
+            return;
+        }
+
+        // VERIFICA SE A SENHA NÃO ESTÁ EM BRANCO
+        if (!usuarioSenha) {
+            handleErro("Por favor, preencha o campo de senha.");
+            return;
+        }
+
+        try {
+            const response = await api.Logar(usuarioEmail, usuarioSenha);
+    
+            // MENSAGEM DE ERRO DA API
+            if (!response.status) {
+                handleErro(response.message);
+                return;
+            }
+    
+            // VERIFICA SE JÁ ESTÁ NA PÁGINA FORMULÁRIO ANTES DE LOGAR
+            if (location.pathname.toLowerCase() === '/dashboard/formulario') {
+                navigate('/dashboard/formulario');
+            } else {
+                navigate('/dashboard');
+            }
+    
+            // PEGA TODOS OS DADOS DO USUÁRIO
+            auth?.setNome(response.usuario.nome);
+            auth?.setEmail(response.usuario.email);
+            auth?.setTelefone(response.usuario.telefone);
+            auth?.setLevel(response.usuario.level);
+            // console.log(response);
+        } catch (error) {
+            handleErro("Erro Interno !" + error);
         }
     }
 
+    // CRIAR CONTA
     const handleCriarConta = async () => {
-        const response = await api.CriarConta(usuarioNome, usuarioCPF, usuarioTelefone, usuarioEmail, usuarioSenha, usuarioLevel)
 
-        if (usuarioNome && usuarioCPF && usuarioTelefone && usuarioEmail && usuarioSenha) {
-            try {
-                handleBotaoAnimacaoCadastrar()
-                SetMessageOk(response.message)
-            } catch (error) {
-                SetMessageErro("Erro Interno !" + error)
-            }
+        // VALIDAR TODOS OS CAMPOS
+        if (!usuarioNome || !usuarioCPF_CNPJ || !usuarioTelefone || !usuarioEmail || !usuarioSenha || !usuarioSenhaConfirmar) {
+            handleErro('Por favor, preencha todos os campos.');
+            return;
+        }
+
+        if (!aceitarTermos) {
+            handleErro('Aceite os termos');
+            return;
+        }
+
+        // COMPARAR AS SENHAS
+        if (usuarioSenha !== usuarioSenhaConfirmar) {
+            handleErro('As senhas não coincidem.');
+            return;
+        }
+
+        // VERIFICA SE E CPF OU CNPJ E ATRIBUI O LEVEL
+        if (usuarioCPF_CNPJ.length > 11) {
+            SetLevel('2')
         }
         else {
-            // MENSAGEM DE VERIFICAÇÃO DE CAMPOS EM BRANCO
-            SetMessageErro(response.message)
+            SetLevel('1')
+        }
+
+        try {
+            const response = await api.CriarConta(usuarioNome, usuarioCPF_CNPJ, usuarioTelefone, usuarioEmail, usuarioSenha, Level)
+
+            console.log('Resposta da API: ', response);
+
+            // RESPONSE SUCESSO !
+            if (response.status === 200) {
+                handleBotaoAnimacaoCadastrar()
+                SetMessageOk(response.message)
+            }
+            else {
+                handleErro('ERRO ' + response.message);
+            }
+        } catch (error) {
+            handleErro('Erro ao criar conta. ' + error);
         }
     }
 
@@ -129,24 +186,34 @@ function Login() {
         <div>
             <div className='container'>
                 <div className='container-autenticacao' id='login'>
-                    <div className='form-container criar-conta-pf'>
+                    <div className='form-container logar-conta'>
                         <form>
                             <h1 className='entrar'>Entrar</h1>
                             <img src={titulo} alt="titulo-login" />
 
-                            <input type="text"
-                                name="usuario-nome"
-                                placeholder="nome@email.com"
-                                required
-                                onChange={handleInputUsuarioEmail}
-                            />
+                            <div className="container-input">
+                                <input
+                                    type="text"
+                                    name="usuario-nome"
+                                    placeholder="nome@email.com"
+                                    required
+                                    onChange={handleInputUsuarioEmail}
+                                />
 
-                            <input type="password"
-                                name="usuario-senha"
-                                placeholder="*********"
-                                required
-                                onChange={handleInputUsuarioSenha}
-                            />
+                                <img
+                                    src={mostrarSenha ? olhos_aberto : olhos_fechado}
+                                    alt="olhos"
+                                    onClick={handleIconOlhos}
+                                />
+
+                                <input
+                                    type={mostrarSenha ? 'text' : 'password'}
+                                    name="usuario-senha"
+                                    placeholder="*********"
+                                    required
+                                    onChange={handleInputUsuarioSenha}
+                                />
+                            </div>
 
                             <button type="button" onClick={handleLogin}> Entrar </button>
 
@@ -159,7 +226,7 @@ function Login() {
                         </form>
                     </div>
 
-                    <div className='form-container criar-conta-pj'>
+                    <div className='form-container criar-conta'>
                         <form>
                             <h1>CRIE SUA CONTA</h1>
 
@@ -172,9 +239,9 @@ function Login() {
 
                             <input type="text"
                                 name="user-cpf"
-                                placeholder="CPF"
+                                placeholder="CPF / CNPJ"
                                 required
-                                onChange={handleInputUsuarioCPF}
+                                onChange={handleInputUsuarioDocumento}
                             />
 
                             <input type="text"
@@ -241,12 +308,6 @@ function Login() {
                                 <p> Crie sua conta, e venha fazer parte da nossa Familia !</p>
 
                                 <button type="button" className='hidden' onClick={handleBotaoAnimacaoLogin} > Criar Uma Conta </button>
-
-                                <span>OU</span>
-
-                                <Link to='/cadastrar'>
-                                    <button type="button" className='hidden'  > Conta Corporativa </button>
-                                </Link>
                             </div>
                         </div>
                     </div>
