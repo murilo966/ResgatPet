@@ -17,7 +17,7 @@ function Login() {
     const [messageErro, SetMessageErro] = useState('');
     const [messageOk, SetMessageOk] = useState('');
 
-    const [Level, SetLevel] = useState('1');
+    const [Level, SetLevel] = useState('');
     const [usuarioNome, SetUsuarioNome] = useState('');
     const [usuarioCPF_CNPJ, SetUsuarioCPF_CNPJ] = useState('');
     const [usuarioTelefone, SetUsuarioTelefone] = useState('');
@@ -158,10 +158,10 @@ function Login() {
 
         // VERIFICA SE E CPF OU CNPJ E ATRIBUI O LEVEL
         if (usuarioCPF_CNPJ.length > 11) {
-            SetLevel('2')
+            SetLevel('2')            
         }
         else {
-            SetLevel('1')
+            SetLevel('1')            
         }
 
         try {
