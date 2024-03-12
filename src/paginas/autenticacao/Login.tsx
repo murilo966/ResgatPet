@@ -17,7 +17,8 @@ function Login() {
     const [messageErro, SetMessageErro] = useState('');
     const [messageOk, SetMessageOk] = useState('');
 
-    const [Level, SetLevel] = useState('');
+    const NIVEL_CPF = '1';
+    const NIVEL_CNPJ = '2';
     const [usuarioNome, SetUsuarioNome] = useState('');
     const [usuarioCPF_CNPJ, SetUsuarioCPF_CNPJ] = useState('');
     const [usuarioTelefone, SetUsuarioTelefone] = useState('');
@@ -82,7 +83,7 @@ function Login() {
         const container = document.getElementById('login');
         if (container) {
             container.classList.remove('active');
-        }
+        }        
 
         // LIMPA O ERRO AO TROCAR DE TELA
         SetMessageErro('')
@@ -92,9 +93,9 @@ function Login() {
     // LOGIN
     const handleLogin = async () => {
 
-        if(!usuarioEmail && !usuarioSenha){
+        if (!usuarioEmail && !usuarioSenha) {
             handleErro('Por favor, preencha todos os campos.');
-            return;           
+            return;
         }
 
         // VERIFICA SE O E-MAIL NÃO ESTÁ EM BRANCO
@@ -111,20 +112,20 @@ function Login() {
 
         try {
             const response = await api.Logar(usuarioEmail, usuarioSenha);
-    
+
             // MENSAGEM DE ERRO DA API
             if (!response.status) {
                 handleErro(response.message);
                 return;
             }
-    
+
             // VERIFICA SE JÁ ESTÁ NA PÁGINA FORMULÁRIO ANTES DE LOGAR
             if (location.pathname.toLowerCase() === '/dashboard/formulario') {
                 navigate('/dashboard/formulario');
             } else {
                 navigate('/dashboard');
             }
-    
+
             // PEGA TODOS OS DADOS DO USUÁRIO
             auth?.setNome(response.usuario.nome);
             auth?.setEmail(response.usuario.email);
@@ -156,16 +157,17 @@ function Login() {
             return;
         }
 
-        // VERIFICA SE E CPF OU CNPJ E ATRIBUI O LEVEL
-        if (usuarioCPF_CNPJ.length > 11) {
-            SetLevel('2')            
-        }
-        else {
-            SetLevel('1')            
+        // VERIFICAR FORMATO DO CPF/CNPJ
+        if (usuarioCPF_CNPJ.length !== 11 && usuarioCPF_CNPJ.length !== 14) {
+            handleErro('CPF ou CNPJ inválido.');
+            return;
         }
 
+        // VERIFICA OS CARACTERES DO CPF E CNPJ
+        const level = usuarioCPF_CNPJ.length === 14 ? NIVEL_CNPJ : NIVEL_CPF;
+
         try {
-            const response = await api.CriarConta(usuarioNome, usuarioCPF_CNPJ, usuarioTelefone, usuarioEmail, usuarioSenha, Level)
+            const response = await api.CriarConta(usuarioNome, usuarioCPF_CNPJ, usuarioTelefone, usuarioEmail, usuarioSenha, level)
 
             console.log('Resposta da API: ', response);
 
