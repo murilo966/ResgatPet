@@ -20,11 +20,11 @@ function Doacao() {
                         <div className="qr-codes">
                             <div className="qr-code">
                                 <img src={FotoQrcode1} alt="QR Code 1" />
-                                <p>Contribuição via Pix</p>
+                                <p>André - Contribuição via Pix</p>
                             </div>
                             <div className="qr-code">
                                 <img src={FotoQrcode2} alt="QR Code 2" />
-                                <p>Contribuição via Pix</p>
+                                <p>Murilo - Contribuição via Pix</p>
                             </div>
                         </div>
                     </div>
