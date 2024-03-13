@@ -203,12 +203,14 @@ function Login() {
                                 />
 
                                 <img
+                                    // ANIMAÇÃO DA VISUAZALIÇÃO DA SENHA
                                     src={mostrarSenha ? olhos_aberto : olhos_fechado}
                                     alt="olhos"
                                     onClick={handleIconOlhos}
                                 />
 
                                 <input
+                                    // ANIMAÇÃO DA VISUAZALIÇÃO DA SENHA
                                     type={mostrarSenha ? 'text' : 'password'}
                                     name="usuario-senha"
                                     placeholder="*********"
@@ -223,6 +225,7 @@ function Login() {
                                 <label className='esqueceu-senha'> Esqueceu a Senha ?</label>
                             </Link>
 
+                            {/* ALERDA DE AVISO PARA USUARIO */}
                             <span className='message-erro'>{messageErro}</span>
                             <span className='message-ok'>{messageOk}</span>
                         </form>
