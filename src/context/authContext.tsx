@@ -1,5 +1,4 @@
-import { createContext, ReactNode, useState } from "react"
-import { User } from "../types/user";
+import { createContext, ReactNode, useEffect, useState } from "react"
 
 type ContextType ={
     
@@ -16,9 +15,23 @@ type ContextType ={
 export const UsuarioLogadoContext = createContext<ContextType | null>(null)
 export const UsuarioLogadoProvider = ({children}: {children: ReactNode}) => {
     const[nome, setNome] = useState('')
-    const[email, setEmail] = useState('')
+    
+    const[email, setEmail] = useState(
+        () => {
+            // LOCAL STORAGE PARA SALVAR A CHAVE DO EMAIL DO LOGIN
+            const storedEmail = localStorage.getItem('ContextEmail')
+            return storedEmail ? storedEmail : ''
+        }
+    )
     const[telefone, setTelefone] = useState('')
     const[level, setLevel] = useState('')
+
+    // USER EFFECT PARA CARREGAR O EMAIL DO LOGIN
+    useEffect(() => {
+        if(email !== ''){
+            localStorage.setItem('ContextEmail', email)
+        }
+    }, [email])
 
     return (
         <UsuarioLogadoContext.Provider value={{nome, email, telefone, level, setNome, setEmail, setTelefone, setLevel}}>
@@ -26,14 +39,3 @@ export const UsuarioLogadoProvider = ({children}: {children: ReactNode}) => {
         </UsuarioLogadoContext.Provider>
     )
 }
-
-// import { createContext } from "react";
-// import { User } from "../../types/user";
-
-// export type UsuarioLogadoContext ={
-//     user: User | null
-//     signin: (email: string, password: string) => Promise<boolean>
-//     signout: () => void 
-// }
-
-// export const AuthContext = createContext<UsuarioLogadoContext>(null!);

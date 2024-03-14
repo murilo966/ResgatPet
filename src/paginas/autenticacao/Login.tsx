@@ -119,12 +119,12 @@ function Login() {
                 return;
             }
 
-            // VERIFICA SE JÁ ESTÁ NA PÁGINA FORMULÁRIO ANTES DE LOGAR
-            if (location.pathname.toLowerCase() === '/dashboard/formulario') {
-                navigate('/dashboard/formulario');
-            } else {
-                navigate('/dashboard');
-            }
+            // // VERIFICA SE JÁ ESTÁ NA PÁGINA FORMULÁRIO ANTES DE LOGAR
+            // if (location.pathname.toLowerCase() === '/dashboard/formulario') {
+            //     navigate('/dashboard/formulario');
+            // } else {
+            //     navigate('/dashboard');
+            // }
 
             // PEGA TODOS OS DADOS DO USUÁRIO
             auth?.setNome(response.usuario.nome);
@@ -203,14 +203,14 @@ function Login() {
                                 />
 
                                 <img
-                                    // ANIMAÇÃO DA VISUAZALIÇÃO DA SENHA
+                                    // ANIMAÇÃO DA VISUALIZAÇÃO DA SENHA
                                     src={mostrarSenha ? olhos_aberto : olhos_fechado}
                                     alt="olhos"
                                     onClick={handleIconOlhos}
                                 />
 
                                 <input
-                                    // ANIMAÇÃO DA VISUAZALIÇÃO DA SENHA
+                                    // ANIMAÇÃO DA VISUALIZAÇÃO DA SENHA
                                     type={mostrarSenha ? 'text' : 'password'}
                                     name="usuario-senha"
                                     placeholder="*********"

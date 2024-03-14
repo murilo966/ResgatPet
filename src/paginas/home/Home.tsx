@@ -1,6 +1,18 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+    const auth = localStorage.getItem('ContextEmail')
+    const navigate = useNavigate()
+
+    const handleFormulario = () => {
+        if(!auth){
+            navigate('/dashboard/formulario')
+        }
+        else{
+            navigate('/login')
+        }
+    }
+
     return (
         <div>
             <div className='container-img'>
@@ -15,9 +27,7 @@ function Home() {
                     </div>
 
                     <div className='bt-formulario'>
-                        <Link to='/dashboard/formulario'>
-                            <button className='bt-encontrei-pet' >Encontrei um Pet</button>
-                        </Link>
+                        <button className='bt-encontrei-pet' onClick={handleFormulario}>Encontrei um Pet</button>
                     </div>
                 </div>
             </div>
