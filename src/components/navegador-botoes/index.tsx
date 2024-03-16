@@ -39,12 +39,12 @@ function Menu() {
                     <button onClick={handleHome}>Inicio </button>
 
                     <button onClick={handleQuemSomos}>Quem Somos</button>
-
+{/* 
                     {!auth && <button onClick={hadleDashboard}>Dashboard</button>}
 
                     {auth &&<button onClick={handleLogin}>Faça login</button>}
 
-                    {!auth && <button onClick={handleLogout}>Sair</button>}
+                    {!auth && <button onClick={handleLogout}>Sair</button>} */}
 
                 </div>
             </div>
