@@ -42,9 +42,9 @@ function Menu() {
 
                     {!auth && <button onClick={hadleDashboard}>Dashboard</button>}
 
-                    {!auth && <button onClick={handleLogout}>Sair</button>}
-
                     {auth &&<button onClick={handleLogin}>Faça login</button>}
+
+                    {!auth && <button onClick={handleLogout}>Sair</button>}
 
                 </div>
             </div>
