@@ -1,7 +1,9 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UsuarioLogadoContext } from '../../context/authContext';
 
 function Home() {
-    const auth = localStorage.getItem('ContextEmail')
+    const auth = useContext(UsuarioLogadoContext)
     const navigate = useNavigate()
 
     const handleFormulario = () => {

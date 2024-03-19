@@ -1,56 +1,65 @@
 import logo from '../../assents/imagens/logo/ic_resgatpet.png'
 import { Link, useNavigate } from 'react-router-dom'
+import { UsuarioLogadoContext } from '../../context/authContext'
+import { useContext } from 'react'
+import { UsuarioLogadoProvider } from '../../context/authContext'
 
 function Menu() {
-    const auth = localStorage.getItem('ContextEmail')
+    const auth = useContext(UsuarioLogadoContext)
+
     const navigate = useNavigate()
 
     const handleHome = () => {
         navigate('/')
     }
 
-    const handleQuemSomos = () =>{
+    const handleQuemSomos = () => {
         navigate('/quem-somos')
     }
 
-    const hadleDashboard = () =>{
+    const hadleDashboard = () => {
         navigate('/dashboard')
     }
-    
-    const handleLogout = async () => {
-        // await auth.signout();
+
+    const handleLogout = () => {
+        localStorage.setItem('ContextEmail', '');
+        auth?.setEmail('')
         navigate('/')
     }
 
-    const handleLogin = () =>{
+    const handleLogin = () => {
         navigate('/login')
     }
 
-    return(
-        <div className='container-cabecalho'>
-            <div className='cabecalho'>
-                <div className='menu-logo'>
-                    <Link to='/'>
-                        <img src={logo} onClick={handleHome} />
-                    </Link> 
-                </div>
+    return (
+        <UsuarioLogadoProvider>
+            <div className='container-cabecalho'>
+                <div className='cabecalho'>
+                    <div className='menu-logo'>
+                        <Link to='/'>
+                            <img src={logo} onClick={handleHome} />
+                        </Link>
+                    </div>
 
-                <div className='container-navegacao'>
-                    <button onClick={handleHome}>Inicio </button>
+                    <div className='container-navegacao'>
 
-                    <button onClick={handleQuemSomos}>Quem Somos</button>
-{/* 
-                    {!auth && <button onClick={hadleDashboard}>Dashboard</button>}
+                        <button onClick={handleHome}>Inicio </button>
 
-                    {auth &&<button onClick={handleLogin}>Faça login</button>}
+                        <button onClick={handleQuemSomos}>Quem Somos</button>
 
-                    {!auth && <button onClick={handleLogout}>Sair</button>} */}
+                        {auth?.email && <button onClick={hadleDashboard}>Dashboard</button>}
 
+                        aaaaa: {auth?.email}
+
+                        {!auth?.email && <button onClick={handleLogin}>Faça login</button>}
+
+                        {auth?.email && <button onClick={handleLogout}>Sair</button>}
+
+                    </div>
                 </div>
             </div>
-        </div>
+        </UsuarioLogadoProvider>
     )
-    
 }
 
 export default Menu

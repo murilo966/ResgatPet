@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../../api';
 import titulo from '../../assents/imagens/background/im_background-titulo-login.png'
 import olhos_aberto from '../../assents/imagens/login/ic_olhos_abertos.png'
@@ -10,7 +10,6 @@ function Login() {
 
     const auth = useContext(UsuarioLogadoContext)
     const navigate = useNavigate();
-    const location = useLocation();
 
     const [mostrarSenha, setMostrarSenha] = useState(false);
 
@@ -128,10 +127,13 @@ function Login() {
 
             // PEGA TODOS OS DADOS DO USUÁRIO
             auth?.setNome(response.usuario.nome);
-            auth?.setEmail(response.usuario.email);
+            auth?.setEmail(response.usuario.email);          
             auth?.setTelefone(response.usuario.telefone);
             auth?.setLevel(response.usuario.level);
-            // console.log(response);
+
+            // IR PARA PAGINA DASHBOARD DEPOIS DE LOGADO
+            navigate('/dashboard');
+            console.log(response);
         } catch (error) {
             handleErro("Erro Interno !" + error);
         }
