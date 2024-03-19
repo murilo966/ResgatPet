@@ -13,22 +13,25 @@ type ContextType ={
 }
 
 export const UsuarioLogadoContext = createContext<ContextType | null>(null)
+
 export const UsuarioLogadoProvider = ({children}: {children: ReactNode}) => {
     const[nome, setNome] = useState('')
     
     const[email, setEmail] = useState(
-        () => {
+        () => {            
             // LOCAL STORAGE PARA SALVAR A CHAVE DO EMAIL DO LOGIN
-            const storedEmail = localStorage.getItem('ContextEmail')
-            return storedEmail ? storedEmail : ''
+            const storedEmail = localStorage.getItem('ContextEmail');
+            return storedEmail ? storedEmail : "";           
         }
     )
+
     const[telefone, setTelefone] = useState('')
+
     const[level, setLevel] = useState('')
 
     // USER EFFECT PARA CARREGAR O EMAIL DO LOGIN
-    useEffect(() => {
-        if(email !== ''){
+    useEffect(() => {        
+        if(email !== ''){ 
             localStorage.setItem('ContextEmail', email)
         }
     }, [email])
