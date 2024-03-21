@@ -47,7 +47,6 @@ function Menu() {
 
                         <button onClick={handleQuemSomos}>Quem Somos</button>
 
-<<<<<<< Updated upstream
                         {auth?.email && <button onClick={hadleDashboard}>Dashboard</button>}
 
                         aaaaa: {auth?.email}
@@ -57,12 +56,6 @@ function Menu() {
                         {auth?.email && <button onClick={handleLogout}>Sair</button>}
 
                     </div>
-=======
-                    {auth &&<button onClick={handleLogin}>Faça login</button>}
-
-                    {!auth && <button onClick={handleLogout}>Sair</button>}
-
->>>>>>> Stashed changes
                 </div>
             </div>
         </UsuarioLogadoProvider>
