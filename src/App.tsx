@@ -22,12 +22,13 @@ import Acolhidos from './paginas/dashboard/Acolhidos';
 
 function App() {
   return (
-    <div>
-      <header>
-        <Cabecalho />
-      </header>
+    <UsuarioLogadoProvider>
+      <div>
 
-      <UsuarioLogadoProvider>
+        <header>
+          <Cabecalho />
+        </header>
+
         <Routes>
           <Route path='*' element={<NotFound />} />
           <Route path='/' element={<Home />} />
@@ -45,12 +46,13 @@ function App() {
           <Route path='/dashboard/acolhidos' element={<Acolhidos />} />
           <Route path='/dashboard/configuracoes' element={<Configuracao />} />
         </Routes>
-      </UsuarioLogadoProvider>
 
-      <footer>
-        <Rodape />
-      </footer>
-    </div>
+        <footer>
+          <Rodape />
+        </footer>
+
+      </div>
+    </UsuarioLogadoProvider>
   );
 }
 

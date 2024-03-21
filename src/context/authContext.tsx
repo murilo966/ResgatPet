@@ -32,7 +32,7 @@ export const UsuarioLogadoProvider = ({children}: {children: ReactNode}) => {
     // USER EFFECT PARA CARREGAR O EMAIL DO LOGIN
     useEffect(() => {        
         if(email !== ''){ 
-            localStorage.setItem('ContextEmail', email)
+            localStorage.setItem('ContextEmail', email);
         }
     }, [email])
 
