@@ -19,6 +19,7 @@ function Home() {
         <div>
             <div className='container-img'>
                 <div className='home-container'>
+                EMAIL {auth?.email}
 
                     <div className='titulo-encontrou-um-animal'>
                         <label>Encontrou um animal?</label>
@@ -37,7 +38,6 @@ function Home() {
                 <div className="slide"><img src="https://t.ctcdn.com.br/yqCkdE2L6bLSUXdITF1QElZEzGU=/640x360/smart/i726432.jpeg"/></div>
                 <div className="slide"><img src="imagem2.jpg"/></div>
                 <div className="slide"><img src="imagem3.jpg"/></div>
-
             </div>
         </div>
     )
