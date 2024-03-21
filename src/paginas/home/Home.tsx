@@ -33,6 +33,12 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <div className='CarrosselImages'>
+                <div className="slide"><img src="https://t.ctcdn.com.br/yqCkdE2L6bLSUXdITF1QElZEzGU=/640x360/smart/i726432.jpeg"/></div>
+                <div className="slide"><img src="imagem2.jpg"/></div>
+                <div className="slide"><img src="imagem3.jpg"/></div>
+
+            </div>
         </div>
     )
 }
