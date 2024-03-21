@@ -118,13 +118,6 @@ function Login() {
                 return;
             }
 
-            // // VERIFICA SE JÁ ESTÁ NA PÁGINA FORMULÁRIO ANTES DE LOGAR
-            // if (location.pathname.toLowerCase() === '/dashboard/formulario') {
-            //     navigate('/dashboard/formulario');
-            // } else {
-            //     navigate('/dashboard');
-            // }
-
             // PEGA TODOS OS DADOS DO USUÁRIO
             auth?.setNome(response.usuario.nome);
             auth?.setEmail(response.usuario.email);          
@@ -227,7 +220,7 @@ function Login() {
                                 <label className='esqueceu-senha'> Esqueceu a Senha ?</label>
                             </Link>
 
-                            {/* ALERDA DE AVISO PARA USUARIO */}
+                            {/* ALERTA DE AVISO PARA USUARIO */}
                             <span className='message-erro'>{messageErro}</span>
                             <span className='message-ok'>{messageOk}</span>
                         </form>

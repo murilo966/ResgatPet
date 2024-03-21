@@ -1,14 +1,9 @@
 import MenuLateral from '../../components/menu-lateral';
-import { useContext, useEffect, useState } from 'react';
-// import { AuthContext } from '../../contexts/auth/authContext';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Pets } from '../../types/pets';
 import { api } from '../../api';
 
 function Acompanhar() {
-    // const auth = useContext(AuthContext);
-    const navigate = useNavigate();
-    // const levelOng = auth.user && auth.user.level === 2;
 
     const [pets, setPets] = useState<Pets[]>([])
     const carregarPets = async () => {
@@ -31,6 +26,7 @@ function Acompanhar() {
         <div className='container'>
             <div className='dashboard'>
                 <MenuLateral />
+                
                 <div className='container-painel'>
                     <div className="tabelas">
                         <table>

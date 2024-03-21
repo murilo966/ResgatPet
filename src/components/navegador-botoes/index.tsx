@@ -49,8 +49,6 @@ function Menu() {
 
                         {auth?.email && <button onClick={hadleDashboard}>Dashboard</button>}
 
-                        aaaaa: {auth?.email}
-
                         {!auth?.email && <button onClick={handleLogin}>Faça login</button>}
 
                         {auth?.email && <button onClick={handleLogout}>Sair</button>}

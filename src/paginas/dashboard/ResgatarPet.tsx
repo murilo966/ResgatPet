@@ -1,14 +1,9 @@
 import MenuLateral from '../../components/menu-lateral';
-import { useNavigate } from 'react-router-dom';
-// import { AuthContext } from '../../contexts/auth/authContext';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Pets } from '../../types/pets';
 import { api } from '../../api';
 
 function ResgatarPet() {
-    // const auth = useContext(AuthContext);
-    const navigate = useNavigate();
-    // const levelUsuario = auth.user && auth.user.level === 1;
 
     const [pets, setPets] = useState<Pets[]>([])
     const carregarPets = async () => {

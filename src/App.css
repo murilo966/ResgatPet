@@ -1074,11 +1074,6 @@ input.disabled{
   background: #2e93ff;
 }
 
-
-
-
-
-
 /* DASHBOARD - CONFIGURAÇõES */
 .configuracao {
   display: flex;
@@ -1267,7 +1262,6 @@ input.disabled{
   border-radius: 50%;
 }
 
-
  /* DASHBOARD ACOLHIDOS */
  .todosCards {
   display: flex;
@@ -1292,8 +1286,7 @@ input.disabled{
   height: 10px;
   background-color: #4CAF50; 
   border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  
+  border-bottom-right-radius: 8px;  
 }
 
 .cardAcolhidos img {
@@ -1363,163 +1356,159 @@ input.disabled{
   max-width: 80%;
 }
 
-
 /* CELULAR */
 @media only screen and (max-width: 600px) {
+    /* HOME */
+    .home-container {
+      width: 100%;
+    }
 
-  /* HOME */
-  .home-container {
-    width: 100%;
-  }
+    /* LOGIN */
+    .form-container img {
+      width: 200px;
+    }
 
-  /* LOGIN */
-  .form-container img {
-    width: 200px;
-  }
+    .container-input img{
+      width: 20px;
+    }
 
-  .container-input img{
-    width: 20px;
-  }
+    .container-autenticacao {
+      margin-top: 0;
+      border-radius: 0;
+    }
 
-  .container-autenticacao {
-    margin-top: 0;
-    border-radius: 0;
-  }
+    .container-autenticacao p {
+      font-size: 10px;
+      letter-spacing: 0;
+      margin: 0;
+    }
 
-  .container-autenticacao p {
-    font-size: 10px;
-    letter-spacing: 0;
-    margin: 0;
-  }
+    .container-autenticacao button.hidden {
+      width: 180px;
+    }
 
-  .container-autenticacao button.hidden {
-    width: 180px;
-  }
+    .container-autenticacao button {
+      padding: 8px 8px
+    }
 
-  .container-autenticacao button {
-    padding: 8px 8px
-  }
+    /* MENU LATERAL */
+    .container-menu {
+      display: none;
+    }
 
-  /* MENU LATERAL */
-  .container-menu {
-    display: none;
-  }
+    /* DASHBOARD */
+    .container-navegacao {
+      flex-wrap: nowrap;
+    }
 
-  /* DASHBOARD */
-  .container-navegacao {
-    flex-wrap: nowrap;
-  }
+    .container-bem-vindo {
+      display: none;
+    }
 
-  .container-bem-vindo {
-    display: none;
-  }
+    /* QUEM SOMOS */
+    .quem-somos {
+      margin: 18px 0;
+    }
 
-  /* QUEM SOMOS */
-  .quem-somos {
-    margin: 18px 0;
-  }
+    .nossos-valores,
+    .como-ajudar {
+      padding: 0 16px;
+    }
 
-  .nossos-valores,
-  .como-ajudar {
-    padding: 0 16px;
-  }
+    .logo img {
+      display: none;
+    }
 
-  .logo img {
-    display: none;
-  }
+    /* DASHBOARD FORMULARIO */
+    .formulario {
+      max-width: 100%;
+    }
 
-  /* DASHBOARD FORMULARIO */
-  .formulario {
-    max-width: 100%;
-  }
+    .row {
+      display: contents;
+    }
 
-  .row {
-    display: contents;
-  }
+    .dados-pessoais, .dados-pet {
+      width: 90%;
+    }
 
-  .dados-pessoais, .dados-pet {
-    width: 90%;
-  }
+    .mobile-botao {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
 
-  .mobile-botao {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
+    /* DASHBOARD CONFIGURAÇÃO */
+    .configuracao{
+      height: auto;
+    }
 
-  /* DASHBOARD CONFIGURAÇÃO */
-  .configuracao{
-    height: auto;
-  }
+    .configuracao input {
+      width: 80%;    
+    }
 
-  .configuracao input {
-    width: 80%;    
-  }
+    /* DASHBOARD ACOMPANHAR */
+    .cards {
+      width: 280px;
+      height: 66px;
+    }
 
-  /* DASHBOARD ACOMPANHAR */
-  .cards {
-    width: 280px;
-    height: 66px;
-  }
+    .card-titulo {
+      position: relative;
+      top: 18px;
+      left: 42px;
+      font-size: 20px;
+    }
 
-  .card-titulo {
-    position: relative;
-    top: 18px;
-    left: 42px;
-    font-size: 20px;
-  }
+    .card .card-01 {
+      background: url('./assents/imagens/cards/im_card-pet-mobile-1.png') no-repeat;
+      background-size: cover;
+    }
 
-  .card .card-01 {
-    background: url('./assents/imagens/cards/im_card-pet-mobile-1.png') no-repeat;
-    background-size: cover;
-  }
+    .card .card-02 {
+      background: url('./assents/imagens/cards/im_card-pet-mobile-2.png') no-repeat;
+      background-size: cover;
+    }
 
-  .card .card-02 {
-    background: url('./assents/imagens/cards/im_card-pet-mobile-2.png') no-repeat;
-    background-size: cover;
-  }
+    .card .card-03 {
+      background: url('./assents/imagens/cards/im_card-pet-mobile-3.png') no-repeat;
+      background-size: cover;
+    }
 
-  .card .card-03 {
-    background: url('./assents/imagens/cards/im_card-pet-mobile-3.png') no-repeat;
-    background-size: cover;
-  }
+    .card .card-04 {
+      background: url('./assents/imagens/cards/im_card-pet-mobile-4.png') no-repeat;
+      background-size: cover;
+    }
 
-  .card .card-04 {
-    background: url('./assents/imagens/cards/im_card-pet-mobile-4.png') no-repeat;
-    background-size: cover;
-  }
+    .card .card-05 {
+      background: url('./assents/imagens/cards/im_card-pet-mobile-5.png') no-repeat;
+      background-size: cover;
+    }
 
-  .card .card-05 {
-    background: url('./assents/imagens/cards/im_card-pet-mobile-5.png') no-repeat;
-    background-size: cover;
-  }
+    .card .card-06 {
+      background: url('./assents/imagens/cards/im_card-pet-mobile-6.png') no-repeat;
+      background-size: cover;
+    }
 
-  .card .card-06 {
-    background: url('./assents/imagens/cards/im_card-pet-mobile-6.png') no-repeat;
-    background-size: cover;
-  }
+    .card .card-07 {
+      background: url('./assents/imagens/cards/im_card-pet-mobile-7.png') no-repeat;
+      background-size: cover;
+    }
 
-  .card .card-07 {
-    background: url('./assents/imagens/cards/im_card-pet-mobile-7.png') no-repeat;
-    background-size: cover;
-  }
-
-  .card .card-08 {
-    background: url('./assents/imagens/cards/im_card-pet-mobile-8.png') no-repeat;
-    background-size: cover;
-  }
-
-
- 
+    .card .card-08 {
+      background: url('./assents/imagens/cards/im_card-pet-mobile-8.png') no-repeat;
+      background-size: cover;
+    }
+  
     /* RODAPE */
     .rodape {
       display: block;
     }
-  
+
     .rodape img {
       padding: 8px;
     }
-  
+
     .rodape-container {
       justify-content: space-around;
     }
