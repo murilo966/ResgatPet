@@ -9,15 +9,16 @@ function EsqueceuSenha(){
                         <div className='titulo-recuperacao'>
                             <label>Recuperar Senha</label>
                         </div>
+
                         <div className='user-email-rec'>
                             <input type="text" placeholder='nome@email.com'/>
                         </div>
+                        
                         <div className='enviar-recuperacao'>
                             <Link to='/login'>
                                 <button >Enviar</button>
                             </Link>
                         </div>
-
                     </div>
                 </div>
             </div>

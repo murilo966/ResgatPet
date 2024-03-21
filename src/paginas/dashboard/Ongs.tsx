@@ -22,7 +22,6 @@ function Ongs() {
                                     Associação Civil Particular de Utilidade Pública
                                     Fundada em 1943
                                 </p>
-                                
 
                             </td>
                             <td className="botaoTd"><a href="https://www.suipa.org.br/" target="_blank"><button>Saiba Mais</button></a></td>
