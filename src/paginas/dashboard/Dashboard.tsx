@@ -23,14 +23,14 @@ function Dasboard() {
 
                         <div className='painel'>
                             <div className='card'>
-                                <Link to='apadrinhar'>
-                                    {/* LEVEL 1 USUARIO */}
+                                {/* <Link to='apadrinhar'>
+                                     LEVEL 1 USUARIO 
                                     {(levelUsuario) && 
                                         <div className='card-01 cards cards-mobile'>
                                             <label className='card-titulo'>Apadrinhar</label>
                                         </div>
                                     }
-                                </Link>
+                                </Link> */}
 
                                 <Link to='resgatar-pet'>
                                     {/* LEVEL 2 ONG */}

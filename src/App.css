@@ -135,6 +135,14 @@ a {
   background: #4B8A40;
 }
 
+.CarrosselImagens {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+
 /* Final do Body */
 
 /* Começo do Rodapé */
