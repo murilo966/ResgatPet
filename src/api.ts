@@ -33,7 +33,7 @@ export const api = {
             }
         });
 
-        let json = await response.json()
+        let json = await response
         return (json)
     },
     // CARREGAR TODOS OS FORMULARIOS
