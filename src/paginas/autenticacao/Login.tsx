@@ -82,7 +82,7 @@ function Login() {
         const container = document.getElementById('login');
         if (container) {
             container.classList.remove('active');
-        }        
+        }
 
         // LIMPA O ERRO AO TROCAR DE TELA
         SetMessageErro('')
@@ -120,13 +120,14 @@ function Login() {
 
             // PEGA TODOS OS DADOS DO USUÁRIO
             auth?.setNome(response.usuario.nome);
-            auth?.setEmail(response.usuario.email);          
+            auth?.setEmail(response.usuario.email);
             auth?.setTelefone(response.usuario.telefone);
             auth?.setLevel(response.usuario.level);
 
             // IR PARA PAGINA DASHBOARD DEPOIS DE LOGADO
             navigate('/dashboard');
             console.log(response);
+
         } catch (error) {
             handleErro("Erro Interno !" + error);
         }
@@ -167,12 +168,12 @@ function Login() {
             console.log('Resposta da API: ', response);
 
             // RESPONSE SUCESSO !
-            if (response.status === 200) {
+            if (response.status === 201) {
                 handleBotaoAnimacaoCadastrar()
-                SetMessageOk(response.message)
+                SetMessageOk(response.statusText)
             }
             else {
-                handleErro('ERRO ' + response.message);
+                handleErro('ERRO ' + response.statusText);
             }
         } catch (error) {
             handleErro('Erro ao criar conta. ' + error);
