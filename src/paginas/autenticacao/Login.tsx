@@ -112,21 +112,17 @@ function Login() {
         try {
             const response = await api.Logar(usuarioEmail, usuarioSenha);
 
-            // MENSAGEM DE ERRO DA API
-            if (!response.status) {
-                handleErro(response.message);
-                return;
+            if (response.return[1]) {
+                //navigate('/dashboard');
+                const userData = response.return[0];
+                const nomeCompleto = userData.NOMECOMPLETO;
+
+                // IR PARA PAGINA DASHBOARD DEPOIS DE LOGADO
+                auth?.setNome(nomeCompleto);
+                console.log(response);
+            } else {
+                handleErro(response.return);
             }
-
-            // PEGA TODOS OS DADOS DO USUÁRIO
-            auth?.setNome(response.usuario.nome);
-            auth?.setEmail(response.usuario.email);
-            auth?.setTelefone(response.usuario.telefone);
-            auth?.setLevel(response.usuario.level);
-
-            // IR PARA PAGINA DASHBOARD DEPOIS DE LOGADO
-            navigate('/dashboard');
-            console.log(response);
 
         } catch (error) {
             handleErro("Erro Interno !" + error);
