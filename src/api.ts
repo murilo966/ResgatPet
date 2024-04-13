@@ -35,7 +35,7 @@ export const api = {
             }
         });
 
-        let json = await response
+        let json = await response.json()
         return (json)
     },
     // CARREGAR TODOS OS FORMULARIOS
