@@ -92,37 +92,49 @@ function Login() {
     // LOGIN
     const handleLogin = async () => {
 
-        if (!usuarioEmail && !usuarioSenha) {
-            handleErro('Por favor, preencha todos os campos.');
+        const response = await api.Logar(usuarioEmail, usuarioSenha);
+
+        // OUTROS ERROS
+        if (!response.return || !response.return[1]) {
+            console.log(response.message);
+            handleErro(response.message)
             return;
         }
 
-        // VERIFICA SE O E-MAIL NÃO ESTÁ EM BRANCO
-        if (!usuarioEmail) {
-            handleErro("Por favor, preencha o campo de e-mail.");
+        // VERIFICA SE O E-MAIL ESTÁ EM BRANCO (return[1] ERRO)
+        if (!response.return || !response.return[1]) {
+            // RESPONSE.MESSAGE[ARRAY DA PRIMEIRA MENSAGEM]
+            const userData = response.message[0];
+            handleErro(userData);
             return;
         }
 
-        // VERIFICA SE A SENHA NÃO ESTÁ EM BRANCO
-        if (!usuarioSenha) {
-            handleErro("Por favor, preencha o campo de senha.");
+        // VERIFICA SE A SENHA ESTÁ EM BRANCO (return[1] ERRO)
+        if (!response.return || !response.return[1]) {
+            const userData = response.message[1];
+            handleErro(userData);
             return;
         }
 
         try {
-            const response = await api.Logar(usuarioEmail, usuarioSenha);
 
-            if (response.return[1]) {
-                //navigate('/dashboard');
-                const userData = response.return[0];
-                const nomeCompleto = userData.NOMECOMPLETO;
+            // LOGIN COM SUCESSO !
+            const userData = response.return[0];
+            const userNome = userData.NOMECOMPLETO;
+            const userEmail = userData.EMAIL;
+            const userTelefone = userData.TELEFONE;
+            const userLevel = userData.LEVEL;
 
-                // IR PARA PAGINA DASHBOARD DEPOIS DE LOGADO
-                auth?.setNome(nomeCompleto);
-                console.log(response);
-            } else {
-                handleErro(response.return);
-            }
+            // IR PARA PAGINA DASHBOARD DEPOIS DE LOGADO
+            navigate('/dashboard');
+
+            // PEGAR O JSON E ATRIBUIR AO useContext
+            auth?.setNome(userNome);
+            auth?.setEmail(userEmail);
+            auth?.setTelefone(userTelefone);
+            auth?.setLevel(userLevel);
+
+            console.log(response);
 
         } catch (error) {
             handleErro("Erro Interno !" + error);
@@ -132,14 +144,19 @@ function Login() {
     // CRIAR CONTA
     const handleCriarConta = async () => {
 
-        // VALIDAR TODOS OS CAMPOS
-        if (!usuarioNome || !usuarioCPF_CNPJ || !usuarioTelefone || !usuarioEmail || !usuarioSenha || !usuarioSenhaConfirmar) {
-            handleErro('Por favor, preencha todos os campos.');
+        // VERIFICA OS CARACTERES DO CPF E CNPJ
+        const level = usuarioCPF_CNPJ.length === 14 ? NIVEL_CNPJ : NIVEL_CPF;
+        const response = await api.CriarConta(usuarioNome, usuarioCPF_CNPJ, usuarioTelefone, usuarioEmail, usuarioSenha, level)
+
+        // VERIFICA SE TODOS OS COMPOS
+        if (!response && !response.message) {
+            handleErro(response.message[1]);
             return;
         }
 
+        // VERIFICA OS TERMOS FOI SELECIONADO 
         if (!aceitarTermos) {
-            handleErro('Aceite os termos');
+            handleErro('Aceitar os Termos');
             return;
         }
 
@@ -149,20 +166,18 @@ function Login() {
             return;
         }
 
+        if (!response && !response.message) {
+            handleErro(response.message[2]);
+            return;
+        }
+
         // VERIFICAR FORMATO DO CPF/CNPJ
         if (usuarioCPF_CNPJ.length !== 11 && usuarioCPF_CNPJ.length !== 14) {
             handleErro('CPF ou CNPJ inválido.');
             return;
         }
 
-        // VERIFICA OS CARACTERES DO CPF E CNPJ
-        const level = usuarioCPF_CNPJ.length === 14 ? NIVEL_CNPJ : NIVEL_CPF;
-
         try {
-            const response = await api.CriarConta(usuarioNome, usuarioCPF_CNPJ, usuarioTelefone, usuarioEmail, usuarioSenha, level)
-
-            console.log('Resposta da API: ', response);
-
             // RESPONSE SUCESSO !
             if (response.status === 201) {
                 handleBotaoAnimacaoCadastrar()
