@@ -40,14 +40,16 @@ export const api = {
     },
     // CARREGAR TODOS OS FORMULARIOS
     CarregarTodosFormularios: async () => {
-        const response = await fetch("https://resgatpetapi.onrender.com/formulario")
+        // const response = await fetch("https://resgatpetapi.onrender.com/formulario")
+        const response = await fetch("http://localhost:3005/formulario")
         let json = await response.json()
         return json
     },
     // NOVO FORMULARIO
     CriarFormulario: async (IMAGEM: string, ENDERECO: string, CIDADE: string, RACA: string,
         SEXO: string, COR: string, SAUDE: string, ACESSORIO: string, USUARIO?: string) => {
-        const response = await fetch('https://resgatpetapi.onrender.com/formulario', {
+        // const response = await fetch('https://resgatpetapi.onrender.com/formulario', {
+        const response = await fetch('http://localhost:3005/formulario', {
             method: 'POST',
             body: JSON.stringify({
                 IMAGEM: IMAGEM,
@@ -69,7 +71,8 @@ export const api = {
         return (json)
     },
     UpdateImage: async (formData: FormData) => {
-        let response = await fetch('https://resgatpetapi.onrender.com/arquivos', {
+        // let response = await fetch('https://resgatpetapi.onrender.com/arquivos', {
+        let response = await fetch('http://localhost:3005/arquivos', {
             method: 'POST',
             body: formData
         });

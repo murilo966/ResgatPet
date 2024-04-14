@@ -26,19 +26,41 @@ function Formulario() {
     const [petAcessorios, SetPetAcessorios] = useState<string[]>([]);
     const [petSaude, SetPetSaude] = useState<string[]>([]);
 
-    const [petRacaOutros, SetPetRacaOutros] = useState('');
-    const [petCorOutros, SetPetCorOutros] = useState('');
-    const [petSaudeOutros, SetPetSaudeOutros] = useState('');
-    const [petSaudeCheck, SetPetSaudeCheck] = useState(false);
-
+    // ERROS
     const [messageErro, SetMessageErro] = useState('');
+    const [messageOk, SetMessageOk] = useState('');
+    const handleErro = (mensagem: string) => {
+        SetMessageErro(mensagem);
+    }
 
     async function salvarPets() {
         try {
+
+            if (!petFoto) {
+                handleErro('Por favor, coloque uma foto.');
+                return;
+            }
+
+            // VERIFICA SE TODOS OS COMPOS
+            if (!petFoto || !petEndereco || !petCidade || !petRaca || !petSexo || !petCor) {
+                handleErro('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            if (petAcessorios.length === 0) {
+                handleErro('Por favor, selecione pelo menos um acessório.');
+                return;
+            }
+
+            if (petSaude.length === 0) {
+                handleErro('Por favor, selecione pelo menos uma opção de saúde.');
+                return;
+            }
+
             const files = fileInput.current?.files;
 
             // VERIFICA SE O TAMANHO DA FOTO E MAIOR QUE ZERO
-            if(files && files.length > 0){
+            if (files && files.length > 0) {
                 const fileItem = files[0]
                 const data = new FormData()
                 // ARQUIVO E A PALAVRA CHAVE DO BACK
@@ -46,7 +68,7 @@ function Formulario() {
                 // CHAMA O JSON UPDATE IMAGEM
                 let image = await api.UpdateImage(data)
                 // CHAMA O JSON CRIAR FORMULARIO
-                let json = await api.CriarFormulario(
+                let response = await api.CriarFormulario(
                     // SETA A IMAGEM NO FORMULARIO
                     image.nomeArquivo,
                     petEndereco,
@@ -56,16 +78,22 @@ function Formulario() {
                     petCor,
                     petAcessorios.toString(),
                     petSaude.toString(),
-                    auth?.nome                 
+                    // ID USUARIO
+                    auth?.id
                 )
-                SetMessageErro(json.message)              
-                if (json.id) {                    
+
+                alert(auth?.id)
+
+                if (response.success) {
                     // IR ATE A PAGINA ACOMPANHAR 
-                    navigate('/dashboard/acompanhar')
+                    //navigate('/dashboard/acompanhar')
+                    SetMessageOk(response.message)
+                    console.log(auth?.nome)
                 }
                 else {
-                    console.log("ERRO: ", json)                    
-                }                
+                    console.log("ERRO: ", response)
+                    SetMessageErro(response.message)
+                }
             }
         } catch (e) {
             alert('Erro ao salvar pets:' + e);
@@ -100,26 +128,12 @@ function Formulario() {
         if (event.target.checked) {
             SetPetRaca(event.target.value);
         }
-
-        // Limpa o campo texto ao selecionar outros radio
-        SetPetRacaOutros('')
-    }
-
-    function handleInputPetRacaOutros(event: React.ChangeEvent<HTMLInputElement>) {
-        SetPetRacaOutros(event.target.value);
     }
 
     function handleInputPetCor(event: React.ChangeEvent<HTMLInputElement>) {
         if (event.target.checked) {
             SetPetCor(event.target.value);
         }
-
-        // Limpa o campo texto ao selecionar outros radio
-        SetPetCorOutros('')
-    }
-
-    function handleInputPetCorOutros(event: React.ChangeEvent<HTMLInputElement>) {
-        SetPetCorOutros(event.target.value);
     }
 
     const handleInputPetAcessorios = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -141,18 +155,6 @@ function Formulario() {
             SetPetSaude((prevBemEstar) => [...prevBemEstar, name]);
         } else {
             SetPetSaude((prevBemEstar) => prevBemEstar.filter((item) => item !== name));
-        }
-    }
-
-    function handleInputPetBemEstarOutros(event: React.ChangeEvent<HTMLInputElement>) {
-        SetPetSaudeOutros(event.target.value)
-    }
-
-    const handlePetBemEstarOutros = () => {
-        SetPetSaudeCheck(!petSaudeCheck);
-
-        if (petSaudeCheck) {
-            SetPetSaudeOutros('')
         }
     }
 
@@ -210,7 +212,7 @@ function Formulario() {
                                 </div>
 
                                 <input type="file" onChange={handleImageChange} accept="image/*" ref={fileInput} />
-                                
+
                                 <label > * Por Favor coloque o Endereço e a Cidade na onde foi encontrado o Pet </label>
                                 <div className="rows">
                                     <div>
@@ -256,23 +258,16 @@ function Formulario() {
                                             <input className='radios' type="radio" name="raca-chow" checked={petRaca === 'Chow Chow'} value="Chow Chow" onChange={handleInputPetRaca} />
                                             <label>Chow Chow </label>
                                         </div>
-
-                                        <div>
-                                            <input className='radios' type="radio" name="raca-bulldog" checked={petRaca === 'Bulldog'} value="Bulldog" onChange={handleInputPetRaca} />
-                                            <label>Bulldog </label>
-                                        </div>
                                     </div>
 
                                     <div className="row">
                                         <div>
+                                            <input className='radios' type="radio" name="raca-bulldog" checked={petRaca === 'Bulldog'} value="Bulldog" onChange={handleInputPetRaca} />
+                                            <label>Bulldog </label>
+                                        </div>
+                                        <div>
                                             <input className='radios' type="radio" name="raca-srd" checked={petRaca === 'SRD'} value="SRD" onChange={handleInputPetRaca} />
                                             <label>SRD </label>
-                                        </div>
-
-                                        <div>
-                                            <input className='radios' type="radio" name="raca-outros" checked={petRaca === 'Outros'} value="Outros" onChange={handleInputPetRaca} />
-                                            <label>Outros </label>
-                                            <input className='outros' type="text" name="outra-cor" value={petRacaOutros} disabled={petRaca !== "Outros"} onChange={handleInputPetRacaOutros} />
                                         </div>
                                     </div>
                                 </div>
@@ -299,14 +294,13 @@ function Formulario() {
                                             <input className='radios' type="radio" name="cor-vermelho" checked={petCor === 'Vermelho'} value="Vermelho" onChange={handleInputPetCor} />
                                             <label>Vermelho </label>
                                         </div>
+                                    </div>
 
+                                    <div className="row">
                                         <div>
                                             <input className='radios' type="radio" name="cor-creme" checked={petCor === 'Creme'} value="Creme" onChange={handleInputPetCor} />
                                             <label>Creme </label>
                                         </div>
-                                    </div>
-
-                                    <div className="row">
                                         <div>
                                             <input className='radios' type="radio" name="cor-marrom" checked={petCor === 'Marrom'} value="Marrom" onChange={handleInputPetCor} />
                                             <label>Marrom </label>
@@ -315,12 +309,6 @@ function Formulario() {
                                         <div>
                                             <input className='radios' type="radio" name="cor-caramelo" checked={petCor === 'Caramelo'} value="Caramelo" onChange={handleInputPetCor} />
                                             <label>Caramelo </label>
-                                        </div>
-
-                                        <div>
-                                            <input className='radios' type="radio" name="cor-outros" checked={petCor === 'Outros'} value="Outros" onChange={handleInputPetCor} />
-                                            <label>Outros </label>
-                                            <input className='outros' type="text" name="outra-cor" value={petCorOutros} disabled={petCor !== "Outros"} onChange={handleInputPetCorOutros} />
                                         </div>
                                     </div>
                                 </div>
@@ -379,16 +367,11 @@ function Formulario() {
                                             <input className='checkbox' type="checkbox" name='calmo' onChange={handleInputPetBemEstar} />
                                             <label>Calmo </label>
                                         </div>
-
-                                        <div>
-                                            <input className='checkbox' type="checkbox" name='outros' checked={petSaudeCheck} onChange={handlePetBemEstarOutros} />
-                                            <label>Outros </label>
-                                            <input className='outros' type="text" name='text-outros' value={petSaudeOutros} disabled={!petSaudeCheck} onChange={handleInputPetBemEstarOutros} />
-                                        </div>
                                     </div>
                                 </div>
 
                                 <span className='message-erro'>{messageErro}</span>
+                                <span className='message-ok'>{messageOk}</span>
 
                                 <div className="column mobile-botao">
                                     <div className='row'>
