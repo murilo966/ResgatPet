@@ -75,6 +75,8 @@ function Login() {
         // LIMPA O ERRO AO TROCAR DE TELA
         SetMessageErro('')
         SetMessageOk('')
+        SetUsuarioEmail('');
+        SetUsuarioSenha('');
     }
 
     // ANIMAÇÃO DO CRIAR CONTA
@@ -87,39 +89,53 @@ function Login() {
         // LIMPA O ERRO AO TROCAR DE TELA
         SetMessageErro('')
         SetMessageOk('')
+
+        SetUsuarioNome('');
+        SetUsuarioCPF_CNPJ('');
+        SetUsuarioTelefone('');
+        SetUsuarioEmail('');
+        SetUsuarioSenha('');
+        SetUsuarioSenhaConfirmar('');
+        SetAceitarTermos(false);
     }
 
     // LOGIN
     const handleLogin = async () => {
-
-        const response = await api.Logar(usuarioEmail, usuarioSenha);
-
-        // OUTROS ERROS
-        if (!response.return || !response.return[1]) {
-            console.log(response.message);
-            handleErro(response.message)
-            return;
-        }
-
-        // VERIFICA SE O E-MAIL ESTÁ EM BRANCO (return[1] ERRO)
-        if (!response.return || !response.return[1]) {
-            // RESPONSE.MESSAGE[ARRAY DA PRIMEIRA MENSAGEM]
-            const userData = response.message[0];
-            handleErro(userData);
-            return;
-        }
-
-        // VERIFICA SE A SENHA ESTÁ EM BRANCO (return[1] ERRO)
-        if (!response.return || !response.return[1]) {
-            const userData = response.message[1];
-            handleErro(userData);
-            return;
-        }
-
         try {
+
+            const response = await api.Logar(usuarioEmail, usuarioSenha);
+
+            // VERIFICARA SE USUARIO EXISTE NO BANCO DE DADOS
+            if (!response.return || !response.return[0]) {
+                handleErro("Usuário não encontrado.");
+                return;
+            }
+
+            // OUTROS ERROS
+            if (!response.return || !response.return[1]) {
+                console.log(response.message);
+                handleErro(response.message)
+                return;
+            }
+    
+            // VERIFICA SE O E-MAIL ESTÁ EM BRANCO (return[1] ERRO)
+            if (!response.return || !response.return[1]) {
+                // RESPONSE.MESSAGE[ARRAY DA PRIMEIRA MENSAGEM]
+                const userData = response.message[0];
+                handleErro(userData);
+                return;
+            }
+    
+            // VERIFICA SE A SENHA ESTÁ EM BRANCO (return[1] ERRO)
+            if (!response.return || !response.return[1]) {
+                const userData = response.message[1];
+                handleErro(userData);
+                return;
+            }
 
             // LOGIN COM SUCESSO !
             const userData = response.return[0];
+            const userID = userData.ID;
             const userNome = userData.NOMECOMPLETO;
             const userEmail = userData.EMAIL;
             const userTelefone = userData.TELEFONE;
@@ -129,6 +145,7 @@ function Login() {
             navigate('/dashboard');
 
             // PEGAR O JSON E ATRIBUIR AO useContext
+            auth?.setID(userID);
             auth?.setNome(userNome);
             auth?.setEmail(userEmail);
             auth?.setTelefone(userTelefone);
@@ -143,49 +160,44 @@ function Login() {
 
     // CRIAR CONTA
     const handleCriarConta = async () => {
-
-        // VERIFICA OS CARACTERES DO CPF E CNPJ
-        const level = usuarioCPF_CNPJ.length === 14 ? NIVEL_CNPJ : NIVEL_CPF;
-        const response = await api.CriarConta(usuarioNome, usuarioCPF_CNPJ, usuarioTelefone, usuarioEmail, usuarioSenha, level)
-
-        // VERIFICA SE TODOS OS COMPOS
-        if (!response && !response.message) {
-            handleErro(response.message[1]);
-            return;
-        }
-
-        // VERIFICA OS TERMOS FOI SELECIONADO 
-        if (!aceitarTermos) {
-            handleErro('Aceitar os Termos');
-            return;
-        }
-
-        // COMPARAR AS SENHAS
-        if (usuarioSenha !== usuarioSenhaConfirmar) {
-            handleErro('As senhas não coincidem.');
-            return;
-        }
-
-        if (!response && !response.message) {
-            handleErro(response.message[2]);
-            return;
-        }
-
-        // VERIFICAR FORMATO DO CPF/CNPJ
-        if (usuarioCPF_CNPJ.length !== 11 && usuarioCPF_CNPJ.length !== 14) {
-            handleErro('CPF ou CNPJ inválido.');
-            return;
-        }
-
         try {
-            // RESPONSE SUCESSO !
-            if (response.status === 201) {
-                handleBotaoAnimacaoCadastrar()
-                SetMessageOk(response.statusText)
+
+            // VERIFICA SE TODOS OS COMPOS
+            if (!usuarioNome || !usuarioCPF_CNPJ || !usuarioTelefone || !usuarioEmail ) {
+                handleErro('Por favor, preencha todos os campos.');
+                return;
             }
-            else {
-                handleErro('ERRO ' + response.statusText);
+
+            // COMPARAR AS SENHAS
+            if (usuarioSenha !== usuarioSenhaConfirmar || !usuarioSenha || !usuarioSenhaConfirmar) {
+                handleErro('As senhas não coincidem.');
+                return;
             }
+
+            // VERIFICAR FORMATO DO CPF/CNPJ
+            if (usuarioCPF_CNPJ.length !== 11 && usuarioCPF_CNPJ.length !== 14) {
+                handleErro('CPF ou CNPJ inválido.');
+                return;
+            }
+
+            // VERIFICA OS TERMOS FOI SELECIONADO 
+            if (!aceitarTermos) {
+                handleErro('Aceitar os Termos');
+                return;
+            }
+
+            // VERIFICA OS CARACTERES DO CPF E CNPJ
+            const level = usuarioCPF_CNPJ.length === 14 ? NIVEL_CNPJ : NIVEL_CPF;
+            const response = await api.CriarConta(usuarioNome, usuarioCPF_CNPJ, usuarioTelefone, usuarioEmail, usuarioSenha, level)
+
+            // CADASTRADO COM SUCEESO !
+            if (response.success) {
+                handleBotaoAnimacaoCadastrar();
+                SetMessageOk(response.message);                
+            } else {
+                handleErro(response.message);
+            }
+
         } catch (error) {
             handleErro('Erro ao criar conta. ' + error);
         }
@@ -245,6 +257,7 @@ function Login() {
                             <input type="text"
                                 name="user-name"
                                 placeholder="Nome Completo"
+                                value={usuarioNome}
                                 required
                                 onChange={handleInputUsuarioNome}
                             />
@@ -252,6 +265,7 @@ function Login() {
                             <input type="text"
                                 name="user-cpf"
                                 placeholder="CPF / CNPJ"
+                                value={usuarioCPF_CNPJ}
                                 required
                                 onChange={handleInputUsuarioDocumento}
                             />
@@ -259,6 +273,7 @@ function Login() {
                             <input type="text"
                                 name="user-telefone"
                                 placeholder="Telefone"
+                                value={usuarioTelefone}
                                 required
                                 onChange={handleInputUsuarioTelefone}
                             />
@@ -266,6 +281,7 @@ function Login() {
                             <input type="text"
                                 name="user-name"
                                 placeholder="nome@email.com"
+                                value={usuarioEmail}
                                 required
                                 onChange={handleInputUsuarioEmail}
                             />
@@ -273,6 +289,7 @@ function Login() {
                             <input type="password"
                                 name="user-password"
                                 placeholder="Crie Sua Senha"
+                                value={usuarioSenha}
                                 required
                                 onChange={handleInputUsuarioSenha}
                             />
@@ -280,6 +297,7 @@ function Login() {
                             <input type="password"
                                 name="user-password"
                                 placeholder="Confirme Sua Senha"
+                                value={usuarioSenhaConfirmar}
                                 required
                                 onChange={handleInputUsuarioConfirmarSenha}
                             />
