@@ -73,7 +73,6 @@ function Formulario() {
                 // CHAMA O JSON CRIAR FORMULARIO
                 let response = await api.CriarFormulario(
                     // SETA A IMAGEM NO FORMULARIO
-                    image.nomeArquivo,
                     petEndereco,
                     petCidade,
                     petRaca,
@@ -83,6 +82,7 @@ function Formulario() {
                     petSaude.toString(),
                     dataAtual,
                     Status,
+                    image.nomeArquivo,
                     // ID USUARIO
                     auth?.id
                 )
