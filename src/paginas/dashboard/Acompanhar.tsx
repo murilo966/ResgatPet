@@ -7,8 +7,9 @@ function Acompanhar() {
 
     const [pets, setPets] = useState<Pets[]>([])
     const carregarPets = async () => {
-        let json = await api.CarregarTodosFormularios()
-        setPets(json)
+        const response = await api.CarregarTodosFormularios()
+        setPets(response)
+        console.log(response)
     }
 
     // USER EFFECT PARA INICIO IMEDIATO 

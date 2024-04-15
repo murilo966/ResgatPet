@@ -4,6 +4,7 @@ import petImageLogo from '../../assents/imagens/logo/ic_resgatpet.png';
 import { api } from '../../api';
 import MenuLateral from '../../components/menu-lateral';
 import { UsuarioLogadoContext } from '../../context/authContext';
+import { format } from 'date-fns';
 
 function Formulario() {
 
@@ -25,6 +26,8 @@ function Formulario() {
     const [petCor, SetPetCor] = useState('');
     const [petAcessorios, SetPetAcessorios] = useState<string[]>([]);
     const [petSaude, SetPetSaude] = useState<string[]>([]);
+    const dataAtual = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
+    const Status = 'Em Andamento'
 
     // ERROS
     const [messageErro, SetMessageErro] = useState('');
@@ -78,17 +81,17 @@ function Formulario() {
                     petCor,
                     petAcessorios.toString(),
                     petSaude.toString(),
+                    dataAtual,
+                    Status,
                     // ID USUARIO
                     auth?.id
                 )
-
-                alert(auth?.id)
 
                 if (response.success) {
                     // IR ATE A PAGINA ACOMPANHAR 
                     //navigate('/dashboard/acompanhar')
                     SetMessageOk(response.message)
-                    console.log(auth?.nome)
+                    console.log(image)
                 }
                 else {
                     console.log("ERRO: ", response)
