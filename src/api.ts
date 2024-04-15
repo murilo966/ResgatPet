@@ -43,11 +43,11 @@ export const api = {
         // const response = await fetch("https://resgatpetapi.onrender.com/formulario")
         const response = await fetch("http://localhost:3005/formulario")
         let json = await response.json()
-        return json
+        return (json)
     },
     // NOVO FORMULARIO
-    CriarFormulario: async (IMAGEM: string, ENDERECO: string, CIDADE: string, RACA: string,
-        SEXO: string, COR: string, SAUDE: string, ACESSORIO: string, USUARIO?: string) => {
+    CriarFormulario: async (IMAGEM: string, ENDERECO: string, CIDADE: string, RACA: string, SEXO: string,
+        COR: string, SAUDE: string, ACESSORIO: string, DATAENTRADA: string, STATUS: string, USUARIO?: string) => {
         // const response = await fetch('https://resgatpetapi.onrender.com/formulario', {
         const response = await fetch('http://localhost:3005/formulario', {
             method: 'POST',
@@ -60,6 +60,8 @@ export const api = {
                 COR: COR,
                 SAUDE: SAUDE,
                 ACESSORIO: ACESSORIO,
+                DATAENTRADA: DATAENTRADA,
+                STATUS: STATUS,
                 USUARIO: USUARIO,
             }),
             headers: {
@@ -74,10 +76,9 @@ export const api = {
         // let response = await fetch('https://resgatpetapi.onrender.com/arquivos', {
         let response = await fetch('http://localhost:3005/arquivos', {
             method: 'POST',
-            body: formData
+            body: formData,
         });
         let json = await response.json()
-        console.log(json)
-        return json
+        return (json)
     },
 }
