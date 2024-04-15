@@ -46,13 +46,12 @@ export const api = {
         return (json)
     },
     // NOVO FORMULARIO
-    CriarFormulario: async (IMAGEM: string, ENDERECO: string, CIDADE: string, RACA: string, SEXO: string,
-        COR: string, SAUDE: string, ACESSORIO: string, DATAENTRADA: string, STATUS: string, USUARIO?: string) => {
+    CriarFormulario: async (ENDERECO: string, CIDADE: string, RACA: string, SEXO: string,
+        COR: string, SAUDE: string, ACESSORIO: string, DATAENTRADA: string, STATUS: string, USUARIO?: string, ARQUIVOS?: string) => {
         // const response = await fetch('https://resgatpetapi.onrender.com/formulario', {
         const response = await fetch('http://localhost:3005/formulario', {
             method: 'POST',
             body: JSON.stringify({
-                IMAGEM: IMAGEM,
                 ENDERECO: ENDERECO,
                 CIDADE: CIDADE,
                 RACA: RACA,
@@ -61,8 +60,9 @@ export const api = {
                 SAUDE: SAUDE,
                 ACESSORIO: ACESSORIO,
                 DATAENTRADA: DATAENTRADA,
-                STATUS: STATUS,
+                STATUS: STATUS,                
                 USUARIO: USUARIO,
+                ARQUIVOS: ARQUIVOS
             }),
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
