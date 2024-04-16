@@ -10,7 +10,7 @@ function Rodape() {
         <div className='rodape-container'>
             <div className="rodape">
                 <div className="resgatepet">
-                    <h3>Resgate Pet</h3>
+                    <h3>ResgatPet</h3>
                     <ul>
                         <li>
                             <Link to='/quem-somos'>
@@ -35,7 +35,7 @@ function Rodape() {
                 <h3>Comece Por Aqui</h3>
                 <ul>
                     <li>
-                        <Link to='/formulario'>
+                        <Link to='*'>
                             <label>- Como Ajudar ?</label>
                         </Link>
                     </li>
@@ -45,15 +45,15 @@ function Rodape() {
             <div className="rodape">
                 <h3>Redes Sociais</h3>
                 <div className="row">
-                    <Link to='#'>
+                    <Link to='*'>
                         <img src={facebook} alt="facebook" />
                     </Link>
 
-                    <Link to='#'>
+                    <Link to='*'>
                         <img src={youtube} alt="youtube" />
                     </Link>
 
-                    <Link to='#'>
+                    <Link to='*'>
                         <img src={instagram} alt="instagram" />
                     </Link>
                 </div>
@@ -62,11 +62,11 @@ function Rodape() {
             <div className='rodape'>
                 <h3>Apoio</h3>
                 <div className="row">
-                    <Link to='#'>
+                    <Link to='*'>
                         <img src={bauru} alt="prefeitura-bauru" />
                     </Link>
 
-                    <Link to='#'>
+                    <Link to='*'>
                         <img src={parceiro} alt="parceiro_01" />
                     </Link>
                 </div>

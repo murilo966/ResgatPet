@@ -1196,21 +1196,37 @@ input.disabled{
 /*  fim quem somos */
 
 /* EROOR 404 */
-.container-404 {
-  display: flex;
-  flex-direction: column;
+
+
+.containerPai_NF {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-family: Arial, sans-serif;
+    background-image: url('./assents/imagens/notFound/cachorroTriste.png'); /* Coloque o caminho da imagem triste aqui */
+    background-size: cover;
+    background-position: center;
+    color: rgb(255, 255, 255);
+    min-height: 120vh;
+  }
+
+.container-404{
+  background-color: #6c77835b;
+  padding: 10px;
+  border-radius: 10%;
   text-align: center;
-  justify-content: center;
-  min-height: 70vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .container-404 p {
-  color: black;
-  font-size: 25px;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  margin: 50px 8px;
+  font-size: 18px;
+}
+
+.container-404 h1 {
+  font-size: 36px;
 }
 
 /* DASHBOARD - ONG'S */
