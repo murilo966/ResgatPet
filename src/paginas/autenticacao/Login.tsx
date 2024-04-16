@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../../api';
 import titulo from '../../assents/imagens/background/im_background-titulo-login.png'
@@ -117,7 +117,7 @@ function Login() {
                 handleErro(response.message)
                 return;
             }
-    
+
             // VERIFICA SE O E-MAIL ESTÁ EM BRANCO (return[1] ERRO)
             if (!response.return || !response.return[1]) {
                 // RESPONSE.MESSAGE[ARRAY DA PRIMEIRA MENSAGEM]
@@ -125,7 +125,7 @@ function Login() {
                 handleErro(userData);
                 return;
             }
-    
+
             // VERIFICA SE A SENHA ESTÁ EM BRANCO (return[1] ERRO)
             if (!response.return || !response.return[1]) {
                 const userData = response.message[1];
@@ -163,7 +163,7 @@ function Login() {
         try {
 
             // VERIFICA SE TODOS OS COMPOS
-            if (!usuarioNome || !usuarioCPF_CNPJ || !usuarioTelefone || !usuarioEmail ) {
+            if (!usuarioNome || !usuarioCPF_CNPJ || !usuarioTelefone || !usuarioEmail) {
                 handleErro('Por favor, preencha todos os campos.');
                 return;
             }
@@ -193,7 +193,7 @@ function Login() {
             // CADASTRADO COM SUCEESO !
             if (response.success) {
                 handleBotaoAnimacaoCadastrar();
-                SetMessageOk(response.message);                
+                SetMessageOk(response.message);
             } else {
                 handleErro(response.message);
             }
@@ -202,6 +202,15 @@ function Login() {
             handleErro('Erro ao criar conta. ' + error);
         }
     }
+
+    // USER EFFECT PARA INICIO IMEDIATO 
+    useEffect(() => {
+        // VERIFICAÇÃO SE ESTA LOGADO
+        if (auth?.email) {
+            // REDIRECIONAR PARA DASHBOARD
+            navigate('/')
+        }
+    }, [])
 
     return (
         <div>

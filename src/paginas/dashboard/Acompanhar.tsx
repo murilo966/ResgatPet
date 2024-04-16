@@ -1,9 +1,14 @@
 import MenuLateral from '../../components/menu-lateral';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Pets } from '../../types/pets';
 import { api } from '../../api';
+import { UsuarioLogadoContext } from '../../context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 function Acompanhar() {
+    // CONTEXTO USUARIO
+    const auth = useContext(UsuarioLogadoContext)
+    const navigate = useNavigate()
 
     const [pets, setPets] = useState<Pets[]>([])
     const carregarPets = async () => {
@@ -14,12 +19,11 @@ function Acompanhar() {
 
     // USER EFFECT PARA INICIO IMEDIATO 
     useEffect(() => {
-        // // VERIFICAÇÃO DE LEVEL DE ACESSO
-        // if (levelOng) {
-        //     // REDIRECIONAR PARA DASHBOARD
-        //     navigate('/dashboard')
-        // }
-
+        // VERIFICAÇÃO DO LEVEL
+        if (auth?.level === '2') {
+            // REDIRECIONAR PARA DASHBOARD
+            navigate('/dashboard')
+        }
         carregarPets()
     }, [])
 
@@ -27,7 +31,7 @@ function Acompanhar() {
         <div className='container'>
             <div className='dashboard'>
                 <MenuLateral />
-                
+
                 <div className='container-painel'>
                     <div className="tabelas">
                         <table>
@@ -80,14 +84,14 @@ function Acompanhar() {
                                 {pets.map((row, index) => {
                                     return (
                                         <tr key={index} className='tb-row'>
-                                            <td className='endereco'>{row.endereco}</td>
-                                            <td className='cidade'>{row.cidade}</td>
-                                            <td className='raca'>{row.raca}</td>
-                                            <td className='sexo'>{row.sexo}</td>
-                                            <td className='cor'>{row.cor}</td>
-                                            <td className='saude'>{row.saude}</td>
-                                            <td className='acessorio'>{row.acessorio}</td>
-                                            <td className='status'><button>Status</button></td>
+                                            <td className='endereco'>{row.ENDERECO}</td>
+                                            <td className='cidade'>{row.CIDADE}</td>
+                                            <td className='raca'>{row.RACA}</td>
+                                            <td className='sexo'>{row.SEXO}</td>
+                                            <td className='cor'>{row.COR}</td>
+                                            <td className='saude'>{row.SAUDE}</td>
+                                            <td className='acessorio'>{row.ACESSORIO}</td>
+                                            <td className='status'><button>{row.STATUS}</button></td>
                                         </tr>
                                     );
                                 })}
