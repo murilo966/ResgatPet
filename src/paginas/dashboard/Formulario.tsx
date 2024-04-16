@@ -87,6 +87,8 @@ function Formulario() {
                     auth?.id
                 )
 
+                alert(auth?.id)
+
                 if (response.success) {
                     // IR ATE A PAGINA ACOMPANHAR 
                     //navigate('/dashboard/acompanhar')

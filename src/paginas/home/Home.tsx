@@ -7,7 +7,7 @@ function Home() {
     const navigate = useNavigate()
 
     const handleFormulario = () => {
-        if(!auth){
+        if(auth?.email){
             navigate('/dashboard/formulario')
         }
         else{
