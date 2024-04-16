@@ -2,8 +2,8 @@ export const api = {
 
     // LOGIN
     Logar: async (EMAIL: string, SENHA: string) => {
-        // const response = await fetch('https://resgatpetapi.onrender.com/usuarios/login', {
-            const response = await fetch('http://localhost:3005/usuarios/login', {
+        const response = await fetch('https://resgatpetapi.onrender.com/usuarios/login', {
+        // const response = await fetch('http://localhost:3005/usuarios/login', {
             method: 'POST',
             body: JSON.stringify({
                 EMAIL: EMAIL,
@@ -19,8 +19,8 @@ export const api = {
     },
     // CRIAR NOVA CONTA 
     CriarConta: async (NOMECOMPLETO: string, CPF_CNPJ: string, TELEFONE: string, EMAIL: string, SENHA: string, LEVEL: string) => {
-        // const response = await fetch('https://resgatpetapi.onrender.com/usuarios', {
-        const response = await fetch('http://localhost:3005/usuarios', {    
+        const response = await fetch('https://resgatpetapi.onrender.com/usuarios', {
+        // const response = await fetch('http://localhost:3005/usuarios', {    
             method: 'POST',
             body: JSON.stringify({
                 NOMECOMPLETO: NOMECOMPLETO,
@@ -40,16 +40,16 @@ export const api = {
     },
     // CARREGAR TODOS OS FORMULARIOS
     CarregarTodosFormularios: async () => {
-        // const response = await fetch("https://resgatpetapi.onrender.com/formulario")
-        const response = await fetch("http://localhost:3005/formulario")
+        const response = await fetch("https://resgatpetapi.onrender.com/formulario")
+        // const response = await fetch("http://localhost:3005/formulario")
         let json = await response.json()
         return (json)
     },
     // NOVO FORMULARIO
     CriarFormulario: async (ENDERECO: string, CIDADE: string, RACA: string, SEXO: string,
         COR: string, SAUDE: string, ACESSORIO: string, DATAENTRADA: string, STATUS: string, USUARIO?: string, ARQUIVOS?: string) => {
-        // const response = await fetch('https://resgatpetapi.onrender.com/formulario', {
-        const response = await fetch('http://localhost:3005/formulario', {
+        const response = await fetch('https://resgatpetapi.onrender.com/formulario', {
+        // const response = await fetch('http://localhost:3005/formulario', {
             method: 'POST',
             body: JSON.stringify({
                 ENDERECO: ENDERECO,
@@ -73,8 +73,8 @@ export const api = {
         return (json)
     },
     UpdateImage: async (formData: FormData) => {
-        // let response = await fetch('https://resgatpetapi.onrender.com/arquivos', {
-        let response = await fetch('http://localhost:3005/arquivos', {
+        let response = await fetch('https://resgatpetapi.onrender.com/arquivos', {
+        // let response = await fetch('http://localhost:3005/arquivos', {
             method: 'POST',
             body: formData,
         });
