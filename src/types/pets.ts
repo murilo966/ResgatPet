@@ -1,11 +1,10 @@
 export type Pets ={
-    petFoto: string
-    endereco: string
-    cidade: string
-    raca: string
-    sexo: string
-    cor: string
-    saude: string
-    acessorio: string
-    usuario: string
+    ENDERECO: string
+    CIDADE: string
+    RACA: string
+    SEXO: string
+    COR: string
+    SAUDE: string
+    ACESSORIO: string
+    STATUS: string
 }

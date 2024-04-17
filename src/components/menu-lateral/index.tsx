@@ -57,14 +57,14 @@ function MenuLateral() {
                     menuPet &&
                     (
                         <>
-                            <Link to='/dashboard/apadrinhar'>
+                            {/* <Link to='/dashboard/apadrinhar'>
                                 <button
                                     type="button"
                                     className='sub-menu'
                                 >
                                     <span>Apadrinhar</span>
                                 </button>
-                            </Link>
+                            </Link> */}
 
                             <Link to='/dashboard/acompanhar'>
                                 <button
