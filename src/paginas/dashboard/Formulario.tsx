@@ -38,7 +38,6 @@ function Formulario() {
 
     async function salvarPets() {
         try {
-
             if (!petFoto) {
                 handleErro('Por favor, coloque uma foto.');
                 return;
@@ -61,7 +60,6 @@ function Formulario() {
             }
 
             const files = fileInput.current?.files;
-
             // VERIFICA SE O TAMANHO DA FOTO E MAIOR QUE ZERO
             if (files && files.length > 0) {
                 const fileItem = files[0]
@@ -71,6 +69,7 @@ function Formulario() {
                 // CHAMA O JSON UPDATE IMAGEM
                 let image = await api.UpdateImage(data)
                 // CHAMA O JSON CRIAR FORMULARIO
+                console.log(image.nomeArquivo)
                 let response = await api.CriarFormulario(
                     // SETA A IMAGEM NO FORMULARIO
                     petEndereco,
@@ -78,16 +77,15 @@ function Formulario() {
                     petRaca,
                     petSexo,
                     petCor,
-                    petAcessorios.toString(),
                     petSaude.toString(),
+                    petAcessorios.toString(),
                     dataAtual,
-                    Status,
-                    image.nomeArquivo,
-                    // ID USUARIO
-                    auth?.id
+                    Status,                    
+                    auth?.id,// ID USUARIO
+                    image.id, // ID IMAGEM
                 )
-
-                alert(auth?.id)
+                
+                // alert(auth?.id)
 
                 if (response.success) {
                     // IR ATE A PAGINA ACOMPANHAR 
