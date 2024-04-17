@@ -5,6 +5,7 @@ import { api } from '../../api';
 import MenuLateral from '../../components/menu-lateral';
 import { UsuarioLogadoContext } from '../../context/authContext';
 import { format } from 'date-fns';
+import { Button, Spinner } from 'reactstrap';
 
 function Formulario() {
 
@@ -24,6 +25,7 @@ function Formulario() {
     const [petSexo, SetPetSexo] = useState('');
     const [petRaca, SetPetRaca] = useState('');
     const [petCor, SetPetCor] = useState('');
+    const [loading, setLoading] = useState(false);
     const [petAcessorios, SetPetAcessorios] = useState<string[]>([]);
     const [petSaude, SetPetSaude] = useState<string[]>([]);
     const dataAtual = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
@@ -37,6 +39,7 @@ function Formulario() {
     }
 
     async function salvarPets() {
+        setLoading(true);
         try {
 
             if (!petFoto) {
@@ -100,8 +103,10 @@ function Formulario() {
                     SetMessageErro(response.message)
                 }
             }
+            setLoading(false);
         } catch (e) {
             alert('Erro ao salvar pets:' + e);
+            setLoading(false);
         }
     }
 
@@ -380,9 +385,22 @@ function Formulario() {
 
                                 <div className="column mobile-botao">
                                     <div className='row'>
+                                    {loading && 
+                                        <Button
+                                            color="primary"
+                                            disabled
+                                        >
+                                            <Spinner type="border"size="sm">
+                                                Carregando...
+                                            </Spinner>
+                                        </Button>
+                                    }
+                                    {!loading &&
                                         <div>
                                             <button className='bt-salvar' type="button" name='salvar' onClick={salvarPets} > Salvar </button>
                                         </div>
+                                    }
+                                        
 
                                         <div>
                                             <button className='bt-cancelar' type="button" name='cancelar' onClick={handleClickCancelar}> Cancelar </button>

@@ -106,9 +106,9 @@ function Login() {
     const handleLogin = async () => {
         setLoading(true)
         try {
-
             const response = await api.Logar(usuarioEmail, usuarioSenha);
-
+            
+            setLoading(false);
             // VERIFICARA SE USUARIO EXISTE NO BANCO DE DADOS
             if (!response.return || !response.return[0]) {
                 handleErro("Usuário não encontrado.");
@@ -121,7 +121,7 @@ function Login() {
                 handleErro(response.message)
                 return;
             }
-
+            
             // VERIFICA SE O E-MAIL ESTÁ EM BRANCO (return[1] ERRO)
             if (!response.return || !response.return[1]) {
                 // RESPONSE.MESSAGE[ARRAY DA PRIMEIRA MENSAGEM]
@@ -154,7 +154,6 @@ function Login() {
             auth?.setEmail(userEmail);
             auth?.setTelefone(userTelefone);
             auth?.setLevel(userLevel);
-            setLoading(false);
 
         } catch (error) {
             handleErro("Erro Interno !" + error);
@@ -164,6 +163,7 @@ function Login() {
 
     // CRIAR CONTA
     const handleCriarConta = async () => {
+        // setLoading(true)
         try {
 
             // VERIFICA SE TODOS OS COMPOS
@@ -189,11 +189,12 @@ function Login() {
                 handleErro('Aceitar os Termos');
                 return;
             }
-
             // VERIFICA OS CARACTERES DO CPF E CNPJ
             const level = usuarioCPF_CNPJ.length === 14 ? NIVEL_CNPJ : NIVEL_CPF;
+            setLoading(true)
             const response = await api.CriarConta(usuarioNome, usuarioCPF_CNPJ, usuarioTelefone, usuarioEmail, usuarioSenha, level)
 
+            
             // CADASTRADO COM SUCEESO !
             if (response.success) {
                 handleBotaoAnimacaoCadastrar();
@@ -201,9 +202,11 @@ function Login() {
             } else {
                 handleErro(response.message);
             }
+            setLoading(false)
 
         } catch (error) {
             handleErro('Erro ao criar conta. ' + error);
+            setLoading(false)
         }
     }
 
@@ -340,9 +343,21 @@ function Login() {
                                     <label>aceitar os termos</label>
                                 </Link>
                             </div>
-
-                            <button type="button" onClick={handleCriarConta}> Cadastrar-Se </button>
-
+                            {loading && 
+                                <Button
+                                    color="primary"
+                                    disabled
+                                >
+                                    <Spinner type="border"size="sm">
+                                        Carregando...
+                                    </Spinner>
+                                </Button>
+                            }
+                            
+                            {!loading &&
+                                <button type="button" onClick={handleCriarConta}> Cadastrar-Se </button>
+                            }
+                            
                             <span className='message-erro'>{messageErro}</span>
                             <span className='message-ok'>{messageOk}</span>
                         </form>
