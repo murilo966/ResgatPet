@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../contexts/auth/AuthContext';
 import MenuLateral from '../../components/menu-lateral';
+import { UsuarioLogadoContext } from '../../context/authContext';
 
 function Configuracao() {
 
-    const auth = useContext(AuthContext);
+    const auth = useContext(UsuarioLogadoContext)
     const [email, SetEmail] = useState('');
     const [senha, SetSenha] = useState('');
     const [senhaConfirmar, SetSenhaConfirmar] = useState('');
@@ -40,18 +40,18 @@ function Configuracao() {
             <div className='container'>
                 <div className='dashboard'>
                     <MenuLateral />
-
-                    <div className='container-painel'>
-                        <div className='painel-configuracao'>
+                    <div className='container-painel '>
+                        <div className='configuracao'>
                             <h1>Configurações</h1>
                             <input type="text"
                                 name="name-usuario"
-                                value={auth.user?.name}
+                                value={auth?.nome}
                                 disabled
                             />
 
                             <input type="text"
-                                value={email}
+                                id='capitalize'
+                                value={email || auth?.email }
                                 name="email-usuario"
                                 placeholder="nome@email.com"
                                 onChange={handleInputEmail}

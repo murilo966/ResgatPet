@@ -1,63 +1,60 @@
 import logo from '../../assents/imagens/logo/ic_resgatpet.png'
-import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../contexts/auth/AuthContext'
+import { UsuarioLogadoContext } from '../../context/authContext'
+import { useContext } from 'react'
 
 function Menu() {
-    const auth = useContext(AuthContext)
+    const auth = useContext(UsuarioLogadoContext)
+
     const navigate = useNavigate()
 
     const handleHome = () => {
         navigate('/')
     }
 
-    const handleQuemSomos = () =>{
+    const handleQuemSomos = () => {
         navigate('/quem-somos')
     }
 
-    const handleCadastrar = () =>{
-        navigate('/cadastrar')
-    }
-
-    const hadleDashboard = () =>{
+    const hadleDashboard = () => {
         navigate('/dashboard')
     }
-    
-    const handleLogout = async () => {
-        await auth.signout();
+
+    const handleLogout = () => {
+        localStorage.setItem('ContextEmail', '');
+        auth?.setEmail('')
         navigate('/')
     }
 
-    const handleLogin = () =>{
+    const handleLogin = () => {
         navigate('/login')
     }
 
-    return(
+    return (        
         <div className='container-cabecalho'>
             <div className='cabecalho'>
                 <div className='menu-logo'>
                     <Link to='/'>
                         <img src={logo} onClick={handleHome} />
-                    </Link> 
+                    </Link>
                 </div>
 
                 <div className='container-navegacao'>
+
                     <button onClick={handleHome}>Inicio </button>
 
                     <button onClick={handleQuemSomos}>Quem Somos</button>
 
-                    {!auth.user && <button onClick={handleCadastrar}>Cadastre-se</button>}
+                    {auth?.email && <button onClick={hadleDashboard}>Dashboard</button>}
 
-                    {auth.user && <button onClick={hadleDashboard}>Dashboard</button>}
+                    {!auth?.email && <button onClick={handleLogin}>Faça login</button>}
 
-                    {auth.user && <button onClick={handleLogout}>Sair</button>}
+                    {auth?.email && <button onClick={handleLogout}>Sair</button>}
 
-                    {!auth.user &&<button onClick={handleLogin}>Faça login</button>}
                 </div>
             </div>
-        </div>
+        </div>        
     )
-    
 }
 
 export default Menu

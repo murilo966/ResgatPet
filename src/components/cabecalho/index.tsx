@@ -1,9 +1,10 @@
 import Menu from '../navegador-botoes'
 
 function Cabecalho() {
-    return(
+
+    return(    
         <div className='container-cabecalho'>
-            <Menu/>
+            <Menu/>            
         </div>
     )
 }

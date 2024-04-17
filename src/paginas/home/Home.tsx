@@ -1,6 +1,20 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UsuarioLogadoContext } from '../../context/authContext';
 
 function Home() {
+    const auth = useContext(UsuarioLogadoContext)
+    const navigate = useNavigate()
+
+    const handleFormulario = () => {
+        if(auth?.email){
+            navigate('/dashboard/formulario')
+        }
+        else{
+            navigate('/login')
+        }
+    }
+
     return (
         <div>
             <div className='container-img'>
@@ -15,12 +29,15 @@ function Home() {
                     </div>
 
                     <div className='bt-formulario'>
-                        <Link to='/formulario'>
-                            <button className='bt-encontrei-pet' >Encontrei um Pet</button>
-                        </Link>
+                        <button className='bt-encontrei-pet' onClick={handleFormulario}>Encontrei um Pet</button>
                     </div>
                 </div>
             </div>
+            {/* <div className='CarrosselImages'>
+                <div className="slide"><img src="https://t.ctcdn.com.br/yqCkdE2L6bLSUXdITF1QElZEzGU=/640x360/smart/i726432.jpeg"/></div>
+                <div className="slide"><img src="imagem2.jpg"/></div>
+                <div className="slide"><img src="imagem3.jpg"/></div>
+            </div> */}
         </div>
     )
 }

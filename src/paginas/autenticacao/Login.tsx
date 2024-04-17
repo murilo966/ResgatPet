@@ -1,28 +1,40 @@
-import { useContext, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button, Spinner } from 'reactstrap';
+import { api } from '../../api';
 import titulo from '../../assents/imagens/background/im_background-titulo-login.png'
-import { AuthContext } from '../../contexts/auth/AuthContext';
+import olhos_aberto from '../../assents/imagens/login/ic_olhos_abertos.png'
+import olhos_fechado from '../../assents/imagens/login/ic_olhos_fechado.png'
+import { UsuarioLogadoContext } from '../../context/authContext';
 
 function Login() {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;    
-    const auth = useContext(AuthContext);
-    const navigate = useNavigate();
-    const location = useLocation();
 
+    const auth = useContext(UsuarioLogadoContext)
+    const navigate = useNavigate();
+
+    const [mostrarSenha, setMostrarSenha] = useState(false);
+    const[loading, setLoading] = useState(false)
+
+    const [messageErro, SetMessageErro] = useState('');
+    const [messageOk, SetMessageOk] = useState('');
+   
+
+    const NIVEL_CPF = '1';
+    const NIVEL_CNPJ = '2';
     const [usuarioNome, SetUsuarioNome] = useState('');
-    const [usuarioCPF, SetUsuarioCPF] = useState('');
+    const [usuarioCPF_CNPJ, SetUsuarioCPF_CNPJ] = useState('');
     const [usuarioTelefone, SetUsuarioTelefone] = useState('');
     const [usuarioEmail, SetUsuarioEmail] = useState('');
     const [usuarioSenha, SetUsuarioSenha] = useState('');
-    const [usuarioConfirmarSenha, SetUsuarioConfirmarSenha] = useState('');
-    const [aceitarTermosCPF, SetAceitarTermosCPF] = useState(false);
+    const [usuarioSenhaConfirmar, SetUsuarioSenhaConfirmar] = useState('');
+    const [aceitarTermos, SetAceitarTermos] = useState(false);
 
     function handleInputUsuarioNome(event: React.ChangeEvent<HTMLInputElement>) {
         SetUsuarioNome(event.target.value);
     }
 
-    function handleInputUsuarioCPF(event: React.ChangeEvent<HTMLInputElement>) {
-        SetUsuarioCPF(event.target.value);
+    function handleInputUsuarioDocumento(event: React.ChangeEvent<HTMLInputElement>) {
+        SetUsuarioCPF_CNPJ(event.target.value);
     }
 
     function handleInputUsuarioTelefone(event: React.ChangeEvent<HTMLInputElement>) {
@@ -38,132 +50,259 @@ function Login() {
     }
 
     function handleInputUsuarioConfirmarSenha(event: React.ChangeEvent<HTMLInputElement>) {
-        SetUsuarioConfirmarSenha(event.target.value);
+        SetUsuarioSenhaConfirmar(event.target.value);
     }
 
-    const handleInputAceitarTermosCPF = () => {
-        SetAceitarTermosCPF(!aceitarTermosCPF);
+    // ICON OLHOS SENHA
+    const handleIconOlhos = () => {
+        setMostrarSenha(!mostrarSenha);
     }
 
-    const handleFazerLogin = () => {
+    // TERMOS DO CONTRATO
+    const handleInputAceitarTermos = () => {
+        SetAceitarTermos(!aceitarTermos);
+    }
+
+    // MENSAGEM DE VERIFICAÇÃO DE CAMPOS EM BRANCO
+    const handleErro = (mensagem: string) => {
+        SetMessageErro(mensagem);
+    }
+
+    // ANIMAÇÃO DO LOGIN
+    const handleBotaoAnimacaoLogin = () => {
         const container = document.getElementById('login');
         if (container) {
             container.classList.add('active');
         }
+
+        // LIMPA O ERRO AO TROCAR DE TELA
+        SetMessageErro('')
+        SetMessageOk('')
+        SetUsuarioEmail('');
+        SetUsuarioSenha('');
     }
 
-    const handleCriarConta = () => {
+    // ANIMAÇÃO DO CRIAR CONTA
+    const handleBotaoAnimacaoCadastrar = () => {
         const container = document.getElementById('login');
         if (container) {
             container.classList.remove('active');
         }
+
+        // LIMPA O ERRO AO TROCAR DE TELA
+        SetMessageErro('')
+        SetMessageOk('')
+
+        SetUsuarioNome('');
+        SetUsuarioCPF_CNPJ('');
+        SetUsuarioTelefone('');
+        SetUsuarioEmail('');
+        SetUsuarioSenha('');
+        SetUsuarioSenhaConfirmar('');
+        SetAceitarTermos(false);
     }
 
     // LOGIN
-    const handleLogin = async() => {
-        if (usuarioEmail.trim() === '' ||
-            usuarioSenha.trim() === '') {
-            alert('Por favor, preencha todos os campos.');
-        } else if (!emailRegex.test(usuarioEmail)) {
-            alert('Forneça um e-mail válido.');
-        } else {
-            // VERIFICA O EMAIL A SENHA
-            if(usuarioEmail && usuarioSenha){
-                const isLogged = await auth.signin(usuarioEmail, usuarioSenha)
-                if(isLogged){
-                    // VERIFICA SE JÁ ESTA NA PAGINA FORMULARIO ANTES DE LOGAR
-                    if(location.pathname.toLowerCase() === '/formulario'){
-                        navigate('/formulario')
-                    }
-                    else{
-                        navigate('/dashboard')
-                    }
-                }
-                else{
-                    alert("ERRO INTERNO")
-                }
-            }           
-        }
-    }
-
-    function handleRegistarCPF() {
-        if (usuarioNome.trim() === '' ||
-            usuarioCPF.trim() === '' ||
-            usuarioTelefone.trim() === '' ||
-            usuarioEmail.trim() === '' ||
-            usuarioSenha.trim() === '' ||
-            usuarioConfirmarSenha.trim() === '') {
-            alert('Por favor, preencha todos os campos.');
-        } else if (usuarioSenha !== usuarioConfirmarSenha) {
-            alert('As senha não são iguais.');
-        } else if (!emailRegex.test(usuarioEmail)) {
-            alert('Forneça um e-mail válido.');
-        } else if (!aceitarTermosCPF) {
-            alert('Aceitar os Termos.');
-        }
-        else {
-
-            // salvar no banco de dados 
-
-            const container = document.getElementById('login');
-            if (container) {
-                container.classList.remove('active');
+    const handleLogin = async () => {
+        setLoading(true)
+        try {
+            const response = await api.Logar(usuarioEmail, usuarioSenha);
+            
+            setLoading(false);
+            // VERIFICARA SE USUARIO EXISTE NO BANCO DE DADOS
+            if (!response.return || !response.return[0]) {
+                handleErro("Usuário não encontrado.");
+                return;
             }
+
+            // OUTROS ERROS
+            if (!response.return || !response.return[1]) {
+                console.log(response.message);
+                handleErro(response.message)
+                return;
+            }
+            
+            // VERIFICA SE O E-MAIL ESTÁ EM BRANCO (return[1] ERRO)
+            if (!response.return || !response.return[1]) {
+                // RESPONSE.MESSAGE[ARRAY DA PRIMEIRA MENSAGEM]
+                const userData = response.message[0];
+                handleErro(userData);
+                return;
+            }
+
+            // VERIFICA SE A SENHA ESTÁ EM BRANCO (return[1] ERRO)
+            if (!response.return || !response.return[1]) {
+                const userData = response.message[1];
+                handleErro(userData);
+                return;
+            }
+
+            // LOGIN COM SUCESSO !
+            const userData = response.return[0];
+            const userID = userData.ID;
+            const userNome = userData.NOMECOMPLETO;
+            const userEmail = userData.EMAIL;
+            const userTelefone = userData.TELEFONE;
+            const userLevel = userData.LEVEL;
+
+            // IR PARA PAGINA DASHBOARD DEPOIS DE LOGADO
+            navigate('/dashboard');
+
+            // PEGAR O JSON E ATRIBUIR AO useContext
+            auth?.setID(userID);
+            auth?.setNome(userNome);
+            auth?.setEmail(userEmail);
+            auth?.setTelefone(userTelefone);
+            auth?.setLevel(userLevel);
+
+        } catch (error) {
+            handleErro("Erro Interno !" + error);
+            setLoading(false);
         }
     }
+
+    // CRIAR CONTA
+    const handleCriarConta = async () => {
+        // setLoading(true)
+        try {
+
+            // VERIFICA SE TODOS OS COMPOS
+            if (!usuarioNome || !usuarioCPF_CNPJ || !usuarioTelefone || !usuarioEmail) {
+                handleErro('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            // COMPARAR AS SENHAS
+            if (usuarioSenha !== usuarioSenhaConfirmar || !usuarioSenha || !usuarioSenhaConfirmar) {
+                handleErro('As senhas não coincidem.');
+                return;
+            }
+
+            // VERIFICAR FORMATO DO CPF/CNPJ
+            if (usuarioCPF_CNPJ.length !== 11 && usuarioCPF_CNPJ.length !== 14) {
+                handleErro('CPF ou CNPJ inválido.');
+                return;
+            }
+
+            // VERIFICA OS TERMOS FOI SELECIONADO 
+            if (!aceitarTermos) {
+                handleErro('Aceitar os Termos');
+                return;
+            }
+            // VERIFICA OS CARACTERES DO CPF E CNPJ
+            const level = usuarioCPF_CNPJ.length === 14 ? NIVEL_CNPJ : NIVEL_CPF;
+            setLoading(true)
+            const response = await api.CriarConta(usuarioNome, usuarioCPF_CNPJ, usuarioTelefone, usuarioEmail, usuarioSenha, level)
+
+            
+            // CADASTRADO COM SUCEESO !
+            if (response.success) {
+                handleBotaoAnimacaoCadastrar();
+                SetMessageOk(response.message);
+            } else {
+                handleErro(response.message);
+            }
+            setLoading(false)
+
+        } catch (error) {
+            handleErro('Erro ao criar conta. ' + error);
+            setLoading(false)
+        }
+    }
+
+    // USER EFFECT PARA INICIO IMEDIATO 
+    useEffect(() => {
+        // VERIFICAÇÃO SE ESTA LOGADO
+        if (auth?.email) {
+            // REDIRECIONAR PARA DASHBOARD
+            navigate('/')
+        }
+    }, [])
 
     return (
         <div>
             <div className='container'>
                 <div className='container-autenticacao' id='login'>
-                    <div className='form-container criar-conta-pf'>
+                    <div className='form-container logar-conta'>
                         <form>
                             <h1 className='entrar'>Entrar</h1>
                             <img src={titulo} alt="titulo-login" />
 
-                            <input type="text"
-                                name="usuario-nome"
-                                placeholder="nome@email.com"
-                                required
-                                onChange={handleInputUsuarioEmail}
-                            />
+                            <div className="container-input">
+                                <input
+                                    type="text"
+                                    name="usuario-nome"
+                                    placeholder="nome@email.com"
+                                    required
+                                    onChange={handleInputUsuarioEmail}
+                                />
 
-                            <input type="password"
-                                name="usuario-senha"
-                                placeholder="*********"
-                                required
-                                onChange={handleInputUsuarioSenha}
-                            />
+                                <img
+                                    // ANIMAÇÃO DA VISUALIZAÇÃO DA SENHA
+                                    src={mostrarSenha ? olhos_aberto : olhos_fechado}
+                                    alt="olhos"
+                                    onClick={handleIconOlhos}
+                                />
 
-                            <button type="button" onClick={handleLogin}> Entrar </button>
+                                <input
+                                    // ANIMAÇÃO DA VISUALIZAÇÃO DA SENHA
+                                    type={mostrarSenha ? 'text' : 'password'}
+                                    name="usuario-senha"
+                                    placeholder="*********"
+                                    required
+                                    onChange={handleInputUsuarioSenha}
+                                />
+                                
+                            </div>
+                            {loading && 
+                                <Button
+                                    color="primary"
+                                    disabled
+                                >
+                                    <Spinner type="border"size="sm">
+                                        Carregando...
+                                    </Spinner>
+                                </Button>
+                            }
+                            {!loading &&
+                                <button type="button" onClick={handleLogin}> Entrar </button>
+                            }
+                            
 
                             <Link to='/esqueceu-senha'>
                                 <label className='esqueceu-senha'> Esqueceu a Senha ?</label>
                             </Link>
+
+                            {/* ALERTA DE AVISO PARA USUARIO */}
+                            <span className='message-erro'>{messageErro}</span>
+                            <span className='message-ok'>{messageOk}</span>
                         </form>
                     </div>
 
-                    <div className='form-container criar-conta-pj'>
+                    <div className='form-container criar-conta'>
                         <form>
                             <h1>CRIE SUA CONTA</h1>
 
                             <input type="text"
                                 name="user-name"
                                 placeholder="Nome Completo"
+                                value={usuarioNome}
                                 required
                                 onChange={handleInputUsuarioNome}
                             />
 
                             <input type="text"
                                 name="user-cpf"
-                                placeholder="CPF"
+                                placeholder="CPF / CNPJ"
+                                value={usuarioCPF_CNPJ}
                                 required
-                                onChange={handleInputUsuarioCPF}
+                                onChange={handleInputUsuarioDocumento}
                             />
 
                             <input type="text"
                                 name="user-telefone"
                                 placeholder="Telefone"
+                                value={usuarioTelefone}
                                 required
                                 onChange={handleInputUsuarioTelefone}
                             />
@@ -171,6 +310,7 @@ function Login() {
                             <input type="text"
                                 name="user-name"
                                 placeholder="nome@email.com"
+                                value={usuarioEmail}
                                 required
                                 onChange={handleInputUsuarioEmail}
                             />
@@ -178,6 +318,7 @@ function Login() {
                             <input type="password"
                                 name="user-password"
                                 placeholder="Crie Sua Senha"
+                                value={usuarioSenha}
                                 required
                                 onChange={handleInputUsuarioSenha}
                             />
@@ -185,6 +326,7 @@ function Login() {
                             <input type="password"
                                 name="user-password"
                                 placeholder="Confirme Sua Senha"
+                                value={usuarioSenhaConfirmar}
                                 required
                                 onChange={handleInputUsuarioConfirmarSenha}
                             />
@@ -193,16 +335,31 @@ function Login() {
                                 <div className="aceitar">
                                     <input type="checkbox"
                                         name="aceitar-termos-pf"
-                                        checked={aceitarTermosCPF}
-                                        onChange={handleInputAceitarTermosCPF}
+                                        checked={aceitarTermos}
+                                        onChange={handleInputAceitarTermos}
                                     />
                                 </div>
                                 <Link to='#'>
                                     <label>aceitar os termos</label>
                                 </Link>
                             </div>
-
-                            <button type="button" onClick={handleRegistarCPF}> Cadastrar-Se </button>
+                            {loading && 
+                                <Button
+                                    color="primary"
+                                    disabled
+                                >
+                                    <Spinner type="border"size="sm">
+                                        Carregando...
+                                    </Spinner>
+                                </Button>
+                            }
+                            
+                            {!loading &&
+                                <button type="button" onClick={handleCriarConta}> Cadastrar-Se </button>
+                            }
+                            
+                            <span className='message-erro'>{messageErro}</span>
+                            <span className='message-ok'>{messageOk}</span>
                         </form>
                     </div>
 
@@ -213,7 +370,7 @@ function Login() {
 
                                 <p> Se mantenha conectado fazendo login com suas informações</p>
 
-                                <button type="button" className='hidden' onClick={handleCriarConta} > Login </button>
+                                <button type="button" className='hidden' onClick={handleBotaoAnimacaoCadastrar} > Login </button>
                             </div>
 
                             <div className="toggle-panel toggle-right">
@@ -221,13 +378,7 @@ function Login() {
 
                                 <p> Crie sua conta, e venha fazer parte da nossa Familia !</p>
 
-                                <button type="button" className='hidden' onClick={handleFazerLogin} > Criar Uma Conta </button>
-
-                                <span>OU</span>
-
-                                <Link to='/cadastrar'>
-                                    <button type="button" className='hidden'  > Conta Corporativa </button>
-                                </Link>
+                                <button type="button" className='hidden' onClick={handleBotaoAnimacaoLogin} > Criar Uma Conta </button>
                             </div>
                         </div>
                     </div>
