@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Button, Spinner } from 'reactstrap';
 import { api } from '../../api';
 import titulo from '../../assents/imagens/background/im_background-titulo-login.png'
 import olhos_aberto from '../../assents/imagens/login/ic_olhos_abertos.png'
@@ -12,9 +13,11 @@ function Login() {
     const navigate = useNavigate();
 
     const [mostrarSenha, setMostrarSenha] = useState(false);
+    const[loading, setLoading] = useState(false)
 
     const [messageErro, SetMessageErro] = useState('');
     const [messageOk, SetMessageOk] = useState('');
+   
 
     const NIVEL_CPF = '1';
     const NIVEL_CNPJ = '2';
@@ -101,6 +104,7 @@ function Login() {
 
     // LOGIN
     const handleLogin = async () => {
+        setLoading(true)
         try {
 
             const response = await api.Logar(usuarioEmail, usuarioSenha);
@@ -150,11 +154,11 @@ function Login() {
             auth?.setEmail(userEmail);
             auth?.setTelefone(userTelefone);
             auth?.setLevel(userLevel);
-
-            console.log(response);
+            setLoading(false);
 
         } catch (error) {
             handleErro("Erro Interno !" + error);
+            setLoading(false);
         }
     }
 
@@ -236,9 +240,22 @@ function Login() {
                                     required
                                     onChange={handleInputUsuarioSenha}
                                 />
+                                
                             </div>
-
-                            <button type="button" onClick={handleLogin}> Entrar </button>
+                            {loading && 
+                                <Button
+                                    color="primary"
+                                    disabled
+                                >
+                                    <Spinner type="border"size="sm">
+                                        Carregando...
+                                    </Spinner>
+                                </Button>
+                            }
+                            {!loading &&
+                                <button type="button" onClick={handleLogin}> Entrar </button>
+                            }
+                            
 
                             <Link to='/esqueceu-senha'>
                                 <label className='esqueceu-senha'> Esqueceu a Senha ?</label>
