@@ -11,10 +11,14 @@ function Acompanhar() {
     const navigate = useNavigate()
 
     const [pets, setPets] = useState<Pets[]>([])
+    const [loading,setloading] = useState(false)
+
     const carregarPets = async () => {
+        setloading(true)
         const response = await api.CarregarTodosFormularios()
         setPets(response)
         console.log(response)
+        setloading(false)
     }
 
     // USER EFFECT PARA INICIO IMEDIATO 
@@ -31,8 +35,12 @@ function Acompanhar() {
         <div className='container'>
             <div className='dashboard'>
                 <MenuLateral />
+                
 
-                <div className='container-painel'>
+                
+                
+                
+                  <div className='container-painel'>
                     <div className="tabelas">
                         <table>
                             <thead>
@@ -68,6 +76,7 @@ function Acompanhar() {
                                         </div>
                                     </th>
                                 </tr>
+                                
                                 <tr className='tb-cabecalho'>
                                     <th>ENDEREÇO</th>
                                     <th>CIDADE</th>
@@ -78,8 +87,15 @@ function Acompanhar() {
                                     <th>ACESSÓRIO</th>
                                     <th></th>
                                 </tr>
+                                <tr className='carregarLista'>
+                                {loading && 
+                                    <div>Carregando...</div>
+                                }
+                                </tr>
                             </thead>
 
+                            
+                        {!loading &&
                             <tbody>
                                 {pets.map((row, index) => {
                                     return (
@@ -96,9 +112,12 @@ function Acompanhar() {
                                     );
                                 })}
                             </tbody>
+                        }
                         </table>
                     </div>
-                </div>
+                  </div>  
+                
+                
             </div>
         </div>
     )

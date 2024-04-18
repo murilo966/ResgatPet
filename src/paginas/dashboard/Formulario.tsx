@@ -39,7 +39,6 @@ function Formulario() {
     }
 
     async function salvarPets() {
-        setLoading(true);
         try {
             if (!petFoto) {
                 handleErro('Por favor, coloque uma foto.');
@@ -61,6 +60,7 @@ function Formulario() {
                 handleErro('Por favor, selecione pelo menos uma opção de saúde.');
                 return;
             }
+            setLoading(true);
 
             const files = fileInput.current?.files;
             // VERIFICA SE O TAMANHO DA FOTO E MAIOR QUE ZERO
@@ -92,7 +92,7 @@ function Formulario() {
 
                 if (response.success) {
                     // IR ATE A PAGINA ACOMPANHAR 
-                    //navigate('/dashboard/acompanhar')
+                    navigate('/dashboard/acompanhar')
                     SetMessageOk(response.message)
                     console.log(image)
                 }
@@ -102,6 +102,7 @@ function Formulario() {
                 }
             }
             setLoading(false);
+            
         } catch (e) {
             alert('Erro ao salvar pets:' + e);
             setLoading(false);
@@ -384,19 +385,21 @@ function Formulario() {
                                 <div className="column mobile-botao">
                                     <div className='row'>
                                     {loading && 
-                                        <Button
-                                            color="primary"
-                                            disabled
-                                        >
-                                            <Spinner type="border"size="sm">
-                                                Carregando...
-                                            </Spinner>
-                                        </Button>
+                                    <div>
+                                        <button className='bt-salvar' type="button" name='salvar' >
+                                             Carregando 
+                                             {/* <img src="https://static.app.idcommerce.com.br/common/images/climbacommerce/loading.gif"/> */}
+                                        </button>
+                                        </div>
                                     }
                                     {!loading &&
                                         <div>
                                             <button className='bt-salvar' type="button" name='salvar' onClick={salvarPets} > Salvar </button>
+                                          
+                                        
                                         </div>
+
+                                        
                                     }
                                         
 
