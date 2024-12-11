@@ -1,11 +1,3 @@
-<p>
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License MIT">   
-    <img src="https://img.shields.io/github/followers/andrecomegno.svg" alt="Followers">                                                                               
-  </a>
-</p>
-
- #
  
 <p align="center">
    <img src="src/assents/imagens/github/logo.png" alt="Logo" height="280">
