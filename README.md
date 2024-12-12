@@ -1,5 +1,13 @@
+ <div align="center">
+   <img src="src/assents/imagens/github/logo.png" alt="Logo" height="280">
+</div>
+
 # Introdução
-Esse projeto foi criado em aula no curso Full-Stack na escola Senac, o site foi desenvolvido partir de uma ideia desde o planejamento até o design, resolvendo problemas e corrigindo bugs. O Site tem como objetivo de resgatar os Pets abandonados e passar para as ONG 's responsáveis, com a companhamento do resgate do pet até o destino final, tem um feedback dos pets acolhidos, contando a sua historia e compartilhando a sua trajetoria, o site conta com um menu lateral, com as paginas dashboard, quem somos, login e cadastro, esqueceu senha, econtrei um pet, acompamento, parceiros, ongs, doações, configurações e erro 404. O Front-End foi desenvolvido em React, javascript, typescript, html e css, também utilizando o photoshop, figma e trello, para o banco de dados estamos utilizando o MySQL junto com uma [API].
+Esse projeto foi criado em aula no curso Full-Stack na escola Senac, o site foi desenvolvido partir de uma ideia desde o planejamento até o design, resolvendo problemas e corrigindo bugs.
+O Site tem como objetivo de resgatar os Pets abandonados e passar para as ONG 's responsáveis, com a companhamento do resgate do pet até o destino final, tem um feedback dos pets acolhidos,
+contando a sua historia e compartilhando a sua trajetoria, o site conta com um menu lateral, com as paginas dashboard, quem somos, login e cadastro, esqueceu senha, econtrei um pet, acompamento,
+parceiros, ongs, doações, configurações e erro 404. O Front-End foi desenvolvido em React, javascript, typescript, html e css, também utilizando o photoshop, figma e trello, para o banco de dados
+estamos utilizando o MySQL junto com uma [API].
 
 ## Características
 Esse site tem como objetivo resgatar os Pets abandonados e passar para as ONG 's responsáveis. O site foi desenvolvido em um Projeto Integrador no Senac no curso Full-Stack.
